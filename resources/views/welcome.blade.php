@@ -8,14 +8,15 @@
 
         <!-- Fonts -->
 {{--        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">--}}
-        <link href="/css/app.css" rel="stylesheet" type="text/css">
-{{--        <link href="./js/PrepSports/PrepSports/src/index.css" rel="stylesheet" type="text/css">--}}
-{{--        <link href="./resources/js/PrepSports/PrepSports/src/index.css" rel="stylesheet" type="text/css">--}}
+{{--        <link href="/css/app.css" rel="stylesheet" type="text/css">--}}
 
     </head>
     <body>
         <div id="root"></div>
 
     <script type="text/javascript" src="/js/index.js"></script>
+        <script type="text/javascript">
+            window.token = '{{ csrf_token() }}';
+        </script>
     </body>
 </html>
