@@ -1,0 +1,901 @@
+#profile-container {
+  .container {
+    margin: 0 auto;
+    text-align: center;
+    width: 1008px;
+    position: relative;
+  }
+  .titleBarContainer {
+    width: 820px;
+    margin-left: 5px;
+    margin-bottom: 7px;
+    height: 38px;
+    background: #5c5b60; /* Old browsers */
+    background: -moz-linear-gradient(
+      top,
+      #5c5b60 0%,
+      #6a696e 51%,
+      #5a595e 100%
+    ); /* FF3.6+ */
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0%, #5c5b60),
+      color-stop(51%, #6a696e),
+      color-stop(100%, #5a595e)
+    ); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(
+      top,
+      #5c5b60 0%,
+      #6a696e 51%,
+      #5a595e 100%
+    ); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(
+      top,
+      #5c5b60 0%,
+      #6a696e 51%,
+      #5a595e 100%
+    ); /* Opera 11.10+ */
+    background: -ms-linear-gradient(
+      top,
+      #5c5b60 0%,
+      #6a696e 51%,
+      #5a595e 100%
+    ); /* IE10+ */
+    background: linear-gradient(
+      to bottom,
+      #5c5b60 0%,
+      #6a696e 51%,
+      #5a595e 100%
+    ); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c5b60', endColorstr='#5a595e',GradientType=0 ); /* IE6-9 */
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+  }
+  .titleBarContainer .on {
+    margin: 7px 4px 0px 8px;
+    float: right;
+    background: url(https://img.fantrax.com/icons/progressOnStd1.gif) no-repeat;
+    width: 25px;
+    height: 25px;
+  }
+  .titleBarContainer .off {
+    margin: 8px 4px 0px 8px;
+    float: right;
+    background: url(https://img.fantrax.com/icons/progressOffStd1.png) no-repeat;
+    width: 24px;
+    height: 24px;
+  }
+  .titleBarContainerFull {
+    width: 100%;
+    margin-bottom: 7px;
+    height: 38px;
+    background: #5c5b60; /* Old browsers */
+    background: -moz-linear-gradient(
+      top,
+      #5c5b60 0%,
+      #6a696e 51%,
+      #5a595e 100%
+    ); /* FF3.6+ */
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0%, #5c5b60),
+      color-stop(51%, #6a696e),
+      color-stop(100%, #5a595e)
+    ); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(
+      top,
+      #5c5b60 0%,
+      #6a696e 51%,
+      #5a595e 100%
+    ); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(
+      top,
+      #5c5b60 0%,
+      #6a696e 51%,
+      #5a595e 100%
+    ); /* Opera 11.10+ */
+    background: -ms-linear-gradient(
+      top,
+      #5c5b60 0%,
+      #6a696e 51%,
+      #5a595e 100%
+    ); /* IE10+ */
+    background: linear-gradient(
+      to bottom,
+      #5c5b60 0%,
+      #6a696e 51%,
+      #5a595e 100%
+    ); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5c5b60', endColorstr='#5a595e',GradientType=0 ); /* IE6-9 */
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+  }
+  .titleBarContainerFull .on {
+    margin: 7px 4px 0px 8px;
+    float: right;
+    background: url(https://img.fantrax.com/icons/progressOnStd1.gif) no-repeat;
+    width: 25px;
+    height: 25px;
+  }
+  .titleBarContainerFull .off {
+    margin: 8px 4px 0px 8px;
+    float: right;
+    background: url(https://img.fantrax.com/icons/progressOffStd1.png) no-repeat;
+    width: 24px;
+    height: 24px;
+  }
+  @media (max-width: 1025px) {
+    html {
+      overflow: hidden;
+    }
+    body {
+      position: absolute;
+      width: 1024px;
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+    .layout__header,
+    .footer,
+    .layout__header .nav,
+    .layout__header .league-nav {
+      width: 1024px !important;
+      max-width: 1024px !important;
+    }
+  }
+
+  a,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+  }
+  p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+  }
+  table {
+    border-collapse: inherit;
+    border-spacing: 0 4px;
+  }
+  td,
+  th {
+    padding: 4px;
+  }
+  td {
+    font-size: 1.2rem;
+  }
+  input,
+  textarea,
+  select {
+    font-size: 1.2rem;
+  }
+  input[type='checkbox'],
+  input[type='radio'] {
+    margin: 3px 5px;
+  }
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    padding: 2px;
+  }
+  .main {
+    padding-bottom: 0;
+  }
+  .nav {
+    position: absolute;
+  }
+  .header,
+  .footer {
+    width: auto;
+    padding: 0;
+  }
+  .header {
+    position: relative;
+  }
+  .header::after {
+    background-attachment: scroll;
+  }
+  .layout__footer {
+    margin-top: 3.2rem;
+  }
+  .footer__content--left {
+    text-align: left;
+  }
+
+  .siteContainer {
+    position: static;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    background: none;
+    height: auto;
+  }
+  div#globalContainer {
+    width: auto;
+  }
+
+  .fantasyMainContainer .pageContainer {
+    font-size: 1.2rem;
+  }
+  table.createLeagueStart td {
+    font-size: 1.3rem;
+  }
+  .pollTable td p {
+    font-size: 1.3rem;
+  }
+  .rosterAreaScroll2,
+  .sportsTableContainer {
+    border-top: none;
+    border-color: #eee;
+  }
+  table.fantTable th {
+    background: none;
+    background-color: #dae6ed;
+  }
+  .sportsTable td {
+    /*font-size: 1.4rem;*/
+    /*height: 2.4rem;*/
+  }
+  .formatTitle {
+    height: 3.6rem;
+  }
+  .formatTitle h2 {
+    font-size: 1.4rem;
+    padding: 10px 0px 0px 8px;
+  }
+  table.fantTable td {
+    font-size: 1.2rem;
+  }
+
+  .homeRightBlock.homeFeatures {
+    display: none;
+  }
+
+  /*Borders*/
+  .tabContainer,
+  .tabLinkContainer .tabLink,
+  .rightContainer .adContainer,
+  .filterContainer,
+  table.fantasyTableLS td,
+  .lhContentContainer,
+  .allGamesContainer {
+    border-color: #ddd;
+  }
+
+  /*Right menu colors*/
+  .rightMenuContainer .rightMenuItem,
+  .rItemFlyout li {
+    background-color: white;
+    border-color: #ddd;
+  }
+  .rightMenuContainer .rightMenuItem {
+    padding: 7px 5px 7px 12px;
+  }
+  .rightMenuContainer .rightMenuItem:hover {
+    background-color: #ddd;
+  }
+  .rightMenuContainer li.on div {
+    color: #022c53 !important;
+  }
+
+  /*Tables headlines colors*/
+  .formatTitle,
+  .fantasyHeaderBlock2,
+  .fantasyHeaderBlock {
+    background-color: #cfcfcf;
+  }
+  .fantasyHeaderItem inpput {
+    color: black !important;
+  }
+  .formatTitle h2,
+  .fantasyHeaderItem p.title {
+    color: #333;
+  }
+  .lhBlockTitle .title {
+    font-size: 1.2rem;
+  }
+
+  /*Roster page*/
+  .lhLeft {
+    background: none;
+    background-color: #ddd;
+  }
+  .lhIcon,
+  .lhTitle {
+    background: none;
+  }
+  .lhTitle {
+    height: auto;
+  }
+
+  .lhTitle h1 {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    color: black;
+    text-align: center;
+    padding-left: 1.2rem;
+    font-weight: normal;
+    font-size: 2.6rem;
+    margin: 1.2rem auto 0.9rem;
+    font-weight: 300;
+  }
+  .lhLeftBottom,
+  .lhTitleRight {
+    display: none;
+  }
+  /* Android download btn*/
+  .topPageWarningOuter.curve2222.defaultlink {
+    display: none;
+  }
+
+  .tabrow li::before,
+  .tabrow li::after {
+    display: none;
+  }
+
+  /*Headlines*/
+  .titleBar,
+  .titleBarContainer,
+  .titleBarContainerFull {
+    background: none;
+  }
+  .titleBar {
+    /* margin-bottom: 1.4rem; */
+  }
+  .titleBarContainer {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    height: auto;
+  }
+  .titleBar h1,
+  .titleBarItem h1,
+  .titleBarItem h1.theTitle {
+    color: rgb(15, 15, 15);
+    font-size: 2.8rem;
+    margin-left: 0;
+    font-weight: 700;
+    line-height: 1.2;
+    box-sizing: border-box;
+    margin-right: 5.4rem;
+  }
+  .titleBarItem h1.theTitle {
+    padding-left: 1rem;
+  }
+  .titleBarItem p {
+    color: black;
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+  .titleBarItem select {
+    font-size: 1.3rem;
+    color: black;
+  }
+  .titleBarItem {
+    float: none;
+    color: black;
+  }
+  .titleBarItem p a b {
+    color: orange;
+  }
+  .titleBarContainerFull .off,
+  .titleBarContainer .off {
+    margin-top: 3px;
+    margin-right: 0;
+    background-image: none;
+    width: 3rem;
+    height: 3rem;
+  }
+  .titleBarContainerFull .on,
+  .titleBarContainer .on {
+    margin-top: 3px;
+    margin-right: 0;
+    background-image: url('/assets_old/images/icons/oldsite_loading-play.gif');
+    background-position: center;
+    background-size: 180%;
+    width: 3rem;
+    height: 3rem;
+  }
+  .titleBarContainer .on,
+  .titleBarContainer .off {
+    margin-right: 5px;
+    margin-top: 0;
+  }
+
+  .titleSelect select,
+  .titleSelect {
+    color: black;
+  }
+
+  .sub-nav,
+  .nav__icon {
+    display: block;
+  }
+  /* Kill responsive*/
+  .nav__link,
+  .nav__btn {
+    display: flex !important;
+  }
+  /* Solve tooltip position problem*/
+  .tooltipContainer {
+    margin-top: -30rem;
+  }
+
+  /* Fixing titles */
+  .titleBarBlock {
+    height: auto;
+  }
+  .titleBarContainer #pageHelp {
+    position: absolute;
+    top: 1.1rem;
+    right: 1rem;
+    /*margin-top: 5px;*/
+  }
+  .titleBarContainer #progress {
+    position: absolute;
+    top: 1.5rem;
+    right: 4.1rem;
+  }
+  /* fix items within table header*/
+
+  .fantasyHeaderBlock2 .nav {
+    display: block;
+    position: static;
+    background: none;
+  }
+  .fantasyHeaderBlock2 .nav a {
+    color: black;
+  }
+  .fantasyHeaderBlock2 .nav a:hover {
+    color: black;
+  }
+  .fantasyHeaderBlock2 .title a {
+    color: black !important;
+  }
+  .fantasyHeaderItem p.menu {
+    color: black;
+  }
+
+  /* Code to override blue button with new one. */
+  .filterButton {
+    margin: 0.2rem 0.1rem;
+    min-width: 11.8rem;
+    max-width: 100%;
+    padding: 0 1.4rem;
+    height: 2.8rem;
+    font-size: 1.3rem;
+    box-sizing: border-box;
+    background: none;
+    background-color: #064d8b;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.2rem;
+  }
+  .filterButton:hover {
+    background-color: rgba(6, 77, 139, 0.88);
+  }
+  .filterButton .curve2 {
+    box-shadow: none;
+    height: auto;
+    line-height: 2.8rem;
+    box-sizing: border-box;
+    padding: 0;
+    font-size: 1.3rem;
+  }
+
+  .filterButton + .filterButton {
+    margin: 0.2rem 0.6rem;
+  }
+
+  /* alert */
+  .nav__icon--alert .overlay-menu,
+  .nav__icon--alert .overlay-menu::before {
+    background-color: #f4e5b0;
+  }
+  .nav__icon--alert .overlay-menu .overlay-bar {
+    padding: 0.1rem 2.2rem;
+  }
+  .nav__icon--alert .overlay-menu .overlay-bar p {
+    line-height: 1.4;
+  }
+
+  .league-nav {
+    display: flex !important;
+  }
+
+  .header__wall {
+    background-attachment: scroll;
+  }
+
+  /* March 2020 */
+  .drawer__leagues {
+    padding-top: 0.6rem !important;
+    padding-bottom: 0.6rem !important;
+  }
+  .footer {
+    background-color: #4c5054 !important;
+  }
+
+  /* A2 layout */
+  .nav {
+    height: 7rem;
+  }
+  .nav__icon {
+    margin-left: 2.6rem;
+    margin-right: -0.6rem;
+  }
+  .nav__icon--menu {
+    background-image: url('/assets/images/icons/layout/menu.svg');
+  }
+  .nav__link {
+    margin: 0 0.1rem;
+  }
+  .nav__link--arrow {
+    padding-right: 3.1rem;
+  }
+  .header__wall {
+    opacity: 0.36;
+  }
+  .layout__header {
+    position: relative;
+  }
+  .header,
+  .layout__header {
+    height: 26rem;
+  }
+  .header__wall {
+    background-size: auto 26rem;
+  }
+  .max-width {
+    padding-left: 2.2rem;
+    padding-right: 2.2rem;
+  }
+  .sub-nav,
+  .league-nav {
+    top: auto;
+    bottom: 0;
+    height: 4.7rem;
+  }
+  .sub-nav__secondary__list a {
+    padding: 0 0.7vw;
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  /* new press box */
+  .flyout {
+    width: 100%;
+    background-color: #f5f5f8;
+  }
+  .flyout__wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .flyout__category {
+    display: block;
+    position: relative;
+    padding: 1.4rem 0 1.4rem 2.3rem;
+    border-bottom: 1px solid #f8f8fa;
+    background-color: white;
+    width: 30%;
+    letter-spacing: 0.05rem;
+    font-weight: 500;
+    color: #3e3f40;
+  }
+  .flyout__category .icons {
+    position: absolute;
+    top: 0;
+    right: 1.2rem;
+    bottom: 0;
+    margin: auto;
+    color: #f5f5f8;
+    font-size: 2.5rem;
+    line-height: 0.95;
+  }
+  .flyout--active .flyout__category {
+    font-weight: 600;
+    color: #252525;
+  }
+  .flyout__links {
+    display: flex;
+    opacity: 0;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 65%;
+    box-sizing: border-box;
+    padding: 1.6rem 0.8% 0 6.5%;
+    z-index: 5;
+    background-color: #f5f5f8;
+    border-right: solid 0.8rem #f5f5f8;
+    transition: opacity 0s 0.12s;
+    transition-property: opacity;
+    transition-delay: 90ms;
+    transition-duration: 0s;
+    transition-timing-function: linear;
+  }
+  .flyout--active .flyout__links {
+    opacity: 1;
+    z-index: 6;
+    transition-delay: 0s;
+    transition-duration: 90ms;
+  }
+  .flyout__links a {
+    padding: 1.3rem 0;
+  }
+  .flyout__links a u {
+    padding: 0.3rem 0.1rem 0.3rem 0;
+    color: #282828;
+    text-decoration: none;
+    border-bottom: solid 0.2rem transparent;
+    transition-property: border-color;
+    transition-duration: 0.12s;
+  }
+  .flyout--mlb .flyout__links,
+  .flyout--mlb .flyout__links a:hover u {
+    border-color: rgba(207, 60, 73, 0.85);
+  }
+  .flyout--mlb.flyout--active .icons {
+    color: #cf3c49;
+  }
+  .flyout--nba .flyout__links,
+  .flyout--nba .flyout__links a:hover u {
+    border-color: rgba(247, 102, 5, 0.85);
+  }
+  .flyout--nba.flyout--active .icons {
+    color: #f76605;
+  }
+  .flyout--cbb .flyout__links,
+  .flyout--cbb .flyout__links a:hover u {
+    border-color: rgba(255, 145, 0, 0.85);
+  }
+  .flyout--cbb.flyout--active .icons {
+    color: #ff9100;
+  }
+  .flyout--nfl .flyout__links,
+  .flyout--nfl .flyout__links a:hover u {
+    border-color: rgba(0, 108, 207, 0.8);
+  }
+  .flyout--nfl.flyout--active .icons {
+    color: #006ccf;
+  }
+  .flyout--cfb .flyout__links,
+  .flyout--cfb .flyout__links a:hover u {
+    border-color: rgba(255, 188, 0, 0.9);
+  }
+  .flyout--cfb.flyout--active .icons {
+    color: #ffbc00;
+  }
+  .flyout--nhl .flyout__links,
+  .flyout--nhl .flyout__links a:hover u {
+    border-color: #05addb;
+  }
+  .flyout--nhl.flyout--active .icons {
+    color: #05addb;
+  }
+  .flyout--nascar .flyout__links,
+  .flyout--nascar .flyout__links a:hover u {
+    border-color: rgba(128, 79, 201, 0.85);
+  }
+  .flyout--nascar.flyout--active .icons {
+    color: #804fc9;
+  }
+  .flyout--epl .flyout__links,
+  .flyout--epl .flyout__links a:hover u {
+    border-color: rgba(0, 143, 98, 0.9);
+  }
+  .flyout--epl.flyout--active .icons {
+    color: #008f62;
+  }
+  .flyout--pga .flyout__links,
+  .flyout--pga .flyout__links a:hover u {
+    border-color: #74c000;
+  }
+  .flyout--pga.flyout--active .icons {
+    color: #74c000;
+  }
+
+  /* sport theme color */
+  .sport--accent.layout--nfl .header {
+    background-color: #006ccf;
+  }
+  .sport--accent.layout--nfl .league-nav {
+    background-color: #0062bd;
+  }
+  .sport--accent.layout--mlb .header {
+    background-color: #cf3c49;
+  }
+  .sport--accent.layout--mlb .league-nav {
+    background-color: #c8313e;
+  }
+  .sport--accent.layout--nhl .header {
+    background-color: #05addb;
+  }
+  .sport--accent.layout--nhl .league-nav {
+    background-color: #059fc9;
+  }
+  .sport--accent.layout--epl .header {
+    background-color: #008f62;
+  }
+  .sport--accent.layout--epl .league-nav {
+    background-color: #007d55;
+  }
+  .sport--accent.layout--pga .header {
+    background-color: #74c000;
+  }
+  .sport--accent.layout--pga .league-nav {
+    background-color: #69ae00;
+  }
+  .sport--accent.layout--cfb .header {
+    background-color: #ffbc00;
+  }
+  .sport--accent.layout--cfb .league-nav {
+    background-color: #edae00;
+  }
+  .sport--accent.layout--cbb .header {
+    background-color: #ff9100;
+  }
+  .sport--accent.layout--cbb .league-nav {
+    background-color: #ed8700;
+  }
+  .sport--accent.layout--nba .header {
+    background-color: #f76605;
+  }
+  .sport--accent.layout--nba .league-nav {
+    background-color: #e55f05;
+  }
+  .sport--accent.layout--nascar .header {
+    background-color: #804fc9;
+  }
+  .sport--accent.layout--nascar .league-nav {
+    background-color: #7641c5;
+  }
+
+  .sportile__wrapper {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-orient: horizontal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    box-sizing: border-box;
+    margin-right: -0.3rem;
+    margin-left: -0.3rem;
+  }
+
+  .sportile__nav-menu {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 1.2rem;
+    margin-top: -0.3rem;
+  }
+
+  .sportile,
+  .sportile__wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+  }
+
+  .sportile__wrapper a {
+    color: #555555;
+  }
+  .sportile__wrapper a:hover {
+    color: #ffffff;
+  }
+
+  .sportile.current,
+  .sportile:hover {
+    background-color: #095597;
+  }
+  .sportile__nav-menu .sportile--double {
+    width: 48%;
+  }
+  .sportile__nav-menu .sportile {
+    width: 48%;
+    margin: 0.3rem;
+  }
+  a:active,
+  a:focus,
+  a:hover {
+    outline: 0;
+  }
+  .sportile--double {
+    height: 6.4rem !important;
+  }
+
+  .sportile {
+    width: 30%;
+    height: 7rem;
+    background-color: #f5f5f8;
+    margin: 0 0.3rem;
+    border-radius: 2px;
+    padding: 0.5rem 0;
+    -webkit-box-orient: vertical;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+  }
+
+  .sportile i {
+    font-size: 3.2rem;
+  }
+  .sportile b {
+    font-size: 1.3rem;
+    font-weight: 500;
+    letter-spacing: 0.03rem;
+    line-height: 1;
+  }
+  .sportile i,
+  .sportile b {
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.21s;
+    transition-duration: 0.21s;
+    color: #3e3f40;
+  }
+  .sportile:hover i,
+  .sportile:hover b,
+  .sportile.current i,
+  .sportile.current b {
+    color: white;
+  }
+  .nav-menu {
+    top: 6.2rem;
+    margin-left: 50%;
+    padding: 0;
+    padding-top: 0.6rem;
+    width: 35rem;
+    box-shadow: 0 1.4rem 4rem rgba(0, 0, 0, 0.18);
+    z-index: 140;
+    cursor: default;
+    -webkit-transition-property: top;
+    transition-property: top;
+    -webkit-transition-duration: 0.18s;
+    transition-duration: 0.18s;
+    -webkit-transform-origin: top;
+    transform-origin: top;
+    contain: layout;
+  }
+
+  a.highlightMaster {
+    background-color: #e4f1fc;
+  }
+  a.highlightOverall {
+    background-color: #b9ecdd;
+  }
+
+  /******************************************************** STYLE CSS ***************************************************/
+}

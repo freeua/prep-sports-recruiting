@@ -1,0 +1,21 @@
+{
+  "name": "Fantrax",
+  "short_name": "Fantrax",
+  "theme_color": "#00559b",
+  "background_color": "#00559b",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/app-landing",
+  "icons": [
+    {
+      "src": "/assets/images/icons/fantrax/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icons/fantrax/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
