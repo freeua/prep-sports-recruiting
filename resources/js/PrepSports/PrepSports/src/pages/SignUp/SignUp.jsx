@@ -132,7 +132,9 @@ const SignUp = () => {
                       handleSubmit,
                       isSubmitting,
                     }) => (
-                      <form onSubmit={handleSubmit} className={classes.root}>
+                      // <form onSubmit={handleSubmit} className={classes.root}>
+                      <form method="POST" action="registration" className={classes.root}>
+                          <input type="hidden" name="_token" value={window.token} />
                         <div
                           _ngcontent-ucn-c280
                           appearance="outline"

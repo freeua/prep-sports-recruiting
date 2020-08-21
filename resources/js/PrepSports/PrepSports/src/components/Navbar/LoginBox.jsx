@@ -5,6 +5,7 @@ import { validationSchema } from '../../helpers/validationSchema';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
 import { IsLoggedContext } from '../../state/IsLogged';
+import axios from "axios";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -51,12 +52,21 @@ const LoginBox = () => {
               setSubmitting(true);
               //...some side effects (server post requests)
               setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                resetForm();
-                setSubmitting(false);
+                // alert(JSON.stringify(values, null, 2));
 
+              axios.post("api/auth/login",
+                  {
+                      email : values.email, password : values.password, _token : window.token})
+                      .then(response => {
+                          setIsLogged(true);
+                      })
+                      .catch(function(error) {
+                          alert(error)
+                      });
+                  resetForm();
+                  setSubmitting(false);
                 // TEMPORARY
-                setIsLogged(true);
+                // setIsLogged(true);
                 // TEMPORARY
               }, 1000);
             }}
@@ -71,7 +81,8 @@ const LoginBox = () => {
               isSubmitting,
             }) => (
               <form onSubmit={handleSubmit} className={classes.root}>
-                <div style={{ marginTop: '20px' }} className="form-group">
+                   <input type="hidden" name="_token" value={window.token} />
+                  <div style={{ marginTop: '20px' }} className="form-group">
                   <div className="mat-form-field-wrapper ng-tns-c73-10">
                     <TextField
                       name="email"
