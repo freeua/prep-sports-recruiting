@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 
 Route::post('/registration', 'RegistrationController@createRegistration');
+Route::get('/admin', 'Admin\AdminController@index');
+Route::get('/admin/blog', 'Admin\AdminBlogController@index');
+Route::get('/admin/admin-blog/create', 'Admin\AdminBlogController@create');
+Route::post('/admin/admin-blog/store', 'Admin\AdminBlogController@store')->name('admin-blog-store');
