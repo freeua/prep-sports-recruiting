@@ -1,0 +1,129 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'resources/sass/variables';
+
+.title-and-add-link-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px 0 20px;
+    .page-title {
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+.blog-table {
+    padding: 30px 50px 30px 50px;
+    .table-header-container {
+        display: flex;
+        align-items: center;
+        min-height: 70px;
+        border-bottom: 1px solid #4a4a4a;
+        margin-bottom: 25px;
+        th {
+            color: #444444;
+            text-align: center;
+        }
+    }
+    .table-body-container tr {
+        display: flex;
+        align-items: center;
+        min-height: 90px;
+        box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+        margin-bottom: 10px;
+        padding: 10px;
+        margin-left: 0;
+        .action-button {
+            min-width: 55px;
+        }
+        .img-container {
+            width: 70px;
+            height: 70px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        .img-container:hover {
+            img {
+                position: fixed;
+                top: 20%;
+                left: 40%;
+                z-index: 999;
+                cursor: pointer;
+                width: 450px;
+                height: 350px;
+            }
+        }
+    }
+    .show-articl-table-body-container tr {
+        min-height: 200px !important;
+        .img-container {
+            width: 200px;
+            height: 200px;
+        }
+    }
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+}
+
+.add-edit-page-container {
+    padding: 20px 40px 0 20px;
+    .title-and-back-link-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 20px 0 20px;
+        .page-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+    .articl-form-container form {
+        display: flex;
+        flex-direction: column;
+        padding: 30px 50px 30px 40px;
+        .form-label {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px 0 10px 5px;
+        }
+        .form-categories, .form-title, .form-content, .form-image {
+            font-size: 16px;
+            color: #858796;
+            padding-left: 5px;
+        }
+        //.form-file-container {
+        //    border: 1px solid #858796;
+            .custom-label-file {
+                max-width: 200px;
+                border: 1px solid #ccc;
+                display: inline-block;
+                padding: 6px 12px;
+                cursor: pointer;
+                margin: 30px 0 10px 0 !important;
+            }
+            input[type="file"] {
+                opacity: 0;
+            }
+        //}
+        .form-send-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 20px;
+            .form-send {
+                max-width: 55px;
+            }
+        }
+
+    }
+}
+
+

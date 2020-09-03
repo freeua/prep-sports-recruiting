@@ -2,6 +2,35 @@
 
 @section('content')
 
-    <div>Admin-blog-show</div>
-
+    <div class="col-12">
+        <div class="col-12 title-and-add-link-container">
+            <div class="page-title">Articl Show Page</div>
+            <a href="{{url('/admin/blog')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Back</a>
+        </div>
+        <table class="col-12 row blog-table">
+            <thead class="col-12 row table-header-container">
+            <tr class="col-12 row ">
+                <th class="col-2">Categories</th>
+                <th class="col-2">Title</th>
+                <th class="col-3">Content</th>
+                <th class="col-3">Images</th>
+                <th class="col-2">Action</th>
+            </tr>
+            </thead>
+            <tbody class="col-12 row show-articl-table-body-container table-body-container">
+                <tr class="col-12 row">
+                    <td class="col-2">{{ $articl->categories }}</td>
+                    <td class="col-2">{{ $articl->title }}</td>
+                    <td class="col-3">{{ $articl->content }}</td>
+                    @if( !empty($articl->image_link) )
+                        <td class="col-3"><div class="img-container"><img src="{{ asset('/storage/' . $articl->image_link ) }}"/></div></td>
+                    @else
+                        <td class="col-3">Not image</td>
+                    @endif
+                    <td class="col-1"><div><a href="{{ url('/admin/blog/edit/' . $articl->id) }}" class="btn btn-primary btn-sm mr-2 action-button">Edit</a></div></td>
+                    <td class="col-1"><div><a href="{{ url('/admin/blog/delite/' . $articl->id) }}" class="btn btn-danger btn-sm mr-2 action-button">Delite</a></div></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 @endsection

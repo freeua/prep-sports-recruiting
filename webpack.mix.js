@@ -12,4 +12,5 @@ const mix = require('laravel-mix');
  */
 
 mix.react('resources/js/PrepSports/PrepSports/src/index.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+   .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/admin/admin-blog.scss', 'public/css/admin');

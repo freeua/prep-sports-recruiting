@@ -1,0 +1,138 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito);.title-and-add-link-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px 0 20px;
+}
+
+.title-and-add-link-container .page-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.blog-table {
+  padding: 30px 50px 30px 50px;
+}
+
+.blog-table .table-header-container {
+  display: flex;
+  align-items: center;
+  min-height: 70px;
+  border-bottom: 1px solid #4a4a4a;
+  margin-bottom: 25px;
+}
+
+.blog-table .table-header-container th {
+  color: #444444;
+  text-align: center;
+}
+
+.blog-table .table-body-container tr {
+  display: flex;
+  align-items: center;
+  min-height: 90px;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+  margin-bottom: 10px;
+  padding: 10px;
+  margin-left: 0;
+}
+
+.blog-table .table-body-container tr .action-button {
+  min-width: 55px;
+}
+
+.blog-table .table-body-container tr .img-container {
+  width: 70px;
+  height: 70px;
+}
+
+.blog-table .table-body-container tr img {
+  width: 100%;
+  height: 100%;
+}
+
+.blog-table .table-body-container tr .img-container:hover img {
+  position: fixed;
+  top: 20%;
+  left: 40%;
+  z-index: 999;
+  cursor: pointer;
+  width: 450px;
+  height: 350px;
+}
+
+.blog-table .show-articl-table-body-container tr {
+  min-height: 200px !important;
+}
+
+.blog-table .show-articl-table-body-container tr .img-container {
+  width: 200px;
+  height: 200px;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+}
+
+.add-edit-page-container {
+  padding: 20px 40px 0 20px;
+}
+
+.add-edit-page-container .title-and-back-link-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 0 20px;
+}
+
+.add-edit-page-container .title-and-back-link-container .page-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.add-edit-page-container .articl-form-container form {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 50px 30px 40px;
+}
+
+.add-edit-page-container .articl-form-container form .form-label {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0 10px 5px;
+}
+
+.add-edit-page-container .articl-form-container form .form-categories,
+.add-edit-page-container .articl-form-container form .form-title,
+.add-edit-page-container .articl-form-container form .form-content,
+.add-edit-page-container .articl-form-container form .form-image {
+  font-size: 16px;
+  color: #858796;
+  padding-left: 5px;
+}
+
+.add-edit-page-container .articl-form-container form .custom-label-file {
+  max-width: 200px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  margin: 30px 0 10px 0 !important;
+}
+
+.add-edit-page-container .articl-form-container form input[type="file"] {
+  opacity: 0;
+}
+
+.add-edit-page-container .articl-form-container form .form-send-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+}
+
+.add-edit-page-container .articl-form-container form .form-send-container .form-send {
+  max-width: 55px;
+}
+

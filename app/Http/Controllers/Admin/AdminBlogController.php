@@ -15,7 +15,7 @@ class AdminBlogController extends Controller
      */
     public function index()
     {
-        $articls = Articl::all();
+        $articls = Articl::paginate(5);
         return view('admin.admin-blog.index')->with('articls', $articls);
     }
 
@@ -37,15 +37,18 @@ class AdminBlogController extends Controller
      */
     public function store(Request $request)
     {
-        $articls = new Articl();
-        $articls->categories = $request->input('categories');
-        $articls->title = $request->input('title');
-        $articls->content = $request->input('content');
-//        $articls->categories = $request->input('categories');
+        $image = $request->file('image');
 
-        $articls->save();
+        $articl = new Articl();
 
-        return view('admin.admin-blog.show');
+        $articl->categories = $request->input('categories');
+        $articl->title = $request->input('title');
+        $articl->content = $request->input('content');
+        $articl->image_link = !empty($image) ? $request->file('image')->store('uploads', 'public') : '';
+
+        $articl->save();
+
+        return redirect()->route('admin-blog');
     }
 
     /**
@@ -54,9 +57,14 @@ class AdminBlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id = null, $articl = null)
     {
-        //
+        if(isset($id)) {
+            $articl = Articl::where('id', '=', $id)->first();
+        }
+
+        return view('admin.admin-blog.show', compact('articl'));
+
     }
 
     /**
@@ -67,7 +75,9 @@ class AdminBlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $articl = Articl::where('id', '=', $id)->first();
+
+        return view('admin.admin-blog.edit', compact('articl'));
     }
 
     /**
@@ -77,9 +87,22 @@ class AdminBlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $image = $request->file('image');
+
+        $articl = Articl::where('id', '=', $request->input('id'))->first();
+
+        $articl->categories = $request->input('categories');
+        $articl->title = $request->input('title');
+        $articl->content = $request->input('content');
+        if(!empty($image)) {
+            $articl->image_link = $request->file('image')->store('uploads', 'public');
+        }
+
+        $articl->save();
+
+        return redirect()->route('admin-blog-show', ['articl' => $articl]);
     }
 
     /**
@@ -90,6 +113,7 @@ class AdminBlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $articl = Articl::where('id', '=', $id)->first()->delete();
+        return redirect()->route('admin-blog');
     }
 }

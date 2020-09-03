@@ -2,17 +2,28 @@
 
 @section('content')
 
-    <div>Admin-blog-add</div>
-    {!! Form::open(['route' => 'admin-blog-store', 'method' => 'POST', 'files' => true]) !!}
-        {!! Form::label('categories', 'Categories', ['class' => '']);!!}
-        {!! Form::text('categories'); !!}
-        {!! Form::label('title', 'Title', ['class' => '']);!!}
-        {!! Form::text('title'); !!}
-        {!! Form::label('content', 'Content', ['class' => '']);!!}
-        {!! Form::text('content'); !!}
-        {!! Form::label('image', 'Image', ['class' => '']);!!}
-        {!! Form::file('image'); !!}
+    <div class="add-edit-page-container">
+        <div class="title-and-back-link-container">
+            <div class="page-title">Add Articl</div>
+            <a href="{{url('/admin/blog')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Back</a>
+        </div>
+        <div class="articl-form-container">
+            {!! Form::open(['route' => 'admin-blog-store', 'method' => 'POST', 'files' => true]) !!}
+            {!! Form::label('categories', 'Categories', ['class' => 'form-label']);!!}
+            {!! Form::text('categories', '', ['class' => 'form-categories card border-left-primary shadow py-2']); !!}
+            {!! Form::label('title', 'Title', ['class' => 'form-label']);!!}
+            {!! Form::text('title', '', ['class' => 'form-title card border-left-primary shadow py-2']); !!}
+            {!! Form::label('content', 'Content', ['class' => 'form-label']);!!}
+            {!! Form::textarea('content', '', ['class' => 'form-content card border-left-primary shadow py-2']); !!}
 
-        {!! Form::submit('SEND') !!}
-    {!! Form::close() !!}
+            {!! Form::label('image', 'Image', ['class' => 'form-label custom-label-file card border-left-primary shadow py-2']);!!}
+
+            {!! Form::file('image', ['class' => 'form-image card border-left-primary shadow py-2']); !!}
+
+            <div class="form-send-container">
+                {!! Form::submit('SEND', ['class' => ['form-send d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm']]) !!}
+            </div>
+            {!! Form::close() !!}
+        </div>
+    </div>
     @endsection
