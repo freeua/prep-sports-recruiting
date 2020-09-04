@@ -34,6 +34,7 @@
   margin-bottom: 10px;
   padding: 10px;
   margin-left: 0;
+  text-align: center;
 }
 
 .blog-table .table-body-container tr .action-button {
@@ -58,6 +59,11 @@
   cursor: pointer;
   width: 450px;
   height: 350px;
+}
+
+.blog-table .table-body-container tr td {
+  display: flex;
+  justify-content: center;
 }
 
 .blog-table .show-articl-table-body-container tr {
