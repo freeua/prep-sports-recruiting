@@ -25,3 +25,9 @@ Route::post('/admin/blog/update/', 'Admin\AdminBlogController@update')->name('ad
 //Route::get('/admin/blog/show/', 'Admin\AdminBlogController@show')->name('admin-blog-show');
 Route::get('/admin/blog/show/{param}', 'Admin\AdminBlogController@show')->name('admin-blog-show');
 Route::get('/admin/blog/delite/{id}', 'Admin\AdminBlogController@destroy')->name('admin-blog-delite');
+
+Route::group(['prefix' => 'blog'], function ($router) {
+    Route::post('articls', 'BlogPageController@getArticls');
+    Route::post('articl', 'BlogPageController@getArticl');
+    Route::post('articls-pagination', 'BlogPageController@articlsPagination');
+});
