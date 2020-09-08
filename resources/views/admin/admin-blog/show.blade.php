@@ -28,7 +28,7 @@
                         <td class="col-3">Not image</td>
                     @endif
                     <td class="col-1"><div><a href="{{ url('/admin/blog/edit/' . $articl->id) }}" class="btn btn-primary btn-sm mr-2 action-button">Edit</a></div></td>
-                    <td class="col-1"><div><a href="{{ url('/admin/blog/delite/' . $articl->id) }}" class="btn btn-danger btn-sm mr-2 action-button">Delite</a></div></td>
+                    <td class="col-1"><div><a href="{{ url('/admin/blog/delete/' . $articl->id) }}" class="btn btn-danger btn-sm mr-2 action-button">Delete</a></div></td>
                 </tr>
             </tbody>
         </table>

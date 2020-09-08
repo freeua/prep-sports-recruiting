@@ -54,7 +54,7 @@ const LoginBox = () => {
               setTimeout(() => {
                 // alert(JSON.stringify(values, null, 2));
 
-              axios.post("api/auth/login",
+              axios.post("auth/login",
                   {
                       email : values.email, password : values.password, _token : window.token})
                       .then(response => {

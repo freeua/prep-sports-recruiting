@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="col-12 title-and-add-link-container">
             <div class="page-title">Articls Page</div>
-            <a href="{{url('/admin/blog/create')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Add Articl</a>
+            <a href="{{url('/admin/blog/create')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Add Article</a>
         </div>
         <table class="col-12 row blog-table">
             <thead class="col-12 row table-header-container">
@@ -31,7 +31,7 @@
                         @endif
                         <td class="col-1"></td>
                         <td class="col-1"><div><a href="{{ url('/admin/blog/edit/' . $articl->id) }}" class="btn btn-primary btn-sm mr-2 action-button">Edit</a></div></td>
-                        <td class="col-1"><div><a href="{{ url('/admin/blog/delite/' . $articl->id) }}" class="btn btn-danger btn-sm mr-2 action-button">Delite</a></div></td>
+                        <td class="col-1"><div><a href="{{ url('/admin/blog/delete/' . $articl->id) }}" class="btn btn-danger btn-sm mr-2 action-button">Delete</a></div></td>
                     </tr>
                 @endforeach
             </tbody>

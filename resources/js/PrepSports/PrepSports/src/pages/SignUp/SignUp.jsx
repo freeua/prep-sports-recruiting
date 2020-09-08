@@ -212,6 +212,7 @@ const SignUp = () => {
                                 margin="normal"
                                 id="date-picker-inline"
                                 label="Date of Birth"
+                                name="birthday"
                                 value={selectedDate}
                                 onChange={date => setSelectedDate(date)}
                                 KeyboardButtonProps={{

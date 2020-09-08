@@ -24,30 +24,10 @@ class AuthController extends Controller
     public  function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
-        if ($token = $this->guard()->attempt($credentials)) {
+        if ($token = JWTAuth::attempt($credentials)) {
             return $this->respondWithToken($token);
         }
-
         return response()->json(['error' => 'Unauthorized'], 401);
-
-
-//        $credantials = $request->only('email', 'password');
-//        try {
-//            $token = JWTAuth::attempt($credantials);
-//
-//            return response()->json([
-//                'status' => true,
-//                'token' => $token,
-//                'is_admin' => JWTAuth::toUser($token)->admin
-//            ]);
-//
-//        } catch (\Exception $e) {
-//            return response()->json([
-//                'status' => false,
-//                'message' => $e->getMessage()
-//            ]);
-//        }
     }
     /**
      * Get the token array structure.
@@ -97,10 +77,14 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
+        JWTAuth::setToken($token);
+        $user = JWTAuth::toUser();
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => $this->guard()->factory()->getTTL() * 60
+            'expires_in' => $this->guard()->factory()->getTTL() * 60,
+            'user_name' => $user->name,
+            'is_admin' => $user->is_admin
         ]);
     }
 
