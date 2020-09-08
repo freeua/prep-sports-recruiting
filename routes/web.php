@@ -39,3 +39,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/blog/delete/{id}', 'Admin\AdminBlogController@destroy')->name('admin-blog-delete');
 
 });
+
+Route::group(['prefix' => 'blog'], function ($router) {
+    Route::post('articls', 'BlogPageController@getArticls');
+    Route::post('articl', 'BlogPageController@getArticl');
+    Route::post('articls-pagination', 'BlogPageController@articlsPagination');
+});
