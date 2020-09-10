@@ -348,6 +348,7 @@
                 <!-- Content Row -->
                 <div class="row">
 
+<a href="{{ url('payment') }}" class="btn-danger" style="width: 100px; height: 50px; text-align: center; padding-top: 20px; font-size: 10px">Send mail</a>
                     <!-- Earnings (Monthly) Card Example -->
 {{--                    <div class="col-xl-3 col-md-6 mb-4">--}}
 {{--                        <div class="card border-left-primary shadow h-100 py-2">--}}
