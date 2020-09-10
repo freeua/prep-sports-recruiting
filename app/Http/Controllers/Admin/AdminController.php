@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Mail;
+
 class AdminController extends Controller
 {
     /**
@@ -81,5 +83,11 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function send () {
+        Mail::send(['text' => 'emails.send_mail'], ['name' => 'test'], function ($message) {
+            $message->to('web.alexey.malitskiy@gmail.com', 'test1')->subject('test mail');
+            $message->from('web.alexey.malitskiy@gmail.com', 'test2');
+        });
     }
 }

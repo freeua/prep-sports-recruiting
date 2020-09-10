@@ -37,6 +37,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('/blog/update/', 'Admin\AdminBlogController@update')->name('admin-blog-update');
     Route::get('/blog/show/{param}', 'Admin\AdminBlogController@show')->name('admin-blog-show');
     Route::get('/blog/delete/{id}', 'Admin\AdminBlogController@destroy')->name('admin-blog-delete');
+    Route::get('/send', 'Admin\AdminController@send')->name('send-mail');
 
 });
 

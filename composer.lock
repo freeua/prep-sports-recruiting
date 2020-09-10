@@ -4,8 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d88ddda76615f9b11d4aac6567413627",
+    "content-hash": "9cca3302a0c031fbe27b73acc297a239",
     "packages": [
+        {
+            "name": "chocoholics/laravel-elastic-email",
+            "version": "v0.0.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chocoholics/laravel-elastic-email.git",
+                "reference": "7568f0ed800edca6c47664b6e956aa8a2a877150"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/chocoholics/laravel-elastic-email/zipball/7568f0ed800edca6c47664b6e956aa8a2a877150",
+                "reference": "7568f0ed800edca6c47664b6e956aa8a2a877150",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": ">=6.3",
+                "laravel/framework": "5.1.x|5.2.x|5.3.x|5.4.x|5.5.x|5.6.x|5.7.x|5.8.x|6.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Chocoholics\\LaravelElasticEmail\\MailServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Chocoholics\\LaravelElasticEmail\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "email": "obura@tongoi.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel wrapper for Elastic Email",
+            "keywords": [
+                "elastic email",
+                "email",
+                "laravel"
+            ],
+            "time": "2019-09-21T15:40:05+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",

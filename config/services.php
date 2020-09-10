@@ -40,4 +40,9 @@ return [
         ],
     ],
 
+    'elastic_email' => [
+        'key' => env('ELASTIC_KEY'),
+        'account' => env('ELASTIC_ACCOUNT')
+    ]
+
 ];
