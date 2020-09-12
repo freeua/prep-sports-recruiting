@@ -52,3 +52,5 @@ Route::get('payment',array('as'=>'payment','uses'=>'PaymentController@payment'))
 Route::get('payment-cancel', function () {
     return 'Payment has been canceled';
 });
+
+Route::post('get-account-data', 'AccountController@getAccountData')->name('get-account-data');
