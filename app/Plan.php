@@ -3,10 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Plan extends Model
 {
-    protected $guarded = [];
+    use Notifiable;
+
+    //    protected $guarded = [];
 
     public $fillable = ['name','details','price'];
 

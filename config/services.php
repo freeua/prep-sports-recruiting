@@ -30,14 +30,17 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
-    'stripe' => [
-        'model' => App\User::class,
-        'key' => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
-        'webhook' => [
-            'secret' => env('STRIPE_WEBHOOK_SECRET'),
-            'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
-        ],
+    'paypal' => [
+        'id' => env('PAYPAL_SANDBOX_CLIENT_ID'),
+        'secret' => env('PAYPAL_SANDBOX_SECRET'),
+        'url' => [
+            'redirect' => 'http://prep-sports-recruiting/execute-payment',
+            'cancel' => 'http://prep-sports-recruiting/cancel',
+            'executeAgreement' => [
+                'success' => 'http://prep-sports-recruiting/execute-agreement/true',
+                'failure' => 'http://prep-sports-recruiting/execute-agreement/false'
+            ]
+        ]
     ],
 
 ];
