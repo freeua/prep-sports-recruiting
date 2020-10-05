@@ -12,14 +12,11 @@ use PayPal\Api\Transaction;
 
 class ExecutePayment extends Paypal
 {
-    public function execute ()
+    public function execute ($plan)
     {
         $payment = $this->GetThePayment();
-
         $execution = $this->CreateExecution();
-
-        $execution->addTransaction($this->transaction());
-
+        $execution->addTransaction($this->transaction($plan));
         $result = $payment->execute($execution, $this->apiContext);
 
         return $result;
@@ -31,8 +28,7 @@ class ExecutePayment extends Paypal
 
     protected function GetThePayment(): Payment
     {
-        $paymentId = request('PaymentId');
-
+        $paymentId = request('paymentId');
         $payment = Payment::get($paymentId, $this->apiContext);
 
         return $payment;
@@ -51,17 +47,48 @@ class ExecutePayment extends Paypal
     }
 
     /**
+     * @param $plan
      * @return Transaction
      */
 
-    protected function transaction(): Transaction
+    protected function transaction($plan): Transaction
     {
         $transaction = new Transaction();
-        $transaction->setAmount($this->amount());
+        $transaction->setAmount($this->amount($plan));
 //            ->setItemList($itemList)
 //            ->setDescription("Payment description")
 //            ->setInvoiceNumber(uniqid());
 
         return $transaction;
+    }
+    /**
+     * @param $plan
+     * @return Details
+     */
+
+    protected function details($plan): Details
+    {
+        $details = new Details();
+//        $details->setShipping(1.2)
+//            ->setTax(1.3)
+//            ->setSubtotal(7.50);
+        $details->setSubtotal($plan->price);
+
+        return $details;
+    }
+
+    /**
+     * @param $plan
+     * @return Amount
+     */
+
+    protected function amount($plan): Amount
+    {
+        $amount = new Amount();
+        $amount->setCurrency("USD")
+            ->setTotal($plan->price)
+            ->setDetails($this->details($plan));
+
+        return $amount;
     }
 }

@@ -45,7 +45,6 @@ class SubscriptionController extends Controller
 
     public function executeAgreement($status)
     {
-//        dd($status);
         if($status == 'success'){
             $agreement = new PaypalAgreement();
             $agreement->execute(request('token'));

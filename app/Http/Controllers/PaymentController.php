@@ -6,6 +6,7 @@ use App\PayPal\CreatePayment;
 use App\PayPal\ExecutePayment;
 use Illuminate\Http\Request;
 use App\Plan;
+use Illuminate\Support\Facades\Session;
 
 class PaymentController extends Controller
 {
@@ -19,6 +20,7 @@ class PaymentController extends Controller
     {
         $plan = Plan::where('id', '=', $request->id)->first();
         $payment = new CreatePayment();
+        Session::put('plans', $plan);
 
         return $payment->create($plan);
     }
@@ -26,7 +28,8 @@ class PaymentController extends Controller
     public function execute()
     {
         $payment = new ExecutePayment();
+        $plan = Session::get('plans');
 
-        return $payment->execute();
+        return $payment->execute($plan);
     }
 }

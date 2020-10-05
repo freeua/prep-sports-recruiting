@@ -3,9 +3,6 @@
 
 namespace App\PayPal;
 
-
-use PayPal\Api\Amount;
-use PayPal\Api\Details;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Rest\ApiContext;
 
@@ -33,33 +30,5 @@ class Paypal
 
         // Set the Paypal API Context/Credentials
 //        $this->apiContext->setConfig(config('paypal.settings'));
-    }
-
-    /**
-     * @return Details
-     */
-
-    protected function details(): Details
-    {
-        $details = new Details();
-        $details->setShipping(1.2)
-            ->setTax(1.3)
-            ->setSubtotal(17.50);
-
-        return $details;
-    }
-
-    /**
-     * @return Amount
-     */
-
-    protected function amount(): Amount
-    {
-        $amount = new Amount();
-        $amount->setCurrency("USD")
-            ->setTotal(20)
-            ->setDetails($this->details());
-
-        return $amount;
     }
 }

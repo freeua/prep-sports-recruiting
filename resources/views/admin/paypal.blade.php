@@ -11,16 +11,16 @@
 
 <div class="container">
 @foreach($plans as $plan)
-    <form action="{{ route('create-payment', $plan->id) }}" method="post">
+    <form action="{{ route('create-payment') }}" method="post">
         @csrf
         <input type="hidden" value="{{$plan->id}}" name="id">
         <input type="submit" value="Pay Now">
     </form>
     @endforeach
-    <form action="{{ route('create-agreement','P-92B316452S094591V5E5CDZQ') }}" method="post">
-        @csrf
-        <input type="submit" value="Subscribe Now">
-    </form>
+{{--    <form action="{{ route('create-agreement','P-92B316452S094591V5E5CDZQ') }}" method="post">--}}
+{{--        @csrf--}}
+{{--        <input type="submit" value="Subscribe Now">--}}
+{{--    </form>--}}
 </div>
 
 </body>
