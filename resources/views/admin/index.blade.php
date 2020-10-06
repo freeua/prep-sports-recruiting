@@ -344,14 +344,10 @@
                 <div class="admin-content">
                     @yield('content')
                 </div>
-                <a href="{{ url('execute-payment') }}"><img src="/images/paypal-btn.png">execute-payment</a><br>
-                <a href="{{ url('create_paypal_plan/1') }}"><img src="/images/paypal-btn.png">Created Plan</a><br>
-                <a href="{{ url('subscribe/paypal') }}"><img src="/images/paypal-btn.png">PayPal</a><br>
-
                 <!-- Content Row -->
                 <div class="row">
 
-<a href="{{ url('payment') }}" class="btn-danger" style="width: 100px; height: 50px; text-align: center; padding-top: 20px; font-size: 10px">Send mail</a><br/>
+<a href="{{ url('send-mail') }}" class="btn-danger" style="width: 100px; height: 50px; text-align: center; padding-top: 20px; font-size: 10px">Send mail</a><br/>
 
                     <!-- Earnings (Monthly) Card Example -->
 {{--                    <div class="col-xl-3 col-md-6 mb-4">--}}

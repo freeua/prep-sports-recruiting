@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::post('/registration', 'RegistrationController@createRegistration');
 
@@ -27,7 +27,7 @@ Route::group(['prefix' => 'auth', 'middleware' => 'api'], function () {
     Route::post('me', 'AuthController@me');
 
 });
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
     Route::get('/', 'Admin\AdminController@index');
     Route::get('/blog', 'Admin\AdminBlogController@index')->name('admin-blog');
@@ -37,8 +37,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/blog/update/', 'Admin\AdminBlogController@update')->name('admin-blog-update');
     Route::get('/blog/show/{param}', 'Admin\AdminBlogController@show')->name('admin-blog-show');
     Route::get('/blog/delete/{id}', 'Admin\AdminBlogController@destroy')->name('admin-blog-delete');
-    Route::get('/paypal', 'PaymentController@index');
-
 });
 
 Route::group(['prefix' => 'blog'], function ($router) {
@@ -50,9 +48,7 @@ Route::group(['prefix' => 'blog'], function ($router) {
 Route::post('get-account-data', 'AccountController@getAccountData')->name('get-account-data');
 
 Route::get('/payment', 'PaymentController@index');
-
 Route::get('/execute-payment', 'PaymentController@execute')->name('execute');
-
 Route::post('/create-payment', 'PaymentController@create')->name('create-payment');
 
 //Route::get('plan/create', 'SubscriptionController@createPlan');

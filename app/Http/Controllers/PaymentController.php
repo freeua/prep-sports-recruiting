@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\PayPal\CreatePayment;
 use App\PayPal\ExecutePayment;
+use App\User;
 use Illuminate\Http\Request;
 use App\Plan;
 use Illuminate\Support\Facades\Session;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class PaymentController extends Controller
 {
@@ -29,7 +31,25 @@ class PaymentController extends Controller
     {
         $payment = new ExecutePayment();
         $plan = Session::get('plans');
+        $transaction_plan = $payment->execute($plan);
+        foreach ($transaction_plan->transactions as $transaction) {
+            foreach($transaction->item_list->items as $item) {
+                $transaction_plan_id = $item->sku;
+            }
+        }
+        /*
+         * This code is needed to get a user without a front end and requires further modification since it is not safe to store the token in the session
+         */
+        $token = Session::get('token');
+        /* end */
+        JWTAuth::setToken($token);
+        $transaction_user = JWTAuth::toUser();
 
-        return $payment->execute($plan);
+        $user = User::where('id', '=', $transaction_user->id)->first();
+
+        $user->plans()->attach($transaction_plan_id);
+
+//        return $transaction_plan;
+        return response()->json(['msg' => 'transaction successeful', 'data' => $user->id, 'status' => 'Successeful']);
     }
 }

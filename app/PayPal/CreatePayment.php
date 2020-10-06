@@ -24,7 +24,7 @@ class CreatePayment extends Paypal
         $item->setName($plan->name)
             ->setCurrency('USD')
             ->setQuantity(1)
-            ->setSku("123123") // Similar to `item_number` in Classic API
+            ->setSku($plan->id)
             ->setPrice($plan->price);
         $itemList = new ItemList();
         $itemList->setItems(array($item));
