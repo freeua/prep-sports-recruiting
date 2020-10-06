@@ -80,18 +80,27 @@ class AuthController extends Controller
     {
         JWTAuth::setToken($token);
         $user = JWTAuth::toUser();
+
         /*
          * This code is needed to get a user without a front end and requires further modification since it is not safe to store the token in the session
          */
         Session::put('token', $token);
         /* end */
 
+        $auth_user = User::where('id', '=', $user->id)->first();
+        $paid_plans = $auth_user->plans()->get();
+        $plans = '';
+        foreach ((array)$paid_plans as $paid_plan){
+            $plans = $paid_plan;
+        }
+
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => $this->guard()->factory()->getTTL() * 60,
             'user_name' => $user->name,
-            'is_admin' => $user->is_admin
+            'is_admin' => $user->is_admin,
+            'paid_plans' => !empty($plans) ? '1' : '0'
         ]);
     }
 
