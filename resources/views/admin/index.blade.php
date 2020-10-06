@@ -344,7 +344,6 @@
                 <div class="admin-content">
                     @yield('content')
                 </div>
-
                 <!-- Content Row -->
                 <div class="row">
 

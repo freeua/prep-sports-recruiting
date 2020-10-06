@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::post('/registration', 'RegistrationController@createRegistration');
 
@@ -46,3 +46,17 @@ Route::group(['prefix' => 'blog'], function ($router) {
     Route::post('articl', 'BlogPageController@getArticl');
     Route::post('articls-pagination', 'BlogPageController@articlsPagination');
 });
+
+Route::post('get-account-data', 'AccountController@getAccountData')->name('get-account-data');
+
+Route::get('/payment', 'PaymentController@index');
+Route::get('/execute-payment', 'PaymentController@execute')->name('execute');
+Route::post('/create-payment', 'PaymentController@create')->name('create-payment');
+
+//Route::get('plan/create', 'SubscriptionController@createPlan');
+//Route::get('plan/list', 'SubscriptionController@listPlan');
+//Route::get('plan/{id}', 'SubscriptionController@showPlan');
+//Route::get('plan/{id}/activate', 'SubscriptionController@activatedPlan');
+//Route::post('plan/{id}/agreement/create', 'SubscriptionController@createAgreement')->name('create-agreement');
+//
+//Route::get('/execute-agreement/{success}', 'SubscriptionController@executeAgreement');

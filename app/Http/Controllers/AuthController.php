@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -79,6 +80,12 @@ class AuthController extends Controller
     {
         JWTAuth::setToken($token);
         $user = JWTAuth::toUser();
+        /*
+         * This code is needed to get a user without a front end and requires further modification since it is not safe to store the token in the session
+         */
+        Session::put('token', $token);
+        /* end */
+
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
