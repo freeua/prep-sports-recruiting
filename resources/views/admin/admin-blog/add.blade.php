@@ -4,7 +4,7 @@
 
     <div class="add-edit-page-container">
         <div class="title-and-back-link-container">
-            <div class="page-title">Add Articl</div>
+            <div class="page-title">Add Article</div>
             <a href="{{url('/admin/blog')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Back</a>
         </div>
         <div class="articl-form-container">

@@ -38,6 +38,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/blog/show/{param}', 'Admin\AdminBlogController@show')->name('admin-blog-show');
     Route::get('/blog/delete/{id}', 'Admin\AdminBlogController@destroy')->name('admin-blog-delete');
     Route::get('/send', 'Admin\AdminController@send')->name('send-mail');
+    Route::get('/user-account-management', 'Admin\AdminUserAccountManagementController@index');
+    Route::get('/user-account-management/show/{param}', 'Admin\AdminUserAccountManagementController@show');
+    Route::post('/user-account-management/search', 'Admin\AdminUserAccountManagementController@search');
 
 });
 

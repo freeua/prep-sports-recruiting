@@ -4,7 +4,7 @@
 
     <div class="col-12">
         <div class="col-12 title-and-add-link-container">
-            <div class="page-title">Articls Page</div>
+            <div class="page-title">Articles Page</div>
             <a href="{{url('/admin/blog/create')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Add Article</a>
         </div>
         <table class="col-12 row blog-table">
@@ -27,7 +27,7 @@
                         @if( !empty($articl->image_link) )
                             <td class="col-2"><div class="img-container"><img src="{{ asset('/storage/' . $articl->image_link ) }}"/></div></td>
                         @else
-                            <td class="col-2">Not image</td>
+                            <td class="col-2">No image</td>
                         @endif
                         <td class="col-1"></td>
                         <td class="col-1"><div><a href="{{ url('/admin/blog/edit/' . $articl->id) }}" class="btn btn-primary btn-sm mr-2 action-button">Edit</a></div></td>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class RegistrationController extends Controller
 {
@@ -16,7 +17,7 @@ class RegistrationController extends Controller
             $user->name = $request->input('username');
             $user->email = $request->input('email');
             $user->password = Hash::make($request->input('password'));
-            $user->birthday = $request->input('birthday');
+            $user->birthday = Carbon::parse($request->input('birthday'))->format('Y/m/d');
             $user->country = $request->input('country');
             $user->remember_token = $request->input('_token');
 
