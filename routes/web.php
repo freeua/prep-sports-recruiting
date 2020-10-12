@@ -41,7 +41,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/user-account-management', 'Admin\AdminUserAccountManagementController@index');
     Route::get('/user-account-management/show/{param}', 'Admin\AdminUserAccountManagementController@show');
     Route::post('/user-account-management/search', 'Admin\AdminUserAccountManagementController@search');
-
 });
 
 Route::group(['prefix' => 'blog'], function ($router) {

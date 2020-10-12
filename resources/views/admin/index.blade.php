@@ -32,7 +32,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Admin/</div>
+            <div class="sidebar-brand-text mx-3">Admin</div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
@@ -89,21 +89,33 @@
                     </div>
 {{--                </form>--}}
                     <script>
-                        var users = '{!! json_encode( $users->total() ) !!}';
                         var searchInput = document.getElementById('search_input');
                         var token = '{!! csrf_token() !!}';
-                        var url = '/admin/user-account-management/search';
+                        var url = '/admin/user-account-management';
                         var request = new XMLHttpRequest();
                         request.responseType = "json";
                         searchInput.addEventListener('input', function (event) {
-                            let userContainer = document.getElementById('table-body-container');
                             var input_val = event.target.value;
-                            request.open("POST", url, true);
+                            request.open("GET", url, true);
                             request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                             request.setRequestHeader('X-CSRF-Token' , token);
+                            request.setRequestHeader('param' , input_val);
+                            var obj_res = '';
+                            var count = '';
                             request.onload = function () {
+                                obj_res = request.response.data;
+                                count = request.response.count;
+                                result(obj_res, input_val, url, count);
+                            }
+                            request.send();
+                        });
+                        function result(obj_res, input_val, url, count) {
+                            var userContainer = document.getElementById('table-body-container');
+                            var paginate = document.querySelector('.pagination-container');
                             userContainer.innerHTML = '';
-                            obj_res = request.response.data.data;
+                            paginate.innerHTML = '';
+                            var lastId = obj_res.slice(obj_res.length-1)[0].id;
+                            var firstId = obj_res.slice(0)[0].id;
                             for(field in obj_res) {
                                 var link = '<a href="/admin/user-account-management/show-plans/' + obj_res[field].id + '">Show plans</a>'
                                 var linkShowUser = '<a href="/admin/user-account-management/show/' + obj_res[field].id + '">' + obj_res[field].name + '</a>'
@@ -116,10 +128,55 @@
                                     `<td class="col-2">${obj_res[field].is_admin ? 'Admin' : 'User'}</td></tr>`;
 
                                 userContainer.innerHTML += resurs
+                            }
+                            var pageCount = count / 5;
+                            var pageNumber = '';
+
+                            for(i = 1; i <= pageCount; i++){
+                                console.log(i, Math.ceil(pageCount), Math.floor(pageCount), Math.round(pageCount), 'Math.ceil(pageCount)');
+                                if(i == Math.floor(pageCount)) {
+                                    pageNumber += `<li class="page-item active"><a class="page-link" href="#">${i}</a></li>`;
+                                } else {
+                                    pageNumber += `<li class="page-item"><a class="page-link" href="#">${i}</a></li>`;
                                 }
                             }
-                            request.send(`input_val=${input_val}`);
-                        });
+                            // class active and disablet
+                            paginate.innerHTML = `<ul class="pagination">` +
+                                    `<li class="page-item"><a class="page-link" aria-label="0" href="#">‹</a></li>` +
+                                    pageNumber +
+                                    `<li class="page-item"><a class="page-link" aria-label="1" href="#">›</a></li>` +
+                                `</ul>`
+                            var puginate_button = document.querySelectorAll('.page-item .page-link');
+                            puginate_button.forEach(function (item) {
+                                item.addEventListener('click', function (e){
+                                    e.preventDefault();
+                                    var page = '';
+                                    var currentPage = '';
+                                    var prevNext = this.getAttribute('aria-label');
+
+                                    this.parentElement.classList.add('active');
+                                    if(this.innerHTML.match(/[0-9]/) ) {
+                                        page = this.innerHTML;
+                                        currentPage = count / pageCount * page;
+                                    }
+                                        request.open("GET", url, true);
+                                        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                                        request.setRequestHeader('X-CSRF-Token', token);
+                                        request.setRequestHeader('param', input_val);
+                                        request.setRequestHeader('page', page);
+                                        request.setRequestHeader('current-page', currentPage);
+                                        request.setRequestHeader('lastId', lastId);
+                                        if(prevNext !== null) {request.setRequestHeader('prev-next', prevNext)}
+                                        request.onload = function () {
+                                            obj_res = request.response.data;
+                                            if(obj_res.length > 4) {
+                                                result(obj_res, input_val, url, count);
+                                            }
+                                        }
+                                        request.send();
+                                })
+                            })
+                        }
                     </script>
                 @endif
                 <!-- Topbar Navbar -->
