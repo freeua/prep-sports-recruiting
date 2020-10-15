@@ -15,7 +15,7 @@ class AdminBlogController extends Controller
      */
     public function index()
     {
-        $articls = Articl::paginate(5);
+        $articls = Articl::latest()->paginate(5);
         return view('admin.admin-blog.index')->with('articls', $articls);
     }
 
