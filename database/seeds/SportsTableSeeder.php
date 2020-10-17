@@ -108,6 +108,9 @@ class SportsTableSeeder extends Seeder
             [
                 'name' => 'WRESTLING - WOMEN',
             ],
+            [
+                'name' => 'Hockey - Men',
+            ],
         ]);
     }
 }
