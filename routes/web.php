@@ -48,6 +48,14 @@ Route::group(['prefix' => 'blog'], function ($router) {
 });
 
 Route::post('get-account-data', 'AccountController@getAccountData')->name('get-account-data');
+Route::post('get-coaches', 'AccountController@getCoaches')->name('get-coaches');
+Route::post('get-log', 'AccountController@getLog')->name('get-log');
+
+/* This rout for test page form email */
+Route::get('indexForm', 'MailController@indexForm');
+/* end */
+
+Route::post('send_mail', 'MailController@sendMail')->name('send-mail');
 
 Route::get('/payment', 'PaymentController@index');
 Route::get('/execute-payment', 'PaymentController@execute')->name('execute');

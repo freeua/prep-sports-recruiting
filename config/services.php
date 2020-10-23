@@ -19,6 +19,10 @@ return [
         'secret' => env('MAILGUN_SECRET'),
         'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
     ],
+    'elastic_email' => [
+        'key' => env('ELASTIC_KEY'),
+        'account' => env('ELASTIC_ACCOUNT')
+    ],
 
     'ses' => [
         'key' => env('SES_KEY'),
@@ -41,11 +45,6 @@ return [
                 'failure' => 'http://prep-sports-recruiting/execute-agreement/false'
             ]
         ]
-    ],
-
-    'elastic_email' => [
-        'key' => env('ELASTIC_KEY'),
-        'account' => env('ELASTIC_ACCOUNT')
     ]
 
 ];
