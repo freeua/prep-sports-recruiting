@@ -13,29 +13,19 @@ class PlansTableSeeder extends Seeder
     {
         DB::table('plans')->insert([
             [
-                'name' => '6 Months',
-                'details' => 'test',
+                'name' => 'trial',
+                'term' => 10,
                 'price' => 1.5,
                 ],
             [
-                'name' => '1 year',
-                'details' => 'test1',
+                'name' => 'hundred',
+                'term' => 100,
                 'price' => 2.5,
             ],
             [
-                'name' => '3 years',
-                'details' => 'test2',
+                'name' => 'unlimited',
+                'term' => null,
                 'price' => 3.5,
-            ],
-            [
-                'name' => '5 years',
-                'details' => 'test3',
-                'price' => 4.5,
-            ],
-            [
-                'name' => 'free',
-                'details' => 'test',
-                'price' => 5.5,
             ],
         ]);
     }
