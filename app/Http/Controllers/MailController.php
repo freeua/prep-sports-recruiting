@@ -21,6 +21,10 @@ class MailController extends Controller
     }
     /* end */
 
+    /**
+     * @param  \Illuminate\Http\Request  $request (plan_user.id, coaches.id)
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
     public function sendMail(Request $request) {
         $data = new \stdClass();
         $coach = Coach::where('id', '=', $request->input('id'))->first();
@@ -30,12 +34,19 @@ class MailController extends Controller
         $data->subject = $request->input('subject');
         $data->title = $request->input('title');
         $data->description = $request->input('description');
+        // dd($data);
 
         Mail::send('emails.send_mail', ['data'=>$data], function ($message) use ($data) {
             $message->to($data->coach_email, 'Prep Sports Recruiting')->subject($data->subject);
             $message->from('liza.sendega.freeua@gmail.com', 'Prep Sports Recruiting');
             $message->replyTo('georgiyMalitskiy@gmail.com');
         });
+
+        // increment count of sending mail
+        \DB::table('plan_user')
+            ->where('id', $request->plan_user_id)
+            // ->update(['count' => 1]);
+            ->increment('count');
 
         return response()->json(['msg' => 'Mail send', 'status' => 'Successeful']);
     }

@@ -7,6 +7,7 @@ use App\PayPal\ExecutePayment;
 use App\User;
 use Illuminate\Http\Request;
 use App\Plan;
+use App\Sport;
 use Illuminate\Support\Facades\Session;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -18,12 +19,16 @@ class PaymentController extends Controller
         return view('admin.paypal', compact('plans'));
     }
 
+    /**
+     * @param  \Illuminate\Http\Request  $request (plan_id, sport_id)
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
     public function create(Request $request)
     {
         $plan = Plan::where('id', '=', $request->id)->first();
         $payment = new CreatePayment();
         Session::put('plans', $plan);
-
+        Session::put('sport_id', $request->sport_id);
         return $payment->create($plan);
     }
 
@@ -47,7 +52,7 @@ class PaymentController extends Controller
 
         $user = User::where('id', '=', $transaction_user->id)->first();
 
-        $user->plans()->attach($transaction_plan_id);
+        $user->plans()->attach($transaction_plan_id, [ 'sport_id' => Session::get('sport_id')]);
 
 //        return $transaction_plan;
         return response()->json(['msg' => 'transaction successeful', 'data' => $user->id, 'status' => 'Successeful']);

@@ -9,12 +9,15 @@ class Plan extends Model
 {
     use Notifiable;
 
-    //    protected $guarded = [];
-
-    public $fillable = ['name','details','price'];
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = ['id'];
 
     public function users()
     {
-        $this->belongsToMany('App\User');
+        $this->belongsToMany('App\User')->withPivot('count', 'sport_id');
     }
 }

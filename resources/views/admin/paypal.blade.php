@@ -14,6 +14,7 @@
     <form action="{{ route('create-payment') }}" method="post">
         @csrf
         <input type="hidden" value="{{$plan->id}}" name="id">
+        <input type="hidden" value="{{ 5 }}" name="sport_id">
         <input type="submit" value="Pay Now">
     </form>
     @endforeach
