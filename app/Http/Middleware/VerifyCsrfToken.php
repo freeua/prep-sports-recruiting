@@ -21,5 +21,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'send_mail',
         'create-payment',
+        'get-coaches',
     ];
 }

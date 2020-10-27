@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Plan;
+use App\Sport;
 use App\Coach;
 use GuzzleHttp\ClientInterface;
 use Chocoholics\LaravelElasticEmail\ElasticTransport;
@@ -34,18 +35,22 @@ class AccountController extends Controller
         return response()->json(['msg' => 'Account data', 'data' => $data, 'status' => 'Successeful']);
     }
 
+    /**
+     * @param  \Illuminate\Http\Request  $request (user_id, sport_id, plan_id)
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
     public function getCoaches(Request $request) {
         $user = User::where('id', '=', $request->id)->first();
-        $plans = $user->plans()->get();
-        $coaches = Coach::get();
-        $res = false;
-        foreach ($plans as $plan){
-            if(!empty($plan)){
-                $res = true;
+        $sport = Sport::findOrFail($request->sport_id);
+        $selectedPlan = Plan::findOrFail($request->plan_id);
+        $userPlans = $user->plans;
+        if (null !== $userPlans) {
+            foreach ($userPlans as $plan){
+                if ($plan->pivot->sport_id == $sport->id && $plan->pivot->count < $selectedPlan->term) {
+                    $coaches = $sport->coaches;
+                    return response()->json(['msg' => 'Coaches', 'data'=>$coaches, 'status' => 'Successeful']);
+                }
             }
-        }
-        if(!empty($res)){
-            return response()->json(['msg' => 'Coaches', 'data'=>$coaches, 'status' => 'Successeful']);
         }
         return response()->json(['msg' => 'No Coaches', 'status' => 'error']);
     }
