@@ -54,6 +54,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
+        dd('asd');
         $this->guard()->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
@@ -84,7 +85,7 @@ class AuthController extends Controller
         /*
          * This code is needed to get a user without a front end and requires further modification since it is not safe to store the token in the session
          */
-        Session::put('token', $token);
+        // Session::put('token', $token);
         /* end */
 
         $auth_user = User::where('id', '=', $user->id)->first();

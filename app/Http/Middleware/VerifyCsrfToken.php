@@ -22,5 +22,8 @@ class VerifyCsrfToken extends Middleware
         'send_mail',
         'create-payment',
         'get-coaches',
+        'auth/login',
+        'auth/me',
+        'auth/logout',
     ];
 }

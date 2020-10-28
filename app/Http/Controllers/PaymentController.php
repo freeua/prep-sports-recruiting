@@ -45,9 +45,9 @@ class PaymentController extends Controller
         /*
          * This code is needed to get a user without a front end and requires further modification since it is not safe to store the token in the session
          */
-        $token = Session::get('token');
+        // $token = Session::get('token');
         /* end */
-        JWTAuth::setToken($token);
+        // JWTAuth::setToken($token);
         $transaction_user = JWTAuth::toUser();
 
         $user = User::where('id', '=', $transaction_user->id)->first();
