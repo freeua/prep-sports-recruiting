@@ -44,7 +44,7 @@ class AccountController extends Controller
         $sport = Sport::findOrFail($request->sport_id);
         $selectedPlan = Plan::findOrFail($request->plan_id);
         $userPlans = $user->plans;
-        if (null !== $userPlans) {
+        if ($userPlans->isNotEmpty()) {
             foreach ($userPlans as $plan){
                 if ($plan->pivot->sport_id == $sport->id && $plan->pivot->count < $selectedPlan->term) {
                     $coaches = $sport->coaches;
