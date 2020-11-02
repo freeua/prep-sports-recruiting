@@ -44,9 +44,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 });
 
 Route::group(['prefix' => 'blog'], function ($router) {
-    Route::post('articls', 'BlogPageController@getArticls');
-    Route::post('articl', 'BlogPageController@getArticl');
-    Route::post('articls-pagination', 'BlogPageController@articlsPagination');
+    Route::post('articles', 'BlogPageController@getArticles');
+    Route::post('article', 'BlogPageController@getArticle');
+    Route::post('articles-pagination', 'BlogPageController@articlesPagination');
 });
 
 Route::post('get-account-data', 'AccountController@getAccountData')->name('get-account-data');

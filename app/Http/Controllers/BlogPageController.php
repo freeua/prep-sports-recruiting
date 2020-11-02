@@ -8,21 +8,21 @@ use Illuminate\Support\Facades\DB;
 
 class BlogPageController extends Controller
 {
-    public function getArticls()
+    public function getArticles()
     {
         $articls = Articl::all();
 
         return response()->json(['msg' => 'Articls', 'data' => $articls, 'status' => 'Successeful']);
     }
 
-    public function getArticl(Request $request)
+    public function getArticle(Request $request)
     {
         $articl = Articl::where('id', '=', $request->id)->first();
 
         return response()->json(['msg' => 'Articl', 'data' => $articl, 'status' => 'Successeful']);
     }
-    
-    public function articlsPagination(Request $request)
+
+    public function articlesPagination(Request $request)
     {
         $curent_page_articls = empty($request->prev_next) ?
             DB::table('articls')->whereBetween('id', [$request->id - 11, $request->id - 1])->get() :
