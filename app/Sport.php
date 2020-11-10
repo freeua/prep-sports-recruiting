@@ -20,4 +20,12 @@ class Sport extends Model
     {
         return $this->hasMany('App\Coach');
     }
+
+    /**
+     * Get the articles for the sport.
+     */
+    public function articles()
+    {
+        return $this->hasMany('App\Articl', 'categories');
+    }
 }

@@ -12,4 +12,12 @@ class Articl extends Model
      * @var string
      */
     protected $table = 'articls';
+
+    /**
+     * Get the sport that owns the article.
+     */
+    public function sport()
+    {
+        return $this->belongsTo('App\Sport', 'categories');
+    }
 }

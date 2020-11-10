@@ -47,6 +47,7 @@ Route::group(['prefix' => 'blog'], function ($router) {
     Route::post('articles', 'BlogPageController@getArticles');
     Route::post('article', 'BlogPageController@getArticle');
     Route::post('articles-pagination', 'BlogPageController@articlesPagination');
+    Route::get('articles-sidebar', 'BlogPageController@articlesSidebar');
 });
 
 Route::post('get-account-data', 'AccountController@getAccountData')->name('get-account-data');

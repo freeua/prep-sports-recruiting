@@ -10,7 +10,7 @@
         <div class="articl-form-container">
             {!! Form::open(['route' => 'admin-blog-store', 'method' => 'POST', 'files' => true]) !!}
             {!! Form::label('categories', 'Categories', ['class' => 'form-label']);!!}
-            {!! Form::text('categories', '', ['class' => 'form-categories card border-left-primary shadow py-2']); !!}
+            {!! Form::select('categories',[$category_name], null, ['class' => 'form-categories card border-left-primary shadow py-2']); !!}
             {!! Form::label('title', 'Title', ['class' => 'form-label']);!!}
             {!! Form::text('title', '', ['class' => 'form-title card border-left-primary shadow py-2']); !!}
             {!! Form::label('content', 'Content', ['class' => 'form-label']);!!}

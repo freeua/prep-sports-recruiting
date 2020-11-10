@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Articl;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Sport;
 
 class AdminBlogController extends Controller
 {
@@ -26,7 +27,13 @@ class AdminBlogController extends Controller
      */
     public function create()
     {
-        return view('admin.admin-blog.add');
+        $categories = Sport::all();
+        $category_name = [];
+
+        foreach ($categories as $category) {
+             array_push($category_name, $category->name);
+        }
+        return view('admin.admin-blog.add', compact('category_name'));
     }
 
     /**
