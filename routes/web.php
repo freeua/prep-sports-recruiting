@@ -27,7 +27,7 @@ Route::group(['prefix' => 'auth', 'middleware' => 'api'], function () {
     Route::post('me', 'AuthController@me');
 
 });
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
+Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', 'Admin\AdminController@index');
     Route::get('/blog', 'Admin\AdminBlogController@index')->name('admin-blog');
