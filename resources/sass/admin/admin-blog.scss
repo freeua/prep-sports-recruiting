@@ -61,6 +61,14 @@
         td {
             display: flex;
             justify-content: center;
+            align-items: center;
+            p {
+                width: 250px;
+                overflow: hidden;
+                text-overflow: '';
+                height: 45px;
+                margin-top: 10px;
+            }
         }
     }
     .show-articl-table-body-container tr {

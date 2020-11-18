@@ -64,6 +64,15 @@
 .blog-table .table-body-container tr td {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.blog-table .table-body-container tr td p {
+  width: 250px;
+  overflow: hidden;
+  text-overflow: '';
+  height: 45px;
+  margin-top: 10px;
 }
 
 .blog-table .show-articl-table-body-container tr {

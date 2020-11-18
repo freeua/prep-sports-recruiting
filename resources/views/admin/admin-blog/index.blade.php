@@ -23,7 +23,7 @@
                     <tr class="col-12 row">
                         <td class="col-2">{{ $articl->categories }}</td>
                         <td class="col-2"><a href="{{url('/admin/blog/show/' . $articl->id)}}">{{ $articl->title }}</a></td>
-                        <td class="col-3">{{ $articl->content }}</td>
+                        <td class="col-3" ><p style="">{{ $articl->content }}</p></td>
                         @if( !empty($articl->image_link) )
                             <td class="col-2"><div class="img-container"><img src="{{ asset('/storage/' . $articl->image_link ) }}"/></div></td>
                         @else
