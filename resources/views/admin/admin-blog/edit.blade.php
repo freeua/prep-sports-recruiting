@@ -10,7 +10,7 @@
         {!! Form::open(['url' => 'admin/blog/update/', 'method' => 'POST', 'files' => true]) !!}
         {!! Form::hidden('id', $articl->id); !!}
         {!! Form::label('categories', 'Categories', ['class' => 'form-label']);!!}
-        {!! Form::text('categories', $articl->categories, ['class' => 'form-categories card border-left-primary shadow py-2']); !!}
+        {!! Form::select('categories', [$category_name], null, ['class' => 'form-categories card border-left-primary shadow py-2']); !!}
         {!! Form::label('title', 'Title', ['class' => 'form-label']);!!}
         {!! Form::text('title', $articl->title, ['class' => 'form-title card border-left-primary shadow py-2']); !!}
         {!! Form::label('content', 'Content', ['class' => 'form-label']);!!}

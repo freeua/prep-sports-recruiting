@@ -17,6 +17,14 @@ class AdminBlogController extends Controller
     public function index()
     {
         $articls = Articl::latest()->paginate(5);
+        foreach ($articls as $articl) {
+            $articl_sports = $articl->sport()->get();
+            foreach ((array)$articl_sports as $articl_sport){
+                foreach ($articl_sport as $sport) {
+                    $articl->categories = $sport->name;
+                }
+            }
+        }
         return view('admin.admin-blog.index')->with('articls', $articls);
     }
 
@@ -48,7 +56,7 @@ class AdminBlogController extends Controller
 
         $articl = new Articl();
 
-        $articl->categories = $request->input('categories');
+        $articl->categories = $request->input('categories') +1;
         $articl->title = $request->input('title');
         $articl->content = $request->input('content');
         $articl->image_link = !empty($image) ? $request->file('image')->store('uploads', 'public') : '';
@@ -68,10 +76,12 @@ class AdminBlogController extends Controller
     {
         if(isset($id)) {
             $articl = Articl::where('id', '=', $id)->first();
+            $sports = $articl->sport()->get();
+            foreach ($sports as $sport) {
+                $articl->categories = $sport->name;
+            }
         }
-
         return view('admin.admin-blog.show', compact('articl'));
-
     }
 
     /**
@@ -83,8 +93,12 @@ class AdminBlogController extends Controller
     public function edit($id)
     {
         $articl = Articl::where('id', '=', $id)->first();
-
-        return view('admin.admin-blog.edit', compact('articl'));
+        $categories = Sport::all();
+        $category_name = [];
+        foreach ($categories as $category) {
+            array_push($category_name, $category->name);
+        }
+        return view('admin.admin-blog.edit', compact('articl', 'category_name'));
     }
 
     /**
