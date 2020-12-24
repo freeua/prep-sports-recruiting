@@ -17,10 +17,22 @@ use GuzzleHttp\Psr7;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\ResponseInterface;
+use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 
 class AccountController extends Controller
 {
+    /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+      $this->middleware('auth:api');
+    }
+
     public function getAccountData(Request $request)
     {
         $user = User::where('id', '=', $request->id)->first();

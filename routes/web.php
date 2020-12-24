@@ -15,18 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::post('/registration', 'RegistrationController@createRegistration');
-
 Auth::routes();
 
-Route::group(['prefix' => 'auth', 'middleware' => 'api'], function () {
 
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
-
-});
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
     Route::get('/', 'Admin\AdminController@index');
@@ -43,31 +34,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('/user-account-management/search', 'Admin\AdminUserAccountManagementController@search');
 });
 
-Route::group(['prefix' => 'blog'], function ($router) {
-    Route::post('articles', 'BlogPageController@getArticles');
-    Route::post('article', 'BlogPageController@getArticle');
-    Route::post('articles-pagination', 'BlogPageController@articlesPagination');
-    Route::get('articles-sidebar', 'BlogPageController@articlesSidebar');
-});
 
-Route::post('get-account-data', 'AccountController@getAccountData')->name('get-account-data');
-Route::post('get-coaches', 'AccountController@getCoaches')->name('get-coaches');
-Route::post('get-log', 'AccountController@getLog')->name('get-log');
-
-/* This rout for test page form email */
-Route::get('indexForm', 'MailController@indexForm');
-/* end */
-
-Route::post('send_mail', 'MailController@sendMail')->name('send-mail');
-
-Route::get('/payment', 'PaymentController@index');
-Route::get('/execute-payment', 'PaymentController@execute')->name('execute');
-Route::post('/create-payment', 'PaymentController@create')->name('create-payment');
-
-//Route::get('plan/create', 'SubscriptionController@createPlan');
-//Route::get('plan/list', 'SubscriptionController@listPlan');
-//Route::get('plan/{id}', 'SubscriptionController@showPlan');
-//Route::get('plan/{id}/activate', 'SubscriptionController@activatedPlan');
-//Route::post('plan/{id}/agreement/create', 'SubscriptionController@createAgreement')->name('create-agreement');
-//
-//Route::get('/execute-agreement/{success}', 'SubscriptionController@executeAgreement');
