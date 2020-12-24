@@ -72,6 +72,30 @@ class AccountController extends Controller
         }
 
         return $request;
+    }
 
+    public function getSports()
+    {
+        $sports = Sport::all();
+
+        return \response()->json(['msg' => 'Sports', 'data'=>$sports, 'status' => 'Successeful']);
+    }
+
+    public function getPlans()
+    {
+        $plans = Plan::all();
+
+        return \response()->json(['msg' => 'Plans', 'data'=>$plans, 'status' => 'Successeful']);
+    }
+
+    public function getSportsPlans()
+    {
+        $sports_plans = [];
+        $sports = Sport::all();
+        $plans = Plan::all();
+        $sports_plans[] = $sports;
+        $sports_plans[] = $plans;
+
+        return \response()->json(['msg' => 'Plans', 'data'=>$sports_plans, 'status' => 'Successeful']);
     }
 }
