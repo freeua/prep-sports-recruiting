@@ -11,6 +11,7 @@ class RegistrationController extends Controller
 {
     public function createRegistration(Request $request)
     {
+        $image = $request->file('avatar');
         $is_user = User::where('email', '=', $request->input('email'))->first();
         if (!isset($is_user)) {
             $user = new User();
@@ -19,6 +20,7 @@ class RegistrationController extends Controller
             $user->password = Hash::make($request->input('password'));
             $user->birthday = Carbon::parse($request->input('birthday'))->format('Y/m/d');
             $user->country = $request->input('country');
+            $user->avatar = !empty($image) ? $request->file('avatar')->store('uploads/avatar', 'public') : '';
             $user->remember_token = $request->input('_token');
 
             $user->save();
