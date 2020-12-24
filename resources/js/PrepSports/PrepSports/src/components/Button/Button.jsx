@@ -1,13 +1,14 @@
-import React from 'react';
-import styles from './Button.module.scss';
+import React from "react";
+import "./Button.module.scss";
 
-const Button = ({ text, onClick = null, margin = false }) => {
+const Button = ({ text, onClick = null, margin = false, ...rest }) => {
   return (
     <div
       onClick={onClick}
-      className={`${styles.container} ${margin ? styles.margin : null}`}
+      className={`btt-container ${margin ? "margin-btt" : null}`}
+      {...rest}
     >
-      <div className={styles.wrapper}>
+      <div className="btt-wrapper">
         <span>{text}</span>
       </div>
     </div>

@@ -1,14 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -18,8 +18,8 @@ code {
   font-weight: 400;
   font-display: block;
   src: url(/assets/fonts/material-icons/02-19/material-icons.woff2)
-      format('woff2'),
-    url(/assets/fonts/material-icons/02-19/material-icons.woff) format('woff');
+      format("woff2"),
+    url(/assets/fonts/material-icons/02-19/material-icons.woff) format("woff");
   /* src: url(https://example.com/MaterialIcons-Regular.eot); 
   src: local('Material Icons'),
     local('MaterialIcons-Regular'),
@@ -33,9 +33,9 @@ code {
   font-style: italic;
   font-weight: 300;
   font-display: block;
-  src: local('Roboto Light Italic'), local('Roboto-LightItalic'),
-    url(/assets/fonts/roboto/02-19/roboto-300i.woff2) format('woff2'),
-    url(/assets/fonts/roboto/02-19/roboto-300i.woff) format('woff');
+  src: local("Roboto Light Italic"), local("Roboto-LightItalic"),
+    url(/assets/fonts/roboto/02-19/roboto-300i.woff2) format("woff2"),
+    url(/assets/fonts/roboto/02-19/roboto-300i.woff) format("woff");
 }
 
 @font-face {
@@ -43,9 +43,9 @@ code {
   font-style: italic;
   font-weight: 400;
   font-display: block;
-  src: local('Roboto Italic'), local('Roboto-Italic'),
-    url(/assets/fonts/roboto/02-19/roboto-400i.woff2) format('woff2'),
-    url(/assets/fonts/roboto/02-19/roboto-400i.woff) format('woff');
+  src: local("Roboto Italic"), local("Roboto-Italic"),
+    url(/assets/fonts/roboto/02-19/roboto-400i.woff2) format("woff2"),
+    url(/assets/fonts/roboto/02-19/roboto-400i.woff) format("woff");
 }
 
 @font-face {
@@ -53,9 +53,9 @@ code {
   font-style: normal;
   font-weight: 300;
   font-display: block;
-  src: local('Roboto Light'), local('Roboto-Light'),
-    url(/assets/fonts/roboto/02-19/roboto-300.woff2) format('woff2'),
-    url(/assets/fonts/roboto/02-19/roboto-300.woff) format('woff');
+  src: local("Roboto Light"), local("Roboto-Light"),
+    url(/assets/fonts/roboto/02-19/roboto-300.woff2) format("woff2"),
+    url(/assets/fonts/roboto/02-19/roboto-300.woff) format("woff");
 }
 
 @font-face {
@@ -63,9 +63,9 @@ code {
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: local('Roboto'), local('Roboto-Regular'),
-    url(/assets/fonts/roboto/02-19/roboto-400.woff2) format('woff2'),
-    url(/assets/fonts/roboto/02-19/roboto-400.woff) format('woff');
+  src: local("Roboto"), local("Roboto-Regular"),
+    url(/assets/fonts/roboto/02-19/roboto-400.woff2) format("woff2"),
+    url(/assets/fonts/roboto/02-19/roboto-400.woff) format("woff");
 }
 
 @font-face {
@@ -73,9 +73,9 @@ code {
   font-style: normal;
   font-weight: 500;
   font-display: block;
-  src: local('Roboto Medium'), local('Roboto-Medium'),
-    url(/assets/fonts/roboto/02-19/roboto-500.woff2) format('woff2'),
-    url(/assets/fonts/roboto/02-19/roboto-500.woff) format('woff');
+  src: local("Roboto Medium"), local("Roboto-Medium"),
+    url(/assets/fonts/roboto/02-19/roboto-500.woff2) format("woff2"),
+    url(/assets/fonts/roboto/02-19/roboto-500.woff) format("woff");
 }
 
 @font-face {
@@ -83,9 +83,9 @@ code {
   font-style: normal;
   font-weight: 700;
   font-display: block;
-  src: local('Roboto Bold'), local('Roboto-Bold'),
-    url(/assets/fonts/roboto/02-19/roboto-700.woff2) format('woff2'),
-    url(/assets/fonts/roboto/02-19/roboto-700.woff) format('woff');
+  src: local("Roboto Bold"), local("Roboto-Bold"),
+    url(/assets/fonts/roboto/02-19/roboto-700.woff2) format("woff2"),
+    url(/assets/fonts/roboto/02-19/roboto-700.woff) format("woff");
 }
 
 @font-face {
@@ -93,9 +93,9 @@ code {
   font-display: block;
   font-style: normal;
   font-weight: 400;
-  src: url(/assets/fonts/fantrax/fantrax.ttf?bq3785) format('truetype'),
-    url(/assets/fonts/fantrax/fantrax.woff?bq3785) format('woff'),
-    url(/assets/fonts/fantrax/fantrax.svg?bq3785#fantrax) format('svg');
+  src: url(/assets/fonts/fantrax/fantrax.ttf?bq3785) format("truetype"),
+    url(/assets/fonts/fantrax/fantrax.woff?bq3785) format("woff"),
+    url(/assets/fonts/fantrax/fantrax.svg?bq3785#fantrax) format("svg");
 }
 
 a {
@@ -111,7 +111,7 @@ button {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-[role='link'] {
+[role="link"] {
   cursor: pointer;
 }
 
@@ -144,9 +144,9 @@ select {
 }
 
 button,
-html input[type='button'],
-input[type='reset'],
-input[type='submit'] {
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
 }
@@ -160,8 +160,8 @@ input {
   line-height: normal;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -641,7 +641,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
   font-family: Roboto, sans-serif;
   background-color: var(--color-gray-70);
 }
@@ -761,9 +761,9 @@ img.cute-broken {
 }
 
 img.cute-broken:after {
-  content: 'broken_image';
+  content: "broken_image";
   font-family: Material Icons;
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1136,7 +1136,7 @@ body .margin--right-tiny {
 }
 
 .clear:after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
@@ -1489,7 +1489,7 @@ body .margin--right-tiny {
 }
 
 .animate-update:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -1513,7 +1513,7 @@ body .margin--right-tiny {
 }
 
 .badge--online:after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0.8rem;
   height: 0.8rem;
@@ -3015,7 +3015,7 @@ app-news-header {
 }
 
 .header figure {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   top: 0;
@@ -3148,7 +3148,7 @@ app-news-header {
 
 @media screen and (min-width: 1020px) {
   .header.custom figure:after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: 0;
@@ -3521,7 +3521,7 @@ app-news-header {
 }
 
 .nav:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -3703,7 +3703,7 @@ app-news-header {
 
 .nav-item--logo:after,
 .nav-item--logo:before {
-  content: '';
+  content: "";
   height: 2.6rem;
   margin: 0.4rem auto auto;
   background-size: 100% auto;
@@ -3749,7 +3749,7 @@ app-news-header {
 }
 
 .nav-item--arrow > b:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -3757,7 +3757,7 @@ app-news-header {
   right: 0.6rem;
   width: 1.3rem;
   opacity: 0.55;
-  background-image: url('https://res.cloudinary.com/dygwe02oe/image/upload/v1587923148/Fantrax/navbar-arrow_ulktq6.svg');
+  background-image: url("https://res.cloudinary.com/dygwe02oe/image/upload/v1587923148/Fantrax/navbar-arrow_ulktq6.svg");
   background-size: 2.3rem;
   background-size: calc(var(--content) * 2.3rem);
 }
@@ -3777,12 +3777,12 @@ app-news-header {
 }
 
 .nav-item__icon--veggieburger {
-  background-image: url('https://res.cloudinary.com/dygwe02oe/image/upload/v1587923148/Fantrax/menu_pvgwsw.svg');
+  background-image: url("https://res.cloudinary.com/dygwe02oe/image/upload/v1587923148/Fantrax/menu_pvgwsw.svg");
   /* background-image: url(/src/assets/images/icons/layout/menu.svg) */
 }
 
 .nav-item__icon--veggiedog {
-  background-image: url('https://res.cloudinary.com/dygwe02oe/image/upload/v1587923148/Fantrax/notification_devtvg.svg');
+  background-image: url("https://res.cloudinary.com/dygwe02oe/image/upload/v1587923148/Fantrax/notification_devtvg.svg");
 }
 
 .nav-item__icon--chat {
@@ -3790,7 +3790,7 @@ app-news-header {
 }
 
 .nav-item__icon--notification {
-  background-image: url('https://res.cloudinary.com/dygwe02oe/image/upload/v1587923148/Fantrax/notification_devtvg.svg');
+  background-image: url("https://res.cloudinary.com/dygwe02oe/image/upload/v1587923148/Fantrax/notification_devtvg.svg");
 }
 
 .nav-item__icon--setting {
@@ -3870,6 +3870,7 @@ app-news-header {
 }
 
 .nav-menu {
+  z-index: 7;
   top: 4.9rem;
   margin-left: 50%;
   padding: 0.4rem 0 0;
@@ -3896,7 +3897,7 @@ app-news-header {
 }
 
 .nav-menu:before {
-  content: '';
+  content: "";
   top: -0.5rem;
   right: 0;
   margin: 0 auto;
@@ -4044,12 +4045,12 @@ app-news-header {
 }
 
 .nav-menu__link--beta > span:before {
-  content: 'Beta';
+  content: "Beta";
   background-color: var(--color-orange--softer);
 }
 
 .nav-menu__link--old > span:before {
-  content: 'Old';
+  content: "Old";
   background-color: var(--color-black--softest);
 }
 
@@ -4725,7 +4726,7 @@ app-news-header {
 }
 
 .subnav:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   opacity: 0.89;
@@ -4769,7 +4770,7 @@ app-news-header {
 }
 
 .subnav__link > a:after {
-  content: '';
+  content: "";
   position: absolute;
   right: 0.8rem;
   left: 0.8rem;
@@ -4843,12 +4844,12 @@ app-news-header {
 }
 
 .subnav__link--beta > a:before {
-  content: 'Beta';
+  content: "Beta";
   background-color: var(--color-amber);
 }
 
 .subnav__link--old > a:before {
-  content: 'Old';
+  content: "Old";
   background-color: #edf0f2;
 }
 
@@ -5014,7 +5015,7 @@ app-news-header {
 }
 
 .tiles__cover:after {
-  content: '';
+  content: "";
 }
 
 .tiles__cover:after,
@@ -5324,33 +5325,33 @@ app-news-header {
 
 .hero--small.nfl {
   /* background-image: url(https://img.fantrax.com/assets/images/headers/nfl.jpg); */
-  background-image: url('./assets/banners/Football-banner.png');
+  background-image: url("./assets/banners/Football-banner.png");
   background-position: 91% 50%;
 }
 
 .hero--small.nhl {
   /* background-image: url(https://img.fantrax.com/assets/images/headers/nhl.jpg); */
-  background-image: url('./assets/banners/Ice\ Hockey-banner.png');
+  background-image: url("./assets/banners/Ice\ Hockey-banner.png");
 
   background-position: 75% 80%;
 }
 
 .hero--small.mlb {
   /* background-image: url(https://img.fantrax.com/assets/images/headers/mlb.jpg); */
-  background-image: url('./assets/banners/Baseball-banner.png');
+  background-image: url("./assets/banners/Baseball-banner.png");
   background-position: 56% 45%;
 }
 
 .hero--small.epl {
   /* background-image: url(https://img.fantrax.com/assets/images/headers/epl.jpg); */
-  background-image: url('./assets/banners/Soccer-banner.png');
+  background-image: url("./assets/banners/Soccer-banner.png");
 
   background-position: 90% 50%;
 }
 
 .hero--small.nba {
   /* background-image: url(https://img.fantrax.com/assets/images/headers/nba.jpg); */
-  background-image: url('./assets/banners/Basketball-banner.png');
+  background-image: url("./assets/banners/Basketball-banner.png");
 
   background-position: 50% 50%;
 }
@@ -5378,7 +5379,7 @@ app-news-header {
 }
 
 .hero--small.indycar:after {
-  content: '';
+  content: "";
   margin: auto;
   position: absolute;
   bottom: 5%;
@@ -5397,64 +5398,64 @@ app-news-header {
 
 .hero--small.pga {
   /* background-image: url(https://img.fantrax.com/assets/images/headers/pga.jpg); */
-  background-image: url('./assets/banners/Golf-banner.png');
+  background-image: url("./assets/banners/Golf-banner.png");
 
   background-position: 51% 50%;
 }
 
 /* NEW Sports */
 .hero--small.field_hockey {
-  background-image: url('./assets/banners/Field_Hockey-banner.png');
+  background-image: url("./assets/banners/Field_Hockey-banner.png");
   background-position: 50% 50%;
 }
 
 .hero--small.gymnastics {
-  background-image: url('./assets/banners/Gymnastics-banner.png');
+  background-image: url("./assets/banners/Gymnastics-banner.png");
   background-position: 50% 50%;
 }
 
 .hero--small.cross_country {
-  background-image: url('./assets/banners/Cross_Country-banner.png');
+  background-image: url("./assets/banners/Cross_Country-banner.png");
   background-position: 50% 50%;
 }
 
 .hero--small.lacrosse {
-  background-image: url('./assets/banners/Lacrosse-banner.png');
+  background-image: url("./assets/banners/Lacrosse-banner.png");
   background-position: 50% 50%;
 }
 
 .hero--small.rugby {
-  background-image: url('./assets/banners/rugby-banner.png');
+  background-image: url("./assets/banners/rugby-banner.png");
   background-position: 50% 50%;
 }
 
 .hero--small.track_and_field {
-  background-image: url('./assets/banners/track_and-field-banner.png');
+  background-image: url("./assets/banners/track_and-field-banner.png");
   background-position: 50% 50%;
 }
 
 .hero--small.softball {
-  background-image: url('./assets/banners/softball-banner.png');
+  background-image: url("./assets/banners/softball-banner.png");
   background-position: 50% 50%;
 }
 
 .hero--small.swimming_and_diving {
-  background-image: url('./assets/banners/swimming_and-diving-banner.png');
+  background-image: url("./assets/banners/swimming_and-diving-banner.png");
   background-position: 50% 50%;
 }
 
 .hero--small.tennis {
-  background-image: url('./assets/banners/tennis-banner.png');
+  background-image: url("./assets/banners/tennis-banner.png");
   background-position: 50% 50%;
 }
 
 .hero--small.volleyball {
-  background-image: url('./assets/banners/volleyball-banner.png');
+  background-image: url("./assets/banners/volleyball-banner.png");
   background-position: 50% 50%;
 }
 
 .hero--small.water_polo {
-  background-image: url('./assets/banners/waterpolo-banner.png');
+  background-image: url("./assets/banners/waterpolo-banner.png");
   background-position: 50% 50%;
 }
 /* NEW Sports */
@@ -5484,7 +5485,7 @@ app-news-header {
   }
 
   .home .hero {
-    background-image: url('https://img.fantrax.com/assets/images/headers/fantrax-home.jpg');
+    background-image: url("https://img.fantrax.com/assets/images/headers/fantrax-home.jpg");
     /* background-image: url(/assets/images/headers/fantrax-home--phone.jpg); */
   }
 
@@ -5597,7 +5598,7 @@ app-news-header {
 
 .blades dt:after,
 .blades dt:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: calc(0.4% + 0.8rem);
@@ -5949,6 +5950,10 @@ app-news-header {
   flex-wrap: wrap;
 }
 
+.button-group.nopointer {
+  cursor: default;
+}
+
 .button-group--bottom {
   align-items: flex-end;
 }
@@ -6129,7 +6134,7 @@ app-news-header {
 }
 
 .btn--medium:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -6489,7 +6494,7 @@ button.btn {
 
 .blade-icon:after,
 .blade-icon:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0.3rem;
@@ -6891,7 +6896,7 @@ button.btn {
   }
 
   .supertable__cell:empty:before {
-    content: '-';
+    content: "-";
   }
 }
 
@@ -7024,7 +7029,7 @@ button.btn {
 }
 
 .i-table ._test-ad > :after {
-  content: '728 x 90 AD';
+  content: "728 x 90 AD";
   opacity: 0.9;
   padding: 1rem;
 }
@@ -7346,7 +7351,7 @@ button.btn {
 }
 
 .resizing .pane__resize:after {
-  content: '';
+  content: "";
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7387,10 +7392,10 @@ button.btn {
 }
 
 .pane__handle:before {
-  content: 'drag_handle';
+  content: "drag_handle";
   font-family: Material Icons;
-  font-feature-settings: 'liga';
-  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: "liga";
+  -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
   position: absolute;
   width: 100%;
@@ -7400,7 +7405,7 @@ button.btn {
 }
 
 .pane__handle:after {
-  content: 'Drag to set maximum height';
+  content: "Drag to set maximum height";
   display: flex;
   align-items: center;
   height: 100%;
@@ -7962,7 +7967,7 @@ button.btn {
 .form-group__expansion:before,
 .form-group__field:after,
 .form-group__field:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -8336,7 +8341,7 @@ button.btn {
 .ad-block-detected .placeholder--fluid:after,
 .ad-block-detected .placeholder--leaderboard:after,
 .ad-block-detected .placeholder--skyscraper:after {
-  content: 'Ad block detected!';
+  content: "Ad block detected!";
   padding: 1rem;
 }
 
@@ -9496,7 +9501,7 @@ mat-input.ng-invalid.ng-dirty .mat-input-ripple {
 }
 
 .help.help--show:after {
-  content: '';
+  content: "";
   position: absolute;
   top: -0.3rem;
   bottom: -0.3rem;
@@ -10033,7 +10038,7 @@ body .mat-option:hover:not(.mat-option-disabled) {
     0 2px 8px 0 var(--color-shadow--accent);
 }
 
-.cdk-overlay-container .mat-select-panel:not([class*='mat-elevation-z']) {
+.cdk-overlay-container .mat-select-panel:not([class*="mat-elevation-z"]) {
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
     0 8px 10px 1px rgba(0, 0, 0, 0.14),
     0 3px 14px 2px var(--color-shadow--accent);
@@ -10246,8 +10251,8 @@ body .mat-raised-button .mat-ripple-element {
   background-color: var(--color-black--lighter);
 }
 
-body .mat-button:not([class*='mat-elevation-z']),
-body .mat-raised-button:not([class*='mat-elevation-z']) {
+body .mat-button:not([class*="mat-elevation-z"]),
+body .mat-raised-button:not([class*="mat-elevation-z"]) {
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
     0 2px 2px 0 var(--color-shadow--accent),
     0 1px 5px 0 var(--color-shadow--accent);
@@ -12040,41 +12045,41 @@ textarea.cdk-textarea-autosize-measuring {
   background-color: hsla(0, 0%, 100%, 0.1);
 }
 
-.mat-flat-button:not([class*='mat-elevation-z']),
-.mat-stroked-button:not([class*='mat-elevation-z']) {
+.mat-flat-button:not([class*="mat-elevation-z"]),
+.mat-stroked-button:not([class*="mat-elevation-z"]) {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(0, 0, 0, 0.14),
     0 0 0 0 rgba(0, 0, 0, 0.12);
 }
 
-.mat-raised-button:not([class*='mat-elevation-z']) {
+.mat-raised-button:not([class*="mat-elevation-z"]) {
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
-.mat-raised-button:not([disabled]):active:not([class*='mat-elevation-z']) {
+.mat-raised-button:not([disabled]):active:not([class*="mat-elevation-z"]) {
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
     0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
-.mat-raised-button[disabled]:not([class*='mat-elevation-z']) {
+.mat-raised-button[disabled]:not([class*="mat-elevation-z"]) {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(0, 0, 0, 0.14),
     0 0 0 0 rgba(0, 0, 0, 0.12);
 }
 
-.mat-fab:not([class*='mat-elevation-z']),
-.mat-mini-fab:not([class*='mat-elevation-z']) {
+.mat-fab:not([class*="mat-elevation-z"]),
+.mat-mini-fab:not([class*="mat-elevation-z"]) {
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
     0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
 }
 
-.mat-fab:not([disabled]):active:not([class*='mat-elevation-z']),
-.mat-mini-fab:not([disabled]):active:not([class*='mat-elevation-z']) {
+.mat-fab:not([disabled]):active:not([class*="mat-elevation-z"]),
+.mat-mini-fab:not([disabled]):active:not([class*="mat-elevation-z"]) {
   box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
     0 12px 17px 2px rgba(0, 0, 0, 0.14), 0 5px 22px 4px rgba(0, 0, 0, 0.12);
 }
 
-.mat-fab[disabled]:not([class*='mat-elevation-z']),
-.mat-mini-fab[disabled]:not([class*='mat-elevation-z']) {
+.mat-fab[disabled]:not([class*="mat-elevation-z"]),
+.mat-mini-fab[disabled]:not([class*="mat-elevation-z"]) {
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(0, 0, 0, 0.14),
     0 0 0 0 rgba(0, 0, 0, 0.12);
 }
@@ -12586,7 +12591,7 @@ textarea.cdk-textarea-autosize-measuring {
   left: -16px;
 }
 
-[dir='rtl'] .mat-badge-small.mat-badge-before .mat-badge-content {
+[dir="rtl"] .mat-badge-small.mat-badge-before .mat-badge-content {
   left: auto;
   right: -16px;
 }
@@ -12595,7 +12600,7 @@ textarea.cdk-textarea-autosize-measuring {
   right: -16px;
 }
 
-[dir='rtl'] .mat-badge-small.mat-badge-after .mat-badge-content {
+[dir="rtl"] .mat-badge-small.mat-badge-after .mat-badge-content {
   right: auto;
   left: -16px;
 }
@@ -12604,7 +12609,7 @@ textarea.cdk-textarea-autosize-measuring {
   left: -8px;
 }
 
-[dir='rtl']
+[dir="rtl"]
   .mat-badge-small.mat-badge-overlap.mat-badge-before
   .mat-badge-content {
   left: auto;
@@ -12615,7 +12620,7 @@ textarea.cdk-textarea-autosize-measuring {
   right: -8px;
 }
 
-[dir='rtl']
+[dir="rtl"]
   .mat-badge-small.mat-badge-overlap.mat-badge-after
   .mat-badge-content {
   right: auto;
@@ -12640,7 +12645,7 @@ textarea.cdk-textarea-autosize-measuring {
   left: -22px;
 }
 
-[dir='rtl'] .mat-badge-medium.mat-badge-before .mat-badge-content {
+[dir="rtl"] .mat-badge-medium.mat-badge-before .mat-badge-content {
   left: auto;
   right: -22px;
 }
@@ -12649,7 +12654,7 @@ textarea.cdk-textarea-autosize-measuring {
   right: -22px;
 }
 
-[dir='rtl'] .mat-badge-medium.mat-badge-after .mat-badge-content {
+[dir="rtl"] .mat-badge-medium.mat-badge-after .mat-badge-content {
   right: auto;
   left: -22px;
 }
@@ -12658,7 +12663,7 @@ textarea.cdk-textarea-autosize-measuring {
   left: -11px;
 }
 
-[dir='rtl']
+[dir="rtl"]
   .mat-badge-medium.mat-badge-overlap.mat-badge-before
   .mat-badge-content {
   left: auto;
@@ -12669,7 +12674,7 @@ textarea.cdk-textarea-autosize-measuring {
   right: -11px;
 }
 
-[dir='rtl']
+[dir="rtl"]
   .mat-badge-medium.mat-badge-overlap.mat-badge-after
   .mat-badge-content {
   right: auto;
@@ -12694,7 +12699,7 @@ textarea.cdk-textarea-autosize-measuring {
   left: -28px;
 }
 
-[dir='rtl'] .mat-badge-large.mat-badge-before .mat-badge-content {
+[dir="rtl"] .mat-badge-large.mat-badge-before .mat-badge-content {
   left: auto;
   right: -28px;
 }
@@ -12703,7 +12708,7 @@ textarea.cdk-textarea-autosize-measuring {
   right: -28px;
 }
 
-[dir='rtl'] .mat-badge-large.mat-badge-after .mat-badge-content {
+[dir="rtl"] .mat-badge-large.mat-badge-after .mat-badge-content {
   right: auto;
   left: -28px;
 }
@@ -12712,7 +12717,7 @@ textarea.cdk-textarea-autosize-measuring {
   left: -14px;
 }
 
-[dir='rtl']
+[dir="rtl"]
   .mat-badge-large.mat-badge-overlap.mat-badge-before
   .mat-badge-content {
   left: auto;
@@ -12723,7 +12728,7 @@ textarea.cdk-textarea-autosize-measuring {
   right: -14px;
 }
 
-[dir='rtl']
+[dir="rtl"]
   .mat-badge-large.mat-badge-overlap.mat-badge-after
   .mat-badge-content {
   right: auto;
@@ -12782,7 +12787,7 @@ textarea.cdk-textarea-autosize-measuring {
   background: #fff;
 }
 
-.mat-menu-panel:not([class*='mat-elevation-z']) {
+.mat-menu-panel:not([class*="mat-elevation-z"]) {
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
     0 1px 10px 0 rgba(0, 0, 0, 0.12);
 }
@@ -12890,7 +12895,7 @@ textarea.cdk-textarea-autosize-measuring {
   background: #fff;
 }
 
-.mat-select-panel:not([class*='mat-elevation-z']) {
+.mat-select-panel:not([class*="mat-elevation-z"]) {
   box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
     0 1px 10px 0 rgba(0, 0, 0, 0.12);
 }
@@ -13168,8 +13173,8 @@ textarea.cdk-textarea-autosize-measuring {
   border-color: rgba(0, 0, 0, 0.38);
 }
 
-.mat-tab-group[class*='mat-background-'] .mat-tab-header,
-.mat-tab-nav-bar[class*='mat-background-'] {
+.mat-tab-group[class*="mat-background-"] .mat-tab-header,
+.mat-tab-nav-bar[class*="mat-background-"] {
   border-bottom: none;
   border-top: none;
 }
@@ -13468,7 +13473,7 @@ textarea.cdk-textarea-autosize-measuring {
 .bottom-nav {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
   font-family: Roboto, sans-serif;
 
   font-size: calc(var(--content) * 1.5rem);
@@ -13486,7 +13491,7 @@ textarea.cdk-textarea-autosize-measuring {
   padding-bottom: env(safe-area-inset-bottom, 0);
 }
 .bottom-nav:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -13909,14 +13914,14 @@ overlay-toasts {
 
 .scroll-btn__arrow:after,
 .scroll-btn__arrow:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   /* background-image: url(/assets/images/icons/layout/arrow-down--white--thin.svg); */
-  background-image: url('https://www.fantrax.com/assets/images/icons/layout/arrow-down--white--thin.svg');
+  background-image: url("https://www.fantrax.com/assets/images/icons/layout/arrow-down--white--thin.svg");
   background-size: contain;
   background-position: 50%;
   background-repeat: no-repeat;
@@ -14123,7 +14128,7 @@ overlay-toasts {
 .world-map {
   position: relative;
   height: 44vw;
-  background-image: url('https://www.fantrax.com/assets/images/misc/bg__world.png');
+  background-image: url("https://www.fantrax.com/assets/images/misc/bg__world.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -14156,7 +14161,7 @@ overlay-toasts {
 }
 
 .world-map__circles i:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -14795,7 +14800,7 @@ body .mat-raised-button .mat-icon {
   margin-top: 2.5%;
   height: 92.5%;
   background-color: #00559b;
-  background-image: url('https://www.fantrax.com/assets/images/logos/fantrax/logo__x.svg');
+  background-image: url("https://www.fantrax.com/assets/images/logos/fantrax/logo__x.svg");
   background-position: 50%;
   background-size: auto 50%;
   background-repeat: no-repeat;
@@ -14807,7 +14812,7 @@ body .mat-raised-button .mat-icon {
   margin-bottom: -1rem;
   margin-top: 4.5rem;
   padding: 0;
-  background-image: url('https://www.fantrax.com/assets/images/misc/app-showcase.jpg');
+  background-image: url("https://www.fantrax.com/assets/images/misc/app-showcase.jpg");
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: contain;
@@ -14897,7 +14902,7 @@ body .mat-raised-button .mat-icon {
 
 .pricing-plans > h1:before {
   position: absolute;
-  content: '$';
+  content: "$";
   top: 0;
   left: -1.6rem;
   font-size: 2.8rem;
@@ -14936,8 +14941,16 @@ body .mat-raised-button .mat-icon {
 }
 
 .pricing-plans:hover .mat-flat-button {
+  cursor: pointer;
   background-color: var(--color-primary);
   color: var(--color-white--always);
+  transition: background-color;
+}
+
+.pricing-plans:hover .mat-flat-button.disabled {
+  cursor: default;
+  background-color: #eee;
+  color: #000;
   transition: background-color;
 }
 
@@ -15039,4 +15052,14 @@ body .mat-raised-button .mat-icon {
 
 .payment-wrapper {
   background-color: #eeeeee;
+}
+
+.dropbox-close {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: 5;
 }
