@@ -1,34 +1,36 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import 'date-fns';
-import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { Formik } from 'formik';
-import { Link } from 'react-router-dom';
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { Formik } from "formik";
+import { Link } from "react-router-dom";
+import { forgotPasswordValidationSchema } from "../../helpers/validationSchema";
+import { forgotPassword } from "../../api/auth.api";
 // import { login } from '../../api/auth.api';
-const Login = () => {
+const ForgotPassword = () => {
   const useStyles = makeStyles(theme => ({
     root: {
-      '& .MuiTextField-root': {
-        width: '100%',
+      "& .MuiTextField-root": {
+        width: "100%"
       },
-      '& .MuiInputBase-input': {
-        fontSize: '15px',
+      "& .MuiInputBase-input": {
+        fontSize: "15px"
       },
-      '& .MuiFormLabel-root': {
-        fontSize: '1.3rem',
+      "& .MuiFormLabel-root": {
+        fontSize: "1.3rem"
       },
-      '& .MuiFormLabel-root ': {
-        backgroundColor: '#fff',
-      },
+      "& .MuiFormLabel-root ": {
+        backgroundColor: "#fff"
+      }
     },
     option: {
       fontSize: 15,
-      '& > span': {
-        fontSize: 18,
-      },
-    },
+      "& > span": {
+        fontSize: 18
+      }
+    }
   }));
   const classes = useStyles();
 
@@ -66,7 +68,7 @@ const Login = () => {
               >
                 {/* ///////////////// */}
                 <div className="content__headline">
-                  <h2>Secure Login</h2>
+                  <h2>Forgot Password</h2>
                   <i className="hide--phone icons icons--large icons--success--bright">
                     lock
                   </i>
@@ -95,8 +97,8 @@ const Login = () => {
                                 to="/register"
                               >
                                 <span className="mat-button-wrapper">
-                                  {' '}
-                                  Sign Up{' '}
+                                  {" "}
+                                  Sign Up{" "}
                                 </span>
                                 <div
                                   matripple
@@ -119,16 +121,23 @@ const Login = () => {
                 >
                   <Formik
                     initialValues={{
-                      username: '',
-                      password: '',
+                      email: ""
                     }}
-                    // validationSchema={signUpValidationSchema}
-                    onSubmit={(values, { setSubmitting, resetForm }) => {
+                    validationSchema={forgotPasswordValidationSchema}
+                    onSubmit={async (values, { setSubmitting, resetForm }) => {
                       setSubmitting(true);
 
-                      // const response = await login(values);
+                      const response = await forgotPassword({
+                        email: values.email
+                      });
+                      console.log("RESPONSE:", response);
+                      // // Проверка может быть другая, когда сделают бэк
+                      // if (response.success === true) {
+                      //   alert("Password reset link is sent to your e-mail");
+                      //   history.push("/");
+                      // }
 
-                      alert(JSON.stringify(values, null, 2));
+                      // alert(JSON.stringify(values, null, 2));
                       resetForm();
                       setSubmitting(false);
                     }}
@@ -140,12 +149,11 @@ const Login = () => {
                       handleChange,
                       handleBlur,
                       handleSubmit,
-                      isSubmitting,
+                      isSubmitting
                     }) => (
                       <form onSubmit={handleSubmit} className={classes.root}>
                         <p>
-                          Please enter your username and password to sign in to
-                          your Fantrax account.
+                          You will receive a password reset link to this e-mail.
                         </p>
                         <div
                           _ngcontent-ucn-c280
@@ -158,39 +166,15 @@ const Login = () => {
                               className="mat-form-field-flex ng-tns-c73-3"
                             >
                               <TextField
-                                name="username"
+                                name="email"
                                 required
                                 id="outlined-required"
-                                label="Email or User ID"
-                                value={values.username}
+                                label="Email"
+                                value={values.email}
                                 variant="outlined"
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          _ngcontent-ucn-c280
-                          appearance="outline"
-                          className="mat-form-field ng-tns-c73-4 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float mat-form-field-has-label mat-form-field-hide-placeholder ng-untouched ng-pristine ng-invalid"
-                        >
-                          <div className="mat-form-field-wrapper ng-tns-c73-4">
-                            <div
-                              style={{ padding: 0 }}
-                              className="mat-form-field-flex ng-tns-c73-4"
-                            >
-                              <TextField
-                                name="password"
-                                error={touched.password && errors.password}
-                                required
-                                id="outlined-required"
-                                label="Password"
-                                value={values.password}
-                                variant="outlined"
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                type="password"
+                                error={touched.email && errors.email}
                               />
                             </div>
                           </div>
@@ -211,7 +195,7 @@ const Login = () => {
                             type="submit"
                             className="mat-focus-indicator mat-raised-button mat-button-base mat-primary"
                           >
-                            <span className="mat-button-wrapper">Login</span>
+                            <span className="mat-button-wrapper">Send</span>
                             <div
                               matripple
                               className="mat-ripple mat-button-ripple"
@@ -220,24 +204,24 @@ const Login = () => {
                           </button>
                         </div>
                         <div class="grecaptcha-terms margin--medium font-size--tiny color--gray-light">
-                          {' '}
-                          This site is protected by reCAPTCHA and the Google{' '}
+                          {" "}
+                          This site is protected by reCAPTCHA and the Google{" "}
                           <a
                             href="https://policies.google.com/privacy"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
                             Privacy Policy
-                          </a>{' '}
-                          and{' '}
+                          </a>{" "}
+                          and{" "}
                           <a
                             href="https://policies.google.com/terms"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
                             Terms of Service
-                          </a>{' '}
-                          apply.{' '}
+                          </a>{" "}
+                          apply.{" "}
                         </div>
                       </form>
                     )}
@@ -517,4 +501,4 @@ const Login = () => {
 //   </section>
 // </div>
 
-export default Login;
+export default ForgotPassword;

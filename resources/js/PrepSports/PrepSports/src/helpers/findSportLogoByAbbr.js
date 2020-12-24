@@ -33,7 +33,7 @@ export const findSportLogoByAbbr = (
   isCurrent = false
 ) => {
   switch (smallAbbreviation) {
-    case 'mlb':
+    case 'baseball':
       return (
         <BaseballLogo
           isAboutSportPage={isAboutSportPage}
@@ -41,7 +41,7 @@ export const findSportLogoByAbbr = (
         />
         // <img style={{ height: '170px' }} src={baseballImage} alt="baseball" />
       );
-    case 'nfl':
+    case 'football':
       return (
         <FootballLogo
           isAboutSportPage={isAboutSportPage}
@@ -49,7 +49,7 @@ export const findSportLogoByAbbr = (
         />
         // <img style={{ height: '170px' }} src={footballImage} alt="baseball" />
       );
-    case 'nba':
+    case 'basketball':
       return (
         <BasketballLogo
           isAboutSportPage={isAboutSportPage}
@@ -57,7 +57,7 @@ export const findSportLogoByAbbr = (
         />
         // <img style={{ height: '170px' }} src={basketballImage} alt="baseball" />
       );
-    case 'nhl':
+    case 'hockey':
       return (
         <HockeyLogo
           isAboutSportPage={isAboutSportPage}
@@ -65,7 +65,7 @@ export const findSportLogoByAbbr = (
         />
         // <img style={{ height: '170px' }} src={hockeyImage} alt="baseball" />
       );
-    case 'pga':
+    case 'golf':
       return (
         <GolfLogo
           isAboutSportPage={isAboutSportPage}
@@ -73,14 +73,15 @@ export const findSportLogoByAbbr = (
         />
         // <img style={{ height: '170px' }} src={golfImage} alt="baseball" />
       );
-    case 'cfb':
+    case 'college_football':
       return (
-        <CollegeFootballLogo
-          isAboutSportPage={isAboutSportPage}
-          isHover={isHover || isCurrent}
-        />
+        <div></div>
+        // <CollegeFootballLogo
+        //   isAboutSportPage={isAboutSportPage}
+        //   isHover={isHover || isCurrent}
+        // />
       );
-    case 'epl':
+    case 'soccer':
       return (
         <SoccerLogo
           isAboutSportPage={isAboutSportPage}

@@ -1,35 +1,63 @@
-import React, { useState } from 'react';
-import { TextField, makeStyles } from '@material-ui/core';
-import SmallHeader from '../../components/SmallHeader/SmallHeader';
-import Sports from '../../Sports';
-import GamesSportCard from '../../components/GamesSportCard/GamesSportCard';
+import React, { useState, useEffect } from "react";
+import { TextField, makeStyles } from "@material-ui/core";
+import SmallHeader from "../../components/SmallHeader/SmallHeader";
+import Sports from "../../Sports";
+import GamesSportCard from "../../components/GamesSportCard/GamesSportCard";
+import { UserInfoContext } from "../../state/userInfo";
+import { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { getCoaches } from "../../api/coaches.api";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    '& .MuiTextField-root': {
-      width: '100%',
+    "& .MuiTextField-root": {
+      width: "100%"
     },
-    '& .MuiInputBase-input': {
-      fontSize: '15px',
+    "& .MuiInputBase-input": {
+      fontSize: "15px"
     },
-    '& .MuiFormLabel-root': {
-      fontSize: '1.3rem',
+    "& .MuiFormLabel-root": {
+      fontSize: "1.3rem"
     },
-    '& .MuiFormLabel-root ': {
-      backgroundColor: '#fff',
-    },
+    "& .MuiFormLabel-root ": {
+      backgroundColor: "#fff"
+    }
   },
   option: {
     fontSize: 15,
-    '& > span': {
-      fontSize: 18,
-    },
-  },
+    "& > span": {
+      fontSize: 18
+    }
+  }
 }));
 const ColleagueSearch = () => {
   const [currentTab, setCurrentTab] = useState({});
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState("");
   const classes = useStyles();
+  const { userInfo } = useContext(UserInfoContext);
+  const history = useHistory();
+
+  useEffect(() => {
+    console.log(userInfo);
+
+    if (userInfo?.paid_plans == 0) {
+      history.push("/plans");
+    }
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await getCoaches();
+        console.log(response);
+        // if (response.message === "success") {
+        //     setMediaReleases(response.data["media-release"].data);
+        // }
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
 
   const handleTabChange = smallAbbr => {
     setCurrentTab(
@@ -89,7 +117,10 @@ const ColleagueSearch = () => {
                       <div className="mat-form-field-subscript-wrapper ">
                         <div
                           className="mat-form-field-hint-wrapper"
-                          style={{ opacity: 1, transform: 'translateY(0%)' }}
+                          style={{
+                            opacity: 1,
+                            transform: "translateY(0%)"
+                          }}
                         >
                           <div className="mat-form-field-hint-spacer" />
                           <mat-hint
@@ -109,19 +140,6 @@ const ColleagueSearch = () => {
                 </p>
               )}
             </section>
-            <aside className="side-content content__column">
-              <long-column-ad>
-                <div className="content__column__item">
-                  <side-ad>
-                    <div className="placeholder--fluid placeholder--fluid-right-col ">
-                      <ad adid="ad-med_rect_atf">
-                        <div id="ad-med_rect_atf" />
-                      </ad>
-                    </div>
-                  </side-ad>
-                </div>
-              </long-column-ad>
-            </aside>
           </div>
         </div>
       </div>

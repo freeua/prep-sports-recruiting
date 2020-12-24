@@ -1,32 +1,58 @@
-import React, { useState, useContext } from 'react';
-import { CurrentSportContext } from '../../state/CurrentSportContext';
-import { Link } from 'react-router-dom';
-import cn from 'classnames';
-import { IsBlogPageContext } from '../../state/isBlogPageContext';
-import SportsBox from './SportsBox';
-import RecruitingBox from './RecruitingBox';
-import NotificationBox from './NotificationBox';
-import BurgerBox from './BurgerBox';
-import MySubscriptionBox from './MySubscriptionBox';
-import ProfileBox from './ProfileBox';
-import AvatarPlaceholder from '../AvatarPlaceholder';
+import React, { useState, useContext } from "react";
+import { CurrentSportContext } from "../../state/CurrentSportContext";
+import { Link } from "react-router-dom";
+import cn from "classnames";
+import { IsBlogPageContext } from "../../state/isBlogPageContext";
+import SportsBox from "./SportsBox";
+// import RecruitingBox from "./RecruitingBox";
+import NotificationBox from "./NotificationBox";
+import BurgerBox from "./BurgerBox";
+import MySubscriptionBox from "./MySubscriptionBox";
+import ProfileBox from "./ProfileBox";
+import AvatarPlaceholder from "../AvatarPlaceholder";
+import { UserInfoContext } from "../../state/userInfo";
 
 const LoggedNavbar = () => {
   const { currentSport } = useContext(CurrentSportContext);
   const { isBlogPage } = useContext(IsBlogPageContext);
+  const { userInfo } = useContext(UserInfoContext);
   const [isNavbarSports, setIsNavbarSports] = useState(false);
-  const [isNavbarRecruiting, setIsNavbarRecruiting] = useState(false);
+  // const [isNavbarRecruiting, setIsNavbarRecruiting] = useState(false);
   const [isNotificationBox, setIsNotificationBox] = useState(false);
   const [isBurgerBox, setIsBurgerBox] = useState(false);
   const [isMySubscription, setIsMySubscription] = useState(false);
   const [isProfile, setIsProfile] = useState(false);
 
+  const isAnyPopupOpened = () => {
+    if (isNavbarSports) return true;
+    // if (isNavbarRecruiting) return true;
+    if (isNotificationBox) return true;
+    if (isBurgerBox) return true;
+    if (isMySubscription) return true;
+    if (isProfile) return true;
+    return false;
+  };
+
   return (
     <div
-      style={currentSport.color ? { '--color-league': currentSport.color } : {}}
+      style={currentSport.color ? { "--color-league": currentSport.color } : {}}
       role="navigation"
       className="layout__nav"
     >
+      {isAnyPopupOpened() && (
+        <div
+          className="dropbox-close"
+          onClick={() => {
+            setIsMySubscription(false);
+            setIsNavbarSports(false);
+            // setIsNavbarRecruiting(false);
+            setIsNotificationBox(false);
+            setIsBurgerBox(false);
+            setIsProfile(false);
+          }}
+        ></div>
+      )}
+
       <router-outlet
         name="navbar"
         role="navigation"
@@ -43,21 +69,22 @@ const LoggedNavbar = () => {
         </a>
         <nav
           role="navigation"
-          className={cn('nav', {
-            blog_navbar: isBlogPage,
+          className={cn("nav", {
+            blog_navbar: isBlogPage
           })}
         >
           <div className="nav__container  ng-trigger ng-trigger-chatLayoutAnimation">
             <div className="nav__wrapper content--center ">
               <section className="nav__left ">
                 <Link tabindex="0" className="nav-item nav-item--logo " to="/">
-                  <u>Fantrax</u>
+                  <u>PrepSports</u>
                 </Link>
+
                 <div
                   onClick={() => {
                     setIsMySubscription(!isMySubscription);
                     setIsNavbarSports(false);
-                    setIsNavbarRecruiting(false);
+                    // setIsNavbarRecruiting(false);
                     setIsNotificationBox(false);
                     setIsBurgerBox(false);
                     setIsProfile(false);
@@ -69,10 +96,11 @@ const LoggedNavbar = () => {
                   </b>
                   {isMySubscription ? <MySubscriptionBox /> : null}
                 </div>
+
                 <div
                   onClick={() => {
                     setIsNavbarSports(!isNavbarSports);
-                    setIsNavbarRecruiting(false);
+                    // setIsNavbarRecruiting(false);
                     setIsNotificationBox(false);
                     setIsBurgerBox(false);
                     setIsMySubscription(false);
@@ -85,9 +113,9 @@ const LoggedNavbar = () => {
                   </b>
                   {isNavbarSports ? <SportsBox /> : null}
                 </div>
-                <div
+                {/* <div
                   onClick={() => {
-                    setIsNavbarRecruiting(!isNavbarRecruiting);
+                    // setIsNavbarRecruiting(!isNavbarRecruiting);
                     setIsNavbarSports(false);
                     setIsNotificationBox(false);
                     setIsBurgerBox(false);
@@ -100,7 +128,7 @@ const LoggedNavbar = () => {
                     Recruiting Information
                   </b>
                   {isNavbarRecruiting ? <RecruitingBox /> : null}
-                </div>
+                </div> */}
                 <div className="nav-item ">
                   <Link
                     to="/blog"
@@ -121,7 +149,7 @@ const LoggedNavbar = () => {
                     onClick={() => {
                       setIsProfile(!isProfile);
                       setIsNotificationBox(false);
-                      setIsNavbarRecruiting(false);
+                      // setIsNavbarRecruiting(false);
                       setIsNavbarSports(false);
                       setIsBurgerBox(false);
                       setIsMySubscription(false);
@@ -143,7 +171,7 @@ const LoggedNavbar = () => {
                   <b
                     onClick={() => {
                       setIsNotificationBox(!isNotificationBox);
-                      setIsNavbarRecruiting(false);
+                      // setIsNavbarRecruiting(false);
                       setIsNavbarSports(false);
                       setIsBurgerBox(false);
                       setIsMySubscription(false);
@@ -161,7 +189,7 @@ const LoggedNavbar = () => {
                     onClick={() => {
                       setIsBurgerBox(!isBurgerBox);
                       setIsNotificationBox(false);
-                      setIsNavbarRecruiting(false);
+                      // setIsNavbarRecruiting(false);
                       setIsNavbarSports(false);
                       setIsMySubscription(false);
                       setIsProfile(false);

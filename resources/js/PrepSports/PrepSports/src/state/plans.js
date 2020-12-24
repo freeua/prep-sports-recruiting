@@ -5,22 +5,17 @@
 export const plans = [
   {
     id: 1,
-    period: '6 Months',
-    price: '1.99',
+    emailsCount: '10 emails',
+    isFree: true,
   },
   {
     id: 2,
-    period: '1 Year',
+    emailsCount: '100 emails',
     price: '1.49',
   },
   {
     id: 3,
-    period: '3 Years',
-    price: '.99',
-  },
-  {
-    id: 4,
-    period: '5 Years',
-    price: '.75',
+    emailsCount: 'Unlimited',
+    price: '4.99',
   },
 ];

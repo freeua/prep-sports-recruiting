@@ -1,15 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const BurgerBox = ({ setIsBurgerBox }) => {
   return (
     <div
       onClick={() => setIsBurgerBox(false)}
       className="nav-menu nav-menu--hamburger"
-      style={{ transform: 'translateX(-50%) scale(1)', opacity: 1 }}
+      style={{ transform: "translateX(-50%) scale(1)", opacity: 1 }}
     >
       <Link className="nav-menu__link color--orange " to="/plans">
-        Go Ad Free!
+        Plans
         <i aria-hidden="true" className="icons ">
           new_releases
         </i>
@@ -20,18 +20,8 @@ const BurgerBox = ({ setIsBurgerBox }) => {
           search
         </i>
       </Link>
-      <Link className="nav-menu__link " to="/treasurer">
-        Treasurer
-        <i class="icons">account_balance</i>
-      </Link>
-      <Link className="nav-menu__link " to="/forums/general">
-        Forums
-        <i aria-hidden="true" className="icons ">
-          forum
-        </i>
-      </Link>
       <Link className="nav-menu__link " to="/contact">
-        Support &amp; Feedback
+        Contact Us
         <i aria-hidden="true" className="icons ">
           mail_outline
         </i>
@@ -42,10 +32,10 @@ const BurgerBox = ({ setIsBurgerBox }) => {
           help_outline
         </i>
       </Link>
-      <Link className="nav-menu__link " to="/features">
-        Feature Comparison
+      <Link className="nav-menu__link " to="/about">
+        About Us
         <i aria-hidden="true" className="icons ">
-          compare_arrows
+          timeline
         </i>
       </Link>
     </div>

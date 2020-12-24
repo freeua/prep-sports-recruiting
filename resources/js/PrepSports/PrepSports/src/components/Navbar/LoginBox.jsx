@@ -1,37 +1,41 @@
-import React, { useContext } from 'react';
-import { Formik } from 'formik';
-import { makeStyles } from '@material-ui/core/styles';
-import { validationSchema } from '../../helpers/validationSchema';
-import TextField from '@material-ui/core/TextField';
-import { Link } from 'react-router-dom';
-import { IsLoggedContext } from '../../state/IsLogged';
-import axios from "axios";
+import React, { useContext } from "react";
+import { Formik } from "formik";
+import { makeStyles } from "@material-ui/core/styles";
+import { validationSchema } from "../../helpers/validationSchema";
+import TextField from "@material-ui/core/TextField";
+import { Link } from "react-router-dom";
+import { IsLoggedContext } from "../../state/IsLogged";
+import { login, authMe } from "../../api/auth.api";
+import { UserInfoContext } from "../../state/userInfo";
+import { AuthMeInfoContext } from "../../state/authMeInfo";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    '& .MuiTextField-root': {
-      width: '100%',
+    "& .MuiTextField-root": {
+      width: "100%"
     },
-    '& .MuiInputBase-input': {
-      fontSize: '15px',
+    "& .MuiInputBase-input": {
+      fontSize: "15px"
     },
-    '& .MuiFormLabel-root': {
-      fontSize: '1.3rem',
+    "& .MuiFormLabel-root": {
+      fontSize: "1.3rem"
     },
-    '& .MuiFormLabel-root ': {
-      backgroundColor: '#fff',
-    },
-  },
+    "& .MuiFormLabel-root ": {
+      backgroundColor: "#fff"
+    }
+  }
 }));
 
-const LoginBox = () => {
+const LoginBox = ({ close }) => {
   const { setIsLogged } = useContext(IsLoggedContext);
+  const { setUserInfo } = useContext(UserInfoContext);
+  const { setAuthMeInfo } = useContext(AuthMeInfoContext);
   const classes = useStyles();
 
   return (
     <div
       className="nav-menu  ng-tns-c254-7 ng-trigger ng-trigger-menuState ng-star-inserted"
-      style={{ transform: 'translateX(-50%) scale(1)', opacity: 1 }}
+      style={{ transform: "translateX(-50%) scale(1)", opacity: 1 }}
     >
       <nav-profile className="ng-tns-c254-7">
         <div className="nav-login ng-star-inserted" style={{}}>
@@ -46,29 +50,42 @@ const LoginBox = () => {
             </i>
           </h5>
           <Formik
-            initialValues={{ email: '', password: '' }}
+            initialValues={{ email: "", password: "" }}
             validationSchema={validationSchema}
-            onSubmit={(values, { setSubmitting, resetForm }) => {
+            onSubmit={async (values, { setSubmitting, resetForm }) => {
               setSubmitting(true);
-              //...some side effects (server post requests)
-              setTimeout(() => {
-                // alert(JSON.stringify(values, null, 2));
+              const response = await login(values);
 
-              axios.post("auth/login",
-                  {
-                      email : values.email, password : values.password, _token : window.token})
-                      .then(response => {
-                          setIsLogged(true);
-                      })
-                      .catch(function(error) {
-                          alert(error)
-                      });
-                  resetForm();
-                  setSubmitting(false);
-                // TEMPORARY
-                // setIsLogged(true);
-                // TEMPORARY
-              }, 1000);
+              if (response.user_name) {
+                const userInfoObject = {
+                  username: response.user_name,
+                  paid_plans: response.paid_plans,
+                  access_token: response.access_token
+                };
+                setUserInfo(userInfoObject);
+
+                const userInfoResponse = await authMe(response.access_token);
+                if (userInfoResponse.id) {
+                  setAuthMeInfo(userInfoResponse);
+                  // const accDataResponse = await getAccountData({
+                  //   id: response.id,
+                  //   _token: localUserInfo.access_token
+                  // });
+                  // console.log("accDataResponse", accDataResponse);
+                  // setAccountData(accDataResponse.data);
+                }
+                localStorage.setItem(
+                  "localUserInfo",
+                  JSON.stringify(userInfoObject)
+                );
+
+                setIsLogged(true);
+                history.push("/");
+              } else {
+                alert("User doesn't exist");
+              }
+              resetForm();
+              setSubmitting(false);
             }}
           >
             {({
@@ -78,11 +95,10 @@ const LoginBox = () => {
               handleChange,
               handleBlur,
               handleSubmit,
-              isSubmitting,
+              isSubmitting
             }) => (
               <form onSubmit={handleSubmit} className={classes.root}>
-                   <input type="hidden" name="_token" value={window.token} />
-                  <div style={{ marginTop: '20px' }} className="form-group">
+                <div style={{ marginTop: "20px" }} className="form-group">
                   <div className="mat-form-field-wrapper ng-tns-c73-10">
                     <TextField
                       name="email"
@@ -113,11 +129,8 @@ const LoginBox = () => {
                 </div>
                 <div className="grid grid--center" />
                 <div className="button-group">
-                  <div className="nav-login__links">
-                    <a routerlink="/forgot-password" href="/forgot-password">
-                      Forgot Password
-                    </a>
-                    /
+                  <div onClick={close} className="nav-login__links">
+                    <Link to="/forgot-password">Forgot Password</Link>/
                     <Link routerlink="/register" to="/register">
                       Sign Up
                     </Link>
