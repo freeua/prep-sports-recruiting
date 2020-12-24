@@ -19,6 +19,47 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('contacts', 'API\ContactController');
 
+Route::post('/registration', 'RegistrationController@createRegistration');
+
+Route::group(['prefix' => 'auth', 'middleware' => 'api'], function () {
+
+  Route::post('login', 'AuthController@login');
+  Route::post('logout', 'AuthController@logout');
+  Route::post('refresh', 'AuthController@refresh');
+  Route::post('me', 'AuthController@me');
+
+});
+
+Route::group(['prefix' => 'account', 'middleware' => 'api'], function () {
+  Route::post('get-account-data', 'AccountController@getAccountData')->name('get-account-data');
+  Route::post('get-coaches', 'AccountController@getCoaches')->name('get-coaches');
+  Route::post('get-log', 'AccountController@getLog')->name('get-log');
+});
+
+Route::group(['prefix' => 'blog'], function ($router) {
+  Route::post('articles', 'BlogPageController@getArticles');
+  Route::post('article', 'BlogPageController@getArticle');
+  Route::post('articles-pagination', 'BlogPageController@articlesPagination');
+  Route::get('articles-sidebar', 'BlogPageController@articlesSidebar');
+});
+
+/* This rout for test page form email */
+Route::get('indexForm', 'MailController@indexForm');
+/* end */
+
+Route::post('send_mail', 'MailController@sendMail')->name('send-mail');
+
+Route::get('/payment', 'PaymentController@index');
+Route::get('/execute-payment', 'PaymentController@execute')->name('execute');
+Route::post('/create-payment', 'PaymentController@create')->name('create-payment');
+
+//Route::get('plan/create', 'SubscriptionController@createPlan');
+//Route::get('plan/list', 'SubscriptionController@listPlan');
+//Route::get('plan/{id}', 'SubscriptionController@showPlan');
+//Route::get('plan/{id}/activate', 'SubscriptionController@activatedPlan');
+//Route::post('plan/{id}/agreement/create', 'SubscriptionController@createAgreement')->name('create-agreement');
+//
+//Route::get('/execute-agreement/{success}', 'SubscriptionController@executeAgreement');
 // filling sport_id in coach table in db
 /* Route::post('/cadabra', function () {
  *     $countChange = 0;
