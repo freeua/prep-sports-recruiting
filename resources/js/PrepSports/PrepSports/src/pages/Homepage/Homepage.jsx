@@ -62,7 +62,7 @@ const Homepage = () => {
     const response = await getAccountData({
       // _token: userInfo.access_token,
       _token: window.token,
-      id: 9
+      id: 12
     });
     console.log(response);
   };
@@ -103,7 +103,7 @@ const Homepage = () => {
                   onClick={getAccData}
                   className="content--center mobile-clearance"
                 >
-                  <h2>Sportsss Offered</h2>
+                  <h2>Sports Offered</h2>
                   <h6>
                     Choose from a variety of season-long games in nine different
                     sports
