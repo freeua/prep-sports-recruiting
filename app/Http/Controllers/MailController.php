@@ -38,8 +38,8 @@ class MailController extends Controller
 
         Mail::send('emails.send_mail', ['data'=>$data], function ($message) use ($data) {
             $message->to($data->coach_email, 'Prep Sports Recruiting')->subject($data->subject);
-            $message->from('liza.sendega.freeua@gmail.com', 'Prep Sports Recruiting');
-            $message->replyTo('georgiyMalitskiy@gmail.com');
+            $message->from($data->user_email, 'Prep Sports Recruiting');
+            $message->replyTo($data->user_email);
         });
 
         // increment count of sending mail
