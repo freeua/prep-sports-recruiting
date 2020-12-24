@@ -1,8 +1,8 @@
-import React from 'react';
-import Sports from '../../Sports';
-import SportAbbreviationCard from '../SportAbbreviationCard/SportAbbreviationCard';
-import { Link } from 'react-router-dom';
-import { chunk } from '../../helpers/utils';
+import React from "react";
+import Sports from "../../Sports";
+import SportAbbreviationCard from "../SportAbbreviationCard/SportAbbreviationCard";
+import { Link } from "react-router-dom";
+import { chunk } from "../../helpers/utils";
 
 const Footer = () => {
   const chunkedSports = chunk(Sports, 9);
@@ -33,20 +33,20 @@ const Footer = () => {
           </div>
 
           <div className="footer__links">
+            <Link routerlink="/plans" to="/plans">
+              Plans
+            </Link>
+            <Link routerlink="/colleague-search" to="/colleague-search">
+              Colleague Search
+            </Link>
             <Link routerlink="/contact" to="/contact">
-              Support &amp; Feedback
+              Contact Us
             </Link>
             <Link routerlink="/faq" to="/faq">
               FAQ &amp; Help
             </Link>
-            <Link routerlink="/forums" to="/forums">
-              Forums
-            </Link>
-            <Link routerlink="/new-features" to="/new-features">
-              New Features
-            </Link>
-            <Link routerlink="/features" to="/features">
-              Feature Comparison
+            <Link routerlink="/about" to="/about">
+              Abous Us
             </Link>
           </div>
 
@@ -114,15 +114,15 @@ const Footer = () => {
             Fantrax - The Home of Fantasy Sports
           </p>
           <p className="margin--tiny">
-            {' '}
-            © 2008-2020{' '}
+            {" "}
+            © 2008-2020{" "}
             <Link routerlink="/" to="/">
               Fantrax
-            </Link>{' '}
-            All Rights Reserved.{' '}
+            </Link>{" "}
+            All Rights Reserved.{" "}
             <span className="footer__time margin--left-small hide--phablet">
-              {' '}
-              Sun Apr 26, 2020{' '}
+              {" "}
+              Sun Apr 26, 2020{" "}
               <span className="margin--left-smaller">
                 Version 17.0.0 - 18.0.2
               </span>

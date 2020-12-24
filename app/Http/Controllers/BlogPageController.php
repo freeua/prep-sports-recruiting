@@ -24,7 +24,10 @@ class BlogPageController extends Controller
     public function getArticle(Request $request)
     {
         $articl = Articl::where('id', '=', $request->id)->first();
-
+        $sports = $articl->sport()->get();
+        foreach ($sports as $sport) {
+            $articl->categories = $sport->name;
+        }
         return response()->json(['msg' => 'Articl', 'data' => $articl, 'status' => 'Successeful']);
     }
 

@@ -6,6 +6,7 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { Formik } from 'formik';
 import { Link } from 'react-router-dom';
+// import { login } from '../../api/auth.api';
 const Login = () => {
   const useStyles = makeStyles(theme => ({
     root: {
@@ -125,11 +126,11 @@ const Login = () => {
                     onSubmit={(values, { setSubmitting, resetForm }) => {
                       setSubmitting(true);
 
-                      setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        resetForm();
-                        setSubmitting(false);
-                      }, 1000);
+                      // const response = await login(values);
+
+                      alert(JSON.stringify(values, null, 2));
+                      resetForm();
+                      setSubmitting(false);
                     }}
                   >
                     {({

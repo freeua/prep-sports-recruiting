@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { plans } from '../../state/plans';
 import PlanCard from './PlanCard';
-import { Link } from 'react-router-dom';
 
 const Plans = () => {
   return (
@@ -59,12 +58,18 @@ const Plans = () => {
                   </article>
                 </div>
               </alert>
+
               <div className="pricing-plans__container">
-                {plans.map(({ period, price }) => (
-                  <PlanCard period={period} price={price} />
+                {plans.map(plan => (
+                  <PlanCard
+                    key={plan.price + plan.emailsCount}
+                    emailsCount={plan.emailsCount}
+                    price={plan?.price}
+                    isFree={plan?.isFree}
+                  />
                 ))}
 
-                <div className="pricing-plans pricing-plans--free ">
+                {/* <div className="pricing-plans pricing-plans--free ">
                   <figure>Free</figure>
 
                   <h1>
@@ -100,6 +105,9 @@ const Plans = () => {
                     </div>
                   </Link>
                 </div>
+                {plans.map(({ period, price }) => (
+                  <PlanCard period={period} price={price} />
+                ))} */}
               </div>
             </section>
           </div>

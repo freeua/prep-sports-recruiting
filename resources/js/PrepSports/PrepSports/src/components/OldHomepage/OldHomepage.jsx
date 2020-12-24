@@ -4,68 +4,80 @@ import SportCard from "../../components/SportCard/SportCard";
 import Sports from "../../Sports";
 
 const Homepage = () => {
-  return (
-    <Layout>
-      <div class="layout__outlet ng-tns-c273-0">
-        <router-outlet
-          name="header"
-          role="banner"
-          class="ng-tns-c273-0 ng-star-inserted"
-        ></router-outlet>
-        <router-outlet name="notice" class="ng-tns-c273-0"></router-outlet>
-        <div class="ng-tns-c273-0 ng-trigger ng-trigger-chatLayoutAnimation">
-          <router-outlet role="main" class="ng-tns-c273-0"></router-outlet>
-          <app-home class="ng-star-inserted">
-            <section class="home">
-              <section class="hero">
-                <div class="hero__logo"></div>
-                <h1 class="hero__slogan">The Home of Fantasy Sports</h1>
-                <a role="link" class="scroll-btn">
-                  <i class="scroll-btn__arrow"></i>
-                </a>
-              </section>
-              <section
-                id="home-intro"
-                class="section-wrapper section-wrapper--landing margin--reduce-bottom--medium"
-              >
-                <div class="content--center mobile-clearance">
-                  <h2>Sports Offered</h2>
-                  <h6>
-                    Choose from a variety of season-long games in nine different
-                    sports
-                  </h6>
-                </div>
-                <div
-                  tabindex="-1"
-                  class="main-content home__tiles content--center margin"
-                >
-                  <div class="grid">
-                    {Sports.map((sport) => (
-                      <SportCard
-                        title={sport.title}
-                        shortDescription={sport.shortDescription}
-                        buttonText={sport.buttonText}
-                        classname={sport.classname}
-                      />
-                    ))}
-
-                    <home-tile-baseball class="cell cell--4-col ng-star-inserted">
-                      <div
-                        tileanimationlimit=""
-                        class="tiles tiles--home tiles__mlb"
-                      >
-                        <div class="tiles__content">
-                          <h4 class="tiles__title">Baseball</h4>
-                          <div class="tiles__animation baseball__ball">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 300 300"
-                              // whiteSpace="preserve"
-                              class="tiles__svg"
+    return (
+        <Layout>
+            <div class="layout__outlet ng-tns-c273-0">
+                <router-outlet
+                    name="header"
+                    role="banner"
+                    class="ng-tns-c273-0 ng-star-inserted"
+                ></router-outlet>
+                <router-outlet
+                    name="notice"
+                    class="ng-tns-c273-0"
+                ></router-outlet>
+                <div class="ng-tns-c273-0 ng-trigger ng-trigger-chatLayoutAnimation">
+                    <router-outlet
+                        role="main"
+                        class="ng-tns-c273-0"
+                    ></router-outlet>
+                    <app-home class="ng-star-inserted">
+                        <section class="home">
+                            <section class="hero">
+                                <div class="hero__logo"></div>
+                                <h1 class="hero__slogan">
+                                    The Home of Fantasy Sports
+                                </h1>
+                                <a role="link" class="scroll-btn">
+                                    <i class="scroll-btn__arrow"></i>
+                                </a>
+                            </section>
+                            <section
+                                id="home-intro"
+                                class="section-wrapper section-wrapper--landing margin--reduce-bottom--medium"
                             >
-                              <path
-                                d="M150,2.6C68.8,2.6,2.6,68.8,2.6,150S68.8,297.3,150,297.3S297.3,231.2,297.3,150S231.2,2.6,150,2.6z M150,13
+                                <div class="content--center mobile-clearance">
+                                    <h2>Sports Offered</h2>
+                                    <h6>
+                                        Choose from a variety of season-long
+                                        games in nine different sports
+                                    </h6>
+                                </div>
+                                <div
+                                    tabindex="-1"
+                                    class="main-content home__tiles content--center margin"
+                                >
+                                    <div class="grid">
+                                        {Sports.map(sport => (
+                                            <SportCard
+                                                title={sport.title}
+                                                shortDescription={
+                                                    sport.shortDescription
+                                                }
+                                                buttonText={sport.buttonText}
+                                                classname={sport.classname}
+                                            />
+                                        ))}
+
+                                        <home-tile-baseball class="cell cell--4-col ng-star-inserted">
+                                            <div
+                                                tileanimationlimit=""
+                                                class="tiles tiles--home tiles__mlb"
+                                            >
+                                                <div class="tiles__content">
+                                                    <h4 class="tiles__title">
+                                                        Baseball
+                                                    </h4>
+                                                    <div class="tiles__animation baseball__ball">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 300 300"
+                                                            // whiteSpace="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <path
+                                                                d="M150,2.6C68.8,2.6,2.6,68.8,2.6,150S68.8,297.3,150,297.3S297.3,231.2,297.3,150S231.2,2.6,150,2.6z M150,13
           c45.7,0,86.3,22.5,111.1,57c-2,2.8-5.7,7.6-11,13.5c-0.3-2.8-1-8.3-3.6-14.1c-1,4.5-1,11.5-1.1,19.1c-5,5-10.9,10.5-17.8,15.8
           c0.5-4.8,0.6-9.4-0.7-14.8c-1.7,4-4.2,14.7-5,19c-2.4,1.7-5,3.4-7.6,5c-4.2,2.4-8.4,4.5-12.7,6.4c1.5-4.7,2.7-9.2,2.6-15
           c-3.2,4.9-7.5,14.1-9.1,17.5c-7.3,2.7-14.8,4.7-22.5,6.1c2-3.3,5.4-8.6,6.4-14.5c-4,3.9-11.4,12.9-13.5,15.5c-8.6,1-15.8,1-23.5,0.4
@@ -90,19 +102,19 @@ const Homepage = () => {
           c6.2,2.5,14,4.8,20,4.5c-4.2-2.5-9.1-5-13.6-7.1c7.8-3.4,14.9-7.4,21.2-11.7c6.4,1,13.1,1.6,20.5-0.2c-3.2-1.4-10.3-3-14.7-3.9
           c7.3-5.4,13.5-11,18.4-16c4.9-0.2,12.6-0.9,19.9-4.2c-3.7-0.8-10.6-0.9-15.1-0.9c4.8-5.4,8.2-9.8,9.9-12.4
           c14.2,21.7,22.7,47.6,22.7,75.5C287,193.3,266.9,231.9,235.5,256.9z M86,118.3C86,118.3,86,118.3,86,118.3L86,118.3z"
-                              ></path>
-                            </svg>
-                          </div>
-                          <div class="tiles__animation baseball__ball--small">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="5.2 5.2 289.2 289.2"
-                              // //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <path
-                                d="M63.9,118c1.6-8.2,1.6-13.1,3.3-16.4c4.9,4.9,11.5,9.8,16.4,13.1v1.6c1.6,4.9,1.6,8.2,6.6,14.8c0-3.3,0-6.6,0-9.8v-1.6
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="tiles__animation baseball__ball--small">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="5.2 5.2 289.2 289.2"
+                                                            // //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <path
+                                                                d="M63.9,118c1.6-8.2,1.6-13.1,3.3-16.4c4.9,4.9,11.5,9.8,16.4,13.1v1.6c1.6,4.9,1.6,8.2,6.6,14.8c0-3.3,0-6.6,0-9.8v-1.6
           c6.6,3.3,13.1,6.6,19.7,8.2c0,0,0,1.6,1.6,1.6c3.3,4.9,4.9,8.2,9.8,11.5c0-1.6-1.6-3.3-1.6-4.9c-1.6-3.3-1.6-3.3-3.3-6.6
           c6.6,1.6,14.8,3.3,21.3,4.9c4.9,4.9,8.2,8.2,14.8,11.5c-1.6-3.3-3.3-6.6-4.9-8.2l-1.6-3.3c1.6,0,4.9,0,6.6,0c4.9,0,9.8,0,14.8,0
           c4.9,4.9,11.5,6.6,18,8.2c-1.6-3.3-4.9-4.9-8.2-8.2l-1.6-1.6c6.6-1.6,13.1-3.3,19.7-4.9c4.9,3.3,13.1,4.9,19.7,3.3
@@ -115,9 +127,9 @@ const Homepage = () => {
           l1.6-1.6c-4.9,0-9.8,1.6-9.8,1.6c-3.3,1.6-4.9,3.3-8.2,4.9c-6.6-3.3-13.1-6.6-18-9.8c4.9-1.6,9.8-4.9,13.1-6.6
           c-4.9,0-14.8,0-19.7,1.6c-4.9-3.3-9.8-6.6-14.8-9.8c4.9,0,8.2-1.6,9.8-1.6c0,0,1.6,0,1.6-1.6c-3.3-1.6-11.5-3.3-16.4-3.3
           c-4.7-3.1-7.9-7.8-12.5-12.5c-1.9,2.5-3.7,5.1-5.4,7.8c3.3,4.8,8.1,9.6,11.3,12.8C59,108.2,60.7,114.8,63.9,118z"
-                              ></path>
-                              <path
-                                d="M224.6,244.3c-6.6-4.9-13.1-8.2-19.7-11.5c-1.6-4.9-6.6-11.5-11.5-16.4c0,3.3,1.6,8.2,3.3,13.1c-6.6-3.3-14.8-4.9-21.3-6.6
+                                                            ></path>
+                                                            <path
+                                                                d="M224.6,244.3c-6.6-4.9-13.1-8.2-19.7-11.5c-1.6-4.9-6.6-11.5-11.5-16.4c0,3.3,1.6,8.2,3.3,13.1c-6.6-3.3-14.8-4.9-21.3-6.6
           c-3.3-4.9-8.2-9.8-14.8-13.1c0,1.6,3.3,6.6,4.9,9.8c0,0,0,1.2,1.1,1.6c-11-1.6-14.3-1.5-20.8,0.1c-6.6-4.9-13.1-8.2-18-9.8
           c1.6,1.6,4.9,4.9,6.6,8.2l1.6,1.6c-6.6,0-14.8,1.6-21.3,4.9c-4.9-3.3-13.1-4.9-19.7-4.9c3.3,3.3,8.2,6.6,11.5,8.2
           c-6.6,1.6-13.1,4.9-19.7,9.8c0,0-7-2.8-18.5-0.6c1.3,1.2,2.6,2.3,4,3.5c1,0.3,2,0.4,3,0.4c0,0,3.3,1.6,4.9,1.6
@@ -125,27 +137,27 @@ const Homepage = () => {
           c6.6-1.6,13.1-3.3,19.7-3.3c-3.3,4.9-4.9,8.2-4.9,11.5c3.3-1.6,8.2-6.6,8.2-6.6c1.6-1.6,4.9-3.3,6.6-4.9c6.6,0,9.8,0,21.3,0
           c-4.9,3.3-6.6,6.6-8.2,9.8c4.9-1.6,13.1-6.6,16.4-8.2c6.6,1.6,13.1,3.3,19.7,6.6c-4.9,3.3-8.2,4.9-9.8,8.2c3.3,0,9.8-1.6,14.8-3.3
           l3.3-1.6c5.6,2.8,10,5.6,15.2,8.4c3-2.1,5.8-4.4,8.6-6.8c-1.4-3.1-2.7-7-4.1-9.8C224.6,237.7,224.6,237.7,224.6,244.3z"
-                              ></path>
-                              <path
-                                d="M252,47.5C224.7,20.2,188.4,5.2,149.8,5.2s-74.9,15-102.2,42.3S5.2,111.1,5.2,149.7s15,74.9,42.3,102.2
+                                                            ></path>
+                                                            <path
+                                                                d="M252,47.5C224.7,20.2,188.4,5.2,149.8,5.2s-74.9,15-102.2,42.3S5.2,111.1,5.2,149.7s15,74.9,42.3,102.2
           s63.6,42.3,102.2,42.3s74.9-15,102.2-42.3s42.3-63.6,42.3-102.2S279.3,74.8,252,47.5z M228.7,240.9c-2.8,2.4-5.6,4.7-8.6,6.8
           c-19.8,14.2-44.1,22.6-70.3,22.6c-24.7,0-47.7-7.5-66.9-20.2c-1.8-1.2-3.6-2.5-5.3-3.8c-1.8-1.3-3.5-2.7-5.2-4.1
           c-1.3-1.1-2.7-2.3-4-3.5c-24.1-22-39.2-53.7-39.2-89c0-23.6,6.8-45.6,18.5-64.2c1.7-2.7,3.5-5.3,5.4-7.8c0.2-0.2,0.3-0.4,0.5-0.7
           c1.1-1.5,2.2-2.9,3.4-4.3c22.1-26.6,55.5-43.6,92.8-43.6c37.3,0,70.6,16.9,92.7,43.5c0.3,0.3,0.6,0.7,0.8,1c1.9,2.3,3.7,4.7,5.4,7.1
           c1.1,1.6,2.2,3.3,3.3,5c11.6,18.5,18.4,40.5,18.4,64C270.4,186.2,254.2,218.8,228.7,240.9z"
-                              ></path>
-                            </svg>
-                          </div>
-                          <div class="tiles__animation baseball__glove">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 512 512"
-                              // //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <path
-                                d="M310.7,510.8c30.5-4,60.6-16,87.1-34.8c27.2-19.3,49.3-45.1,64-74.5c8.5-17.1,14.7-33.4,18.8-49.8
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="tiles__animation baseball__glove">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 512 512"
+                                                            // //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <path
+                                                                d="M310.7,510.8c30.5-4,60.6-16,87.1-34.8c27.2-19.3,49.3-45.1,64-74.5c8.5-17.1,14.7-33.4,18.8-49.8
           c17.3-53.1,27.2-103.4,30.3-153.8c0-0.1,0-0.1,0-0.2c1.1-26.1,1.1-53.4-12.1-75.2c-11.1-19.9-32-33.6-53-35.2
           c-9.9-35.2-41.5-61.6-75.6-61.6c-3.9,0-7.8,0.4-11.6,1.1c-0.5,0.1-0.9,0.2-1.4,0.4c-0.6,0.2-0.9,0.2-0.9,0.3c0,0,0,0-0.1,0
           c-0.3-0.3-0.8-0.7-1.9-1.8c-12.4-13-29.9-20.4-48-20.4c-14.9,0-29,5.1-39.9,14.3c-10.3-6.5-22-12.9-35-16.9
@@ -167,42 +179,51 @@ const Homepage = () => {
           c0.1,0.1,0.1,0.3,0.2,0.4c10.2,16.7,10.1,40.4,9.1,63.2c-3,48.7-12.6,97.3-29.4,148.7c-0.1,0.2-0.1,0.5-0.2,0.7
           c-3.8,15-9.4,30-17.3,45.8c-26,52.1-78.9,90.4-134.7,97.7c-7.6,1-15.3,1.4-23,1.4c-46.4,0-94.5-17.5-135.4-49.4
           C105.7,406.7,68.1,355.7,40.7,294.4z"
-                              ></path>
-                            </svg>
-                          </div>
-                        </div>
-                        <a
-                          class="tiles__cover"
-                          href="/fantasy/games/season-long/mlb"
-                        >
-                          <p>
-                            {" "}
-                            Play Head-to-Head, Salary Cap and Rotisserie games
-                            with advanced features you can't find anywhere else.{" "}
-                          </p>
-                          <span class="btn btn--uppercase">PLAY BALL!</span>
-                        </a>
-                        <a class="tiles__fake"></a>
-                      </div>
-                    </home-tile-baseball>
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <a
+                                                    class="tiles__cover"
+                                                    href="/fantasy/games/season-long/mlb"
+                                                >
+                                                    <p>
+                                                        {" "}
+                                                        Play Head-to-Head,
+                                                        Salary Cap and
+                                                        Rotisserie games with
+                                                        advanced features you
+                                                        can't find anywhere
+                                                        else.{" "}
+                                                    </p>
+                                                    <span class="btn btn--uppercase">
+                                                        PLAY BALL!
+                                                    </span>
+                                                </a>
+                                                <a class="tiles__fake"></a>
+                                            </div>
+                                        </home-tile-baseball>
 
-                    <home-tile-football class="cell cell--4-col ng-star-inserted">
-                      <div
-                        tileanimationlimit=""
-                        class="tiles tiles--home tiles__nfl"
-                      >
-                        <div class="tiles__content">
-                          <h4 class="tiles__title"> Football</h4>
-                          <div class="tiles__animation football__ball">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="4.1 4.2 19.8 19.6"
-                              // //xml:space="preserve"
-                              class="tiles__svg ng-star-inserted"
-                            >
-                              <path
-                                d="M12.1,8c0.3,0.2,0.6,0.3,1,0.5l-0.2,0.3c-0.1,0.1,0,0.2,0.1,0.2c0,0,0.1,0,0.1,0c0.1,0,0.1,0,0.1-0.1l0.2-0.3
+                                        <home-tile-football class="cell cell--4-col ng-star-inserted">
+                                            <div
+                                                tileanimationlimit=""
+                                                class="tiles tiles--home tiles__nfl"
+                                            >
+                                                <div class="tiles__content">
+                                                    <h4 class="tiles__title">
+                                                        {" "}
+                                                        Football
+                                                    </h4>
+                                                    <div class="tiles__animation football__ball">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="4.1 4.2 19.8 19.6"
+                                                            // //xml:space="preserve"
+                                                            class="tiles__svg ng-star-inserted"
+                                                        >
+                                                            <path
+                                                                d="M12.1,8c0.3,0.2,0.6,0.3,1,0.5l-0.2,0.3c-0.1,0.1,0,0.2,0.1,0.2c0,0,0.1,0,0.1,0c0.1,0,0.1,0,0.1-0.1l0.2-0.3
             c0.3,0.2,0.6,0.4,0.8,0.6l-0.2,0.3c-0.1,0.1,0,0.2,0,0.2c0,0,0.1,0,0.1,0c0.1,0,0.1,0,0.1-0.1l0.2-0.3c0.3,0.2,0.6,0.5,0.8,0.7
             L15,10.5c-0.1,0.1-0.1,0.2,0,0.2c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1-0.1l0.3-0.3c0.3,0.3,0.6,0.5,0.8,0.8l-0.3,0.3
             c-0.1,0.1-0.1,0.2,0,0.2c0,0,0.1,0.1,0.1,0.1c0,0,0.1,0,0.1,0l0.3-0.3c0.3,0.3,0.5,0.6,0.8,0.9l-0.3,0.2c-0.1,0.1-0.1,0.2,0,0.2
@@ -216,62 +237,69 @@ const Homepage = () => {
             c-0.1-0.1-0.2-0.1-0.2,0L16.7,11c-0.3-0.3-0.6-0.6-0.9-0.8l0.3-0.3c0.1-0.1,0.1-0.2,0-0.2c-0.1-0.1-0.2-0.1-0.2,0L15.5,10
             c-0.3-0.3-0.6-0.5-0.9-0.7l0.2-0.3c0.1-0.1,0-0.2,0-0.2c-0.1-0.1-0.2,0-0.2,0L14.4,9c-0.3-0.2-0.6-0.4-0.9-0.6l0.2-0.3
             c0.1-0.1,0-0.2-0.1-0.2s-0.2,0-0.2,0.1l-0.2,0.3c-0.3-0.2-0.7-0.4-1-0.5c-0.1,0-0.2,0-0.2,0.1C12,7.9,12,8,12.1,8z"
-                              ></path>
-                              <path
-                                d="M20.1,8.8c-2.6-2.9-6.5-4.6-10.6-4.6C8,4.2,6.5,4.4,5,4.9L4.8,4.9l0,0.2c-1.3,5.4-0.6,10.3,2.1,13.7c2.5,3.2,6.6,5,11.4,5
+                                                            ></path>
+                                                            <path
+                                                                d="M20.1,8.8c-2.6-2.9-6.5-4.6-10.6-4.6C8,4.2,6.5,4.4,5,4.9L4.8,4.9l0,0.2c-1.3,5.4-0.6,10.3,2.1,13.7c2.5,3.2,6.6,5,11.4,5
             c1.5,0,3-0.2,4.6-0.5l0.2,0l0.1-0.2C24.8,18.5,23.6,12.6,20.1,8.8z M22.5,22.7c-1.5,0.3-2.9,0.4-4.2,0.4c-4.6,0-8.5-1.7-10.9-4.7
             c-2.5-3.2-3.2-7.8-2-12.9c1.3-0.4,2.7-0.6,4.1-0.6c1.2,0,2.3,0.1,3.5,0.4c-0.5,0.1-1.1,0.2-1.6,0.4c0,0,0,0,0,0
             c-2.6,0.9-4.7,2.9-5.8,5.4c0,0.6,0.1,1.1,0.2,1.7c0.4-1.6,1.2-3,2.2-4.1l0,0c1.3-1.4,3-2.3,4.9-2.7C13.4,6,14,5.9,14.6,5.9v0
             c1.9,0.7,3.6,1.9,5,3.4c1.5,1.7,2.6,3.8,3.2,6c0,0.8-0.1,1.5-0.3,2.2v0c-0.1,0.4-0.3,0.7-0.4,1.1c0,0,0,0,0,0c0,0.1-0.1,0.2-0.2,0.3
             c0,0,0,0.1-0.1,0.1c0,0.1-0.1,0.1-0.1,0.2c-0.4,0.7-1,1.3-1.6,1.8l0,0c-0.8,0.6-1.6,1.1-2.6,1.4c0.3,0,0.6,0,0.9,0
             c0.3,0,0.6,0,0.9,0c1.4-0.8,2.5-1.9,3.3-3.3c0,0,0,0,0,0c0.3-0.5,0.5-1,0.7-1.6C23.3,19.3,23.1,21,22.5,22.7z"
-                              ></path>
-                            </svg>
-                          </div>
-                          <div class="tiles__animation football__net">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 124 156"
-                              //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <polygon points="124,0 118,0 118,68 6,68 6,0 0,0 0,74 59,74 59,156 65,156 65,74 124,74 "></polygon>
-                            </svg>
-                          </div>
-                        </div>
-                        <a
-                          class="tiles__cover ng-star-inserted"
-                          href="/fantasy/games/season-long/nfl"
-                        >
-                          <p>
-                            {" "}
-                            Kickoff your Fantasy Football season at Fantrax with
-                            the best Commissioner, Salary Cap and Classic Draft
-                            leagues around.{" "}
-                          </p>
-                          <span class="btn btn--uppercase">It's good!</span>
-                        </a>
-                        <a class="tiles__fake"></a>
-                      </div>
-                    </home-tile-football>
-                    <home-tile-racing class="cell cell--4-col ng-star-inserted">
-                      <div
-                        tileanimationlimit=""
-                        class="tiles tiles--home tiles__nas kill-animation"
-                      >
-                        <div class="tiles__content">
-                          <h4 class="tiles__title">NASCAR</h4>
-                          <div class="tiles__animation indycar__car">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 451 132.8"
-                              //xml:space="preserve"
-                              class="tiles__svg ng-star-inserted"
-                            >
-                              <path
-                                d="M444.5,78.6v10.6c-3,4.7-8.5,11.3-10.6,12.5c-7.3,4-30.9,5.1-44.3,5.3c0.6-2.5,0.9-5,0.9-7.6c0-18.5-15-33.5-33.5-33.5
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="tiles__animation football__net">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 124 156"
+                                                            //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <polygon points="124,0 118,0 118,68 6,68 6,0 0,0 0,74 59,74 59,156 65,156 65,74 124,74 "></polygon>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <a
+                                                    class="tiles__cover ng-star-inserted"
+                                                    href="/fantasy/games/season-long/nfl"
+                                                >
+                                                    <p>
+                                                        {" "}
+                                                        Kickoff your Fantasy
+                                                        Football season at
+                                                        Fantrax with the best
+                                                        Commissioner, Salary Cap
+                                                        and Classic Draft
+                                                        leagues around.{" "}
+                                                    </p>
+                                                    <span class="btn btn--uppercase">
+                                                        It's good!
+                                                    </span>
+                                                </a>
+                                                <a class="tiles__fake"></a>
+                                            </div>
+                                        </home-tile-football>
+                                        <home-tile-racing class="cell cell--4-col ng-star-inserted">
+                                            <div
+                                                tileanimationlimit=""
+                                                class="tiles tiles--home tiles__nas kill-animation"
+                                            >
+                                                <div class="tiles__content">
+                                                    <h4 class="tiles__title">
+                                                        NASCAR
+                                                    </h4>
+                                                    <div class="tiles__animation indycar__car">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 451 132.8"
+                                                            //xml:space="preserve"
+                                                            class="tiles__svg ng-star-inserted"
+                                                        >
+                                                            <path
+                                                                d="M444.5,78.6v10.6c-3,4.7-8.5,11.3-10.6,12.5c-7.3,4-30.9,5.1-44.3,5.3c0.6-2.5,0.9-5,0.9-7.6c0-18.5-15-33.5-33.5-33.5
           c-18.5,0-33.5,15-33.5,33.5c0,2.7,0.3,5.3,0.9,7.7l-216.8,3c1.1-3.4,1.8-7,1.8-10.8c0-18.5-15-33.5-33.5-33.5
           c-18.5,0-33.5,15-33.5,33.5c0,4,0.7,7.7,2,11.2c-18.9,0.6-29.8-1.3-35.1-2.8l1.4-1.5c0.5-0.6,0.8-1.3,0.9-2
           c0.6-14.5,3.1-32,5.9-34.9c20-20.2,113.8-24.6,114.8-24.7c0.5,0,1-0.2,1.4-0.4c0.5-0.3,51.8-29.8,70.3-34.5
@@ -284,41 +312,41 @@ const Homepage = () => {
           c0.4,0.2,9.6,5.1,35.3,5.1c3.1,0,6.4-0.1,10-0.2c5.9,9.6,16.5,16.1,28.6,16.1c12.2,0,22.9-6.6,28.8-16.4l221.9-3.1
           c5.3,11.5,16.9,19.5,30.4,19.5c13.6,0,25.3-8.1,30.5-19.7c10.5,0,39.6-0.6,49.5-6.1c4.3-2.4,11.7-12.9,13.2-15
           c0.4-0.5,0.3-1.2,0.3-1.8V77c0-1-0.2-1.9-1-2.5L442.4,69z"
-                              ></path>
-                              <path
-                                d="M358.2,31.5c-0.8,0.3-20.8,7.8-28.2,9.1c-29,5.2-92.9,6.1-134.9,6.1c-22,0-38.1-0.3-39.9-0.3c-1.7,0-3.1-1.5-3.1-3.2
+                                                            ></path>
+                                                            <path
+                                                                d="M358.2,31.5c-0.8,0.3-20.8,7.8-28.2,9.1c-29,5.2-92.9,6.1-134.9,6.1c-22,0-38.1-0.3-39.9-0.3c-1.7,0-3.1-1.5-3.1-3.2
           s1.5-3.2,3.2-3.1c1.3,0,130,2.1,173.6-5.7c6.8-1.2,26.9-8.7,27.1-8.8c1.6-0.6,3.5,0.2,4.1,1.8C360.6,29.1,359.8,30.9,358.2,31.5z"
-                              ></path>
-                              <path
-                                fill="#6BBE45"
-                                d="M223.1,70.7c2.7,0,5.2-2.2,5.6-4.9c0.3-2.7-1.5-4.9-4.2-4.9s-5.2,2.2-5.6,4.9
+                                                            ></path>
+                                                            <path
+                                                                fill="#6BBE45"
+                                                                d="M223.1,70.7c2.7,0,5.2-2.2,5.6-4.9c0.3-2.7-1.5-4.9-4.2-4.9s-5.2,2.2-5.6,4.9
           C218.4,68.4,220.4,70.7,223.1,70.7z"
-                              ></path>
-                              <path
-                                d="M222.8,75.7c-0.7-0.2-11.4-4.7-9.4-18.3l0.1-0.9h-7.5l-0.1,1c-1.4,10,2.4,16.4,5.7,20
+                                                            ></path>
+                                                            <path
+                                                                d="M222.8,75.7c-0.7-0.2-11.4-4.7-9.4-18.3l0.1-0.9h-7.5l-0.1,1c-1.4,10,2.4,16.4,5.7,20
           c3.6,3.9,7.7,5.3,7.8,5.3h0.1c13.2,4.2,11.1,17.5,11,18.1l-0.1,0.9l3.7,0.1v-0.1h3.7l0.1-0.9c0.2-1.1,0.7-5.5-0.6-10.2
           C235.9,85.6,232.3,78.9,222.8,75.7z"
-                              ></path>
-                              <path
-                                d="M243.9,57.5l0.1-0.9h-7.5l-0.1,0.9c-1,7.5-5,12.2-8.6,15c2.6,1,4.7,2.3,6.4,3.6
+                                                            ></path>
+                                                            <path
+                                                                d="M243.9,57.5l0.1-0.9h-7.5l-0.1,0.9c-1,7.5-5,12.2-8.6,15c2.6,1,4.7,2.3,6.4,3.6
             C238.2,72.4,242.6,66.4,243.9,57.5z"
-                              ></path>
-                              <path
-                                d="M215.3,86.4c-0.1,0-3-1-5.9-3.6c-2.4,2.3-4.4,4.9-6,7.8c-2.6,4.8-3.3,9.1-3.4,10.2l-0.1,0.9h7.5v-0.8
+                                                            ></path>
+                                                            <path
+                                                                d="M215.3,86.4c-0.1,0-3-1-5.9-3.6c-2.4,2.3-4.4,4.9-6,7.8c-2.6,4.8-3.3,9.1-3.4,10.2l-0.1,0.9h7.5v-0.8
           c0-0.3,1-8.7,8.4-14.3C215.6,86.5,215.5,86.5,215.3,86.4L215.3,86.4z"
-                              ></path>
-                            </svg>
-                          </div>
-                          <div class="tiles__animation indycar__flag">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 260.2 301.9"
-                              //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <path
-                                d="M260.2,0l-12.3,0l0,13.5c-5.6-2.1-13.6-4.3-23.3-6.1C206.3,3.8,177.9,2,146,13.2c-5.1,1.8-9.8,3.9-14.3,6.5
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="tiles__animation indycar__flag">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 260.2 301.9"
+                                                            //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <path
+                                                                d="M260.2,0l-12.3,0l0,13.5c-5.6-2.1-13.6-4.3-23.3-6.1C206.3,3.8,177.9,2,146,13.2c-5.1,1.8-9.8,3.9-14.3,6.5
           c-12,6.8-20.5,15.2-28.7,23.4c-7.3,7.2-14.1,14-22.8,18.9c-2.9,1.6-5.8,3-8.9,4C43,75.9,9,67.9,8.6,67.8L0,65.7l56.1,160.1l2.8,0.5
           c1.1,0.2,27.3,4.4,54-5c5-1.7,9.7-3.9,14.2-6.5c5.5-3.1,10.1-6.4,15-9.9c5.1-3.6,10.3-7.4,16.8-11.1c6.4-3.6,13.3-6.7,21-9.4
           c25.3-8.9,57.3,3.1,68,7.7l0.1,109.7l12.3,0V0z M200.8,121.8l-0.6,49.9c-7.9,0-15.9,1.1-23.5,3.7c-8.1,2.8-15.4,6.1-22.2,9.9
@@ -326,108 +354,127 @@ const Homepage = () => {
           L29,119.3c22.5,6.2,39.4,4.6,39.4,4.6L56.7,79.4c5.9-0.9,11.9-2.2,17.7-4.3c3.6-1.3,7.1-2.8,10.5-4.7c7.6-4.3,13.9-9.9,19.9-15.6
           l5.6,49.4c0,0,24.8-25.2,35.6-28.9l-3.9-50.1c2.3-1.1,4.7-2,7.1-2.9c20.2-7.1,38.9-8.6,54.2-7.8l-1.7,49.3c0,0,22.5,0.2,46.1,9
           l0,60.6C238.1,129.5,218.2,122.4,200.8,121.8z"
-                              ></path>
-                              <path
-                                d="M154.8,71.5c-5,1.8-8.9,3.8-8.9,3.8l4.6,59.3c0,0,10.1-5.3,20.9-9.1s29.4-3.6,29.4-3.6l0.9-58
+                                                            ></path>
+                                                            <path
+                                                                d="M154.8,71.5c-5,1.8-8.9,3.8-8.9,3.8l4.6,59.3c0,0,10.1-5.3,20.9-9.1s29.4-3.6,29.4-3.6l0.9-58
           C201.7,63.8,178.9,63.1,154.8,71.5z"
-                              ></path>
-                              <path
-                                d="M85.5,120.5c-9,3.1-17.1,3.4-17.1,3.4l12.1,46c0,0,10.1-1.6,17.8-4.3c7.7-2.7,18.1-8.7,18.1-8.7l-6-52.8
+                                                            ></path>
+                                                            <path
+                                                                d="M85.5,120.5c-9,3.1-17.1,3.4-17.1,3.4l12.1,46c0,0,10.1-1.6,17.8-4.3c7.7-2.7,18.1-8.7,18.1-8.7l-6-52.8
           C110.4,104.2,99.5,115.6,85.5,120.5z"
-                              ></path>
-                            </svg>
-                          </div>
-                        </div>
-                        <a
-                          class="tiles__cover ng-star-inserted"
-                          href="/fantasy/games/season-long/nascar"
-                        >
-                          <p>
-                            {" "}
-                            Take the checkered flag this racing season in the
-                            most customizable Nascar commissioner game on the
-                            track.{" "}
-                          </p>
-                          <span class="btn btn--uppercase">
-                            START YOUR ENGINES!
-                          </span>
-                        </a>
-                        <a class="tiles__fake"></a>
-                      </div>
-                    </home-tile-racing>
-                    <home-tile-basketball class="cell cell--4-col ng-star-inserted">
-                      <div
-                        tileanimationlimit=""
-                        class="tiles tiles--home tiles__nba"
-                      >
-                        <div class="tiles__content">
-                          <h4 class="tiles__title"> Basketball</h4>
-                          <div class="tiles__animation basketball__ball">
-                            <svg
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 296 297"
-                              version="1.1"
-                              //xml:space="preserve"
-                              class="tiles__svg ng-star-inserted"
-                            >
-                              <path
-                                d="M62.719,39.337c32.056,-5.105 63.922,20.779 94.736,46.329c20.359,17.709 41.031,34.463 59.975,38.648c2.148,0.475 4.198,0.928 6.584,0.328c0.746,6.822 1.416,13.524 1.087,20.109l-4.436,0.146l-0.474,2.148l0.474,-2.148c-66.817,-2.575 -166.744,-0.381 -211.585,7.429c0.182,-11.02 0.461,-22.019 2.791,-32.565c8.42,-33.472 26.673,-61.391 50.848,-80.424ZM170.283,12.306c27.159,17.061 47.155,56.81 52.726,106.687c-18.344,-1.8 -40.09,-18.792 -62.36,-38.049c-27.068,-22.571 -57.882,-48.121 -90.063,-47.55c29.448,-17.868 64.483,-26.718 99.697,-21.088ZM265.584,76.476c-7.136,27.201 -19.007,41.067 -37.065,42.607c-4.441,-39.692 -18.474,-81.402 -45.542,-103.973c35.62,8.894 64.739,31.918 82.607,61.366ZM285.699,149.457c-11.621,-2.317 -50.673,-4.664 -50.673,-4.664l-4.436,0.146c0.328,-6.584 -0.342,-13.287 -1.088,-20.108c19.034,-1.325 32.099,-15.029 39.974,-40.94c11.249,19.076 17.137,41.497 16.223,65.566ZM189.54,280.679c22.48,-21.557 36.36,-59.353 40.023,-106.063c18.797,-0.25 31.309,13.574 39.867,39.737c-17.25,32.647 -46.669,55.949 -79.89,66.326ZM74.429,266.308c31.966,0.405 63.387,-26.858 89.704,-50.948c22.005,-19.409 41.41,-37.243 59.607,-39.88c-3.279,50.072 -21.094,90.378 -47.299,108.86c-18.747,4.665 -39.692,4.441 -59.71,0.019c-14.431,-4.212 -29.559,-10.832 -42.302,-18.051ZM234.932,149.821c21.782,1.536 39.056,2.829 50.676,5.147c-0.566,7.658 -1.111,16.219 -2.751,23.64c-2.33,10.545 -5.734,20.854 -9.877,29.872c-8.773,-25.185 -23.573,-38.389 -42.154,-39.115c0.328,-6.584 0.635,-13.071 -0.013,-19.871l4.119,0.327ZM220.693,149.409l4.436,-0.146c-0.328,6.584 0.341,13.286 0.013,19.871c-20.345,2.161 -41.039,20.734 -63.304,41.316c-30.369,27.598 -61.888,54.84 -95.813,48.471c-32.341,-23.736 -53.766,-61.651 -55.704,-102.941c41.242,-6.353 143.554,-9.146 210.372,-6.571ZM115.789,294.187c80.069,17.69 159.826,-33.202 177.516,-113.271c17.691,-80.069 -33.202,-159.826 -113.271,-177.516c-48.432,-10.701 -97.039,3.958 -131.558,35.043c-22.005,19.41 -38.013,46.904 -44.766,77.467c-18.882,80.83 32.01,160.587 112.079,178.277Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                            </svg>
-                          </div>
-                          <div class="tiles__animation basketball__board">
-                            <svg
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 430 386"
-                              version="1.1"
-                              //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <path
-                                d="M309,226.5l0,-124.5l-194,0l0,126l0.7,0c-18.4,5.1 -27.4,11.4 -27.4,19.2c0,1.2 0.2,2.3 0.6,3.5l39.2,132.1l3.8,-1.1l2.5,3.1l35.4,-28.9l45.4,30.7l41.3,-31l32.7,29.1l2.7,-3l3.8,1.3l44.6,-130.2c1.1,-1.8 1.8,-3.6 1.8,-5.5c0.1,-8.7 -11.1,-15.5 -33.1,-20.8ZM315.2,301.6l-8.5,6.4l-36.7,-33.8l0.1,-0.1c12,-1.2 23,-2.9 32.8,-4.9c11.1,-2.3 19.7,-4.9 26.1,-7.9l-13.8,40.3ZM114.5,308.6l-14.2,-47.8c6.4,3.2 15.5,5.9 27.2,8.4c10.5,2.2 22.6,3.9 35.7,5.2l-39.9,40.1l-8.8,-5.9ZM170.2,278.6l39.1,34.8l-39.8,32.5l-39.5,-26.8l40.2,-40.5ZM178.9,275.7c11.6,0.7 23.8,1.1 36.3,1.1c14.1,0 27.8,-0.5 40.7,-1.4l-40.4,32.9l-36.6,-32.6ZM263.8,279.3l36.4,33.5l-43.1,32.3l-35.4,-31.5l42.1,-34.3ZM123,110l178,0l0,114.8c-23,-4.6 -53.6,-7.2 -85.7,-7.2c-33.1,0 -64.4,2.7 -87.9,7.6c-1.5,0.3 -2.4,0.6 -4.4,0.9l0,-116.1ZM194,226c7,-0.3 14.2,-0.4 21.5,-0.4c7.3,0 14.5,0.1 21.5,0.4l0,17l-43,0l0,-17ZM129.3,233c15.8,-3.3 34.7,-5.6 56.7,-6.7l0,24.7l59,0l0,-24.7c21,1.1 40.6,3.4 56.4,6.7c24.5,5.1 31.9,10.9 32.7,13.7l-0.8,2.3c-2.5,3.1 -11,8 -32,12.3c-22.9,4.8 -53.5,7.4 -86.1,7.4c-32.6,0 -63.1,-2.6 -86.1,-7.4c-23.8,-4.9 -31.5,-10.6 -32.6,-13.5l0,-0.1c-0.1,-0.2 0,-0.4 0,-0.6c-0.1,-2.4 6.9,-8.7 32.8,-14.1ZM134.1,374.7l-13.7,-46l3.8,-3.8l38.8,26.3l-28.9,23.5ZM215.1,376.7l-38.7,-26.2l38.9,-31.7l35.2,31.3l-35.4,26.6ZM290.2,374.6l-27,-24l43,-32.2l2.3,2.2l0.3,-0.4l-18.6,54.4Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M0,0l0,258l68,0l0,-8l-60,0l0,-242l414,0l0,242l-60,0l0,8l68,0l0,-258l-430,0Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                            </svg>
-                          </div>
-                        </div>
-                        <a
-                          class="tiles__cover ng-star-inserted"
-                          href="/fantasy/games/season-long/nba"
-                        >
-                          <p>
-                            {" "}
-                            Make this season a Slam Dunk with the most
-                            customizable NBA Commissioner product on the market.{" "}
-                          </p>
-                          <span class="btn btn--uppercase">
-                            TIME FOR TIP-OFF!
-                          </span>
-                        </a>
-                        <a class="tiles__fake"></a>
-                      </div>
-                    </home-tile-basketball>
-                    <home-tile-hockey class="cell cell--4-col ng-star-inserted">
-                      <div
-                        tileanimationlimit=""
-                        class="tiles tiles--home tiles__nhl"
-                      >
-                        <div class="tiles__content">
-                          <h4 class="tiles__title">Hockey</h4>
-                          <div class="tiles__animation hockey__net">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 336.3 172.6"
-                              //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <path
-                                d="M336.3,137.6h-0.4L303.1,22.9c-0.3-2-0.9-3.9-1.6-5.7l0,0l0,0C297.4,7,287.5,0,275.6,0H38C22.3,0,10,12.2,10,27.9L0,168.4
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <a
+                                                    class="tiles__cover ng-star-inserted"
+                                                    href="/fantasy/games/season-long/nascar"
+                                                >
+                                                    <p>
+                                                        {" "}
+                                                        Take the checkered flag
+                                                        this racing season in
+                                                        the most customizable
+                                                        Nascar commissioner game
+                                                        on the track.{" "}
+                                                    </p>
+                                                    <span class="btn btn--uppercase">
+                                                        START YOUR ENGINES!
+                                                    </span>
+                                                </a>
+                                                <a class="tiles__fake"></a>
+                                            </div>
+                                        </home-tile-racing>
+                                        <home-tile-basketball class="cell cell--4-col ng-star-inserted">
+                                            <div
+                                                tileanimationlimit=""
+                                                class="tiles tiles--home tiles__nba"
+                                            >
+                                                <div class="tiles__content">
+                                                    <h4 class="tiles__title">
+                                                        {" "}
+                                                        Basketball
+                                                    </h4>
+                                                    <div class="tiles__animation basketball__ball">
+                                                        <svg
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 296 297"
+                                                            version="1.1"
+                                                            //xml:space="preserve"
+                                                            class="tiles__svg ng-star-inserted"
+                                                        >
+                                                            <path
+                                                                d="M62.719,39.337c32.056,-5.105 63.922,20.779 94.736,46.329c20.359,17.709 41.031,34.463 59.975,38.648c2.148,0.475 4.198,0.928 6.584,0.328c0.746,6.822 1.416,13.524 1.087,20.109l-4.436,0.146l-0.474,2.148l0.474,-2.148c-66.817,-2.575 -166.744,-0.381 -211.585,7.429c0.182,-11.02 0.461,-22.019 2.791,-32.565c8.42,-33.472 26.673,-61.391 50.848,-80.424ZM170.283,12.306c27.159,17.061 47.155,56.81 52.726,106.687c-18.344,-1.8 -40.09,-18.792 -62.36,-38.049c-27.068,-22.571 -57.882,-48.121 -90.063,-47.55c29.448,-17.868 64.483,-26.718 99.697,-21.088ZM265.584,76.476c-7.136,27.201 -19.007,41.067 -37.065,42.607c-4.441,-39.692 -18.474,-81.402 -45.542,-103.973c35.62,8.894 64.739,31.918 82.607,61.366ZM285.699,149.457c-11.621,-2.317 -50.673,-4.664 -50.673,-4.664l-4.436,0.146c0.328,-6.584 -0.342,-13.287 -1.088,-20.108c19.034,-1.325 32.099,-15.029 39.974,-40.94c11.249,19.076 17.137,41.497 16.223,65.566ZM189.54,280.679c22.48,-21.557 36.36,-59.353 40.023,-106.063c18.797,-0.25 31.309,13.574 39.867,39.737c-17.25,32.647 -46.669,55.949 -79.89,66.326ZM74.429,266.308c31.966,0.405 63.387,-26.858 89.704,-50.948c22.005,-19.409 41.41,-37.243 59.607,-39.88c-3.279,50.072 -21.094,90.378 -47.299,108.86c-18.747,4.665 -39.692,4.441 -59.71,0.019c-14.431,-4.212 -29.559,-10.832 -42.302,-18.051ZM234.932,149.821c21.782,1.536 39.056,2.829 50.676,5.147c-0.566,7.658 -1.111,16.219 -2.751,23.64c-2.33,10.545 -5.734,20.854 -9.877,29.872c-8.773,-25.185 -23.573,-38.389 -42.154,-39.115c0.328,-6.584 0.635,-13.071 -0.013,-19.871l4.119,0.327ZM220.693,149.409l4.436,-0.146c-0.328,6.584 0.341,13.286 0.013,19.871c-20.345,2.161 -41.039,20.734 -63.304,41.316c-30.369,27.598 -61.888,54.84 -95.813,48.471c-32.341,-23.736 -53.766,-61.651 -55.704,-102.941c41.242,-6.353 143.554,-9.146 210.372,-6.571ZM115.789,294.187c80.069,17.69 159.826,-33.202 177.516,-113.271c17.691,-80.069 -33.202,-159.826 -113.271,-177.516c-48.432,-10.701 -97.039,3.958 -131.558,35.043c-22.005,19.41 -38.013,46.904 -44.766,77.467c-18.882,80.83 32.01,160.587 112.079,178.277Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="tiles__animation basketball__board">
+                                                        <svg
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 430 386"
+                                                            version="1.1"
+                                                            //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <path
+                                                                d="M309,226.5l0,-124.5l-194,0l0,126l0.7,0c-18.4,5.1 -27.4,11.4 -27.4,19.2c0,1.2 0.2,2.3 0.6,3.5l39.2,132.1l3.8,-1.1l2.5,3.1l35.4,-28.9l45.4,30.7l41.3,-31l32.7,29.1l2.7,-3l3.8,1.3l44.6,-130.2c1.1,-1.8 1.8,-3.6 1.8,-5.5c0.1,-8.7 -11.1,-15.5 -33.1,-20.8ZM315.2,301.6l-8.5,6.4l-36.7,-33.8l0.1,-0.1c12,-1.2 23,-2.9 32.8,-4.9c11.1,-2.3 19.7,-4.9 26.1,-7.9l-13.8,40.3ZM114.5,308.6l-14.2,-47.8c6.4,3.2 15.5,5.9 27.2,8.4c10.5,2.2 22.6,3.9 35.7,5.2l-39.9,40.1l-8.8,-5.9ZM170.2,278.6l39.1,34.8l-39.8,32.5l-39.5,-26.8l40.2,-40.5ZM178.9,275.7c11.6,0.7 23.8,1.1 36.3,1.1c14.1,0 27.8,-0.5 40.7,-1.4l-40.4,32.9l-36.6,-32.6ZM263.8,279.3l36.4,33.5l-43.1,32.3l-35.4,-31.5l42.1,-34.3ZM123,110l178,0l0,114.8c-23,-4.6 -53.6,-7.2 -85.7,-7.2c-33.1,0 -64.4,2.7 -87.9,7.6c-1.5,0.3 -2.4,0.6 -4.4,0.9l0,-116.1ZM194,226c7,-0.3 14.2,-0.4 21.5,-0.4c7.3,0 14.5,0.1 21.5,0.4l0,17l-43,0l0,-17ZM129.3,233c15.8,-3.3 34.7,-5.6 56.7,-6.7l0,24.7l59,0l0,-24.7c21,1.1 40.6,3.4 56.4,6.7c24.5,5.1 31.9,10.9 32.7,13.7l-0.8,2.3c-2.5,3.1 -11,8 -32,12.3c-22.9,4.8 -53.5,7.4 -86.1,7.4c-32.6,0 -63.1,-2.6 -86.1,-7.4c-23.8,-4.9 -31.5,-10.6 -32.6,-13.5l0,-0.1c-0.1,-0.2 0,-0.4 0,-0.6c-0.1,-2.4 6.9,-8.7 32.8,-14.1ZM134.1,374.7l-13.7,-46l3.8,-3.8l38.8,26.3l-28.9,23.5ZM215.1,376.7l-38.7,-26.2l38.9,-31.7l35.2,31.3l-35.4,26.6ZM290.2,374.6l-27,-24l43,-32.2l2.3,2.2l0.3,-0.4l-18.6,54.4Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M0,0l0,258l68,0l0,-8l-60,0l0,-242l414,0l0,242l-60,0l0,8l68,0l0,-258l-430,0Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <a
+                                                    class="tiles__cover ng-star-inserted"
+                                                    href="/fantasy/games/season-long/nba"
+                                                >
+                                                    <p>
+                                                        {" "}
+                                                        Make this season a Slam
+                                                        Dunk with the most
+                                                        customizable NBA
+                                                        Commissioner product on
+                                                        the market.{" "}
+                                                    </p>
+                                                    <span class="btn btn--uppercase">
+                                                        TIME FOR TIP-OFF!
+                                                    </span>
+                                                </a>
+                                                <a class="tiles__fake"></a>
+                                            </div>
+                                        </home-tile-basketball>
+                                        <home-tile-hockey class="cell cell--4-col ng-star-inserted">
+                                            <div
+                                                tileanimationlimit=""
+                                                class="tiles tiles--home tiles__nhl"
+                                            >
+                                                <div class="tiles__content">
+                                                    <h4 class="tiles__title">
+                                                        Hockey
+                                                    </h4>
+                                                    <div class="tiles__animation hockey__net">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 336.3 172.6"
+                                                            //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <path
+                                                                d="M336.3,137.6h-0.4L303.1,22.9c-0.3-2-0.9-3.9-1.6-5.7l0,0l0,0C297.4,7,287.5,0,275.6,0H38C22.3,0,10,12.2,10,27.9L0,168.4
           l6,0.4l0.1-1.2l50.7-24h240l-0.2,29l6,0l0-1.2L336.3,137.6z M217.7,137.6l-29-25.2l29.4-30.9l31.1,26.8l-27.3,29.3H217.7z
             M30.5,42.2l2.3,10.3l-20,20.9l3.1-43.3L30.5,42.2z M81.4,6h49.3l9.7,8.4l-29,30.8L74.6,13.1L81.4,6z M72.3,11.1L66.4,6h10.8
           L72.3,11.1z M315.9,103.8l-12.7-10.9l0.3-38.4l1.9-2.1l13.7,47.8L315.9,103.8z M320,103.6l1.4,4.8l-3.2-2.7L320,103.6z M297.2,87.8
@@ -445,163 +492,176 @@ const Homepage = () => {
           C291,11.3,294,14.7,295.8,18.9z M284.3,7.7l-6.9,7.3L267.5,6h8.2C278.7,6,281.7,6.6,284.3,7.7z M61.8,6l8.4,7.3L39.3,45.6l-2.4-2
           L28.9,7.8C31.6,6.7,34.7,6,38,6H61.8z M23.5,11.2l5.9,26.2l-13.3-11C16.5,20.2,19.2,14.9,23.5,11.2z M290.4,137.6l6.5-7.5l-0.1,7.5
           H290.4z M321.8,143.6l-19.2,19.2l0.1-19.2H321.8z"
-                              ></path>
-                            </svg>
-                          </div>
-                          <div class="tiles__animation hockey__ball">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="-415 217 128 128"
-                              //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <path
-                                d="M-351,245c-31,0-64,6.8-64,19.5v32c0,12.7,33.2,20.5,64,20.5s64-7.8,64-20.5v-32C-287,251.9-320,245-351,245z M-291,296.5
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="tiles__animation hockey__ball">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="-415 217 128 128"
+                                                            //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <path
+                                                                d="M-351,245c-31,0-64,6.8-64,19.5v32c0,12.7,33.2,20.5,64,20.5s64-7.8,64-20.5v-32C-287,251.9-320,245-351,245z M-291,296.5
             c0,6.7-23.4,16.5-60,16.5s-60-9.8-60-16.5v-24.8c9.7,8.1,35.4,12.4,60,12.4c24.6,0,50.3-4.3,60-12.4V296.5z M-351,280
             c-35.4,0-60-8.2-60-15.5s24.6-15.5,60-15.5c35.4,0,60,8.2,60,15.5S-315.6,280-351,280z"
-                              ></path>
-                            </svg>
-                          </div>
-                        </div>
-                        <a
-                          class="tiles__cover"
-                          href="/fantasy/games/season-long/nhl"
-                        >
-                          <p>
-                            {" "}
-                            Score big with the most customizable NHL
-                            Commissioner product imaginable, featuring keeper
-                            and dynasty leagues.{" "}
-                          </p>
-                          <span class="btn btn--uppercase">Game On!</span>
-                        </a>
-                        <a class="tiles__fake"></a>
-                      </div>
-                    </home-tile-hockey>
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <a
+                                                    class="tiles__cover"
+                                                    href="/fantasy/games/season-long/nhl"
+                                                >
+                                                    <p>
+                                                        {" "}
+                                                        Score big with the most
+                                                        customizable NHL
+                                                        Commissioner product
+                                                        imaginable, featuring
+                                                        keeper and dynasty
+                                                        leagues.{" "}
+                                                    </p>
+                                                    <span class="btn btn--uppercase">
+                                                        Game On!
+                                                    </span>
+                                                </a>
+                                                <a class="tiles__fake"></a>
+                                            </div>
+                                        </home-tile-hockey>
 
-                    <home-tile-golf class="cell cell--4-col ng-star-inserted">
-                      <div
-                        tileanimationlimit=""
-                        class="tiles tiles--home tiles__pga"
-                      >
-                        <div class="tiles__content">
-                          <h4 class="tiles__title">Golf</h4>
-                          <div class="tiles__animation golf__ball">
-                            <svg
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 512 512"
-                              version="1.1"
-                              //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <path d="M323.5,418.8c-15.2,2.3 -27.2,10.2 -26.5,18.7c0.7,8.5 14.9,14.4 31.6,11.8c16.7,-2.5 28.3,-12.4 26.2,-20.7c-2.2,-8.3 -16.1,-12.2 -31.3,-9.8Z"></path>
-                              <path d="M386,404.2c-14.7,4.7 -25.2,14.2 -23.1,22.6c2.1,8.3 17.1,11.9 33.2,6.8c16.1,-5.1 26,-16.7 22.6,-24.5c-3.5,-7.9 -18,-9.6 -32.7,-4.9l0,0Z"></path>
-                              <path d="M332.6,473.3c-1.7,-9.6 -18.6,-14.9 -37.9,-13.5c-19.2,1.5 -35,9.2 -35.2,19c-0.2,-9.8 -15.9,-17.5 -35.2,-19c-19.3,-1.4 -36.1,3.8 -37.9,13.4c1.4,-9.7 -12.9,-19.7 -31.7,-24.1c-11.1,-2.6 -21.7,-2.7 -29.2,-0.5c12.5,8.6 25.9,15.9 40,21.9c6.2,2.6 12.6,5 18.9,7.1c1,-1.3 1.7,-2.7 1.9,-4.2c-0.3,1.7 -0.1,3.4 0.6,5.1c21.3,6.6 43.4,10.1 66,10.3c4.1,-2.8 6.5,-6.2 6.5,-9.8c0,3.6 2.2,6.9 6.2,9.6c23,-1 45.4,-5.3 67,-12.9c0.1,-0.8 0.1,-1.6 0,-2.4l0,0Z"></path>
-                              <path d="M426.4,405.9c0.7,1.6 1.9,2.9 3.5,3.9c9.2,-10.5 17.4,-21.7 24.6,-33.5c-2.9,0.9 -5.8,2.1 -8.8,3.6c-13.9,7 -22.7,18.1 -19.3,26Z"></path>
-                              <path d="M92.6,405.9c3.4,-7.9 -5.4,-19 -19.3,-26c-5.9,-3 -11.9,-4.8 -17.3,-5.4c7.9,13.3 17.1,25.9 27.5,37.5c4.5,-0.9 7.7,-3 9.1,-6.1Z"></path>
-                              <path d="M364.3,449.2c-18.8,4.4 -33.1,14.4 -31.7,24.1c0.1,0.8 0.3,1.5 0.7,2.2c4.3,-1.5 8.6,-3.2 12.8,-5c14.7,-6.2 28.6,-13.9 41.7,-23c-6.9,-0.8 -15.1,-0.3 -23.5,1.7Z"></path>
-                              <path d="M455.7,336c-10.4,6.4 -16.3,16.2 -12.7,22.7c2.7,5 10.7,6.3 19.3,3.5c2.6,-5 5,-10.2 7.2,-15.4c2.2,-5.2 4.2,-10.5 6,-15.9c-5.5,-1 -13,0.9 -19.8,5.1l0,0Z"></path>
-                              <path d="M468.1,112.9c-0.2,-0.3 -0.4,-0.6 -0.7,-1c-0.7,-1 -1.4,-2 -2.1,-3.1c-46.3,-66 -122.9,-109.2 -209.5,-109.2c-141.3,0 -255.9,114.9 -255.9,256.6c0,141.7 114.6,256.6 255.9,256.6c107,0 198.7,-65.9 236.9,-159.3c0.1,-0.2 0.2,-0.5 0.3,-0.7c0.5,-1.4 1.1,-2.7 1.6,-4.1c0.5,-1.2 0.9,-2.5 1.4,-3.7c0.1,-0.3 0.2,-0.7 0.4,-1c9.9,-27.4 15.4,-56.9 15.4,-87.8c-0.1,-53.1 -16.2,-102.4 -43.7,-143.3l0,0ZM469.5,345.7c-2.2,5.3 -4.6,10.4 -7.2,15.4c-2.5,4.8 -5.1,9.5 -7.9,14.2c-7.1,11.9 -15.4,23 -24.6,33.5c-3.2,3.7 -6.6,7.3 -10.1,10.8c-9.9,10 -20.7,18.9 -32.1,26.8c-13,9.1 -26.9,16.8 -41.7,23c-4.2,1.8 -8.5,3.4 -12.8,5c-0.2,0.1 -0.4,0.1 -0.6,0.2c-21.5,7.6 -44,11.9 -67,12.9c-3.3,0.1 -6.6,0.2 -9.9,0.2c-0.9,0 -1.8,0 -2.8,0c-22.6,-0.3 -44.7,-3.7 -66,-10.3c-0.9,-0.3 -1.7,-0.6 -2.6,-0.8c-6.4,-2.1 -12.7,-4.4 -18.9,-7.1c-14.1,-6 -27.5,-13.3 -40,-21.9c-12,-8.2 -23.3,-17.5 -33.7,-28c-2.8,-2.8 -5.6,-5.7 -8.2,-8.7c-10.5,-11.6 -19.6,-24.1 -27.5,-37.5c-3.3,-5.6 -6.4,-11.4 -9.2,-17.3c-1.7,-3.5 -3.2,-7 -4.7,-10.5c-1.8,-4.2 -3.4,-8.5 -4.9,-12.8c-8.8,-24.9 -13.3,-51 -13.3,-77.8c0,-31.4 6.1,-60.9 18.2,-89.5c11.7,-27.7 28.4,-52.6 49.7,-73.9c21.3,-21.4 46.1,-38.1 73.7,-49.8c28.6,-12.1 58.9,-18.3 90.2,-18.3c31.3,0 61.7,6.1 90.2,18.3c27.6,11.7 52.4,28.5 73.7,49.8c21.3,21.4 38,46.2 49.7,73.9c12.1,28.7 18.2,58.1 18.2,89.5c0,25.7 -4.1,50.7 -12.2,74.6c-1.5,5.6 -3.5,10.9 -5.7,16.1l0,0Z"></path>
-                              <path d="M297.6,368.6c0.7,6.1 9.2,10.2 19,8.7c9.9,-1.5 16.6,-8 15.3,-13.9c-1.4,-6 -9.8,-9.3 -18.9,-7.9c-9.1,1.4 -16.1,7 -15.4,13.1l0,0Z"></path>
-                              <path d="M352.1,358.6c1.6,5.9 10.8,8.7 20.3,5.6c9.5,-3 15.2,-10.5 12.8,-16.1c-2.3,-5.7 -11.2,-7.6 -20,-4.8c-8.8,2.8 -14.7,9.4 -13.1,15.3Z"></path>
-                              <path d="M415,323c-8.3,4.2 -13.1,11.7 -10.5,17.3c2.6,5.6 12.1,6.9 21,2.3c8.9,-4.5 13.3,-12.9 10.1,-18.1c-3.2,-5.2 -12.3,-5.7 -20.6,-1.5Z"></path>
-                              <path d="M474.9,312.3c8.2,-6 11.2,-15.1 7.1,-19.7c-4.1,-4.6 -13.2,-3.5 -20.8,2.1c-7.5,5.6 -11.1,13.8 -7.6,18.9c3.5,5 13.1,4.7 21.3,-1.3Z"></path>
-                              <path d="M346.9,380.5c-11.8,2.8 -20.4,10.2 -19.2,17.4c1.3,7.2 12.8,11.3 25.7,8.3c12.8,-3 21.2,-11.8 18.9,-18.7c-2.3,-7 -13.6,-9.8 -25.4,-7Z"></path>
-                              <path d="M402.9,362.7c-11.2,4.6 -18.6,13.3 -16.1,20.2c2.5,6.9 14.6,9.2 26.8,4.2c12.2,-5 19.1,-15 15.6,-21.5c-3.4,-6.5 -15,-7.5 -26.3,-2.9Z"></path>
-                              <path d="M337.1,341.8c7.1,-1.6 11.6,-7 10.1,-11.7c-1.4,-4.7 -7.9,-7 -14.5,-5.5c-6.6,1.6 -11.2,6.4 -10.2,11.2c1,4.9 7.6,7.7 14.6,6l0,0Z"></path>
-                              <path d="M386.9,326c6.7,-2.7 10.3,-8.8 8.1,-13.2c-2.2,-4.4 -9,-5.7 -15.3,-3.1c-6.3,2.6 -10.1,8.1 -8.3,12.7c1.8,4.6 8.8,6.4 15.5,3.6Z"></path>
-                              <path d="M424,287.4c-5.8,3.6 -8.7,9.7 -6.2,14c2.5,4.2 9.7,4.9 15.9,1c6.2,-3.8 8.8,-10.4 5.9,-14.4c-2.8,-4.1 -9.8,-4.2 -15.6,-0.6l0,0Z"></path>
-                              <path d="M476.4,270.8c5.6,-4.9 7.1,-12 3.6,-15.5c-3.5,-3.5 -10.5,-2.3 -15.7,2.3c-5.2,4.6 -7,11.2 -3.9,15c3.2,3.7 10.5,3.1 16,-1.8l0,0Z"></path>
-                              <path d="M133,404.2c-14.7,-4.6 -29.1,-3 -32.6,4.9c-3.5,7.8 6.4,19.4 22.6,24.5c16.1,5.1 31.1,1.5 33.2,-6.8c2,-8.4 -8.5,-17.9 -23.2,-22.6l0,0Z"></path>
-                              <path d="M195.5,418.8c-15.2,-2.3 -29.1,1.6 -31.3,9.9c-2.1,8.3 9.5,18.1 26.2,20.7c16.7,2.6 30.9,-3.3 31.6,-11.8c0.7,-8.7 -11.3,-16.5 -26.5,-18.8l0,0Z"></path>
-                              <path d="M259.5,423.6c-15.4,0 -28.5,6 -29.2,14.5c-0.7,8.5 12.3,16.4 29.2,16.4c16.9,0 29.9,-7.9 29.2,-16.4c-0.7,-8.5 -13.8,-14.5 -29.2,-14.5Z"></path>
-                              <path d="M114.5,340.3c2.6,-5.6 -2.2,-13.1 -10.5,-17.3c-8.3,-4.2 -17.4,-3.7 -20.7,1.5c-3.3,5.2 1.2,13.6 10.1,18.1c9,4.5 18.5,3.2 21.1,-2.3Z"></path>
-                              <path d="M133.8,348.2c-2.3,5.6 3.3,13.1 12.8,16.1c9.5,3 18.6,0.2 20.3,-5.6c1.6,-5.9 -4.3,-12.5 -13.1,-15.3c-8.8,-2.9 -17.7,-0.9 -20,4.8l0,0Z"></path>
-                              <path d="M187.2,363.4c-1.4,5.9 5.4,12.4 15.2,13.9c9.8,1.5 18.4,-2.6 19,-8.7c0.6,-6.1 -6.3,-11.7 -15.4,-13.1c-9.1,-1.4 -17.5,1.9 -18.8,7.9l0,0Z"></path>
-                              <path d="M259.5,359.6c-9.2,0 -17,4.5 -17.3,10.6c-0.4,6.1 7.4,11.5 17.3,11.5c10,0 17.7,-5.4 17.3,-11.5c-0.3,-6.1 -8.1,-10.6 -17.3,-10.6Z"></path>
-                              <path d="M57.8,294.6c-7.5,-5.6 -16.7,-6.7 -20.8,-2.1c-4.1,4.6 -1.1,13.7 7.1,19.7c8.1,6 17.8,6.3 21.3,1.2c3.5,-5 0,-13.2 -7.6,-18.8l0,0Z"></path>
-                              <path d="M132.2,382.9c2.4,-6.9 -4.9,-15.6 -16.1,-20.2c-11.2,-4.6 -22.9,-3.6 -26.3,2.9c-3.4,6.5 3.4,16.5 15.6,21.5c12.2,5 24.4,2.7 26.8,-4.2Z"></path>
-                              <path d="M172.1,380.5c-11.8,-2.7 -23,0.1 -25.4,7c-2.3,7 6,15.7 18.9,18.7c12.8,3 24.4,-1.1 25.7,-8.3c1.2,-7.2 -7.4,-14.7 -19.2,-17.4Z"></path>
-                              <path d="M251.9,403.7c0.1,-7.3 -9.7,-13.4 -21.7,-14.3c-12.1,-0.9 -22.7,3.6 -23.8,10.8c-1.1,7.2 8.5,14.6 21.6,15.6c13.1,1 23.8,-4.8 23.9,-12.1Z"></path>
-                              <path d="M312.7,400.2c-1.1,-7.3 -11.8,-11.7 -23.8,-10.8c-12,0.9 -21.8,7 -21.7,14.3c0.1,7.3 10.8,13.1 23.9,12.1c13.1,-1 22.7,-8.4 21.6,-15.6Z"></path>
-                              <path d="M124,312.8c-2.2,4.4 1.4,10.4 8.1,13.2c6.7,2.8 13.7,1 15.4,-3.6c1.7,-4.6 -2,-10.1 -8.3,-12.7c-6.3,-2.5 -13.1,-1.3 -15.2,3.1l0,0Z"></path>
-                              <path d="M171.7,330.1c-1.4,4.7 3.1,10.1 10.1,11.7c7.1,1.7 13.6,-1.2 14.6,-5.9c1,-4.8 -3.7,-9.7 -10.2,-11.2c-6.6,-1.6 -13,0.7 -14.5,5.4Z"></path>
-                              <path d="M233.4,349.7c7.2,0.6 13.2,-3.2 13.4,-8.1c0.2,-4.9 -5.2,-9 -11.9,-9.5c-6.7,-0.5 -12.7,2.8 -13.4,7.6c-0.6,4.9 4.7,9.5 11.9,10Z"></path>
-                              <path d="M285.6,349.7c7.2,-0.5 12.5,-5.2 11.9,-10c-0.6,-4.8 -6.6,-8.1 -13.4,-7.6c-6.7,0.5 -12.1,4.7 -11.9,9.5c0.2,4.8 6.2,8.7 13.4,8.1Z"></path>
-                              <path d="M42.6,270.8c5.6,4.9 12.8,5.6 16,1.8c3.2,-3.8 1.3,-10.4 -3.9,-15c-5.2,-4.6 -12.1,-5.8 -15.7,-2.3c-3.5,3.4 -2,10.5 3.6,15.5Z"></path>
-                              <path d="M101.2,301.3c2.5,-4.2 -0.3,-10.4 -6.2,-14c-5.8,-3.6 -12.8,-3.5 -15.7,0.5c-2.9,4 -0.3,10.6 5.9,14.4c6.3,4 13.5,3.4 16,-0.9Z"></path>
-                            </svg>
-                          </div>
-                          <div class="tiles__animation golf__pin">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 96 99.4"
-                              // //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <path
-                                d="M82.1,0c0,0-13.5,3.7-34.1,3.7C27.4,3.7,13.9,0,13.9,0C2.5,0-3,7.6,1.7,16.9L23.9,50c1.7,2.1,3.2,5.9,3.4,8.5l4.3,36.2
+                                        <home-tile-golf class="cell cell--4-col ng-star-inserted">
+                                            <div
+                                                tileanimationlimit=""
+                                                class="tiles tiles--home tiles__pga"
+                                            >
+                                                <div class="tiles__content">
+                                                    <h4 class="tiles__title">
+                                                        Golf
+                                                    </h4>
+                                                    <div class="tiles__animation golf__ball">
+                                                        <svg
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 512 512"
+                                                            version="1.1"
+                                                            //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <path d="M323.5,418.8c-15.2,2.3 -27.2,10.2 -26.5,18.7c0.7,8.5 14.9,14.4 31.6,11.8c16.7,-2.5 28.3,-12.4 26.2,-20.7c-2.2,-8.3 -16.1,-12.2 -31.3,-9.8Z"></path>
+                                                            <path d="M386,404.2c-14.7,4.7 -25.2,14.2 -23.1,22.6c2.1,8.3 17.1,11.9 33.2,6.8c16.1,-5.1 26,-16.7 22.6,-24.5c-3.5,-7.9 -18,-9.6 -32.7,-4.9l0,0Z"></path>
+                                                            <path d="M332.6,473.3c-1.7,-9.6 -18.6,-14.9 -37.9,-13.5c-19.2,1.5 -35,9.2 -35.2,19c-0.2,-9.8 -15.9,-17.5 -35.2,-19c-19.3,-1.4 -36.1,3.8 -37.9,13.4c1.4,-9.7 -12.9,-19.7 -31.7,-24.1c-11.1,-2.6 -21.7,-2.7 -29.2,-0.5c12.5,8.6 25.9,15.9 40,21.9c6.2,2.6 12.6,5 18.9,7.1c1,-1.3 1.7,-2.7 1.9,-4.2c-0.3,1.7 -0.1,3.4 0.6,5.1c21.3,6.6 43.4,10.1 66,10.3c4.1,-2.8 6.5,-6.2 6.5,-9.8c0,3.6 2.2,6.9 6.2,9.6c23,-1 45.4,-5.3 67,-12.9c0.1,-0.8 0.1,-1.6 0,-2.4l0,0Z"></path>
+                                                            <path d="M426.4,405.9c0.7,1.6 1.9,2.9 3.5,3.9c9.2,-10.5 17.4,-21.7 24.6,-33.5c-2.9,0.9 -5.8,2.1 -8.8,3.6c-13.9,7 -22.7,18.1 -19.3,26Z"></path>
+                                                            <path d="M92.6,405.9c3.4,-7.9 -5.4,-19 -19.3,-26c-5.9,-3 -11.9,-4.8 -17.3,-5.4c7.9,13.3 17.1,25.9 27.5,37.5c4.5,-0.9 7.7,-3 9.1,-6.1Z"></path>
+                                                            <path d="M364.3,449.2c-18.8,4.4 -33.1,14.4 -31.7,24.1c0.1,0.8 0.3,1.5 0.7,2.2c4.3,-1.5 8.6,-3.2 12.8,-5c14.7,-6.2 28.6,-13.9 41.7,-23c-6.9,-0.8 -15.1,-0.3 -23.5,1.7Z"></path>
+                                                            <path d="M455.7,336c-10.4,6.4 -16.3,16.2 -12.7,22.7c2.7,5 10.7,6.3 19.3,3.5c2.6,-5 5,-10.2 7.2,-15.4c2.2,-5.2 4.2,-10.5 6,-15.9c-5.5,-1 -13,0.9 -19.8,5.1l0,0Z"></path>
+                                                            <path d="M468.1,112.9c-0.2,-0.3 -0.4,-0.6 -0.7,-1c-0.7,-1 -1.4,-2 -2.1,-3.1c-46.3,-66 -122.9,-109.2 -209.5,-109.2c-141.3,0 -255.9,114.9 -255.9,256.6c0,141.7 114.6,256.6 255.9,256.6c107,0 198.7,-65.9 236.9,-159.3c0.1,-0.2 0.2,-0.5 0.3,-0.7c0.5,-1.4 1.1,-2.7 1.6,-4.1c0.5,-1.2 0.9,-2.5 1.4,-3.7c0.1,-0.3 0.2,-0.7 0.4,-1c9.9,-27.4 15.4,-56.9 15.4,-87.8c-0.1,-53.1 -16.2,-102.4 -43.7,-143.3l0,0ZM469.5,345.7c-2.2,5.3 -4.6,10.4 -7.2,15.4c-2.5,4.8 -5.1,9.5 -7.9,14.2c-7.1,11.9 -15.4,23 -24.6,33.5c-3.2,3.7 -6.6,7.3 -10.1,10.8c-9.9,10 -20.7,18.9 -32.1,26.8c-13,9.1 -26.9,16.8 -41.7,23c-4.2,1.8 -8.5,3.4 -12.8,5c-0.2,0.1 -0.4,0.1 -0.6,0.2c-21.5,7.6 -44,11.9 -67,12.9c-3.3,0.1 -6.6,0.2 -9.9,0.2c-0.9,0 -1.8,0 -2.8,0c-22.6,-0.3 -44.7,-3.7 -66,-10.3c-0.9,-0.3 -1.7,-0.6 -2.6,-0.8c-6.4,-2.1 -12.7,-4.4 -18.9,-7.1c-14.1,-6 -27.5,-13.3 -40,-21.9c-12,-8.2 -23.3,-17.5 -33.7,-28c-2.8,-2.8 -5.6,-5.7 -8.2,-8.7c-10.5,-11.6 -19.6,-24.1 -27.5,-37.5c-3.3,-5.6 -6.4,-11.4 -9.2,-17.3c-1.7,-3.5 -3.2,-7 -4.7,-10.5c-1.8,-4.2 -3.4,-8.5 -4.9,-12.8c-8.8,-24.9 -13.3,-51 -13.3,-77.8c0,-31.4 6.1,-60.9 18.2,-89.5c11.7,-27.7 28.4,-52.6 49.7,-73.9c21.3,-21.4 46.1,-38.1 73.7,-49.8c28.6,-12.1 58.9,-18.3 90.2,-18.3c31.3,0 61.7,6.1 90.2,18.3c27.6,11.7 52.4,28.5 73.7,49.8c21.3,21.4 38,46.2 49.7,73.9c12.1,28.7 18.2,58.1 18.2,89.5c0,25.7 -4.1,50.7 -12.2,74.6c-1.5,5.6 -3.5,10.9 -5.7,16.1l0,0Z"></path>
+                                                            <path d="M297.6,368.6c0.7,6.1 9.2,10.2 19,8.7c9.9,-1.5 16.6,-8 15.3,-13.9c-1.4,-6 -9.8,-9.3 -18.9,-7.9c-9.1,1.4 -16.1,7 -15.4,13.1l0,0Z"></path>
+                                                            <path d="M352.1,358.6c1.6,5.9 10.8,8.7 20.3,5.6c9.5,-3 15.2,-10.5 12.8,-16.1c-2.3,-5.7 -11.2,-7.6 -20,-4.8c-8.8,2.8 -14.7,9.4 -13.1,15.3Z"></path>
+                                                            <path d="M415,323c-8.3,4.2 -13.1,11.7 -10.5,17.3c2.6,5.6 12.1,6.9 21,2.3c8.9,-4.5 13.3,-12.9 10.1,-18.1c-3.2,-5.2 -12.3,-5.7 -20.6,-1.5Z"></path>
+                                                            <path d="M474.9,312.3c8.2,-6 11.2,-15.1 7.1,-19.7c-4.1,-4.6 -13.2,-3.5 -20.8,2.1c-7.5,5.6 -11.1,13.8 -7.6,18.9c3.5,5 13.1,4.7 21.3,-1.3Z"></path>
+                                                            <path d="M346.9,380.5c-11.8,2.8 -20.4,10.2 -19.2,17.4c1.3,7.2 12.8,11.3 25.7,8.3c12.8,-3 21.2,-11.8 18.9,-18.7c-2.3,-7 -13.6,-9.8 -25.4,-7Z"></path>
+                                                            <path d="M402.9,362.7c-11.2,4.6 -18.6,13.3 -16.1,20.2c2.5,6.9 14.6,9.2 26.8,4.2c12.2,-5 19.1,-15 15.6,-21.5c-3.4,-6.5 -15,-7.5 -26.3,-2.9Z"></path>
+                                                            <path d="M337.1,341.8c7.1,-1.6 11.6,-7 10.1,-11.7c-1.4,-4.7 -7.9,-7 -14.5,-5.5c-6.6,1.6 -11.2,6.4 -10.2,11.2c1,4.9 7.6,7.7 14.6,6l0,0Z"></path>
+                                                            <path d="M386.9,326c6.7,-2.7 10.3,-8.8 8.1,-13.2c-2.2,-4.4 -9,-5.7 -15.3,-3.1c-6.3,2.6 -10.1,8.1 -8.3,12.7c1.8,4.6 8.8,6.4 15.5,3.6Z"></path>
+                                                            <path d="M424,287.4c-5.8,3.6 -8.7,9.7 -6.2,14c2.5,4.2 9.7,4.9 15.9,1c6.2,-3.8 8.8,-10.4 5.9,-14.4c-2.8,-4.1 -9.8,-4.2 -15.6,-0.6l0,0Z"></path>
+                                                            <path d="M476.4,270.8c5.6,-4.9 7.1,-12 3.6,-15.5c-3.5,-3.5 -10.5,-2.3 -15.7,2.3c-5.2,4.6 -7,11.2 -3.9,15c3.2,3.7 10.5,3.1 16,-1.8l0,0Z"></path>
+                                                            <path d="M133,404.2c-14.7,-4.6 -29.1,-3 -32.6,4.9c-3.5,7.8 6.4,19.4 22.6,24.5c16.1,5.1 31.1,1.5 33.2,-6.8c2,-8.4 -8.5,-17.9 -23.2,-22.6l0,0Z"></path>
+                                                            <path d="M195.5,418.8c-15.2,-2.3 -29.1,1.6 -31.3,9.9c-2.1,8.3 9.5,18.1 26.2,20.7c16.7,2.6 30.9,-3.3 31.6,-11.8c0.7,-8.7 -11.3,-16.5 -26.5,-18.8l0,0Z"></path>
+                                                            <path d="M259.5,423.6c-15.4,0 -28.5,6 -29.2,14.5c-0.7,8.5 12.3,16.4 29.2,16.4c16.9,0 29.9,-7.9 29.2,-16.4c-0.7,-8.5 -13.8,-14.5 -29.2,-14.5Z"></path>
+                                                            <path d="M114.5,340.3c2.6,-5.6 -2.2,-13.1 -10.5,-17.3c-8.3,-4.2 -17.4,-3.7 -20.7,1.5c-3.3,5.2 1.2,13.6 10.1,18.1c9,4.5 18.5,3.2 21.1,-2.3Z"></path>
+                                                            <path d="M133.8,348.2c-2.3,5.6 3.3,13.1 12.8,16.1c9.5,3 18.6,0.2 20.3,-5.6c1.6,-5.9 -4.3,-12.5 -13.1,-15.3c-8.8,-2.9 -17.7,-0.9 -20,4.8l0,0Z"></path>
+                                                            <path d="M187.2,363.4c-1.4,5.9 5.4,12.4 15.2,13.9c9.8,1.5 18.4,-2.6 19,-8.7c0.6,-6.1 -6.3,-11.7 -15.4,-13.1c-9.1,-1.4 -17.5,1.9 -18.8,7.9l0,0Z"></path>
+                                                            <path d="M259.5,359.6c-9.2,0 -17,4.5 -17.3,10.6c-0.4,6.1 7.4,11.5 17.3,11.5c10,0 17.7,-5.4 17.3,-11.5c-0.3,-6.1 -8.1,-10.6 -17.3,-10.6Z"></path>
+                                                            <path d="M57.8,294.6c-7.5,-5.6 -16.7,-6.7 -20.8,-2.1c-4.1,4.6 -1.1,13.7 7.1,19.7c8.1,6 17.8,6.3 21.3,1.2c3.5,-5 0,-13.2 -7.6,-18.8l0,0Z"></path>
+                                                            <path d="M132.2,382.9c2.4,-6.9 -4.9,-15.6 -16.1,-20.2c-11.2,-4.6 -22.9,-3.6 -26.3,2.9c-3.4,6.5 3.4,16.5 15.6,21.5c12.2,5 24.4,2.7 26.8,-4.2Z"></path>
+                                                            <path d="M172.1,380.5c-11.8,-2.7 -23,0.1 -25.4,7c-2.3,7 6,15.7 18.9,18.7c12.8,3 24.4,-1.1 25.7,-8.3c1.2,-7.2 -7.4,-14.7 -19.2,-17.4Z"></path>
+                                                            <path d="M251.9,403.7c0.1,-7.3 -9.7,-13.4 -21.7,-14.3c-12.1,-0.9 -22.7,3.6 -23.8,10.8c-1.1,7.2 8.5,14.6 21.6,15.6c13.1,1 23.8,-4.8 23.9,-12.1Z"></path>
+                                                            <path d="M312.7,400.2c-1.1,-7.3 -11.8,-11.7 -23.8,-10.8c-12,0.9 -21.8,7 -21.7,14.3c0.1,7.3 10.8,13.1 23.9,12.1c13.1,-1 22.7,-8.4 21.6,-15.6Z"></path>
+                                                            <path d="M124,312.8c-2.2,4.4 1.4,10.4 8.1,13.2c6.7,2.8 13.7,1 15.4,-3.6c1.7,-4.6 -2,-10.1 -8.3,-12.7c-6.3,-2.5 -13.1,-1.3 -15.2,3.1l0,0Z"></path>
+                                                            <path d="M171.7,330.1c-1.4,4.7 3.1,10.1 10.1,11.7c7.1,1.7 13.6,-1.2 14.6,-5.9c1,-4.8 -3.7,-9.7 -10.2,-11.2c-6.6,-1.6 -13,0.7 -14.5,5.4Z"></path>
+                                                            <path d="M233.4,349.7c7.2,0.6 13.2,-3.2 13.4,-8.1c0.2,-4.9 -5.2,-9 -11.9,-9.5c-6.7,-0.5 -12.7,2.8 -13.4,7.6c-0.6,4.9 4.7,9.5 11.9,10Z"></path>
+                                                            <path d="M285.6,349.7c7.2,-0.5 12.5,-5.2 11.9,-10c-0.6,-4.8 -6.6,-8.1 -13.4,-7.6c-6.7,0.5 -12.1,4.7 -11.9,9.5c0.2,4.8 6.2,8.7 13.4,8.1Z"></path>
+                                                            <path d="M42.6,270.8c5.6,4.9 12.8,5.6 16,1.8c3.2,-3.8 1.3,-10.4 -3.9,-15c-5.2,-4.6 -12.1,-5.8 -15.7,-2.3c-3.5,3.4 -2,10.5 3.6,15.5Z"></path>
+                                                            <path d="M101.2,301.3c2.5,-4.2 -0.3,-10.4 -6.2,-14c-5.8,-3.6 -12.8,-3.5 -15.7,0.5c-2.9,4 -0.3,10.6 5.9,14.4c6.3,4 13.5,3.4 16,-0.9Z"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="tiles__animation golf__pin">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 96 99.4"
+                                                            // //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <path
+                                                                d="M82.1,0c0,0-13.5,3.7-34.1,3.7C27.4,3.7,13.9,0,13.9,0C2.5,0-3,7.6,1.7,16.9L23.9,50c1.7,2.1,3.2,5.9,3.4,8.5l4.3,36.2
           c0.2,2.6,2.7,4.7,5.6,4.7h21.5c2.8,0,5.3-2.1,5.6-4.7l4.3-36.2c0.2-2.6,1.8-6.4,3.4-8.5l22.3-33.1C99,7.6,93.5,0,82.1,0z"
-                              ></path>
-                            </svg>
-                          </div>
-                          <div class="tiles__animation golf__flag">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 372.8 711"
-                              // //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <path
-                                d="M105.2,673.7V221.5l267.6-104.2L105.2,12V0h-16v673.7c-50,0.9-89.2,8.9-89.2,18.6C0,702.6,44.1,711,98.4,711
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="tiles__animation golf__flag">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 372.8 711"
+                                                            // //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <path
+                                                                d="M105.2,673.7V221.5l267.6-104.2L105.2,12V0h-16v673.7c-50,0.9-89.2,8.9-89.2,18.6C0,702.6,44.1,711,98.4,711
           s98.4-8.4,98.4-18.7C196.9,682.4,156.4,674.3,105.2,673.7z M105.5,28.8l224.7,88.4l-224.7,87.6V28.8z M89.2,688.7v7.2
           c-17.6-0.3-34.5-1.6-48.4-3.6C54.7,690.3,71.6,689,89.2,688.7z M105.2,696v-7.3c18.5,0.3,36.3,1.5,50.9,3.6
           C141.5,694.4,123.7,695.7,105.2,696z"
-                              ></path>
-                            </svg>
-                          </div>
-                        </div>
-                        <a
-                          class="tiles__cover"
-                          href="/fantasy/games/season-long/pga"
-                        >
-                          <p>
-                            {" "}
-                            Sink your putts and your friends this Fantasy Golf
-                            season with our PGA Commissioner game.{" "}
-                          </p>
-                          <span class="btn btn--uppercase">TEE OFF NOW!</span>
-                        </a>
-                        <a class="tiles__fake"></a>
-                      </div>
-                    </home-tile-golf>
-                    <home-tile-football class="cell cell--4-col ng-star-inserted">
-                      <div
-                        tileanimationlimit=""
-                        class="tiles tiles--home tiles__cfb"
-                      >
-                        <div class="tiles__content">
-                          <h4 class="tiles__title">College Football</h4>
-                          <div class="tiles__animation football__ball">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 361.2 358"
-                              // //xml:space="preserve"
-                              class="tiles__svg ng-star-inserted"
-                            >
-                              <path
-                                d="M336.7,337.4c-26.6,5.1-52.7,7.8-77.5,7.8c-84.8,0-155.4-30.5-198.9-85.9c-46.1-58.7-59.2-142.4-37.2-236
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <a
+                                                    class="tiles__cover"
+                                                    href="/fantasy/games/season-long/pga"
+                                                >
+                                                    <p>
+                                                        {" "}
+                                                        Sink your putts and your
+                                                        friends this Fantasy
+                                                        Golf season with our PGA
+                                                        Commissioner game.{" "}
+                                                    </p>
+                                                    <span class="btn btn--uppercase">
+                                                        TEE OFF NOW!
+                                                    </span>
+                                                </a>
+                                                <a class="tiles__fake"></a>
+                                            </div>
+                                        </home-tile-golf>
+                                        <home-tile-football class="cell cell--4-col ng-star-inserted">
+                                            <div
+                                                tileanimationlimit=""
+                                                class="tiles tiles--home tiles__cfb"
+                                            >
+                                                <div class="tiles__content">
+                                                    <h4 class="tiles__title">
+                                                        College Football
+                                                    </h4>
+                                                    <div class="tiles__animation football__ball">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 361.2 358"
+                                                            // //xml:space="preserve"
+                                                            class="tiles__svg ng-star-inserted"
+                                                        >
+                                                            <path
+                                                                d="M336.7,337.4c-26.6,5.1-52.7,7.8-77.5,7.8c-84.8,0-155.4-30.5-198.9-85.9c-46.1-58.7-59.2-142.4-37.2-236
             c24.4-6.9,49.4-10.4,74.3-10.4c21.6,0,42.7,2.7,63.1,7.8c16.5,4.5,30.6,9.8,30.6,9.8c34.8,13.6,66.1,34.7,91.1,62.2
             c27.9,30.8,47.6,69.1,57.8,109.3c3.2,13.1,5.2,23.8,7.2,41C350.3,275.4,347,307.9,336.7,337.4z M292,84C243.5,30.6,172.7,0,97.6,0
             C70.3,0,42.8,4,16.1,12l-3.5,1l-0.9,3.6c-24.2,99-10.5,188,38.6,250.7c45.9,58.6,120.2,90.8,209,90.8c26.8,0,54.9-2.9,83.5-8.7
             l3.5-0.7l1.2-3.4C378.4,261.6,355.5,154.2,292,84z"
-                              ></path>
-                              <path
-                                d="M21.7,26.5c63.9,15,95.5,28.3,139.4,54.9l-3.9,6.1c-1,1.5-0.5,3.5,1,4.5c0.5,0.4,1.1,0.5,1.7,0.5c1.1,0,2.1-0.5,2.7-1.5
+                                                            ></path>
+                                                            <path
+                                                                d="M21.7,26.5c63.9,15,95.5,28.3,139.4,54.9l-3.9,6.1c-1,1.5-0.5,3.5,1,4.5c0.5,0.4,1.1,0.5,1.7,0.5c1.1,0,2.1-0.5,2.7-1.5
             l3.9-6.1c5,3.3,10.2,6.8,15.1,10.5l-4.4,5.8c-1.1,1.4-0.8,3.4,0.7,4.5c0.6,0.4,1.2,0.7,2,0.7c1,0,1.9-0.4,2.6-1.2l4.4-5.8
             c5.2,4,10.4,8.3,15.4,12.8l-4.8,5.3c-1.2,1.3-1.1,3.4,0.3,4.5c0.6,0.5,1.4,0.8,2.1,0.8c0.9,0,1.8-0.4,2.4-1.1l4.8-5.3
             c5.2,4.8,10.3,9.7,15.4,14.9l-5,4.9c-1.2,1.2-1.3,3.3-0.1,4.5c0.7,0.7,1.5,1,2.3,1c0.8,0,1.6-0.3,2.3-0.9l5-4.8
@@ -617,54 +677,59 @@ const Homepage = () => {
             c-1.3-1.2-3.4-1-4.5,0.3l-4.6,5.2c-5.2-4.6-10.5-9-15.8-13.1l4.2-5.5c1.1-1.4,0.8-3.4-0.7-4.5c-1.4-1.1-3.4-0.8-4.5,0.7l-4.2,5.5
             c-5.2-3.9-10.4-7.5-15.6-10.8l3.7-5.8c1-1.5,0.5-3.5-1-4.5c-1.5-1-3.5-0.5-4.5,1l-3.7,5.9C120.2,49.1,84.6,35.2,26.4,21.4
             c-1.8-0.4-4.5-0.7-5.3,0.9C20,23.9,20.1,25.7,21.7,26.5z"
-                              ></path>
-                            </svg>
-                          </div>
-                          <div class="tiles__animation football__net">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 124 156"
-                              // //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <polygon points="124,0 118,0 118,68 6,68 6,0 0,0 0,74 59,74 59,156 65,156 65,74 124,74 "></polygon>
-                            </svg>
-                          </div>
-                        </div>
-                        <a
-                          class="tiles__cover ng-star-inserted"
-                          href="/fantasy/games/season-long/cfb"
-                        >
-                          <p>
-                            {" "}
-                            Fantrax is the ONLY site that features a College
-                            Fantasy Football Commissioner product. Period.{" "}
-                          </p>
-                          <span class="btn btn--uppercase">
-                            countdown to kickoff!
-                          </span>
-                        </a>
-                        <a class="tiles__fake"></a>
-                      </div>
-                    </home-tile-football>
-                    <home-tile-soccer class="cell cell--4-col ng-star-inserted">
-                      <div
-                        tileanimationlimit=""
-                        class="tiles tiles--home tiles__epl"
-                      >
-                        <div class="tiles__content">
-                          <h4 class="tiles__title">Soccer</h4>
-                          <div class="tiles__animation soccer__net">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 343.4 182"
-                              // //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <path
-                                d="M281.3,43.5l-16.2,9.2V33.5l16.2-16V43.5z M281.3,68.1l-16.2,6.3V54.8l16.2-9.2V68.1z M281.3,96.5h-16.2V76.4l16.2-6.3V96.5
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="tiles__animation football__net">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 124 156"
+                                                            // //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <polygon points="124,0 118,0 118,68 6,68 6,0 0,0 0,74 59,74 59,156 65,156 65,74 124,74 "></polygon>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <a
+                                                    class="tiles__cover ng-star-inserted"
+                                                    href="/fantasy/games/season-long/cfb"
+                                                >
+                                                    <p>
+                                                        {" "}
+                                                        Fantrax is the ONLY site
+                                                        that features a College
+                                                        Fantasy Football
+                                                        Commissioner product.
+                                                        Period.{" "}
+                                                    </p>
+                                                    <span class="btn btn--uppercase">
+                                                        countdown to kickoff!
+                                                    </span>
+                                                </a>
+                                                <a class="tiles__fake"></a>
+                                            </div>
+                                        </home-tile-football>
+                                        <home-tile-soccer class="cell cell--4-col ng-star-inserted">
+                                            <div
+                                                tileanimationlimit=""
+                                                class="tiles tiles--home tiles__epl"
+                                            >
+                                                <div class="tiles__content">
+                                                    <h4 class="tiles__title">
+                                                        Soccer
+                                                    </h4>
+                                                    <div class="tiles__animation soccer__net">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 343.4 182"
+                                                            // //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <path
+                                                                d="M281.3,43.5l-16.2,9.2V33.5l16.2-16V43.5z M281.3,68.1l-16.2,6.3V54.8l16.2-9.2V68.1z M281.3,96.5h-16.2V76.4l16.2-6.3V96.5
           z M281.3,123.2l-16.2-4.6V98.6h16.2V123.2z M281.3,136.4h-16.2v-15.9l16.2,4.6V136.4z M244.5,29.6l13.7-17.3h20.4l-17.5,17.3H244.5z
             M259.5,54.4H242V35.2h17.5V54.4z M259.5,75.5H242V56.3h17.5V75.5z M259.5,96.5H242V77.4h17.5V96.5z M259.5,117.8H242V98.6h17.5
           V117.8z M259.5,136.4H242v-16.8h17.5V136.4z M240.2,54.4H222V35.2h18.2V54.4z M240.2,75.5H222V56.3h18.2V75.5z M240.2,96.5H222V77.4
@@ -684,146 +749,211 @@ const Homepage = () => {
           V45.3l16.2,10.5V74.5z M78.3,96.5H62.1V70.6l16.2,5.8V96.5z M78.3,118l-16.2,4.7V98.6h16.2V118z M78.3,136.4H62.1v-11.7l16.2-4.7
           V136.4z M109,12.3l9.1,17.3H99.5L85.8,12.3H109z M255.8,12.3l-13.7,17.3h-18.6l9.1-17.3H255.8z M427.7,137.7H290.6V3.6H52.8v134.1
           H-85.5v7.9H31.7L-85.5,249v9.1l2.4-1.9L41.5,145.6h260.3l124.7,108.6l2.4,1.9V247L311.7,145.6h116V137.7z"
-                              ></path>
-                            </svg>
-                          </div>
-                          <div class="tiles__animation soccer__ball">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="-231 33 496 496"
-                              // //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <path
-                                d="M-215.3,369.8l1.3,1.6C-177.8,463.7-88,529,17,529c137,0,248-111,248-248C265,144,154,33,17,33c-137,0-248,111-248,248
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="tiles__animation soccer__ball">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="-231 33 496 496"
+                                                            // //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <path
+                                                                d="M-215.3,369.8l1.3,1.6C-177.8,463.7-88,529,17,529c137,0,248-111,248-248C265,144,154,33,17,33c-137,0-248,111-248,248
             c0,30.7,5.6,60,15.8,87.1L-215.3,369.8z M-218.1,281c0-31.3,6.2-61.2,17.4-88.6l58.7-72.8l15.2-24.4C-87,64.4-37.1,45.9,17,45.9
             c1.3,0,2.6,0.1,3.9,0.1l26.2,9.7l57.8,7.4c37,15,69.4,39.2,94.3,69.7l-9.6,41.9l38,107.1l24.3,6.1C248.2,414.4,144.3,516.1,17,516.1
             c-63.4,0-120.9-25.2-163.2-66.2l45.6-39.2l-43.5-112.2l-68.1-23.5l-1.6,50C-216.6,310.8-218.1,296.1-218.1,281z"
-                              ></path>
-                              <polygon points="-2.1,435.4 58.7,498.8 165,453.4 182.3,359.5 76.8,346.5 "></polygon>
-                              <polygon points="40.9,242.6 107.4,147.5 26.5,72 -86.5,112.6 -82.7,219.1 "></polygon>
-                            </svg>
-                          </div>
-                        </div>
-                        <a
-                          class="tiles__cover"
-                          href="/fantasy/games/season-long/epl"
-                        >
-                          <p>
-                            {" "}
-                            Fantrax is the home of draft-style Fantasy Soccer,
-                            featuring Premier League, and soon other Euro
-                            leagues - Bundesliga, La Liga, Serie A, and Ligue 1.{" "}
-                          </p>
-                          <span class="btn btn--uppercase">PLAY FOR FREE!</span>
-                        </a>
-                        <a class="tiles__fake"></a>
-                      </div>
-                    </home-tile-soccer>
-                    <home-tile-racing class="cell cell--4-col ng-star-inserted">
-                      <div
-                        tileanimationlimit=""
-                        class="tiles tiles--home tiles__indy"
-                      >
-                        <div class="tiles__content">
-                          <h4 class="tiles__title">INDYCAR</h4>
-                          <div class="tiles__animation indycar__car">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 451 132.8"
-                              // //xml:space="preserve"
-                              class="tiles__svg ng-star-inserted"
-                            >
-                              <path
-                                d="M264.167,109.034c1.703,0 3.202,-1.268 3.473,-3.045c0.306,-1.967 -1.007,-3.822 -2.926,-4.132l-133.812,-21.66c-1.913,-0.303 -3.728,1.036 -4.031,3.003c-0.303,1.968 1.011,3.822 2.93,4.132l133.812,21.66c0.186,0.029 0.372,0.042 0.554,0.042Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M348.677,109.034c1.946,0 3.522,-1.614 3.522,-3.61c0,-40.915 -78.293,-54.149 -116.206,-54.149c-36.321,0 -74.314,1.326 -112.918,3.941c-1.94,0.134 -3.411,1.854 -3.281,3.843c0.131,1.988 1.802,3.56 3.749,3.364c38.446,-2.609 76.287,-3.928 112.45,-3.928c44.024,0 109.163,14.913 109.163,46.929c0,1.996 1.574,3.61 3.521,3.61Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M24.71,87.375c1.946,0 3.522,-1.614 3.522,-3.61l0,-7.22c0,-0.959 -0.372,-1.875 -1.032,-2.552l-2.352,-2.412c7.882,-1.459 22.669,-3.905 42.449,-5.881c1.939,-0.197 3.356,-1.96 3.163,-3.948c-0.178,-1.981 -1.953,-3.384 -3.836,-3.244c-30.62,3.061 -48.942,7.115 -49.706,7.291c-1.258,0.281 -2.262,1.241 -2.633,2.509c-0.358,1.27 -0.015,2.637 0.894,3.568l6.011,6.163l0,5.725c-0.001,1.997 1.574,3.611 3.52,3.611Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M45.838,94.595c0.901,0 1.803,-0.353 2.49,-1.058l14.086,-14.44c1.375,-1.41 1.375,-3.694 0,-5.104c-1.376,-1.41 -3.604,-1.41 -4.98,0l-14.085,14.44c-1.375,1.41 -1.375,3.694 0,5.104c0.688,0.705 1.589,1.058 2.489,1.058Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M137.394,116.254l239.454,0c1.946,0 3.521,-1.614 3.521,-3.609c0,-1.996 -1.575,-3.611 -3.521,-3.611l-224.536,0l14.829,-7.601c1.74,-0.894 2.441,-3.06 1.575,-4.843c-0.866,-1.777 -2.986,-2.517 -4.725,-1.615l-28.172,14.44c-1.464,0.748 -2.227,2.433 -1.85,4.062c0.372,1.629 1.788,2.777 3.425,2.777Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M383.887,51.275c1.139,0 2.256,-0.564 2.934,-1.608c1.08,-1.656 0.643,-3.899 -0.976,-5.005c-1.762,-1.206 -43.797,-29.487 -100.553,-29.487l-35.213,0c-1.943,0 -3.521,1.614 -3.521,3.61l-0.007,18.093l-3.47,-0.043c-0.97,0.028 -1.85,0.367 -2.516,1.044c-0.671,0.676 -1.049,1.599 -1.049,2.566l0,7.22c0,1.995 1.575,3.61 3.521,3.61c1.946,0 3.522,-1.615 3.522,-3.61l0,-3.56l3.469,0.042c1.001,-0.07 1.854,-0.366 2.517,-1.043c0.671,-0.677 1.048,-1.6 1.048,-2.567l0.007,-18.142l31.692,0c54.644,0 96.233,27.992 96.646,28.273c0.601,0.409 1.279,0.607 1.949,0.607Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M376.07,63.29c1.15,0 2.274,-0.579 2.951,-1.636c1.066,-1.663 0.612,-3.906 -1.018,-4.991c-1.644,-1.107 -40.86,-27.047 -92.711,-27.047l-21.132,0c-1.946,0 -3.521,1.614 -3.521,3.61c0,1.995 1.575,3.61 3.521,3.61l21.132,0c49.774,0 87.281,24.805 88.853,25.862c0.595,0.402 1.266,0.592 1.925,0.592Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M405.02,123.474c17.476,0 31.692,-14.574 31.692,-32.489c0,-17.916 -14.217,-32.49 -31.692,-32.49c-17.477,0 -31.693,14.574 -31.693,32.49c0,17.915 14.215,32.489 31.693,32.489Zm0,-57.759c13.59,0 24.65,11.338 24.65,25.27c0,13.933 -11.06,25.269 -24.65,25.269c-13.591,0 -24.651,-11.337 -24.651,-25.269c0,-13.932 11.06,-25.27 24.651,-25.27Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M405.02,105.424c7.768,0 14.085,-6.479 14.085,-14.439c0,-7.961 -6.317,-14.44 -14.085,-14.44c-7.769,0 -14.087,6.479 -14.087,14.44c0,7.96 6.317,14.439 14.087,14.439Zm0,-21.659c3.882,0 7.042,3.236 7.042,7.22c0,3.983 -3.16,7.219 -7.042,7.219c-3.883,0 -7.044,-3.236 -7.044,-7.219c0,-3.984 3.16,-7.22 7.044,-7.22Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M95.138,123.474c17.476,0 31.692,-14.574 31.692,-32.489c0,-17.916 -14.216,-32.49 -31.692,-32.49c-17.477,0 -31.693,14.574 -31.693,32.49c0,17.915 14.217,32.489 31.693,32.489Zm0,-57.759c13.59,0 24.649,11.338 24.649,25.27c0,13.933 -11.06,25.269 -24.649,25.269c-13.59,0 -24.65,-11.337 -24.65,-25.269c0,-13.932 11.06,-25.27 24.65,-25.27Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M95.138,105.424c7.772,0 14.085,-6.479 14.085,-14.439c0,-7.961 -6.313,-14.44 -14.085,-14.44c-7.772,0 -14.085,6.479 -14.085,14.44c0,7.96 6.313,14.439 14.085,14.439Zm0,-21.659c3.878,0 7.043,3.236 7.043,7.22c0,3.983 -3.165,7.219 -7.043,7.219c-3.879,0 -7.043,-3.236 -7.043,-7.219c0,-3.984 3.164,-7.22 7.043,-7.22Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M440.233,87.375c0.901,0 1.801,-0.353 2.489,-1.058l7.043,-7.22c0.66,-0.677 1.032,-1.594 1.032,-2.552l0,-57.76c0,-1.996 -1.575,-3.61 -3.522,-3.61l-56.342,0c-1.946,0 -3.521,1.614 -3.521,3.61l0,28.88c0,0.959 0.372,1.875 1.032,2.552l7.043,7.22c1.375,1.41 3.604,1.41 4.979,0c1.376,-1.41 1.376,-3.695 0,-5.104l-6.011,-6.163l0,-23.775l49.299,0l0,52.656l-6.011,6.162c-1.376,1.41 -1.376,3.694 0,5.104c0.688,0.706 1.589,1.058 2.49,1.058Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M3.582,116.254l56.342,0c1.947,0 3.521,-1.614 3.521,-3.609c0,-1.996 -1.574,-3.611 -3.521,-3.611l-56.342,0c-1.947,0 -3.521,1.615 -3.521,3.611c0,1.995 1.574,3.609 3.521,3.609Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M3.582,116.254c1.946,0 3.522,-1.614 3.522,-3.609l0,-21.66c0,-1.995 -1.576,-3.61 -3.522,-3.61c-1.947,0 -3.521,1.615 -3.521,3.61l0,21.66c0,1.995 1.574,3.609 3.521,3.609Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M3.582,94.595l42.256,0c1.947,0 3.522,-1.615 3.522,-3.61c0,-1.995 -1.575,-3.61 -3.522,-3.61l-42.256,0c-1.947,0 -3.521,1.615 -3.521,3.61c0,1.995 1.574,3.61 3.521,3.61Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M341.635,80.155l28.17,0c1.946,0 3.522,-1.615 3.522,-3.61c0,-1.995 -1.576,-3.61 -3.522,-3.61l-28.17,0c-1.946,0 -3.522,1.615 -3.522,3.61c0,1.995 1.575,3.61 3.522,3.61Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M186.693,59.278c1.947,0 3.523,-1.615 3.523,-3.61l0,-15.223c0,-1.996 -1.576,-3.61 -3.523,-3.61c-1.946,0 -3.52,1.614 -3.52,3.61l0,15.223c0,1.995 1.574,3.61 3.52,3.61Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M179.651,44.055l14.085,0c1.947,0 3.522,-1.615 3.522,-3.61c0,-1.996 -1.575,-3.61 -3.522,-3.61l-14.085,0c-1.946,0 -3.522,1.614 -3.522,3.61c0,1.995 1.576,3.61 3.522,3.61Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                              <path
-                                d="M419.105,36.835l28.17,0c1.947,0 3.522,-1.615 3.522,-3.61c0,-1.996 -1.575,-3.61 -3.522,-3.61l-28.171,0c-1.946,0 -3.521,1.614 -3.521,3.61c0,1.995 1.575,3.61 3.522,3.61Z"
-                                style={{ fillRule: "nonzero" }}
-                              ></path>
-                            </svg>
-                          </div>
-                          <div class="tiles__animation indycar__flag">
-                            <svg
-                              version="1.1"
-                              preserveAspectRatio="xMidYMid meet"
-                              viewBox="0 0 260.2 301.9"
-                              // //xml:space="preserve"
-                              class="tiles__svg"
-                            >
-                              <path
-                                d="M260.2,0l-12.3,0l0,13.5c-5.6-2.1-13.6-4.3-23.3-6.1C206.3,3.8,177.9,2,146,13.2c-5.1,1.8-9.8,3.9-14.3,6.5
+                                                            ></path>
+                                                            <polygon points="-2.1,435.4 58.7,498.8 165,453.4 182.3,359.5 76.8,346.5 "></polygon>
+                                                            <polygon points="40.9,242.6 107.4,147.5 26.5,72 -86.5,112.6 -82.7,219.1 "></polygon>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <a
+                                                    class="tiles__cover"
+                                                    href="/fantasy/games/season-long/epl"
+                                                >
+                                                    <p>
+                                                        {" "}
+                                                        Fantrax is the home of
+                                                        draft-style Fantasy
+                                                        Soccer, featuring
+                                                        Premier League, and soon
+                                                        other Euro leagues -
+                                                        Bundesliga, La Liga,
+                                                        Serie A, and Ligue 1.{" "}
+                                                    </p>
+                                                    <span class="btn btn--uppercase">
+                                                        PLAY FOR FREE!
+                                                    </span>
+                                                </a>
+                                                <a class="tiles__fake"></a>
+                                            </div>
+                                        </home-tile-soccer>
+                                        <home-tile-racing class="cell cell--4-col ng-star-inserted">
+                                            <div
+                                                tileanimationlimit=""
+                                                class="tiles tiles--home tiles__indy"
+                                            >
+                                                <div class="tiles__content">
+                                                    <h4 class="tiles__title">
+                                                        INDYCAR
+                                                    </h4>
+                                                    <div class="tiles__animation indycar__car">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 451 132.8"
+                                                            // //xml:space="preserve"
+                                                            class="tiles__svg ng-star-inserted"
+                                                        >
+                                                            <path
+                                                                d="M264.167,109.034c1.703,0 3.202,-1.268 3.473,-3.045c0.306,-1.967 -1.007,-3.822 -2.926,-4.132l-133.812,-21.66c-1.913,-0.303 -3.728,1.036 -4.031,3.003c-0.303,1.968 1.011,3.822 2.93,4.132l133.812,21.66c0.186,0.029 0.372,0.042 0.554,0.042Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M348.677,109.034c1.946,0 3.522,-1.614 3.522,-3.61c0,-40.915 -78.293,-54.149 -116.206,-54.149c-36.321,0 -74.314,1.326 -112.918,3.941c-1.94,0.134 -3.411,1.854 -3.281,3.843c0.131,1.988 1.802,3.56 3.749,3.364c38.446,-2.609 76.287,-3.928 112.45,-3.928c44.024,0 109.163,14.913 109.163,46.929c0,1.996 1.574,3.61 3.521,3.61Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M24.71,87.375c1.946,0 3.522,-1.614 3.522,-3.61l0,-7.22c0,-0.959 -0.372,-1.875 -1.032,-2.552l-2.352,-2.412c7.882,-1.459 22.669,-3.905 42.449,-5.881c1.939,-0.197 3.356,-1.96 3.163,-3.948c-0.178,-1.981 -1.953,-3.384 -3.836,-3.244c-30.62,3.061 -48.942,7.115 -49.706,7.291c-1.258,0.281 -2.262,1.241 -2.633,2.509c-0.358,1.27 -0.015,2.637 0.894,3.568l6.011,6.163l0,5.725c-0.001,1.997 1.574,3.611 3.52,3.611Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M45.838,94.595c0.901,0 1.803,-0.353 2.49,-1.058l14.086,-14.44c1.375,-1.41 1.375,-3.694 0,-5.104c-1.376,-1.41 -3.604,-1.41 -4.98,0l-14.085,14.44c-1.375,1.41 -1.375,3.694 0,5.104c0.688,0.705 1.589,1.058 2.489,1.058Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M137.394,116.254l239.454,0c1.946,0 3.521,-1.614 3.521,-3.609c0,-1.996 -1.575,-3.611 -3.521,-3.611l-224.536,0l14.829,-7.601c1.74,-0.894 2.441,-3.06 1.575,-4.843c-0.866,-1.777 -2.986,-2.517 -4.725,-1.615l-28.172,14.44c-1.464,0.748 -2.227,2.433 -1.85,4.062c0.372,1.629 1.788,2.777 3.425,2.777Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M383.887,51.275c1.139,0 2.256,-0.564 2.934,-1.608c1.08,-1.656 0.643,-3.899 -0.976,-5.005c-1.762,-1.206 -43.797,-29.487 -100.553,-29.487l-35.213,0c-1.943,0 -3.521,1.614 -3.521,3.61l-0.007,18.093l-3.47,-0.043c-0.97,0.028 -1.85,0.367 -2.516,1.044c-0.671,0.676 -1.049,1.599 -1.049,2.566l0,7.22c0,1.995 1.575,3.61 3.521,3.61c1.946,0 3.522,-1.615 3.522,-3.61l0,-3.56l3.469,0.042c1.001,-0.07 1.854,-0.366 2.517,-1.043c0.671,-0.677 1.048,-1.6 1.048,-2.567l0.007,-18.142l31.692,0c54.644,0 96.233,27.992 96.646,28.273c0.601,0.409 1.279,0.607 1.949,0.607Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M376.07,63.29c1.15,0 2.274,-0.579 2.951,-1.636c1.066,-1.663 0.612,-3.906 -1.018,-4.991c-1.644,-1.107 -40.86,-27.047 -92.711,-27.047l-21.132,0c-1.946,0 -3.521,1.614 -3.521,3.61c0,1.995 1.575,3.61 3.521,3.61l21.132,0c49.774,0 87.281,24.805 88.853,25.862c0.595,0.402 1.266,0.592 1.925,0.592Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M405.02,123.474c17.476,0 31.692,-14.574 31.692,-32.489c0,-17.916 -14.217,-32.49 -31.692,-32.49c-17.477,0 -31.693,14.574 -31.693,32.49c0,17.915 14.215,32.489 31.693,32.489Zm0,-57.759c13.59,0 24.65,11.338 24.65,25.27c0,13.933 -11.06,25.269 -24.65,25.269c-13.591,0 -24.651,-11.337 -24.651,-25.269c0,-13.932 11.06,-25.27 24.651,-25.27Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M405.02,105.424c7.768,0 14.085,-6.479 14.085,-14.439c0,-7.961 -6.317,-14.44 -14.085,-14.44c-7.769,0 -14.087,6.479 -14.087,14.44c0,7.96 6.317,14.439 14.087,14.439Zm0,-21.659c3.882,0 7.042,3.236 7.042,7.22c0,3.983 -3.16,7.219 -7.042,7.219c-3.883,0 -7.044,-3.236 -7.044,-7.219c0,-3.984 3.16,-7.22 7.044,-7.22Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M95.138,123.474c17.476,0 31.692,-14.574 31.692,-32.489c0,-17.916 -14.216,-32.49 -31.692,-32.49c-17.477,0 -31.693,14.574 -31.693,32.49c0,17.915 14.217,32.489 31.693,32.489Zm0,-57.759c13.59,0 24.649,11.338 24.649,25.27c0,13.933 -11.06,25.269 -24.649,25.269c-13.59,0 -24.65,-11.337 -24.65,-25.269c0,-13.932 11.06,-25.27 24.65,-25.27Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M95.138,105.424c7.772,0 14.085,-6.479 14.085,-14.439c0,-7.961 -6.313,-14.44 -14.085,-14.44c-7.772,0 -14.085,6.479 -14.085,14.44c0,7.96 6.313,14.439 14.085,14.439Zm0,-21.659c3.878,0 7.043,3.236 7.043,7.22c0,3.983 -3.165,7.219 -7.043,7.219c-3.879,0 -7.043,-3.236 -7.043,-7.219c0,-3.984 3.164,-7.22 7.043,-7.22Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M440.233,87.375c0.901,0 1.801,-0.353 2.489,-1.058l7.043,-7.22c0.66,-0.677 1.032,-1.594 1.032,-2.552l0,-57.76c0,-1.996 -1.575,-3.61 -3.522,-3.61l-56.342,0c-1.946,0 -3.521,1.614 -3.521,3.61l0,28.88c0,0.959 0.372,1.875 1.032,2.552l7.043,7.22c1.375,1.41 3.604,1.41 4.979,0c1.376,-1.41 1.376,-3.695 0,-5.104l-6.011,-6.163l0,-23.775l49.299,0l0,52.656l-6.011,6.162c-1.376,1.41 -1.376,3.694 0,5.104c0.688,0.706 1.589,1.058 2.49,1.058Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M3.582,116.254l56.342,0c1.947,0 3.521,-1.614 3.521,-3.609c0,-1.996 -1.574,-3.611 -3.521,-3.611l-56.342,0c-1.947,0 -3.521,1.615 -3.521,3.611c0,1.995 1.574,3.609 3.521,3.609Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M3.582,116.254c1.946,0 3.522,-1.614 3.522,-3.609l0,-21.66c0,-1.995 -1.576,-3.61 -3.522,-3.61c-1.947,0 -3.521,1.615 -3.521,3.61l0,21.66c0,1.995 1.574,3.609 3.521,3.609Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M3.582,94.595l42.256,0c1.947,0 3.522,-1.615 3.522,-3.61c0,-1.995 -1.575,-3.61 -3.522,-3.61l-42.256,0c-1.947,0 -3.521,1.615 -3.521,3.61c0,1.995 1.574,3.61 3.521,3.61Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M341.635,80.155l28.17,0c1.946,0 3.522,-1.615 3.522,-3.61c0,-1.995 -1.576,-3.61 -3.522,-3.61l-28.17,0c-1.946,0 -3.522,1.615 -3.522,3.61c0,1.995 1.575,3.61 3.522,3.61Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M186.693,59.278c1.947,0 3.523,-1.615 3.523,-3.61l0,-15.223c0,-1.996 -1.576,-3.61 -3.523,-3.61c-1.946,0 -3.52,1.614 -3.52,3.61l0,15.223c0,1.995 1.574,3.61 3.52,3.61Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M179.651,44.055l14.085,0c1.947,0 3.522,-1.615 3.522,-3.61c0,-1.996 -1.575,-3.61 -3.522,-3.61l-14.085,0c-1.946,0 -3.522,1.614 -3.522,3.61c0,1.995 1.576,3.61 3.522,3.61Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                            <path
+                                                                d="M419.105,36.835l28.17,0c1.947,0 3.522,-1.615 3.522,-3.61c0,-1.996 -1.575,-3.61 -3.522,-3.61l-28.171,0c-1.946,0 -3.521,1.614 -3.521,3.61c0,1.995 1.575,3.61 3.522,3.61Z"
+                                                                style={{
+                                                                    fillRule:
+                                                                        "nonzero"
+                                                                }}
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                    <div class="tiles__animation indycar__flag">
+                                                        <svg
+                                                            version="1.1"
+                                                            preserveAspectRatio="xMidYMid meet"
+                                                            viewBox="0 0 260.2 301.9"
+                                                            // //xml:space="preserve"
+                                                            class="tiles__svg"
+                                                        >
+                                                            <path
+                                                                d="M260.2,0l-12.3,0l0,13.5c-5.6-2.1-13.6-4.3-23.3-6.1C206.3,3.8,177.9,2,146,13.2c-5.1,1.8-9.8,3.9-14.3,6.5
           c-12,6.8-20.5,15.2-28.7,23.4c-7.3,7.2-14.1,14-22.8,18.9c-2.9,1.6-5.8,3-8.9,4C43,75.9,9,67.9,8.6,67.8L0,65.7l56.1,160.1l2.8,0.5
           c1.1,0.2,27.3,4.4,54-5c5-1.7,9.7-3.9,14.2-6.5c5.5-3.1,10.1-6.4,15-9.9c5.1-3.6,10.3-7.4,16.8-11.1c6.4-3.6,13.3-6.7,21-9.4
           c25.3-8.9,57.3,3.1,68,7.7l0.1,109.7l12.3,0V0z M200.8,121.8l-0.6,49.9c-7.9,0-15.9,1.1-23.5,3.7c-8.1,2.8-15.4,6.1-22.2,9.9
@@ -831,847 +961,1002 @@ const Homepage = () => {
           L29,119.3c22.5,6.2,39.4,4.6,39.4,4.6L56.7,79.4c5.9-0.9,11.9-2.2,17.7-4.3c3.6-1.3,7.1-2.8,10.5-4.7c7.6-4.3,13.9-9.9,19.9-15.6
           l5.6,49.4c0,0,24.8-25.2,35.6-28.9l-3.9-50.1c2.3-1.1,4.7-2,7.1-2.9c20.2-7.1,38.9-8.6,54.2-7.8l-1.7,49.3c0,0,22.5,0.2,46.1,9
           l0,60.6C238.1,129.5,218.2,122.4,200.8,121.8z"
-                              ></path>
-                              <path
-                                d="M154.8,71.5c-5,1.8-8.9,3.8-8.9,3.8l4.6,59.3c0,0,10.1-5.3,20.9-9.1s29.4-3.6,29.4-3.6l0.9-58
+                                                            ></path>
+                                                            <path
+                                                                d="M154.8,71.5c-5,1.8-8.9,3.8-8.9,3.8l4.6,59.3c0,0,10.1-5.3,20.9-9.1s29.4-3.6,29.4-3.6l0.9-58
           C201.7,63.8,178.9,63.1,154.8,71.5z"
-                              ></path>
-                              <path
-                                d="M85.5,120.5c-9,3.1-17.1,3.4-17.1,3.4l12.1,46c0,0,10.1-1.6,17.8-4.3c7.7-2.7,18.1-8.7,18.1-8.7l-6-52.8
+                                                            ></path>
+                                                            <path
+                                                                d="M85.5,120.5c-9,3.1-17.1,3.4-17.1,3.4l12.1,46c0,0,10.1-1.6,17.8-4.3c7.7-2.7,18.1-8.7,18.1-8.7l-6-52.8
           C110.4,104.2,99.5,115.6,85.5,120.5z"
-                              ></path>
-                            </svg>
-                          </div>
-                        </div>
-                        <a
-                          class="tiles__cover ng-star-inserted"
-                          href="/fantasy/games/season-long/indycar"
-                        >
-                          <p>
-                            {" "}
-                            Play the official INDYCAR fantasy challenge for
-                            free, and win great prizes!{" "}
-                          </p>
-                          <span class="btn btn--uppercase">PLAY NOW!</span>
-                        </a>
-                        <a class="tiles__fake"></a>
-                      </div>
-                    </home-tile-racing>
-                  </div>
+                                                            ></path>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <a
+                                                    class="tiles__cover ng-star-inserted"
+                                                    href="/fantasy/games/season-long/indycar"
+                                                >
+                                                    <p>
+                                                        {" "}
+                                                        Play the official
+                                                        INDYCAR fantasy
+                                                        challenge for free, and
+                                                        win great prizes!{" "}
+                                                    </p>
+                                                    <span class="btn btn--uppercase">
+                                                        PLAY NOW!
+                                                    </span>
+                                                </a>
+                                                <a class="tiles__fake"></a>
+                                            </div>
+                                        </home-tile-racing>
+                                    </div>
+                                </div>
+                            </section>
+                            <section class="section-wrapper section-wrapper--landing section-wrapper--gray">
+                                <div class="content--center mobile-clearance">
+                                    <h2>Why Fantrax?</h2>
+                                    <h6>
+                                        What ESPN, CBS and Yahoo! do NOT
+                                        offer...
+                                    </h6>
+                                </div>
+                                <div class="content--center margin">
+                                    <table class="table table--striped table--features">
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <i class="comparison-table-logo--small"></i>
+                                            </td>
+                                            <td>
+                                                <i class="comparison-table-logo--small comparison-table-logo--cbs"></i>
+                                            </td>
+                                            <td>
+                                                <i class="comparison-table-logo--small comparison-table-logo--espn"></i>
+                                            </td>
+                                            <td>
+                                                <i class="comparison-table-logo--small comparison-table-logo--yahoo"></i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                "Easy Click" and "Classic"
+                                                Lineup Change Methods
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="Advanced"
+                                                    class="icons icons--success"
+                                                >
+                                                    check
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Multi-Team Trades</td>
+                                            <td>
+                                                <i
+                                                    title="Advanced"
+                                                    class="icons icons--success"
+                                                >
+                                                    check
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                College Football &amp;
+                                                Basketball Commissioner / League
+                                                Manager
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="Advanced"
+                                                    class="icons icons--success"
+                                                >
+                                                    check
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                NASCAR Commissioner / League
+                                                Manager
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="Advanced"
+                                                    class="icons icons--success"
+                                                >
+                                                    check
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Customizable Entry Fee and
+                                                Payout Manager (Fantrax
+                                                Treasurer)
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="Advanced"
+                                                    class="icons icons--success"
+                                                >
+                                                    check
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Quick and Thorough Customer
+                                                Email Support
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="Advanced"
+                                                    class="icons icons--success"
+                                                >
+                                                    check
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                            <td>
+                                                <i
+                                                    title="None"
+                                                    class="icons icons--gray-lightish"
+                                                >
+                                                    close
+                                                </i>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="button-group button-group--center">
+                                    <a
+                                        mat-raised-button=""
+                                        color="primary-large"
+                                        routerlink="/features"
+                                        class="mat-focus-indicator mat-raised-button mat-button-base mat-primary-large"
+                                        tabindex="0"
+                                        aria-disabled="false"
+                                        href="/features"
+                                    >
+                                        <span class="mat-button-wrapper">
+                                            All features
+                                        </span>
+                                        <div
+                                            matripple=""
+                                            class="mat-ripple mat-button-ripple"
+                                        ></div>
+                                        {/* <div class="mat-button-focus-overlay"></div> */}
+                                    </a>
+                                </div>
+                            </section>
+                            <section class="section-wrapper section-wrapper--landing">
+                                <div class="content--center mobile-clearance">
+                                    <h2>What Fantrax Fans Are Saying!</h2>
+                                    <app-world-map _nghost-sst-c276="">
+                                        <div
+                                            _ngcontent-sst-c276=""
+                                            class="world-map in-view"
+                                        >
+                                            <div
+                                                _ngcontent-sst-c276=""
+                                                class="world-map__circles world-map__circles--us"
+                                            >
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--1 ng-star-inserted"
+                                                    // style="transition-delay: 0s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--2 ng-star-inserted"
+                                                    // style="transition-delay: 0.0833333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--3 ng-star-inserted"
+                                                    // style="transition-delay: 0.166667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--4 ng-star-inserted"
+                                                    // style="transition-delay: 0.25s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--5 ng-star-inserted"
+                                                    // style="transition-delay: 0.333333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--6 ng-star-inserted"
+                                                    // style="transition-delay: 0.416667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--7 ng-star-inserted"
+                                                    // style="transition-delay: 0.5s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--8 ng-star-inserted"
+                                                    // style="transition-delay: 0.583333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--9 ng-star-inserted"
+                                                    // style="transition-delay: 0.666667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--10 ng-star-inserted"
+                                                    // style="transition-delay: 0.75s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--11 ng-star-inserted"
+                                                    // style="transition-delay: 0.833333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--12 ng-star-inserted"
+                                                    // style="transition-delay: 0.916667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--13 ng-star-inserted"
+                                                    // style="transition-delay: 1s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--14 ng-star-inserted"
+                                                    // style="transition-delay: 1.08333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--15 ng-star-inserted"
+                                                    // style="transition-delay: 1.16667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--16 ng-star-inserted"
+                                                    // style="transition-delay: 1.25s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--17 ng-star-inserted"
+                                                    // style="transition-delay: 1.33333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--18 ng-star-inserted"
+                                                    // style="transition-delay: 1.41667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--19 ng-star-inserted"
+                                                    // style="transition-delay: 1.5s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--20 ng-star-inserted"
+                                                    // style="transition-delay: 1.58333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--21 ng-star-inserted"
+                                                    // style="transition-delay: 1.66667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--22 ng-star-inserted"
+                                                    // style="transition-delay: 1.75s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--23 ng-star-inserted"
+                                                    // style="transition-delay: 1.83333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--24 ng-star-inserted"
+                                                    // style="transition-delay: 1.91667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--25 ng-star-inserted"
+                                                    // style="transition-delay: 2s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--26 ng-star-inserted"
+                                                    // style="transition-delay: 2.08333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--27 ng-star-inserted"
+                                                    // style="transition-delay: 2.16667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--28 ng-star-inserted"
+                                                    // style="transition-delay: 2.25s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--29 ng-star-inserted"
+                                                    // style="transition-delay: 2.33333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--30 ng-star-inserted"
+                                                    // style="transition-delay: 2.41667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--31 ng-star-inserted"
+                                                    // style="transition-delay: 2.5s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--32 ng-star-inserted"
+                                                    // style="transition-delay: 2.58333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--33 ng-star-inserted"
+                                                    // style="transition-delay: 2.66667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--34 ng-star-inserted"
+                                                    // style="transition-delay: 2.75s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--35 ng-star-inserted"
+                                                    // style="transition-delay: 2.83333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--36 ng-star-inserted"
+                                                    // style="transition-delay: 2.91667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--37 ng-star-inserted"
+                                                    // style="transition-delay: 3s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--38 ng-star-inserted"
+                                                    // style="transition-delay: 3.08333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--39 ng-star-inserted"
+                                                    // style="transition-delay: 3.16667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--40 ng-star-inserted"
+                                                    // style="transition-delay: 3.25s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--41 ng-star-inserted"
+                                                    // style="transition-delay: 3.33333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--42 ng-star-inserted"
+                                                    // style="transition-delay: 3.41667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--43 ng-star-inserted"
+                                                    // style="transition-delay: 3.5s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--44 ng-star-inserted"
+                                                    // style="transition-delay: 3.58333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--45 ng-star-inserted"
+                                                    // style="transition-delay: 3.66667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--46 ng-star-inserted"
+                                                    // style="transition-delay: 3.75s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--47 ng-star-inserted"
+                                                    // style="transition-delay: 3.83333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--48 ng-star-inserted"
+                                                    // style="transition-delay: 3.91667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--49 ng-star-inserted"
+                                                    // style="transition-delay: 4s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--50 ng-star-inserted"
+                                                    // style="transition-delay: 4.08333s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--51 ng-star-inserted"
+                                                    // style="transition-delay: 4.16667s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--52 ng-star-inserted"
+                                                    // style="transition-delay: 4.25s;"
+                                                ></i>
+                                                <i
+                                                    _ngcontent-sst-c276=""
+                                                    class="circles circles--53 ng-star-inserted"
+                                                    // style="transition-delay: 4.33333s;"
+                                                ></i>
+                                            </div>
+                                            <div
+                                                _ngcontent-sst-c276=""
+                                                class="world-map__comments"
+                                            >
+                                                <a
+                                                    _ngcontent-sst-c276=""
+                                                    class="comments-box__arrow arrow-left"
+                                                >
+                                                    <i
+                                                        _ngcontent-sst-c276=""
+                                                        class="icons"
+                                                    >
+                                                        chevron_left
+                                                    </i>
+                                                </a>
+                                                <a
+                                                    _ngcontent-sst-c276=""
+                                                    class="comments-box__arrow arrow-right"
+                                                >
+                                                    <i
+                                                        _ngcontent-sst-c276=""
+                                                        class="icons"
+                                                    >
+                                                        chevron_right
+                                                    </i>
+                                                </a>
+                                                <div
+                                                    _ngcontent-sst-c276=""
+                                                    class="comments-box__container"
+                                                >
+                                                    <div
+                                                        _ngcontent-sst-c276=""
+                                                        class="comments-box active ng-star-inserted"
+                                                    >
+                                                        <h5 _ngcontent-sst-c276="">
+                                                            The best fantasy
+                                                            sports site – bar
+                                                            none!
+                                                        </h5>
+                                                        <div
+                                                            _ngcontent-sst-c276=""
+                                                            class="comments-box__stars"
+                                                        >
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                        </div>
+                                                        <p _ngcontent-sst-c276="">
+                                                            {" "}
+                                                            Features far exceed
+                                                            the expectations I
+                                                            envisioned and the
+                                                            customer service is
+                                                            second to none. If
+                                                            you choose any other
+                                                            fantasy league site,
+                                                            you're missing out!
+                                                            <span _ngcontent-sst-c276="">
+                                                                Keith I.
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div
+                                                        _ngcontent-sst-c276=""
+                                                        class="comments-box active--right ng-star-inserted"
+                                                    >
+                                                        <h5 _ngcontent-sst-c276="">
+                                                            The king of keeper
+                                                            &amp; dynasty
+                                                            leagues
+                                                        </h5>
+                                                        <div
+                                                            _ngcontent-sst-c276=""
+                                                            class="comments-box__stars"
+                                                        >
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                        </div>
+                                                        <p _ngcontent-sst-c276="">
+                                                            {" "}
+                                                            Fantrax excels in
+                                                            keeper or dynasty
+                                                            leagues. It tracks
+                                                            everything you can
+                                                            imagine and even
+                                                            stuff you can't.
+                                                            Once you go Fantrax,
+                                                            you'll never go
+                                                            back!.
+                                                            <span _ngcontent-sst-c276="">
+                                                                David H.
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div
+                                                        _ngcontent-sst-c276=""
+                                                        class="comments-box inactive ng-star-inserted"
+                                                    >
+                                                        <h5 _ngcontent-sst-c276="">
+                                                            Features and
+                                                            Flexibility
+                                                        </h5>
+                                                        <div
+                                                            _ngcontent-sst-c276=""
+                                                            class="comments-box__stars"
+                                                        >
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                        </div>
+                                                        <p _ngcontent-sst-c276="">
+                                                            {" "}
+                                                            I haven't come
+                                                            across any other
+                                                            fantasy sports site
+                                                            that has the depth
+                                                            of features and
+                                                            flexibility that
+                                                            Fantrax does, while
+                                                            at the same time
+                                                            being easy to
+                                                            navigate.
+                                                            <span _ngcontent-sst-c276="">
+                                                                Vincent C.
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div
+                                                        _ngcontent-sst-c276=""
+                                                        class="comments-box inactive ng-star-inserted"
+                                                    >
+                                                        <h5 _ngcontent-sst-c276="">
+                                                            Service exceeded
+                                                            expectations
+                                                        </h5>
+                                                        <div
+                                                            _ngcontent-sst-c276=""
+                                                            class="comments-box__stars"
+                                                        >
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                        </div>
+                                                        <p _ngcontent-sst-c276="">
+                                                            {" "}
+                                                            I was impressed with
+                                                            the response I
+                                                            received in regards
+                                                            to some suggestions
+                                                            I had about the game
+                                                            offerings. I can
+                                                            truly say the folks
+                                                            at Fantrax do
+                                                            listen.
+                                                            <span _ngcontent-sst-c276="">
+                                                                Richie M.
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div
+                                                        _ngcontent-sst-c276=""
+                                                        class="comments-box inactive ng-star-inserted"
+                                                    >
+                                                        <h5 _ngcontent-sst-c276="">
+                                                            Games Not Available
+                                                            Anywhere Else
+                                                        </h5>
+                                                        <div
+                                                            _ngcontent-sst-c276=""
+                                                            class="comments-box__stars"
+                                                        >
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                        </div>
+                                                        <p _ngcontent-sst-c276="">
+                                                            {" "}
+                                                            Fantrax is a
+                                                            Godsend. It's the
+                                                            only place that I
+                                                            know of currently
+                                                            offering free
+                                                            fantasy college
+                                                            football and fantasy
+                                                            college basketball
+                                                            games.
+                                                            <span _ngcontent-sst-c276="">
+                                                                Bo R
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <div
+                                                        _ngcontent-sst-c276=""
+                                                        class="comments-box active--left ng-star-inserted"
+                                                    >
+                                                        <h5 _ngcontent-sst-c276="">
+                                                            Long Time Fantrax
+                                                            User!
+                                                        </h5>
+                                                        <div
+                                                            _ngcontent-sst-c276=""
+                                                            class="comments-box__stars"
+                                                        >
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                            <i
+                                                                _ngcontent-sst-c276=""
+                                                                class="icons icons--success-light"
+                                                            >
+                                                                star
+                                                            </i>
+                                                        </div>
+                                                        <p _ngcontent-sst-c276="">
+                                                            {" "}
+                                                            I have been playing
+                                                            on Fantrax from
+                                                            their beginning
+                                                            (2008) due to their
+                                                            excellent customer
+                                                            service, variety of
+                                                            game options and
+                                                            their real-time
+                                                            scoring updates.
+                                                            <span _ngcontent-sst-c276="">
+                                                                Anthony O.
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </app-world-map>
+                                </div>
+                            </section>
+                        </section>
+                    </app-home>
                 </div>
-              </section>
-              <section class="section-wrapper section-wrapper--landing section-wrapper--gray">
-                <div class="content--center mobile-clearance">
-                  <h2>Why Fantrax?</h2>
-                  <h6>What ESPN, CBS and Yahoo! do NOT offer...</h6>
-                </div>
-                <div class="content--center margin">
-                  <table class="table table--striped table--features">
-                    <tr>
-                      <td></td>
-                      <td>
-                        <i class="comparison-table-logo--small"></i>
-                      </td>
-                      <td>
-                        <i class="comparison-table-logo--small comparison-table-logo--cbs"></i>
-                      </td>
-                      <td>
-                        <i class="comparison-table-logo--small comparison-table-logo--espn"></i>
-                      </td>
-                      <td>
-                        <i class="comparison-table-logo--small comparison-table-logo--yahoo"></i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>"Easy Click" and "Classic" Lineup Change Methods</td>
-                      <td>
-                        <i title="Advanced" class="icons icons--success">
-                          check
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Multi-Team Trades</td>
-                      <td>
-                        <i title="Advanced" class="icons icons--success">
-                          check
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        College Football &amp; Basketball Commissioner / League
-                        Manager
-                      </td>
-                      <td>
-                        <i title="Advanced" class="icons icons--success">
-                          check
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>NASCAR Commissioner / League Manager</td>
-                      <td>
-                        <i title="Advanced" class="icons icons--success">
-                          check
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Customizable Entry Fee and Payout Manager (Fantrax
-                        Treasurer)
-                      </td>
-                      <td>
-                        <i title="Advanced" class="icons icons--success">
-                          check
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Quick and Thorough Customer Email Support</td>
-                      <td>
-                        <i title="Advanced" class="icons icons--success">
-                          check
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                      <td>
-                        <i title="None" class="icons icons--gray-lightish">
-                          close
-                        </i>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-                <div class="button-group button-group--center">
-                  <a
-                    mat-raised-button=""
-                    color="primary-large"
-                    routerlink="/features"
-                    class="mat-focus-indicator mat-raised-button mat-button-base mat-primary-large"
-                    tabindex="0"
-                    aria-disabled="false"
-                    href="/features"
-                  >
-                    <span class="mat-button-wrapper">All features</span>
-                    <div
-                      matripple=""
-                      class="mat-ripple mat-button-ripple"
-                    ></div>
-                    {/* <div class="mat-button-focus-overlay"></div> */}
-                  </a>
-                </div>
-              </section>
-              <section class="section-wrapper section-wrapper--landing">
-                <div class="content--center mobile-clearance">
-                  <h2>What Fantrax Fans Are Saying!</h2>
-                  <app-world-map _nghost-sst-c276="">
-                    <div _ngcontent-sst-c276="" class="world-map in-view">
-                      <div
-                        _ngcontent-sst-c276=""
-                        class="world-map__circles world-map__circles--us"
-                      >
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--1 ng-star-inserted"
-                          // style="transition-delay: 0s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--2 ng-star-inserted"
-                          // style="transition-delay: 0.0833333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--3 ng-star-inserted"
-                          // style="transition-delay: 0.166667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--4 ng-star-inserted"
-                          // style="transition-delay: 0.25s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--5 ng-star-inserted"
-                          // style="transition-delay: 0.333333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--6 ng-star-inserted"
-                          // style="transition-delay: 0.416667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--7 ng-star-inserted"
-                          // style="transition-delay: 0.5s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--8 ng-star-inserted"
-                          // style="transition-delay: 0.583333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--9 ng-star-inserted"
-                          // style="transition-delay: 0.666667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--10 ng-star-inserted"
-                          // style="transition-delay: 0.75s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--11 ng-star-inserted"
-                          // style="transition-delay: 0.833333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--12 ng-star-inserted"
-                          // style="transition-delay: 0.916667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--13 ng-star-inserted"
-                          // style="transition-delay: 1s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--14 ng-star-inserted"
-                          // style="transition-delay: 1.08333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--15 ng-star-inserted"
-                          // style="transition-delay: 1.16667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--16 ng-star-inserted"
-                          // style="transition-delay: 1.25s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--17 ng-star-inserted"
-                          // style="transition-delay: 1.33333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--18 ng-star-inserted"
-                          // style="transition-delay: 1.41667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--19 ng-star-inserted"
-                          // style="transition-delay: 1.5s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--20 ng-star-inserted"
-                          // style="transition-delay: 1.58333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--21 ng-star-inserted"
-                          // style="transition-delay: 1.66667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--22 ng-star-inserted"
-                          // style="transition-delay: 1.75s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--23 ng-star-inserted"
-                          // style="transition-delay: 1.83333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--24 ng-star-inserted"
-                          // style="transition-delay: 1.91667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--25 ng-star-inserted"
-                          // style="transition-delay: 2s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--26 ng-star-inserted"
-                          // style="transition-delay: 2.08333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--27 ng-star-inserted"
-                          // style="transition-delay: 2.16667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--28 ng-star-inserted"
-                          // style="transition-delay: 2.25s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--29 ng-star-inserted"
-                          // style="transition-delay: 2.33333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--30 ng-star-inserted"
-                          // style="transition-delay: 2.41667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--31 ng-star-inserted"
-                          // style="transition-delay: 2.5s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--32 ng-star-inserted"
-                          // style="transition-delay: 2.58333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--33 ng-star-inserted"
-                          // style="transition-delay: 2.66667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--34 ng-star-inserted"
-                          // style="transition-delay: 2.75s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--35 ng-star-inserted"
-                          // style="transition-delay: 2.83333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--36 ng-star-inserted"
-                          // style="transition-delay: 2.91667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--37 ng-star-inserted"
-                          // style="transition-delay: 3s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--38 ng-star-inserted"
-                          // style="transition-delay: 3.08333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--39 ng-star-inserted"
-                          // style="transition-delay: 3.16667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--40 ng-star-inserted"
-                          // style="transition-delay: 3.25s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--41 ng-star-inserted"
-                          // style="transition-delay: 3.33333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--42 ng-star-inserted"
-                          // style="transition-delay: 3.41667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--43 ng-star-inserted"
-                          // style="transition-delay: 3.5s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--44 ng-star-inserted"
-                          // style="transition-delay: 3.58333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--45 ng-star-inserted"
-                          // style="transition-delay: 3.66667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--46 ng-star-inserted"
-                          // style="transition-delay: 3.75s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--47 ng-star-inserted"
-                          // style="transition-delay: 3.83333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--48 ng-star-inserted"
-                          // style="transition-delay: 3.91667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--49 ng-star-inserted"
-                          // style="transition-delay: 4s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--50 ng-star-inserted"
-                          // style="transition-delay: 4.08333s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--51 ng-star-inserted"
-                          // style="transition-delay: 4.16667s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--52 ng-star-inserted"
-                          // style="transition-delay: 4.25s;"
-                        ></i>
-                        <i
-                          _ngcontent-sst-c276=""
-                          class="circles circles--53 ng-star-inserted"
-                          // style="transition-delay: 4.33333s;"
-                        ></i>
-                      </div>
-                      <div _ngcontent-sst-c276="" class="world-map__comments">
-                        <a
-                          _ngcontent-sst-c276=""
-                          class="comments-box__arrow arrow-left"
-                        >
-                          <i _ngcontent-sst-c276="" class="icons">
-                            chevron_left
-                          </i>
-                        </a>
-                        <a
-                          _ngcontent-sst-c276=""
-                          class="comments-box__arrow arrow-right"
-                        >
-                          <i _ngcontent-sst-c276="" class="icons">
-                            chevron_right
-                          </i>
-                        </a>
-                        <div
-                          _ngcontent-sst-c276=""
-                          class="comments-box__container"
-                        >
-                          <div
-                            _ngcontent-sst-c276=""
-                            class="comments-box active ng-star-inserted"
-                          >
-                            <h5 _ngcontent-sst-c276="">
-                              The best fantasy sports site – bar none!
-                            </h5>
-                            <div
-                              _ngcontent-sst-c276=""
-                              class="comments-box__stars"
-                            >
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                            </div>
-                            <p _ngcontent-sst-c276="">
-                              {" "}
-                              Features far exceed the expectations I envisioned
-                              and the customer service is second to none. If you
-                              choose any other fantasy league site, you're
-                              missing out!
-                              <span _ngcontent-sst-c276="">Keith I.</span>
-                            </p>
-                          </div>
-                          <div
-                            _ngcontent-sst-c276=""
-                            class="comments-box active--right ng-star-inserted"
-                          >
-                            <h5 _ngcontent-sst-c276="">
-                              The king of keeper &amp; dynasty leagues
-                            </h5>
-                            <div
-                              _ngcontent-sst-c276=""
-                              class="comments-box__stars"
-                            >
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                            </div>
-                            <p _ngcontent-sst-c276="">
-                              {" "}
-                              Fantrax excels in keeper or dynasty leagues. It
-                              tracks everything you can imagine and even stuff
-                              you can't. Once you go Fantrax, you'll never go
-                              back!.
-                              <span _ngcontent-sst-c276="">David H.</span>
-                            </p>
-                          </div>
-                          <div
-                            _ngcontent-sst-c276=""
-                            class="comments-box inactive ng-star-inserted"
-                          >
-                            <h5 _ngcontent-sst-c276="">
-                              Features and Flexibility
-                            </h5>
-                            <div
-                              _ngcontent-sst-c276=""
-                              class="comments-box__stars"
-                            >
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                            </div>
-                            <p _ngcontent-sst-c276="">
-                              {" "}
-                              I haven't come across any other fantasy sports
-                              site that has the depth of features and
-                              flexibility that Fantrax does, while at the same
-                              time being easy to navigate.
-                              <span _ngcontent-sst-c276="">Vincent C.</span>
-                            </p>
-                          </div>
-                          <div
-                            _ngcontent-sst-c276=""
-                            class="comments-box inactive ng-star-inserted"
-                          >
-                            <h5 _ngcontent-sst-c276="">
-                              Service exceeded expectations
-                            </h5>
-                            <div
-                              _ngcontent-sst-c276=""
-                              class="comments-box__stars"
-                            >
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                            </div>
-                            <p _ngcontent-sst-c276="">
-                              {" "}
-                              I was impressed with the response I received in
-                              regards to some suggestions I had about the game
-                              offerings. I can truly say the folks at Fantrax do
-                              listen.
-                              <span _ngcontent-sst-c276="">Richie M.</span>
-                            </p>
-                          </div>
-                          <div
-                            _ngcontent-sst-c276=""
-                            class="comments-box inactive ng-star-inserted"
-                          >
-                            <h5 _ngcontent-sst-c276="">
-                              Games Not Available Anywhere Else
-                            </h5>
-                            <div
-                              _ngcontent-sst-c276=""
-                              class="comments-box__stars"
-                            >
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                            </div>
-                            <p _ngcontent-sst-c276="">
-                              {" "}
-                              Fantrax is a Godsend. It's the only place that I
-                              know of currently offering free fantasy college
-                              football and fantasy college basketball games.
-                              <span _ngcontent-sst-c276="">Bo R</span>
-                            </p>
-                          </div>
-                          <div
-                            _ngcontent-sst-c276=""
-                            class="comments-box active--left ng-star-inserted"
-                          >
-                            <h5 _ngcontent-sst-c276="">
-                              Long Time Fantrax User!
-                            </h5>
-                            <div
-                              _ngcontent-sst-c276=""
-                              class="comments-box__stars"
-                            >
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                              <i
-                                _ngcontent-sst-c276=""
-                                class="icons icons--success-light"
-                              >
-                                star
-                              </i>
-                            </div>
-                            <p _ngcontent-sst-c276="">
-                              {" "}
-                              I have been playing on Fantrax from their
-                              beginning (2008) due to their excellent customer
-                              service, variety of game options and their
-                              real-time scoring updates.
-                              <span _ngcontent-sst-c276="">Anthony O.</span>
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </app-world-map>
-                </div>
-              </section>
-            </section>
-          </app-home>
-        </div>
-      </div>
-      <div class="layout__footer ng-tns-c273-0 ng-trigger ng-trigger-chatLayoutAnimation">
-        <router-outlet
-          name="footer"
-          role="contentinfo"
-          class="ng-tns-c273-0"
-        ></router-outlet>
-      </div>
-      <layout-overlay class="layout__overlay ng-tns-c273-0">
-        <overlay-fab class="ng-tns-c258-1"></overlay-fab>
-        <overlay-toasts></overlay-toasts>
-      </layout-overlay>
-      <div class="nav--fullscreen-fix ng-tns-c273-0"></div>
-    </Layout>
-  );
+            </div>
+            <div class="layout__footer ng-tns-c273-0 ng-trigger ng-trigger-chatLayoutAnimation">
+                <router-outlet
+                    name="footer"
+                    role="contentinfo"
+                    class="ng-tns-c273-0"
+                ></router-outlet>
+            </div>
+            <layout-overlay class="layout__overlay ng-tns-c273-0">
+                <overlay-fab class="ng-tns-c258-1"></overlay-fab>
+                <overlay-toasts></overlay-toasts>
+            </layout-overlay>
+            <div class="nav--fullscreen-fix ng-tns-c273-0"></div>
+        </Layout>
+    );
 };
 
 export default Homepage;
