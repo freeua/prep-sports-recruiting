@@ -1,18 +1,23 @@
 import post from "./services/post";
 
-export const signUp = payload => post("/registration", payload);
+export const signUp = payload => post("/api/registration", payload);
 
-export const login = payload => post("/auth/login", payload);
+export const login = payload => post("/api/auth/login", payload);
 
-export const logout = () => post("/auth/logout");
+export const logout = () => post("/api/auth/logout");
 
 export const forgotPassword = payload => post("/forgot-password", payload);
 
-export const getAccountData = payload => post("/get-account-data", payload);
+export const getAccountData = (payload, token) =>
+  post("/api/account/get-account-data", payload, {
+    headers: {
+      Authorization: "Bearer " + token
+    }
+  });
 
 export const authMe = token =>
   post(
-    "/auth/me",
+    "/api/auth/me",
     {},
     {
       headers: {

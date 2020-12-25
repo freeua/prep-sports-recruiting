@@ -59,11 +59,12 @@ const Homepage = () => {
 
   // debug (temporary)
   const getAccData = async () => {
-    const response = await getAccountData({
-      // _token: userInfo.access_token,
-      _token: window.token,
-      id: 12
-    });
+    const response = await getAccountData(
+      {
+        id: 12
+      },
+      userInfo.access_token
+    );
     console.log(response);
   };
 
