@@ -34,9 +34,9 @@ Route::group(['prefix' => 'account', 'middleware' => 'api'], function () {
   Route::post('get-account-data', 'AccountController@getAccountData')->name('get-account-data');
   Route::post('get-coaches', 'AccountController@getCoaches')->name('get-coaches');
   Route::post('get-log', 'AccountController@getLog')->name('get-log');
-  Route::get('get-sports', 'AccountController@getLog')->name('get-sports');
-  Route::get('get-plans', 'AccountController@getLog')->name('get-plans');
-  Route::get('get-sports-plans', 'AccountController@getLog')->name('get-sports-plans');
+  Route::get('get-sports', 'AccountController@getSports')->name('get-sports');
+  Route::get('get-plans', 'AccountController@getPlans')->name('get-plans');
+  Route::get('get-sports-plans', 'AccountController@getSportsPlans')->name('get-sports-plans');
 });
 
 Route::group(['prefix' => 'blog'], function ($router) {
