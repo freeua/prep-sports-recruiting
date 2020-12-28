@@ -52,6 +52,12 @@ class PaymentController extends Controller
 
         $user = User::where('id', '=', $transaction_user->id)->first();
 
+        $sportId = Session::get('sport_id');
+		if ($user->sports->isNotEmpty($user->sports()->where($sportId))) {
+			// $userSport = $user->sports()->where($sportId)
+		}
+
+
         $user->plans()->attach($transaction_plan_id, [ 'sport_id' => Session::get('sport_id')]);
 
 //        return $transaction_plan;

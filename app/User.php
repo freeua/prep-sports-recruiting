@@ -71,4 +71,9 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsToMany('App\Plan')->withPivot('count', 'sport_id')->withTimestamps();
     }
 
+    public function sports()
+    {
+        return $this->belongsToMany('App\Sport')->withPivot('count')->withTimestamps();
+    }
+
 }
