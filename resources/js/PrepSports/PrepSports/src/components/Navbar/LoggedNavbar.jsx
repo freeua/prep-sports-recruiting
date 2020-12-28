@@ -11,6 +11,7 @@ import MySubscriptionBox from "./MySubscriptionBox";
 import ProfileBox from "./ProfileBox";
 import AvatarPlaceholder from "../AvatarPlaceholder";
 import { UserInfoContext } from "../../state/userInfo";
+import { AuthMeInfoContext } from "../../state/authMeInfo";
 
 const LoggedNavbar = () => {
   const { currentSport } = useContext(CurrentSportContext);
@@ -22,6 +23,7 @@ const LoggedNavbar = () => {
   const [isBurgerBox, setIsBurgerBox] = useState(false);
   const [isMySubscription, setIsMySubscription] = useState(false);
   const [isProfile, setIsProfile] = useState(false);
+  const { authMeInfo } = useContext(AuthMeInfoContext);
 
   const isAnyPopupOpened = () => {
     if (isNavbarSports) return true;
@@ -159,7 +161,7 @@ const LoggedNavbar = () => {
                     className="ng-tns-c255-19"
                     aria-label="User profile"
                   >
-                    <AvatarPlaceholder />
+                    <AvatarPlaceholder url={authMeInfo?.avatar} />
                   </b>
 
                   {isProfile ? (

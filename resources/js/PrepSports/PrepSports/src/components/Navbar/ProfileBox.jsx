@@ -4,10 +4,12 @@ import AvatarPlaceholder from "../AvatarPlaceholder";
 import { UserInfoContext } from "../../state/userInfo";
 import { Link } from "react-router-dom";
 import { logout } from "../../api/auth.api";
+import { AuthMeInfoContext } from "../../state/authMeInfo";
 
 const ProfileBox = ({ setIsProfile }) => {
   const { setIsLogged } = useContext(IsLoggedContext);
   const { userInfo, clearUser } = useContext(UserInfoContext);
+  const { authMeInfo } = useContext(AuthMeInfoContext);
 
   const handleLogout = async () => {
     await logout(userInfo.access_token);
@@ -24,7 +26,7 @@ const ProfileBox = ({ setIsProfile }) => {
       <nav-profile className="ng-tns-c255-33">
         <div className="nav-profile ng-star-inserted">
           <div className="nav-profile__info">
-            <AvatarPlaceholder />
+            <AvatarPlaceholder url={authMeInfo.avatar} />
             <dl>
               <dt>
                 <h3> </h3>

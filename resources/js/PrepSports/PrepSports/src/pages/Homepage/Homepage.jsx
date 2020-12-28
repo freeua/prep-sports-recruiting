@@ -103,7 +103,7 @@ const Homepage = () => {
                   onClick={getAccData}
                   className="content--center mobile-clearance"
                 >
-                  <h2>Sportsr Offered</h2>
+                  <h2>Sports Offered</h2>
                   <h6>
                     Choose from a variety of season-long games in nine different
                     sports

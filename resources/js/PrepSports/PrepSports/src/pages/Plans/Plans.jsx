@@ -2,25 +2,24 @@ import React, { useState, useEffect } from "react";
 import { plans } from "../../state/plans";
 import PlanCard from "./PlanCard";
 import Loader from "../../components/Loader/Loader";
-import { getSports, getPlans, getPlansWithSports } from "../../api/coaches.api";
+import { getSports, getPlans } from "../../api/coaches.api";
 import { useContext } from "react";
 import { UserInfoContext } from "../../state/userInfo";
 
 const Plans = () => {
-  const [plansWithSports, setPlansWithSports] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { userInfo } = useContext(UserInfoContext);
+  const [remoteSports, setRemoteSports] = useState([]);
+  const [remotePlans, setRemotePlans] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
         setIsLoading(true);
-        const response = await getSports(userInfo.access_token);
-        const secResponse = await getPlans(userInfo.access_token);
-        const thirdResponse = await getPlansWithSports(userInfo.access_token);
-        console.log("response", response);
-        // console.log("response2", secResponse);
-        // console.log("response3", thirdResponse);
+        const sportsResponse = await getSports(userInfo.access_token);
+        const plansResponse = await getPlans(userInfo.access_token);
+        setRemoteSports(sportsResponse?.data);
+        setRemotePlans(plansResponse?.data);
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -89,12 +88,14 @@ const Plans = () => {
               </alert>
 
               <div className="pricing-plans__container">
-                {plans.map(plan => (
+                {remotePlans.map(plan => (
                   <PlanCard
-                    key={plan.price + plan.emailsCount}
-                    emailsCount={plan.emailsCount}
+                    key={plan?.id}
+                    planId={plan?.id}
+                    emailsCount={plan?.term}
                     price={plan?.price}
-                    isFree={plan?.isFree}
+                    isFree={plan?.id === 1}
+                    sports={remoteSports}
                   />
                 ))}
 

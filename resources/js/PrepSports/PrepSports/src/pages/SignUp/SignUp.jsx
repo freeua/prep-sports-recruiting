@@ -52,9 +52,9 @@ const useStyles = makeStyles(theme => ({
 const SignUp = () => {
   const history = useHistory();
   const classes = useStyles();
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date("1990-08-18T21:11:54")
-  );
+  // const [selectedDate, setSelectedDate] = React.useState(
+  //   new Date("1990-08-18T21:11:54")
+  // );
   const [inputCountry, setInputCountry] = React.useState("");
   const [inputState, setInputState] = useState("");
   const [avatar, setAvatar] = useState(null);
@@ -115,7 +115,7 @@ const SignUp = () => {
                     validationSchema={signUpValidationSchema}
                     onSubmit={async (values, { setSubmitting, resetForm }) => {
                       const resultValue = Object.assign(values, {
-                        birthday: selectedDate,
+                        // birthday: selectedDate,
                         country: inputCountry,
                         state: inputState,
                         avatar: avatar
@@ -123,7 +123,7 @@ const SignUp = () => {
 
                       const data = new FormData();
                       data.append("avatar", avatar);
-                      data.append("birthday", selectedDate);
+                      // data.append("birthday", selectedDate);
                       data.append("country", inputCountry);
                       data.append("username", values.username);
                       data.append("email", values.email);
@@ -140,7 +140,7 @@ const SignUp = () => {
                       }
 
                       resetForm();
-                      setSelectedDate(new Date("2014-08-18T21:11:54"));
+                      // setSelectedDate(new Date("2014-08-18T21:11:54"));
                       setInputCountry("");
                       setInputState("");
                       setSubmitting(false);
@@ -223,7 +223,7 @@ const SignUp = () => {
                             </div>
                           </div>
                         </div>
-                        <div
+                        {/* <div
                           _ngcontent-ucn-c280
                           appearance="outline"
                           className="mat-form-field ng-tns-c73-4 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float mat-form-field-has-label mat-form-field-hide-placeholder ng-untouched ng-pristine ng-invalid"
@@ -246,7 +246,7 @@ const SignUp = () => {
                               />
                             </div>
                           </div>
-                        </div>
+                        </div> */}
                         <div
                           _ngcontent-ucn-c280
                           appearance="outline"
