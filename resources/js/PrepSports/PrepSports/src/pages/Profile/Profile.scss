@@ -1,4 +1,5 @@
 #profile-container {
+  display: flex;
   .container {
     margin: 0 auto;
     text-align: center;
@@ -157,11 +158,11 @@
   h4,
   h5,
   h6 {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     text-align: left;
   }
   p {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 1.2rem;
   }
   table {
@@ -180,8 +181,8 @@
   select {
     font-size: 1.2rem;
   }
-  input[type='checkbox'],
-  input[type='radio'] {
+  input[type="checkbox"],
+  input[type="radio"] {
     margin: 3px 5px;
   }
   button,
@@ -322,7 +323,7 @@
   }
 
   .lhTitle h1 {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     color: black;
     text-align: center;
@@ -402,7 +403,7 @@
   .titleBarContainer .on {
     margin-top: 3px;
     margin-right: 0;
-    background-image: url('/assets_old/images/icons/oldsite_loading-play.gif');
+    background-image: url("/assets_old/images/icons/oldsite_loading-play.gif");
     background-position: center;
     background-size: 180%;
     width: 3rem;
@@ -538,7 +539,7 @@
     margin-right: -0.6rem;
   }
   .nav__icon--menu {
-    background-image: url('/assets/images/icons/layout/menu.svg');
+    background-image: url("/assets/images/icons/layout/menu.svg");
   }
   .nav__link {
     margin: 0 0.1rem;

@@ -1,34 +1,37 @@
-import React, { useEffect, useState, useContext } from 'react';
-import SportCard from '../../components/SportCard/SportCard';
-import Sports from '../../Sports';
-import { Link } from 'react-router-dom';
-import { Link as ScrollLink } from 'react-scroll';
-import WorldMap from '../../components/WorldMap/WorldMap';
-import { CurrentSportContext } from '../../state/CurrentSportContext';
-import WhyUsTable from '../../components/WhyUsTable/WhyUsTable';
-import { IsLoggedContext } from '../../state/IsLogged';
-import { IsAllowedNotificationsContext } from '../../state/isAllowedNotifications';
+import React, { useEffect, useState, useContext } from "react";
+import SportCard from "../../components/SportCard/SportCard";
+import Sports from "../../Sports";
+import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
+import WorldMap from "../../components/WorldMap/WorldMap";
+import { CurrentSportContext } from "../../state/CurrentSportContext";
+import WhyUsTable from "../../components/WhyUsTable/WhyUsTable";
+import { IsLoggedContext } from "../../state/IsLogged";
+import { IsAllowedNotificationsContext } from "../../state/isAllowedNotifications";
+import { UserInfoContext } from "../../state/userInfo";
+import { getAccountData } from "../../api/auth.api";
 
 const Homepage = () => {
   const [isNotifiedCookies, setIsNotifiedCookies] = useState(false);
   const [
     isShownRecieveNotifications,
-    setIsShownRecieveNotifications,
+    setIsShownRecieveNotifications
   ] = useState(false);
   const { setCurrentSport } = useContext(CurrentSportContext);
   const { isLogged } = useContext(IsLoggedContext);
   const { setIsAllowedNotifications } = useContext(
     IsAllowedNotificationsContext
   );
+  const { userInfo } = useContext(UserInfoContext);
 
   useEffect(() => {
     setCurrentSport({});
-    const localNotified = localStorage.getItem('isNotifiedCookies');
+    const localNotified = localStorage.getItem("isNotifiedCookies");
     const localIsShownRecieveNotifications = localStorage.getItem(
-      'isShownRecieveNotifications'
+      "isShownRecieveNotifications"
     );
     const localIsAllowedNotifications = localStorage.getItem(
-      'isAllowedNofitications'
+      "isAllowedNofitications"
     );
     setIsNotifiedCookies(localNotified);
     setIsShownRecieveNotifications(localIsShownRecieveNotifications);
@@ -37,21 +40,31 @@ const Homepage = () => {
   }, []);
 
   const handleDismissClick = () => {
-    localStorage.setItem('isNotifiedCookies', true);
+    localStorage.setItem("isNotifiedCookies", true);
     setIsNotifiedCookies(true);
   };
 
   const handleAllowNotifications = () => {
-    localStorage.setItem('isShownRecieveNotifications', true);
-    localStorage.setItem('isAllowedNofitications', true);
+    localStorage.setItem("isShownRecieveNotifications", true);
+    localStorage.setItem("isAllowedNofitications", true);
     setIsShownRecieveNotifications(true);
     setIsAllowedNotifications(true);
   };
   const handleNeverNotifications = () => {
-    localStorage.setItem('isShownRecieveNotifications', true);
-    localStorage.setItem('isAllowedNofitications', false);
+    localStorage.setItem("isShownRecieveNotifications", true);
+    localStorage.setItem("isAllowedNofitications", false);
     setIsShownRecieveNotifications(true);
     setIsAllowedNotifications(false);
+  };
+
+  // debug (temporary)
+  const getAccData = async () => {
+    const response = await getAccountData(
+      {
+        id: 12
+      },
+      userInfo.access_token
+    );
   };
 
   return (
@@ -86,7 +99,10 @@ const Homepage = () => {
                 id="home-intro"
                 className="section-wrapper section-wrapper--landing margin--reduce-bottom--medium"
               >
-                <div className="content--center mobile-clearance">
+                <div
+                  onClick={getAccData}
+                  className="content--center mobile-clearance"
+                >
                   <h2>Sports Offered</h2>
                   <h6>
                     Choose from a variety of season-long games in nine different
@@ -144,7 +160,7 @@ const NotifyOverlay = ({
   isLogged,
   isShownRecieveNotifications,
   handleAllowNotifications,
-  handleNeverNotifications,
+  handleNeverNotifications
 }) => {
   return (
     <div className="layout__overlay ">
@@ -154,7 +170,10 @@ const NotifyOverlay = ({
           {isNotifiedCookies ? null : (
             <section
               className="toast   -enterLeave info"
-              style={{ opacity: '1', transform: 'translateX(0px)' }}
+              style={{
+                opacity: "1",
+                transform: "translateX(0px)"
+              }}
             >
               <article>
                 <p className=" ">We use cookies to improve your experience</p>
@@ -201,7 +220,7 @@ const NotifyOverlay = ({
               </div>
               <div
                 className="toast__progress  "
-                style={{ transform: 'scaleX(0)' }}
+                style={{ transform: "scaleX(0)" }}
               ></div>
             </section>
           )}
@@ -219,12 +238,12 @@ const NotifyOverlay = ({
 
 const RecieveNotificationsPopup = ({
   handleAllowNotifications,
-  handleNeverNotifications,
+  handleNeverNotifications
 }) => {
   return (
     <section
       className="toast ng-tns-c260-17  -enterLeave info"
-      style={{ opacity: 1, transform: 'translateX(0px)' }}
+      style={{ opacity: 1, transform: "translateX(0px)" }}
     >
       <article className="ng-tns-c260-17">
         <h4 className="ng-tns-c260-17 ng-star-inserted" style={{}}>
@@ -248,7 +267,7 @@ const RecieveNotificationsPopup = ({
             >
               cancel
             </i>
-            Never{' '}
+            Never{" "}
           </span>
           <div matripple className="mat-ripple mat-button-ripple" />
           <div className="mat-button-focus-overlay" />
@@ -266,7 +285,7 @@ const RecieveNotificationsPopup = ({
             >
               done
             </i>
-            Allow{' '}
+            Allow{" "}
           </span>
           <div matripple className="mat-ripple mat-button-ripple" />
           <div className="mat-button-focus-overlay" />
@@ -275,7 +294,7 @@ const RecieveNotificationsPopup = ({
 
       <div
         className="toast__progress ng-tns-c260-17 ng-star-inserted"
-        style={{ transform: 'scaleX(0)' }}
+        style={{ transform: "scaleX(0)" }}
       />
     </section>
   );

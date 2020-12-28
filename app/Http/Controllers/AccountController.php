@@ -17,10 +17,22 @@ use GuzzleHttp\Psr7;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\ResponseInterface;
+use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 
 class AccountController extends Controller
 {
+    /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+      $this->middleware('auth:api');
+    }
+
     public function getAccountData(Request $request)
     {
         $user = User::where('id', '=', $request->id)->first();
@@ -72,6 +84,30 @@ class AccountController extends Controller
         }
 
         return $request;
+    }
 
+    public function getSports()
+    {
+        $sports = Sport::all();
+
+        return \response()->json(['msg' => 'Sports', 'data'=>$sports, 'status' => 'Successeful']);
+    }
+
+    public function getPlans()
+    {
+        $plans = Plan::all();
+
+        return \response()->json(['msg' => 'Plans', 'data'=>$plans, 'status' => 'Successeful']);
+    }
+
+    public function getSportsPlans()
+    {
+        $sports_plans = [];
+        $sports = Sport::all();
+        $plans = Plan::all();
+        $sports_plans[] = $sports;
+        $sports_plans[] = $plans;
+
+        return \response()->json(['msg' => 'Plans', 'data'=>$sports_plans, 'status' => 'Successeful']);
     }
 }

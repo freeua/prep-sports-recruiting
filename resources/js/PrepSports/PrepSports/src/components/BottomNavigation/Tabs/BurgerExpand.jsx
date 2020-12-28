@@ -1,18 +1,18 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import Sports from '../../../Sports';
-import GamesSportCard from '../../GamesSportCard/GamesSportCard';
-import AvatarPlaceholder from '../../AvatarPlaceholder';
-import RefreshButton from '../../RefreshButton/RefreshButton';
-import { IsLoggedContext } from '../../../state/IsLogged';
-import { UserInfoContext } from '../../../state/userInfo';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import Sports from "../../../Sports";
+import GamesSportCard from "../../GamesSportCard/GamesSportCard";
+import AvatarPlaceholder from "../../AvatarPlaceholder";
+import RefreshButton from "../../RefreshButton/RefreshButton";
+import { IsLoggedContext } from "../../../state/IsLogged";
+import { UserInfoContext } from "../../../state/userInfo";
 
 const BurgerExpand = ({ closeNav }) => {
   const { isLogged } = useContext(IsLoggedContext);
   const { userInfo } = useContext(UserInfoContext);
 
   return (
-    <section style={{ display: 'block' }}>
+    <section style={{ display: "block" }}>
       <bottom-nav-menu>
         <nav className="bottom-nav-menu ">
           {isLogged ? (
@@ -72,15 +72,7 @@ const BurgerExpand = ({ closeNav }) => {
               <i className="icons ">home</i>
               <b>Home</b>
             </Link>
-            <a
-              routerlink="/forums/general"
-              routerlinkactive="current"
-              className="sportile sportile--small sportile--plain "
-              href="/forums/general"
-            >
-              <i className="icons ">forum</i>
-              <b>Forums</b>
-            </a>
+
             <Link
               routerlink="/faq"
               routerlinkactive="current"
@@ -117,7 +109,7 @@ const BurgerExpand = ({ closeNav }) => {
               ))}
             </div>
           </div>
-          <div className="nav-menu__sport-header color--accent ">
+          {/* <div className="nav-menu__sport-header color--accent ">
             <h5>News</h5>
             <i className="icons ">speaker_notes</i>
           </div>
@@ -128,7 +120,7 @@ const BurgerExpand = ({ closeNav }) => {
           <div className="nav-menu__sport-header ">
             <h5>Other</h5>
             <i className="icons ">link</i>
-          </div>
+          </div> */}
           <div onClick={closeNav}>
             <Link
               routerlink="/plans"
@@ -136,7 +128,7 @@ const BurgerExpand = ({ closeNav }) => {
               className="nav-menu__link color--orange "
               to="/plans"
             >
-              Go Ad Free!<i className="icons ">new_releases</i>
+              Plans<i className="icons ">new_releases</i>
             </Link>
             <Link
               routerlinkactive="current"
@@ -144,9 +136,6 @@ const BurgerExpand = ({ closeNav }) => {
               to="colleague-search"
             >
               Сolleague Search<i class="icons ">search</i>
-            </Link>
-            <Link className="nav-menu__link">
-              Treasurer<i className="icons">account_balance</i>
             </Link>
           </div>
 

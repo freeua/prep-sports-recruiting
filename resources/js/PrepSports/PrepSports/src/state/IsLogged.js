@@ -1,17 +1,19 @@
-import React from 'react';
-import { createContext, useState } from 'react';
+import React from "react";
+import { createContext, useState } from "react";
 
 export const Context = createContext({
   isLogged: {},
-  setIsLogged: () => {},
+  setIsLogged: () => {}
 });
 
 export const Provider = ({ children }) => {
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
 
   const isLoggedContext = {
-    setIsLogged: isLogged => setIsLogged(isLogged),
-    isLogged,
+    setIsLogged: isLgd => {
+      setIsLogged(isLgd);
+    },
+    isLogged
   };
 
   return (

@@ -13,19 +13,20 @@ class VerifyCsrfToken extends Middleware
      */
     protected $addHttpCookie = true;
 
-    /**
-     * The URIs that should be excluded from CSRF verification.
-     *
-     * @var array
-     */
-    protected $except = [
-        'send_mail',
-        'create-payment',
-        'get-coaches',
-        'auth/login',
-        'auth/me',
-        'auth/logout',
-        'password/email',
-        'password/reset',
-    ];
+   /**
+	* The URIs that should be excluded from CSRF verification.
+	*
+	* @var array
+	*/
+   protected $except = [
+	   // 'send_mail',
+	   // 'create-payment',
+	   // 'get-coaches',
+	   // 'auth/login',
+	   // 'auth/me',
+	   // 'auth/logout',
+	   'password/email',
+	   'password/reset',
+	   // 'account/get-account-data'
+   ];
 }

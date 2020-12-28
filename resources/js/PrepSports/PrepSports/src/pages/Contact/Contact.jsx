@@ -5,33 +5,33 @@ import { Formik } from "formik";
 import { contactValidationSchema } from "../../helpers/validationSchema";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     "& .MuiTextField-root": {
-      width: "100%",
+      width: "100%"
     },
     "& .MuiInputBase-input": {
-      fontSize: "15px",
+      fontSize: "15px"
     },
     "& .MuiFormLabel-root": {
-      fontSize: "1.3rem",
+      fontSize: "1.3rem"
     },
     "& .MuiFormLabel-root ": {
-      backgroundColor: "#fff",
+      backgroundColor: "#fff"
     },
     "& .MuiList-root .MuiListItem-root": {
-      fontSize: "calc(var(--content) * 1.5rem);",
-    },
+      fontSize: "calc(var(--content) * 1.5rem);"
+    }
   },
   option: {
     fontSize: 15,
     "& > span": {
-      fontSize: 18,
-    },
+      fontSize: 18
+    }
   },
   menuItem: {
-    fontSize: "calc(var(--content) * 1.5rem);",
-  },
+    fontSize: "calc(var(--content) * 1.5rem);"
+  }
 }));
 
 const Contact = () => {
@@ -105,16 +105,19 @@ const Contact = () => {
                     _ngcontent-rae-c284
                     className="cell cell--7-col cell--8-col-tablet"
                   >
-                    <h3 _ngcontent-rae-c284>Support / Feedback</h3>
+                    <h3 _ngcontent-rae-c284>Contact Us</h3>
                     <Formik
                       initialValues={{
                         email: "",
                         subject: "",
                         league: "",
-                        question: "",
+                        question: ""
                       }}
                       validationSchema={contactValidationSchema}
-                      onSubmit={(values, { setSubmitting, resetForm }) => {
+                      onSubmit={async (
+                        values,
+                        { setSubmitting, resetForm }
+                      ) => {
                         // const resultValue = Object.assign(values, {
                         //   birthday: selectedDate,
                         //   country: inputCountry,
@@ -140,7 +143,7 @@ const Contact = () => {
                         handleChange,
                         handleBlur,
                         handleSubmit,
-                        isSubmitting,
+                        isSubmitting
                       }) => (
                         <form
                           onSubmit={handleSubmit}
@@ -225,8 +228,8 @@ const Contact = () => {
                                 >
                                   {[
                                     {
-                                      value: "Not related to a specific league",
-                                    },
+                                      value: "Not related to a specific league"
+                                    }
                                   ].map(({ value }) => (
                                     <MenuItem
                                       className={classes.menuItem}
