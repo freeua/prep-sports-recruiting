@@ -3,12 +3,14 @@ import { IsLoggedContext } from "../../state/IsLogged";
 import AvatarPlaceholder from "../AvatarPlaceholder";
 import { UserInfoContext } from "../../state/userInfo";
 import { Link } from "react-router-dom";
+import { logout } from "../../api/auth.api";
 
 const ProfileBox = ({ setIsProfile }) => {
   const { setIsLogged } = useContext(IsLoggedContext);
   const { userInfo, clearUser } = useContext(UserInfoContext);
 
-  const logout = () => {
+  const handleLogout = async () => {
+    await logout(userInfo.access_token);
     localStorage.removeItem("localUserInfo");
     setIsLogged(false);
     clearUser();
@@ -71,7 +73,7 @@ const ProfileBox = ({ setIsProfile }) => {
               tabIndex={0}
               aria-disabled="false"
             >
-              <span onClick={logout} className="mat-button-wrapper">
+              <span onClick={handleLogout} className="mat-button-wrapper">
                 <i
                   role="img"
                   className="icons mat-icon notranslate material-icons mat-icon-no-color"

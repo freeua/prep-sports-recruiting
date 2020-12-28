@@ -5,9 +5,10 @@ import { validationSchema } from "../../helpers/validationSchema";
 import TextField from "@material-ui/core/TextField";
 import { Link } from "react-router-dom";
 import { IsLoggedContext } from "../../state/IsLogged";
-import { login, authMe } from "../../api/auth.api";
+import { login, authMe, getAccountData } from "../../api/auth.api";
 import { UserInfoContext } from "../../state/userInfo";
 import { AuthMeInfoContext } from "../../state/authMeInfo";
+import { AccountDataContext } from "../../state/accountData";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,6 +31,7 @@ const LoginBox = ({ close }) => {
   const { setIsLogged } = useContext(IsLoggedContext);
   const { setUserInfo } = useContext(UserInfoContext);
   const { setAuthMeInfo } = useContext(AuthMeInfoContext);
+  const { setAccountData } = useContext(AccountDataContext);
   const classes = useStyles();
 
   return (
@@ -67,12 +69,13 @@ const LoginBox = ({ close }) => {
                 const userInfoResponse = await authMe(response.access_token);
                 if (userInfoResponse.id) {
                   setAuthMeInfo(userInfoResponse);
-                  // const accDataResponse = await getAccountData({
-                  //   id: response.id,
-                  //   _token: localUserInfo.access_token
-                  // });
-                  // console.log("accDataResponse", accDataResponse);
-                  // setAccountData(accDataResponse.data);
+                  const accDataResponse = await getAccountData(
+                    {
+                      id: userInfoResponse.id
+                    },
+                    response.access_token
+                  );
+                  setAccountData(accDataResponse.data);
                 }
                 localStorage.setItem(
                   "localUserInfo",

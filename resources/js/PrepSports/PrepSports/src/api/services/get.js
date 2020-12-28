@@ -1,8 +1,8 @@
-import API from '../axiosConfig';
+import API from "../axiosConfig";
 
-const get = async (endpoint, data) => {
+const get = async (endpoint, config) => {
   try {
-    const response = await API.get(endpoint, data);
+    const response = await API.get(endpoint, config);
 
     return response.data;
   } catch (error) {

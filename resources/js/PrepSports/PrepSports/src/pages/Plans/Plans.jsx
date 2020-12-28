@@ -1,8 +1,37 @@
-import React, { useState } from 'react';
-import { plans } from '../../state/plans';
-import PlanCard from './PlanCard';
+import React, { useState, useEffect } from "react";
+import { plans } from "../../state/plans";
+import PlanCard from "./PlanCard";
+import Loader from "../../components/Loader/Loader";
+import { getSports, getPlans, getPlansWithSports } from "../../api/coaches.api";
+import { useContext } from "react";
+import { UserInfoContext } from "../../state/userInfo";
 
 const Plans = () => {
+  const [plansWithSports, setPlansWithSports] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const { userInfo } = useContext(UserInfoContext);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setIsLoading(true);
+        const response = await getSports(userInfo.access_token);
+        const secResponse = await getPlans(userInfo.access_token);
+        const thirdResponse = await getPlansWithSports(userInfo.access_token);
+        console.log("response", response);
+        // console.log("response2", secResponse);
+        // console.log("response3", thirdResponse);
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className="layout__outlet ">
       <router-outlet name="header" role="banner" />

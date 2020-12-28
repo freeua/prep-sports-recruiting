@@ -32,12 +32,13 @@ const Layout = ({ children }) => {
           const response = await authMe(localUserInfo.access_token);
           if (response.id) {
             setAuthMeInfo(response);
-            // const accDataResponse = await getAccountData({
-            //   id: response.id,
-            //   _token: localUserInfo.access_token
-            // });
-            // console.log("accDataResponse", accDataResponse);
-            // setAccountData(accDataResponse.data);
+            const accDataResponse = await getAccountData(
+              {
+                id: response.id
+              },
+              localUserInfo.access_token
+            );
+            setAccountData(accDataResponse.data);
           } else {
             setIsLogged(false);
           }

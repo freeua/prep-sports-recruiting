@@ -7,39 +7,31 @@ import { UserInfoContext } from "../../state/userInfo";
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { getCoaches } from "../../api/coaches.api";
+import { AuthMeInfoContext } from "../../state/authMeInfo";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    "& .MuiTextField-root": {
-      width: "100%"
-    },
-    "& .MuiInputBase-input": {
-      fontSize: "15px"
-    },
-    "& .MuiFormLabel-root": {
-      fontSize: "1.3rem"
-    },
-    "& .MuiFormLabel-root ": {
-      backgroundColor: "#fff"
-    }
-  },
-  option: {
-    fontSize: 15,
-    "& > span": {
-      fontSize: 18
-    }
+const useStyles = makeStyles({
+  table: {
+    minWidth: 650
   }
-}));
+});
+
 const ColleagueSearch = () => {
   const [currentTab, setCurrentTab] = useState({});
   const [filter, setFilter] = useState("");
-  const classes = useStyles();
+  const [coaches, setCoaches] = useState([]);
   const { userInfo } = useContext(UserInfoContext);
+  const { authMeInfo } = useContext(AuthMeInfoContext);
   const history = useHistory();
+  const classes = useStyles();
 
   useEffect(() => {
-    console.log(userInfo);
-
     if (userInfo?.paid_plans == 0) {
       history.push("/plans");
     }
@@ -48,11 +40,17 @@ const ColleagueSearch = () => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await getCoaches();
-        console.log(response);
-        // if (response.message === "success") {
-        //     setMediaReleases(response.data["media-release"].data);
-        // }
+        const response = await getCoaches(
+          {
+            id: authMeInfo.id,
+            sport_id: "1",
+            plan_id: "2"
+          },
+          userInfo.access_token
+        );
+        if (response.status === "Successeful") {
+          setCoaches(response.data);
+        }
       } catch (error) {
         console.error(error);
       }
@@ -65,6 +63,27 @@ const ColleagueSearch = () => {
     );
   };
 
+  function createData(name, state, college, organization, sport, email) {
+    return { name, state, college, organization, sport, email };
+  }
+
+  const rows = [];
+
+  // TODO: Change sport_id to sport_name
+  if (coaches.length > 0) {
+    coaches.map(coach => {
+      rows.push(
+        createData(
+          coach.head_coach,
+          coach.state,
+          coach.college,
+          coach.organization,
+          coach.sport_id,
+          coach.head_coach_email
+        )
+      );
+    });
+  }
   return (
     <div className="layout__outlet">
       <router-outlet name="header" role="banner" />
@@ -82,7 +101,6 @@ const ColleagueSearch = () => {
             >
               <div className="content__headline">
                 <h2>Сolleague Search</h2>
-                <h3>Find players in all your leagues</h3>
               </div>
               <div className="sportile__wrapper margin--smaller">
                 {Sports.map(({ smallAbbreviation, abbreviation }) => (
@@ -97,7 +115,7 @@ const ColleagueSearch = () => {
               </div>
               {currentTab.abbreviation ? (
                 <div className="margin--small margin--remove-bottom ">
-                  <mat-form-field
+                  <div
                     appearance="outline"
                     className="mat-form-field  mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float mat-form-field-has-label   mat-form-field-hide-placeholder"
                   >
@@ -123,16 +141,16 @@ const ColleagueSearch = () => {
                           }}
                         >
                           <div className="mat-form-field-hint-spacer" />
-                          <mat-hint
+                          <div
                             className="mat-hint mat-right ng-star-inserted"
                             id="mat-hint-1"
                           >
                             At least 3 characters required
-                          </mat-hint>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </mat-form-field>
+                  </div>
                 </div>
               ) : (
                 <p class="margin--medium text--center ">
@@ -141,6 +159,36 @@ const ColleagueSearch = () => {
               )}
             </section>
           </div>
+          {/*  */}
+          <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Name</TableCell>
+                  <TableCell align="left">State</TableCell>
+                  <TableCell align="left">College</TableCell>
+                  <TableCell align="left">Organization</TableCell>
+                  <TableCell align="left">Sport</TableCell>
+                  <TableCell align="left">Email</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map(row => (
+                  <TableRow key={row.name}>
+                    <TableCell component="th" scope="row">
+                      {row.name}
+                    </TableCell>
+                    <TableCell align="left">{row.state}</TableCell>
+                    <TableCell align="left">{row.college}</TableCell>
+                    <TableCell align="left">{row.organization}</TableCell>
+                    <TableCell align="left">{row.sport}</TableCell>
+                    <TableCell align="left">{row.email}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          {/*  */}
         </div>
       </div>
     </div>

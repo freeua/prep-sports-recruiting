@@ -7,9 +7,13 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
 import { forgotPasswordValidationSchema } from "../../helpers/validationSchema";
-import { forgotPassword } from "../../api/auth.api";
-// import { login } from '../../api/auth.api';
+import { emailConfirmationForPasswordReset } from "../../api/auth.api";
+import { useContext } from "react";
+import { IsLoggedContext } from "../../state/IsLogged";
+
 const ForgotPassword = () => {
+  const { isLogged } = useContext(IsLoggedContext);
+
   const useStyles = makeStyles(theme => ({
     root: {
       "& .MuiTextField-root": {
@@ -66,54 +70,54 @@ const ForgotPassword = () => {
                 tabIndex={-1}
                 className="main-content content__main content__main--center content__main--smallest"
               >
-                {/* ///////////////// */}
                 <div className="content__headline">
-                  <h2>Forgot Password</h2>
+                  <h2>{isLogged ? "Reset Password" : "Forgot Password"}</h2>
                   <i className="hide--phone icons icons--large icons--success--bright">
                     lock
                   </i>
                 </div>
                 <hr />
-                <div className="margin--small">
-                  <alert icon="lightbulb_outline" type="accent">
-                    <div className="alert alert--accent">
-                      <div className="alert__icon ng-star-inserted">
-                        <i className="icons icons--medium ng-star-inserted">
-                          lightbulb_outline
-                        </i>
-                      </div>
-                      <article>
-                        <div className="alert__spacing ng-star-inserted">
-                          <div alert-content>
-                            <p className="ng-star-inserted">
-                              Not already a member?
-                            </p>
-                            <div className="button-group">
-                              <Link
-                                mat-raised-button
-                                className="mat-focus-indicator mat-raised-button mat-button-base ng-star-inserted"
-                                tabIndex={0}
-                                aria-disabled="false"
-                                to="/register"
-                              >
-                                <span className="mat-button-wrapper">
-                                  {" "}
-                                  Sign Up{" "}
-                                </span>
-                                <div
-                                  matripple
-                                  className="mat-ripple mat-button-ripple"
-                                />
-                                <div className="mat-button-focus-overlay" />
-                              </Link>
+                {!isLogged && (
+                  <div className="margin--small">
+                    <alert icon="lightbulb_outline" type="accent">
+                      <div className="alert alert--accent">
+                        <div className="alert__icon ng-star-inserted">
+                          <i className="icons icons--medium ng-star-inserted">
+                            lightbulb_outline
+                          </i>
+                        </div>
+                        <article>
+                          <div className="alert__spacing ng-star-inserted">
+                            <div alert-content>
+                              <p className="ng-star-inserted">
+                                Not already a member?
+                              </p>
+                              <div className="button-group">
+                                <Link
+                                  mat-raised-button
+                                  className="mat-focus-indicator mat-raised-button mat-button-base ng-star-inserted"
+                                  tabIndex={0}
+                                  aria-disabled="false"
+                                  to="/register"
+                                >
+                                  <span className="mat-button-wrapper">
+                                    {" "}
+                                    Sign Up{" "}
+                                  </span>
+                                  <div
+                                    matripple
+                                    className="mat-ripple mat-button-ripple"
+                                  />
+                                  <div className="mat-button-focus-overlay" />
+                                </Link>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </article>
-                    </div>
-                  </alert>
-                </div>
-                {/* /////// */}
+                        </article>
+                      </div>
+                    </alert>
+                  </div>
+                )}
 
                 <div
                   _ngcontent-ucn-c280
@@ -127,17 +131,17 @@ const ForgotPassword = () => {
                     onSubmit={async (values, { setSubmitting, resetForm }) => {
                       setSubmitting(true);
 
-                      const response = await forgotPassword({
-                        email: values.email
-                      });
-                      console.log("RESPONSE:", response);
+                      const response = await emailConfirmationForPasswordReset(
+                        values.email
+                      );
+
+                      console.log(response);
                       // // Проверка может быть другая, когда сделают бэк
                       // if (response.success === true) {
                       //   alert("Password reset link is sent to your e-mail");
                       //   history.push("/");
                       // }
 
-                      // alert(JSON.stringify(values, null, 2));
                       resetForm();
                       setSubmitting(false);
                     }}
