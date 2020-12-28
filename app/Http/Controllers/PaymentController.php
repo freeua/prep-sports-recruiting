@@ -25,7 +25,7 @@ class PaymentController extends Controller
      */
     public function create(Request $request)
     {
-        $plan = Plan::where('id', '=', $request->id)->first();
+        $plan = Plan::where('id', '=', $request->plan_id)->first();
         $payment = new CreatePayment();
         Session::put('plans', $plan);
         Session::put('sport_id', $request->sport_id);
