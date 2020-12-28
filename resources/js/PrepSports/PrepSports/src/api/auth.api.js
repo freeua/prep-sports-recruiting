@@ -4,9 +4,16 @@ export const signUp = payload => post("/api/registration", payload);
 
 export const login = payload => post("/api/auth/login", payload);
 
-export const logout = () => post("/api/auth/logout");
-
-export const forgotPassword = payload => post("/forgot-password", payload);
+export const logout = token =>
+  post(
+    "/api/auth/logout",
+    {},
+    {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    }
+  );
 
 export const getAccountData = (payload, token) =>
   post("/api/account/get-account-data", payload, {

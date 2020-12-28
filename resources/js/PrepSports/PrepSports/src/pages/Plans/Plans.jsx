@@ -1,8 +1,36 @@
-import React, { useState } from 'react';
-import { plans } from '../../state/plans';
-import PlanCard from './PlanCard';
+import React, { useState, useEffect } from "react";
+import { plans } from "../../state/plans";
+import PlanCard from "./PlanCard";
+import Loader from "../../components/Loader/Loader";
+import { getSports, getPlans } from "../../api/coaches.api";
+import { useContext } from "react";
+import { UserInfoContext } from "../../state/userInfo";
 
 const Plans = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const { userInfo } = useContext(UserInfoContext);
+  const [remoteSports, setRemoteSports] = useState([]);
+  const [remotePlans, setRemotePlans] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setIsLoading(true);
+        const sportsResponse = await getSports(userInfo.access_token);
+        const plansResponse = await getPlans(userInfo.access_token);
+        setRemoteSports(sportsResponse?.data);
+        setRemotePlans(plansResponse?.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className="layout__outlet ">
       <router-outlet name="header" role="banner" />
@@ -60,12 +88,14 @@ const Plans = () => {
               </alert>
 
               <div className="pricing-plans__container">
-                {plans.map(plan => (
+                {remotePlans.map(plan => (
                   <PlanCard
-                    key={plan.price + plan.emailsCount}
-                    emailsCount={plan.emailsCount}
+                    key={plan?.id}
+                    planId={plan?.id}
+                    emailsCount={plan?.term}
                     price={plan?.price}
-                    isFree={plan?.isFree}
+                    isFree={plan?.id === 1}
+                    sports={remoteSports}
                   />
                 ))}
 

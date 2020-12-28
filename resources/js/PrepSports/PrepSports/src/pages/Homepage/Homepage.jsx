@@ -65,7 +65,6 @@ const Homepage = () => {
       },
       userInfo.access_token
     );
-    console.log(response);
   };
 
   return (

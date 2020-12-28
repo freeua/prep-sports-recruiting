@@ -1,51 +1,68 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { TextField, makeStyles, MenuItem } from '@material-ui/core';
-import Sports from '../../Sports';
+import React, { useState } from "react";
+import { TextField, makeStyles, MenuItem } from "@material-ui/core";
+import { useContext } from "react";
+import { UserInfoContext } from "../../state/userInfo";
+import { createPayment } from "../../api/coaches.api";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    '& .MuiTextField-root': {
-      width: '100%',
-      minWidth: '80px',
+    "& .MuiTextField-root": {
+      width: "100%",
+      minWidth: "80px"
     },
-    '& .MuiInputBase-input': {
-      fontSize: '15px',
+    "& .MuiInputBase-input": {
+      fontSize: "15px"
     },
-    '& .MuiFormLabel-root': {
-      fontSize: '1.3rem',
+    "& .MuiFormLabel-root": {
+      fontSize: "1.3rem"
     },
-    '& .MuiFormLabel-root ': {
-      backgroundColor: '#fff',
+    "& .MuiFormLabel-root ": {
+      backgroundColor: "#fff"
     },
-    '& .MuiList-root .MuiListItem-root': {
-      fontSize: 'calc(var(--content) * 1.5rem);',
-    },
+    "& .MuiList-root .MuiListItem-root": {
+      fontSize: "calc(var(--content) * 1.5rem);"
+    }
   },
   option: {
     fontSize: 15,
-    '& > span': {
-      fontSize: 18,
-    },
+    "& > span": {
+      fontSize: 18
+    }
   },
   menuItem: {
-    fontSize: 'calc(var(--content) * 1.5rem);',
-  },
+    fontSize: "calc(var(--content) * 1.5rem);"
+  }
 }));
 
-const PlanCard = ({ emailsCount, price = '', isFree = false }) => {
+const PlanCard = ({
+  planId,
+  emailsCount,
+  price = "",
+  isFree = false,
+  sports = []
+}) => {
   const classes = useStyles();
-  const [chosenSportType, setChosenSportType] = useState('');
-  const isDisabled = chosenSportType === '';
+  const [chosenSportType, setChosenSportType] = useState("");
+  const { userInfo } = useContext(UserInfoContext);
+  const isDisabled = chosenSportType === "";
 
-  const buttonStyles = {
-    cursor: isDisabled ? 'default' : 'pointer',
+  const handlePayment = async () => {
+    const chosenSportObject = findSportBySportName(chosenSportType);
+    const response = await createPayment(
+      { sport_id: chosenSportObject?.id, id: planId },
+      userInfo.access_token
+    );
+    console.log(response);
+  };
+
+  const findSportBySportName = sportName => {
+    return sports?.find(sport => sport.name === sportName);
   };
 
   return (
     <div className="pricing-plans ">
       <figure>
-        <b>{emailsCount}</b>
+        <b>{emailsCount ? emailsCount : "Unlimited"}</b>
       </figure>
 
       {isFree ? (
@@ -63,7 +80,7 @@ const PlanCard = ({ emailsCount, price = '', isFree = false }) => {
       >
         <div className="mat-form-field-wrapper ng-tns-c73-8">
           <div
-            style={{ display: 'flex', justifyContent: 'center' }}
+            style={{ display: "flex", justifyContent: "center" }}
             className="mat-form-field-flex ng-tns-c73-8"
           >
             <TextField
@@ -72,51 +89,41 @@ const PlanCard = ({ emailsCount, price = '', isFree = false }) => {
               name="sportType"
               label="Sport Type"
               required
-              value={chosenSportType}
+              value={chosenSportType?.name}
               onChange={({ target }) => setChosenSportType(target.value)}
               variant="outlined"
-              style={{ minWidth: '140px' }}
+              style={{ minWidth: "140px" }}
             >
-              {Sports.map(({ title, smallAbbreviation }) => (
-                <MenuItem
-                  className={classes.menuItem}
-                  key={smallAbbreviation}
-                  value={smallAbbreviation}
-                >
-                  {title}
+              {sports.map(({ id, name }) => (
+                <MenuItem className={classes.menuItem} key={id} value={name}>
+                  {name}
                 </MenuItem>
               ))}
             </TextField>
           </div>
         </div>
       </div>
-      <Link
-        to={{
-          pathname: '/payment',
-          state: {
-            period: { emailsCount },
-            price: isFree ? 'free' : price,
-          },
-        }}
+
+      <div
+        onClick={handlePayment}
+        className="button-group nopointer button-group--center"
       >
-        <div className="button-group nopointer button-group--center">
-          <a
-            mat-flat-button
-            color="white"
-            className={`mat-focus-indicator mat-flat-button mat-button-base mat-white ${
-              isDisabled ? 'disabled' : ''
-            }`}
-            tabIndex={0}
-            aria-disabled="false"
-          >
-            <span className="mat-button-wrapper">
-              {isFree ? 'Try Now' : 'Buy Now'}
-            </span>
-            <div matripple className="mat-ripple mat-button-ripple" />
-            <div className="mat-button-focus-overlay" />
-          </a>
-        </div>
-      </Link>
+        <a
+          mat-flat-button
+          color="white"
+          className={`mat-focus-indicator mat-flat-button mat-button-base mat-white ${
+            isDisabled ? "disabled" : ""
+          }`}
+          tabIndex={0}
+          aria-disabled="false"
+        >
+          <span className="mat-button-wrapper">
+            {isFree ? "Try Now" : "Buy Now"}
+          </span>
+          <div matripple className="mat-ripple mat-button-ripple" />
+          <div className="mat-button-focus-overlay" />
+        </a>
+      </div>
     </div>
   );
 };

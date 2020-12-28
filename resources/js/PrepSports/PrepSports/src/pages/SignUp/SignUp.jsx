@@ -52,11 +52,17 @@ const useStyles = makeStyles(theme => ({
 const SignUp = () => {
   const history = useHistory();
   const classes = useStyles();
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date("1990-08-18T21:11:54")
-  );
+  // const [selectedDate, setSelectedDate] = React.useState(
+  //   new Date("1990-08-18T21:11:54")
+  // );
   const [inputCountry, setInputCountry] = React.useState("");
   const [inputState, setInputState] = useState("");
+  const [avatar, setAvatar] = useState(null);
+
+  const handleAvatarChange = e => {
+    const file = e.target.files[0];
+    setAvatar(file);
+  };
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -109,20 +115,24 @@ const SignUp = () => {
                     validationSchema={signUpValidationSchema}
                     onSubmit={async (values, { setSubmitting, resetForm }) => {
                       const resultValue = Object.assign(values, {
-                        birthday: selectedDate,
+                        // birthday: selectedDate,
                         country: inputCountry,
                         state: inputState,
-                        _token: window.token
+                        avatar: avatar
                       });
+
+                      const data = new FormData();
+                      data.append("avatar", avatar);
+                      // data.append("birthday", selectedDate);
+                      data.append("country", inputCountry);
+                      data.append("username", values.username);
+                      data.append("email", values.email);
+                      data.append("password", values.password);
+
+                      console.log("email:", data.get("email"));
+
                       setSubmitting(true);
-                      const response = await signUp({
-                        _token: resultValue._token,
-                        username: resultValue.username,
-                        email: resultValue.email,
-                        password: resultValue.password,
-                        birthday: resultValue.birthday,
-                        country: resultValue.country
-                      });
+                      const response = await signUp(data);
 
                       if (response.success === true) {
                         alert("User Successfuly Created");
@@ -130,7 +140,7 @@ const SignUp = () => {
                       }
 
                       resetForm();
-                      setSelectedDate(new Date("2014-08-18T21:11:54"));
+                      // setSelectedDate(new Date("2014-08-18T21:11:54"));
                       setInputCountry("");
                       setInputState("");
                       setSubmitting(false);
@@ -145,7 +155,11 @@ const SignUp = () => {
                       handleSubmit,
                       isSubmitting
                     }) => (
-                      <form onSubmit={handleSubmit} className={classes.root}>
+                      <form
+                        enctype="multipart/form-data"
+                        onSubmit={handleSubmit}
+                        className={classes.root}
+                      >
                         <div
                           _ngcontent-ucn-c280
                           appearance="outline"
@@ -209,7 +223,7 @@ const SignUp = () => {
                             </div>
                           </div>
                         </div>
-                        <div
+                        {/* <div
                           _ngcontent-ucn-c280
                           appearance="outline"
                           className="mat-form-field ng-tns-c73-4 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float mat-form-field-has-label mat-form-field-hide-placeholder ng-untouched ng-pristine ng-invalid"
@@ -232,7 +246,7 @@ const SignUp = () => {
                               />
                             </div>
                           </div>
-                        </div>
+                        </div> */}
                         <div
                           _ngcontent-ucn-c280
                           appearance="outline"
@@ -269,7 +283,7 @@ const SignUp = () => {
                                     variant="outlined"
                                     inputProps={{
                                       ...params.inputProps,
-                                      autoComplete: "new-password" // disable autocomplete and autofill
+                                      autoComplete: "new-password"
                                     }}
                                   />
                                 )}
@@ -311,7 +325,7 @@ const SignUp = () => {
                                       variant="outlined"
                                       inputProps={{
                                         ...params.inputProps,
-                                        autoComplete: "new-password" // disable autocomplete and autofill
+                                        autoComplete: "new-password"
                                       }}
                                     />
                                   )}
@@ -320,6 +334,17 @@ const SignUp = () => {
                             </div>
                           </div>
                         ) : null}
+
+                        <div style={{ padding: "0 0.75em 0 0.75em" }}>
+                          <h5>Avatar:</h5>
+
+                          <input
+                            multiple={true}
+                            name="avatar"
+                            onChange={handleAvatarChange}
+                            type="file"
+                          />
+                        </div>
 
                         <div _ngcontent-ucn-c280 className="margin--smaller">
                           <div
@@ -387,14 +412,6 @@ const SignUp = () => {
                           _ngcontent-ucn-c280
                           className="margin--smaller button-group button-group--space-between"
                         >
-                          {/* <a
-                      _ngcontent-ucn-c280
-                      role="link"
-                      className="ng-star-inserted"
-                    >
-                      Enter Promo Code
-                    </a> */}
-
                           <i _ngcontent-ucn-c280 />
                           <button
                             disabled={

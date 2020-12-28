@@ -1,9 +1,12 @@
 import React from "react";
 import { useContext } from "react";
 import { UserInfoContext } from "../../state/userInfo";
+import { AccountDataContext } from "../../state/accountData";
 
 const MySubscriptionBox = () => {
   const { userInfo } = useContext(UserInfoContext);
+  const { accountData } = useContext(AccountDataContext);
+
   return (
     <div
       className="nav-menu ng-tns-c255-33 ng-trigger ng-trigger-menuState ng-star-inserted"
@@ -22,15 +25,23 @@ const MySubscriptionBox = () => {
               className="nav-menu__link ng-tns-c188-34 ng-star-inserted"
             >
               {userInfo.paid_plans === "1"
-                ? "You own some plans"
+                ? accountData?.plans.map(plan => (
+                    <Plan key={plan.id} plan={plan} />
+                  ))
                 : "No plans yet"}
-              <i aria-hidden="true" className="icons ng-tns-c188-34">
-                clear_all
-              </i>
             </a>
           </league-nav>
         </div>
       </div>
+    </div>
+  );
+};
+
+const Plan = ({ plan }) => {
+  return (
+    <div>
+      {/* TODO: Write sport name, when backend adds this field */}
+      <h5>Sport ID: {plan.pivot.sport_id}</h5>
     </div>
   );
 };

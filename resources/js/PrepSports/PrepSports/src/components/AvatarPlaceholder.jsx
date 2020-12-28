@@ -1,11 +1,17 @@
-import React from 'react';
+import React from "react";
 
-const AvatarPlaceholder = () => {
+const AvatarPlaceholder = ({ url }) => {
+  let bg =
+    'url("https://img.fantrax.com/assets/images/icons/profile__placeholder.svg")';
+
+  if (url) {
+    bg = 'url("' + window.assetPath + "/" + url + '")';
+  }
+
   return (
     <figure
       style={{
-        backgroundImage:
-          'url("https://img.fantrax.com/assets/images/icons/profile__placeholder.svg")',
+        backgroundImage: bg
       }}
     />
   );

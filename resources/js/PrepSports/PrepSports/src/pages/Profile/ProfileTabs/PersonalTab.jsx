@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import GeneralSettings from "../Settings/GeneralSettings";
 import Button from "../../../components/Button/Button";
 import { Formik } from "formik";
 import { passwordResetValidationSchema } from "../../../helpers/validationSchema";
@@ -9,6 +8,7 @@ import {
 } from "../../../api/auth.api";
 import { UserInfoContext } from "../../../state/userInfo";
 import { AuthMeInfoContext } from "../../../state/authMeInfo";
+import { Link } from "react-router-dom";
 
 const PersonalTab = () => {
   const { userInfo } = useContext(UserInfoContext);
@@ -44,7 +44,6 @@ const PersonalTab = () => {
                       password: values.password,
                       password_confirmation: values.password_confirmation
                     });
-                    console.log(response);
                   } else {
                     alert("Retyped password must match password");
                   }
@@ -52,7 +51,6 @@ const PersonalTab = () => {
                   const response = await emailConfirmationForPasswordReset(
                     "nikitadv777@gmail.com"
                   );
-                  console.log(response);
                 }
 
                 resetForm();
@@ -87,55 +85,22 @@ const PersonalTab = () => {
                           <tbody>
                             <tr>
                               <td className="name">
+                                <p>Do you want to Reset your Password?:</p>
+                              </td>
+                              <td className="value">
+                                <Link to="forgot-password">
+                                  <p style={{ textDecoration: "underline" }}>
+                                    Go to Password Reset page
+                                  </p>
+                                </Link>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td className="name">
                                 <p>Username:</p>
                               </td>
                               <td className="value">
                                 <p>{authMeInfo?.name}</p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td className="name">
-                                <p>Change Password To:</p>
-                              </td>
-                              <td className="value">
-                                <p style={{ whiteSpace: "nowrap" }}>
-                                  <input
-                                    style={
-                                      touched.password && errors.password
-                                        ? { border: "1px solid red" }
-                                        : {}
-                                    }
-                                    type="password"
-                                    name="password"
-                                    className="tb"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.password}
-                                  />
-                                </p>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td className="name">
-                                <p>Retype New Password:</p>
-                              </td>
-                              <td className="value">
-                                <p>
-                                  <input
-                                    style={
-                                      touched.password_confirmation &&
-                                      errors.password_confirmation
-                                        ? { border: "1px solid red" }
-                                        : {}
-                                    }
-                                    type="password"
-                                    name="password_confirmation"
-                                    className="tb"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.password_confirmation}
-                                  />
-                                </p>
                               </td>
                             </tr>
 
