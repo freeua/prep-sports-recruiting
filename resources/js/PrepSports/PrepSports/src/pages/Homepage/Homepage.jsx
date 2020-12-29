@@ -8,8 +8,6 @@ import { CurrentSportContext } from "../../state/CurrentSportContext";
 import WhyUsTable from "../../components/WhyUsTable/WhyUsTable";
 import { IsLoggedContext } from "../../state/IsLogged";
 import { IsAllowedNotificationsContext } from "../../state/isAllowedNotifications";
-import { UserInfoContext } from "../../state/userInfo";
-import { getAccountData } from "../../api/auth.api";
 
 const Homepage = () => {
   const [isNotifiedCookies, setIsNotifiedCookies] = useState(false);
@@ -22,7 +20,6 @@ const Homepage = () => {
   const { setIsAllowedNotifications } = useContext(
     IsAllowedNotificationsContext
   );
-  const { userInfo } = useContext(UserInfoContext);
 
   useEffect(() => {
     setCurrentSport({});
@@ -57,16 +54,6 @@ const Homepage = () => {
     setIsAllowedNotifications(false);
   };
 
-  // debug (temporary)
-  const getAccData = async () => {
-    const response = await getAccountData(
-      {
-        id: 12
-      },
-      userInfo.access_token
-    );
-  };
-
   return (
     <>
       <div className="layout__outlet ">
@@ -99,16 +86,15 @@ const Homepage = () => {
                 id="home-intro"
                 className="section-wrapper section-wrapper--landing margin--reduce-bottom--medium"
               >
-                <div
-                  onClick={getAccData}
-                  className="content--center mobile-clearance"
-                >
-                  <h2>Sports Offered</h2>
-                  <h6>
-                    Choose from a variety of season-long games in nine different
-                    sports
-                  </h6>
-                </div>
+                <Link to="/password/reset/0e180dcc7f5d461d3102df8e85d17e1332427723a8585547d17e9c2d681cecc3">
+                  <div className="content--center mobile-clearance">
+                    <h2>Sports Offered</h2>
+                    <h6>
+                      Choose from a variety of season-long games in nine
+                      different sports
+                    </h6>
+                  </div>
+                </Link>
                 <div
                   tabindex="-1"
                   className="main-content home__tiles content--center margin"

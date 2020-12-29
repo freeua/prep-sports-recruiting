@@ -1,34 +1,34 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
-import 'date-fns';
-import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import { Formik } from 'formik';
-import { Link } from 'react-router-dom';
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { Formik } from "formik";
+import { Link } from "react-router-dom";
 // import { login } from '../../api/auth.api';
 const Login = () => {
   const useStyles = makeStyles(theme => ({
     root: {
-      '& .MuiTextField-root': {
-        width: '100%',
+      "& .MuiTextField-root": {
+        width: "100%"
       },
-      '& .MuiInputBase-input': {
-        fontSize: '15px',
+      "& .MuiInputBase-input": {
+        fontSize: "15px"
       },
-      '& .MuiFormLabel-root': {
-        fontSize: '1.3rem',
+      "& .MuiFormLabel-root": {
+        fontSize: "1.3rem"
       },
-      '& .MuiFormLabel-root ': {
-        backgroundColor: '#fff',
-      },
+      "& .MuiFormLabel-root ": {
+        backgroundColor: "#fff"
+      }
     },
     option: {
       fontSize: 15,
-      '& > span': {
-        fontSize: 18,
-      },
-    },
+      "& > span": {
+        fontSize: 18
+      }
+    }
   }));
   const classes = useStyles();
 
@@ -95,8 +95,8 @@ const Login = () => {
                                 to="/register"
                               >
                                 <span className="mat-button-wrapper">
-                                  {' '}
-                                  Sign Up{' '}
+                                  {" "}
+                                  Sign Up{" "}
                                 </span>
                                 <div
                                   matripple
@@ -119,8 +119,8 @@ const Login = () => {
                 >
                   <Formik
                     initialValues={{
-                      username: '',
-                      password: '',
+                      username: "",
+                      password: ""
                     }}
                     // validationSchema={signUpValidationSchema}
                     onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -140,7 +140,7 @@ const Login = () => {
                       handleChange,
                       handleBlur,
                       handleSubmit,
-                      isSubmitting,
+                      isSubmitting
                     }) => (
                       <form onSubmit={handleSubmit} className={classes.root}>
                         <p>
@@ -200,10 +200,6 @@ const Login = () => {
                           _ngcontent-ucn-c280
                           className="margin--smaller button-group button-group--space-between"
                         >
-                          {/* <p class="margin--smaller">
-                            <Link to="/forgot-password">Forgot Password</Link>
-                          </p> */}
-                          <i _ngcontent-ucn-c280 />
                           <button
                             disabled={isSubmitting}
                             mat-raised-button
@@ -220,24 +216,24 @@ const Login = () => {
                           </button>
                         </div>
                         <div class="grecaptcha-terms margin--medium font-size--tiny color--gray-light">
-                          {' '}
-                          This site is protected by reCAPTCHA and the Google{' '}
+                          {" "}
+                          This site is protected by reCAPTCHA and the Google{" "}
                           <a
                             href="https://policies.google.com/privacy"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
                             Privacy Policy
-                          </a>{' '}
-                          and{' '}
+                          </a>{" "}
+                          and{" "}
                           <a
                             href="https://policies.google.com/terms"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
                             Terms of Service
-                          </a>{' '}
-                          apply.{' '}
+                          </a>{" "}
+                          apply.{" "}
                         </div>
                       </form>
                     )}

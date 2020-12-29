@@ -5,7 +5,7 @@ import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { Formik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { forgotPasswordValidationSchema } from "../../helpers/validationSchema";
 import { emailConfirmationForPasswordReset } from "../../api/auth.api";
 import { useContext } from "react";
@@ -13,7 +13,7 @@ import { IsLoggedContext } from "../../state/IsLogged";
 
 const ForgotPassword = () => {
   const { isLogged } = useContext(IsLoggedContext);
-
+  const history = useHistory();
   const useStyles = makeStyles(theme => ({
     root: {
       "& .MuiTextField-root": {
@@ -135,12 +135,8 @@ const ForgotPassword = () => {
                         values.email
                       );
 
-                      console.log(response);
-                      // // Проверка может быть другая, когда сделают бэк
-                      // if (response.success === true) {
-                      //   alert("Password reset link is sent to your e-mail");
-                      //   history.push("/");
-                      // }
+                      alert(response?.message);
+                      history.push("/");
 
                       resetForm();
                       setSubmitting(false);
