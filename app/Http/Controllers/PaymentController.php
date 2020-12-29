@@ -47,18 +47,27 @@ class PaymentController extends Controller
          */
         // $token = Session::get('token');
         /* end */
-        // JWTAuth::setToken($token);
+		JWTAuth::setToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYwOTIzOTYyOSwiZXhwIjoxNjA5MjQzMjI5LCJuYmYiOjE2MDkyMzk2MjksImp0aSI6Im5JZ2JQdHhqQ2ZHb0tvRFciLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.VE5VHkZiD0PSTq-vyjLrH9QJZ0oAA_RFuXev6SXgxCo');
         $transaction_user = JWTAuth::toUser();
 
         $user = User::where('id', '=', $transaction_user->id)->first();
 
         $sportId = Session::get('sport_id');
-		if ($user->sports->isNotEmpty($user->sports()->where($sportId))) {
-			// $userSport = $user->sports()->where($sportId)
+		$term = $plan->term;
+		if ($user->sports->isNotEmpty() && $user->sports()->where('sport_user.sport_id', $sportId)->get()->isNotEmpty()) {
+			$userSport = $user->sports()->where('sport_user.sport_id', $sportId)->first();
+			if (null !== $userSport->pivot->count) {
+				if (null === $term) {
+					$user->sports()->updateExistingPivot($sportId, ['count' => $term]);
+				}
+				else {
+					$user->sports()->updateExistingPivot($sportId, ['count' => $userSport->pivot->count + $term]);
+				}
+			}
 		}
-
-
-        $user->plans()->attach($transaction_plan_id, [ 'sport_id' => Session::get('sport_id')]);
+		else {
+			$user->sports()->attach($sportId, ['count' => $term]);
+		}
 
 //        return $transaction_plan;
         return response()->json(['msg' => 'transaction successeful', 'data' => $user->id, 'status' => 'Successeful']);
