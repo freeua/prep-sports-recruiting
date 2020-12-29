@@ -37,6 +37,7 @@ export const getPlansWithSports = token =>
 export const createPayment = (payload, token) =>
   post("/api/create-payment", payload, {
     headers: {
-      Authorization: "Bearer " + token
+      Authorization: "Bearer " + token,
+      Accept: "application/json"
     }
   });

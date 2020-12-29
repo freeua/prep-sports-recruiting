@@ -52,7 +52,6 @@ const PlanCard = ({
       { sport_id: chosenSportObject?.id, id: planId },
       userInfo.access_token
     );
-    console.log(response);
   };
 
   const findSportBySportName = sportName => {
