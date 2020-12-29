@@ -25,7 +25,7 @@ class PaymentController extends Controller
      */
     public function create(Request $request)
     {
-        $plan = Plan::where('id', '=', $request->id)->first();
+        $plan = Plan::where('id', '=', $request->plan_id)->first();
         $payment = new CreatePayment();
         Session::put('plans', $plan);
         Session::put('sport_id', $request->sport_id);
@@ -51,6 +51,12 @@ class PaymentController extends Controller
         $transaction_user = JWTAuth::toUser();
 
         $user = User::where('id', '=', $transaction_user->id)->first();
+
+        $sportId = Session::get('sport_id');
+		if ($user->sports->isNotEmpty($user->sports()->where($sportId))) {
+			// $userSport = $user->sports()->where($sportId)
+		}
+
 
         $user->plans()->attach($transaction_plan_id, [ 'sport_id' => Session::get('sport_id')]);
 

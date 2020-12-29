@@ -128,8 +128,8 @@ class CreatePayment extends Paypal
     protected function redirectUrls(): RedirectUrls
     {
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl('http://prep-sports-recruiting/execute-payment')
-            ->setCancelUrl('http://prep-sports-recruiting/cancel');
+        $redirectUrls->setReturnUrl(env('APP_URL') . '/api/execute-payment')
+            ->setCancelUrl(env('APP_URL') . '/api/cancel');
 
         return $redirectUrls;
     }
