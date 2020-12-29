@@ -13,6 +13,14 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class PaymentController extends Controller
 {
+  /**
+   * PaymentController constructor.
+   */
+     public function __construct()
+     {
+        $this->middleware('auth:api');
+     }
+
     public function index()
     {
         $plans = Plan::all();
@@ -20,13 +28,14 @@ class PaymentController extends Controller
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request (plan_id, sport_id)
+     * @param  \Illuminate\Http\Request  $request (id, sport_id)
      * @return \Illuminate\Contracts\Validation\Validator
      */
     public function create(Request $request)
     {
-        $plan = Plan::where('id', '=', $request->plan_id)->first();
+        $plan = Plan::where('id', '=', $request->id)->first();
         $payment = new CreatePayment();
+        Session::put('jwt_token', $request->header('Authorization'));
         Session::put('plans', $plan);
         Session::put('sport_id', $request->sport_id);
         return $payment->create($plan);
@@ -36,6 +45,7 @@ class PaymentController extends Controller
     {
         $payment = new ExecutePayment();
         $plan = Session::get('plans');
+        $token = Session::get('jwt_token');
         $transaction_plan = $payment->execute($plan);
         foreach ($transaction_plan->transactions as $transaction) {
             foreach($transaction->item_list->items as $item) {
@@ -47,8 +57,8 @@ class PaymentController extends Controller
          */
         // $token = Session::get('token');
         /* end */
-        // JWTAuth::setToken($token);
-        $transaction_user = JWTAuth::toUser();
+      JWTAuth::setToken($token);
+      $transaction_user = JWTAuth::toUser($token);
 
         $user = User::where('id', '=', $transaction_user->id)->first();
 
