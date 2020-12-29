@@ -26,6 +26,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import { AuthMeInfoContextProvider } from "./state/authMeInfo";
 import { AccountDataContextProvider } from "./state/accountData";
+import PasswordReset from "./pages/PasswordReset/PasswordReset";
 
 const App = () => {
   return (
@@ -53,6 +54,10 @@ const App = () => {
                           <Route
                             path="/forgot-password"
                             component={ForgotPassword}
+                          />
+                          <Route
+                            path="/password/reset/:reset_token"
+                            component={PasswordReset}
                           />
                           <Route path="/plans" component={Plans} />
                           <Route

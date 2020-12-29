@@ -65,9 +65,9 @@ export const passwordResetValidationSchema = Yup.object().shape({
   password_confirmation: Yup.string()
     .min(4, "Must be longer than 4")
     .max(20, "Must be shorter than 20")
-    .required("Name is required")
-  // email: Yup.string()
-  //   .email("Must be a valid email adress")
-  //   .max(100, "Must be shorter than 100")
-  //   .required("Email is required")
+    .required("Name is required"),
+  email: Yup.string()
+    .email("Must be a valid email adress")
+    .max(100, "Must be shorter than 100")
+    .required("Email is required")
 });

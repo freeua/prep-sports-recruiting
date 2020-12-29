@@ -211,6 +211,7 @@ const SignUp = () => {
                             <div className="mat-form-field-flex ng-tns-c73-4">
                               <TextField
                                 name="password"
+                                type="password"
                                 error={touched.password && errors.password}
                                 required
                                 id="outlined-required"
