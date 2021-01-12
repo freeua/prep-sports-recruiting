@@ -86,9 +86,9 @@ const Homepage = () => {
                 id="home-intro"
                 className="section-wrapper section-wrapper--landing margin--reduce-bottom--medium"
               >
-                <Link to="/password/reset/0e180dcc7f5d461d3102df8e85d17e1332427723a8585547d17e9c2d681cecc3">
+                <Link to="/password/reset/f2c1c233e81cb24322dfcb4d67d9a6b218655b25993d36058d1738746c6ace09">
                   <div className="content--center mobile-clearance">
-                    <h2>Sports Offered</h2>
+                    <h2>Sports Test</h2>
                     <h6>
                       Choose from a variety of season-long games in nine
                       different sports

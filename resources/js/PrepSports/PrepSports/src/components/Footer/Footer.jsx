@@ -34,10 +34,10 @@ const Footer = () => {
 
           <div className="footer__links">
             <Link routerlink="/plans" to="/plans">
-              Plans
+              Subscription Plans
             </Link>
             <Link routerlink="/colleague-search" to="/colleague-search">
-              Colleague Search
+              College Search
             </Link>
             <Link routerlink="/contact" to="/contact">
               Contact Us
@@ -47,6 +47,12 @@ const Footer = () => {
             </Link>
             <Link routerlink="/about" to="/about">
               Abous Us
+            </Link>
+            <Link routerlink="/about" to="/about">
+              Forums (coming soon)
+            </Link>
+            <Link routerlink="/about" to="/about">
+              Prep Sports Academy (coming soon)
             </Link>
           </div>
 

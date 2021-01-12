@@ -9,13 +9,13 @@ const BurgerBox = ({ setIsBurgerBox }) => {
       style={{ transform: "translateX(-50%) scale(1)", opacity: 1 }}
     >
       <Link className="nav-menu__link color--orange " to="/plans">
-        Plans
+        Subscription Plans
         <i aria-hidden="true" className="icons ">
           new_releases
         </i>
       </Link>
       <Link className="nav-menu__link " to="/colleague-search">
-        Colleague Search
+        College Search
         <i aria-hidden="true" className="icons ">
           search
         </i>
@@ -36,6 +36,18 @@ const BurgerBox = ({ setIsBurgerBox }) => {
         About Us
         <i aria-hidden="true" className="icons ">
           timeline
+        </i>
+      </Link>
+      <Link className="nav-menu__link " to="/">
+        Forums (coming soon)
+        <i aria-hidden="true" className="icons ">
+          chatbubble
+        </i>
+      </Link>
+      <Link className="nav-menu__link " to="/">
+        Prep Sports Academy (coming soon)
+        <i aria-hidden="true" className="icons ">
+          school
         </i>
       </Link>
     </div>

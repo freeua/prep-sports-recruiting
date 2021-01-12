@@ -15,6 +15,9 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { AccountDataContext } from "../../state/accountData";
+import { SportsInfoContext } from "../../state/sportsInfo";
+import { findSportNameBySportId } from "../../utils/helpers";
 
 const useStyles = makeStyles({
   table: {
@@ -23,11 +26,14 @@ const useStyles = makeStyles({
 });
 
 const ColleagueSearch = () => {
-  const [currentTab, setCurrentTab] = useState({});
+  const [currentTab, setCurrentTab] = useState("");
   const [filter, setFilter] = useState("");
   const [coaches, setCoaches] = useState([]);
   const { userInfo } = useContext(UserInfoContext);
   const { authMeInfo } = useContext(AuthMeInfoContext);
+  const { accountData } = useContext(AccountDataContext);
+  const { sportsInfo } = useContext(SportsInfoContext);
+
   const history = useHistory();
   const classes = useStyles();
 
@@ -44,7 +50,7 @@ const ColleagueSearch = () => {
           {
             id: authMeInfo.id,
             sport_id: "1",
-            plan_id: "2"
+            plan_id: "2" // remove it when BE ready
           },
           userInfo.access_token
         );
@@ -57,27 +63,48 @@ const ColleagueSearch = () => {
     })();
   }, []);
 
-  const handleTabChange = smallAbbr => {
+  useEffect(() => {
     setCurrentTab(
-      Sports.find(({ smallAbbreviation }) => smallAbbreviation === smallAbbr)
+      findSportNameBySportId(
+        accountData?.plans[0]?.pivot?.sport_id,
+        sportsInfo[0]
+      )
+    );
+  }, []);
+
+  const handleTabChange = sportName => {
+    setCurrentTab(
+      accountData?.plans?.find(
+        ({ pivot }) =>
+          findSportNameBySportId(pivot.sport_id, sportsInfo[0]) === sportName
+      )
     );
   };
 
-  function createData(name, state, college, organization, sport, email) {
-    return { name, state, college, organization, sport, email };
+  function createData(
+    name,
+    state,
+    college,
+    organization,
+    conference,
+    sport,
+    email
+  ) {
+    return { name, state, college, organization, conference, sport, email };
   }
 
   const rows = [];
 
   // TODO: Change sport_id to sport_name
   if (coaches.length > 0) {
-    coaches.map(coach => {
+    coaches.forEach(coach => {
       rows.push(
         createData(
           coach.head_coach,
           coach.state,
           coach.college,
           coach.organization,
+          coach.conference,
           coach.sport_id,
           coach.head_coach_email
         )
@@ -103,92 +130,57 @@ const ColleagueSearch = () => {
                 <h2>Сolleague Search</h2>
               </div>
               <div className="sportile__wrapper margin--smaller">
-                {Sports.map(({ smallAbbreviation, abbreviation }) => (
-                  <GamesSportCard
-                    smallAbbreviation={smallAbbreviation}
-                    abbreviation={abbreviation}
-                    isLink={false}
-                    currentAbbr={currentTab.abbreviation}
-                    onClick={() => handleTabChange(smallAbbreviation)}
-                  />
-                ))}
+                {accountData?.plans?.map(({ pivot }) => {
+                  const sportFullName = findSportNameBySportId(
+                    pivot.sport_id,
+                    sportsInfo[0]
+                  );
+
+                  return (
+                    <GamesSportCard
+                      sportFullName={sportFullName}
+                      isLink={false}
+                      onClick={() => handleTabChange(sportFullName)}
+                      isFromBackend
+                      isCurrentFilter={currentTab === sportFullName}
+                    />
+                  );
+                })}
               </div>
-              {currentTab.abbreviation ? (
-                <div className="margin--small margin--remove-bottom ">
-                  <div
-                    appearance="outline"
-                    className="mat-form-field  mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float mat-form-field-has-label   mat-form-field-hide-placeholder"
-                  >
-                    <div className="mat-form-field-wrapper ">
-                      <div className="mat-form-field-flex ">
-                        <div className={`mat-form-field-infix ${classes.root}`}>
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Search"
-                            value={filter}
-                            onChange={e => setFilter(e.target.value)}
-                            variant="outlined"
-                          />
-                        </div>
-                      </div>
-                      <div className="mat-form-field-subscript-wrapper ">
-                        <div
-                          className="mat-form-field-hint-wrapper"
-                          style={{
-                            opacity: 1,
-                            transform: "translateY(0%)"
-                          }}
-                        >
-                          <div className="mat-form-field-hint-spacer" />
-                          <div
-                            className="mat-hint mat-right ng-star-inserted"
-                            id="mat-hint-1"
-                          >
-                            At least 3 characters required
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <p class="margin--medium text--center ">
-                  Please pick a sport to continue
-                </p>
-              )}
             </section>
-          </div>
-          {/*  */}
-          <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell align="left">State</TableCell>
-                  <TableCell align="left">College</TableCell>
-                  <TableCell align="left">Organization</TableCell>
-                  <TableCell align="left">Sport</TableCell>
-                  <TableCell align="left">Email</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map(row => (
-                  <TableRow key={row.name}>
-                    <TableCell component="th" scope="row">
-                      {row.name}
-                    </TableCell>
-                    <TableCell align="left">{row.state}</TableCell>
-                    <TableCell align="left">{row.college}</TableCell>
-                    <TableCell align="left">{row.organization}</TableCell>
-                    <TableCell align="left">{row.sport}</TableCell>
-                    <TableCell align="left">{row.email}</TableCell>
+            {/*  */}
+            <TableContainer component={Paper}>
+              <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Name</TableCell>
+                    <TableCell align="left">State</TableCell>
+                    <TableCell align="left">College</TableCell>
+                    <TableCell align="left">Organization</TableCell>
+                    <TableCell align="left">Conference</TableCell>
+                    <TableCell align="left">Sport</TableCell>
+                    <TableCell align="left">Email</TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          {/*  */}
+                </TableHead>
+                <TableBody>
+                  {rows.map(row => (
+                    <TableRow key={row.name}>
+                      <TableCell component="th" scope="row">
+                        {row.name}
+                      </TableCell>
+                      <TableCell align="left">{row.state}</TableCell>
+                      <TableCell align="left">{row.college}</TableCell>
+                      <TableCell align="left">{row.organization}</TableCell>
+                      <TableCell align="left">{row.conference}</TableCell>
+                      <TableCell align="left">{row.sport}</TableCell>
+                      <TableCell align="left">{row.email}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            {/*  */}
+          </div>
         </div>
       </div>
     </div>

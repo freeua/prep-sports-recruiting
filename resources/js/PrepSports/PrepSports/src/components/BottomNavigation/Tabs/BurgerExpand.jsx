@@ -122,20 +122,17 @@ const BurgerExpand = ({ closeNav }) => {
             <i className="icons ">link</i>
           </div> */}
           <div onClick={closeNav}>
-            <Link
-              routerlink="/plans"
-              routerlinkactive="current"
-              className="nav-menu__link color--orange "
-              to="/plans"
-            >
-              Plans<i className="icons ">new_releases</i>
+            <Link className="nav-menu__link color--orange " to="/plans">
+              Subscription Plans<i className="icons ">new_releases</i>
             </Link>
-            <Link
-              routerlinkactive="current"
-              className="nav-menu__link "
-              to="colleague-search"
-            >
-              Сolleague Search<i class="icons ">search</i>
+            <Link className="nav-menu__link " to="colleague-search">
+              College Search<i class="icons ">search</i>
+            </Link>
+            <Link className="nav-menu__link " to="colleague-search">
+              Forums (coming soon)<i class="icons ">chatbubble</i>
+            </Link>
+            <Link className="nav-menu__link " to="colleague-search">
+              Prep Sports Academy (coming soon)<i class="icons ">school</i>
             </Link>
           </div>
 

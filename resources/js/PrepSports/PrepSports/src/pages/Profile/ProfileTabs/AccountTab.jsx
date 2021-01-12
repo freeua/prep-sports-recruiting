@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { AccountDataContext } from "../../../state/accountData";
 import { UserInfoContext } from "../../../state/userInfo";
 import { Link } from "react-router-dom";
+import { findSportNameBySportId } from "../../../utils/helpers";
+import { SportsInfoContext } from "../../../state/sportsInfo";
 
 const AccountTab = () => {
   const { userInfo } = useContext(UserInfoContext);
@@ -30,6 +32,8 @@ const AccountTab = () => {
 };
 
 const Plan = ({ plan }) => {
+  const { sportsInfo } = useContext(SportsInfoContext);
+
   return (
     <div
       style={{
@@ -43,7 +47,7 @@ const Plan = ({ plan }) => {
         flexDirection: "column"
       }}
     >
-      <h5>Sport ID: {plan?.pivot?.sport_id}</h5>
+      <h5>{findSportNameBySportId(plan?.pivot?.sport_id, sportsInfo[0])}</h5>
       <h5>
         Emails Left:{" "}
         <b style={{ fontWeight: "600" }}>{plan?.term - plan?.pivot?.count}</b>

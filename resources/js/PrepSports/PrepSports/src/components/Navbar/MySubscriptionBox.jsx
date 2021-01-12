@@ -2,6 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import { UserInfoContext } from "../../state/userInfo";
 import { AccountDataContext } from "../../state/accountData";
+import { findSportNameBySportId } from "../../utils/helpers";
+import { SportsInfoContext } from "../../state/sportsInfo";
 
 const MySubscriptionBox = () => {
   const { userInfo } = useContext(UserInfoContext);
@@ -38,10 +40,23 @@ const MySubscriptionBox = () => {
 };
 
 const Plan = ({ plan }) => {
+  const { sportsInfo } = useContext(SportsInfoContext);
   return (
     <div>
       {/* TODO: Write sport name, when backend adds this field */}
-      <h5>Sport ID: {plan.pivot.sport_id}</h5>
+      <p style={{ margin: "5px 0", fontWeight: "600" }}>
+        {findSportNameBySportId(plan.pivot.sport_id, sportsInfo[0])}
+      </p>
+      <p style={{ margin: "5px 0" }}>Sent emails: {plan?.pivot?.count}</p>
+
+      <div
+        style={{
+          background: "#0000002e",
+          margin: "10px 0",
+          height: "1px",
+          width: "100%"
+        }}
+      />
     </div>
   );
 };

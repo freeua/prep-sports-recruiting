@@ -26,8 +26,7 @@ const PersonalTab = () => {
             id="dvErrors"
           >
             <table id="tblErrors" style={{ width: 768 }}></table>
-
-            <Formik
+            {/* <Formik
               initialValues={{
                 password: "",
                 password_confirmation: ""
@@ -56,122 +55,121 @@ const PersonalTab = () => {
                 resetForm();
                 setSubmitting(false);
               }}
-            >
-              {({
-                values,
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                isSubmitting,
-                errors,
-                touched
-              }) => (
-                <form onSubmit={handleSubmit}>
-                  <div style={{ height: 8 }} />
-                  <Button
+            > 
+            {({
+              values,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting,
+              errors,
+              touched
+            }) => ( 
+            <form onSubmit={handleSubmit}> */}
+            <div style={{ height: 8 }} />
+            {/* <Button
                     onClick={handleSubmit}
                     isSubmitting={isSubmitting}
                     text="Change Password"
-                  />
-                  <div style={{ clear: "both" }} />
+                  /> */}
+            <div style={{ clear: "both" }} />
 
-                  <div className="userOptions">
-                    <div className="formatTitle curve2200 splitBar">
-                      <h2>General</h2>
-                    </div>
-                    <div className="columnBlockInfo clearfix curve0022">
-                      <div className="sportsTableBlock sportsTableBlockClean">
-                        <table className="userTable curve0022">
-                          <tbody>
-                            <tr>
-                              <td className="name">
-                                <p>Do you want to Reset your Password?:</p>
-                              </td>
-                              <td className="value">
-                                <Link to="forgot-password">
-                                  <p style={{ textDecoration: "underline" }}>
-                                    Go to Password Reset page
-                                  </p>
-                                </Link>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td className="name">
-                                <p>Username:</p>
-                              </td>
-                              <td className="value">
-                                <p>{authMeInfo?.name}</p>
-                              </td>
-                            </tr>
+            <div className="userOptions">
+              <div className="formatTitle curve2200 splitBar">
+                <h2>General</h2>
+              </div>
+              <div className="columnBlockInfo clearfix curve0022">
+                <div className="sportsTableBlock sportsTableBlockClean">
+                  <table className="userTable curve0022">
+                    <tbody>
+                      <tr>
+                        <td className="name">
+                          <p>Do you want to Reset your Password?:</p>
+                        </td>
+                        <td className="value">
+                          <Link to="forgot-password">
+                            <p style={{ textDecoration: "underline" }}>
+                              Go to Password Reset page
+                            </p>
+                          </Link>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="name">
+                          <p>Username:</p>
+                        </td>
+                        <td className="value">
+                          <p>{authMeInfo?.name}</p>
+                        </td>
+                      </tr>
 
-                            <tr>
-                              <td className="name">
-                                <p>Country:</p>
-                              </td>
-                              <td className="value">
-                                <p>{authMeInfo?.country}</p>
-                              </td>
-                            </tr>
+                      <tr>
+                        <td className="name">
+                          <p>Country:</p>
+                        </td>
+                        <td className="value">
+                          <p>{authMeInfo?.country}</p>
+                        </td>
+                      </tr>
 
-                            <tr>
-                              <td className="name">
-                                <p>Email:</p>
-                              </td>
-                              <td className="value">
-                                <p>{authMeInfo?.email}</p>
-                              </td>
-                            </tr>
+                      <tr>
+                        <td className="name">
+                          <p>Email:</p>
+                        </td>
+                        <td className="value">
+                          <p>{authMeInfo?.email}</p>
+                        </td>
+                      </tr>
 
-                            <tr>
-                              <td className="name">Avatar:</td>
-                              <td className="value">
-                                <div
-                                  style={{
-                                    float: "left",
-                                    paddingTop: 8
-                                  }}
-                                >
-                                  <img
-                                    src="https://img.fantrax.com/graphics/blankAvtr.png"
-                                    title="Avatar Upload"
-                                    alt="Avatar"
-                                    width={80}
-                                    height={80}
-                                  />
-                                </div>
-                                <div
-                                  style={{
-                                    float: "left",
-                                    padding: "20px 0px 0px 10px"
-                                  }}
-                                >
-                                  <input
-                                    type="file"
-                                    name="avatar"
-                                    onchange="__dataChanged()"
-                                  />
-                                  <br />
-                                  <span style={{ fontSize: 11 }}>
-                                    Max. image file size 5 MB
-                                  </span>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td className="name">Member Since:</td>
-                              <td className="value" colSpan={2}>
-                                {authMeInfo?.created_at}
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              )}
-            </Formik>
-
+                      {/* <tr>
+                        <td className="name">Avatar:</td>
+                        <td className="value">
+                          <div
+                            style={{
+                              float: "left",
+                              paddingTop: 8
+                            }}
+                          >
+                            <img
+                              src="https://img.fantrax.com/graphics/blankAvtr.png"
+                              title="Avatar Upload"
+                              alt="Avatar"
+                              width={80}
+                              height={80}
+                            />
+                          </div>
+                          <div
+                            style={{
+                              float: "left",
+                              padding: "20px 0px 0px 10px"
+                            }}
+                          >
+                            <input
+                              type="file"
+                              name="avatar"
+                              onchange="__dataChanged()"
+                            />
+                            <br />
+                            <span style={{ fontSize: 11 }}>
+                              Max. image file size 5 MB
+                            </span>
+                          </div>
+                        </td>
+                      </tr> */}
+                      <tr>
+                        <td className="name">Member Since:</td>
+                        <td className="value" colSpan={2}>
+                          {authMeInfo?.created_at}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            {/* </form>
+            )}
+            </Formik> */}
             <div style={{ clear: "both" }} />
           </div>
         </div>
