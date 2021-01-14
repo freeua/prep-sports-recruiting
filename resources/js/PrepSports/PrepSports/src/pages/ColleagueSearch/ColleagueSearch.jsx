@@ -18,6 +18,7 @@ import Paper from "@material-ui/core/Paper";
 import { AccountDataContext } from "../../state/accountData";
 import { SportsInfoContext } from "../../state/sportsInfo";
 import { findSportNameBySportId } from "../../utils/helpers";
+import Loader from "../../components/Loader/Loader";
 
 const useStyles = makeStyles({
   table: {
@@ -29,10 +30,13 @@ const ColleagueSearch = () => {
   const [currentTab, setCurrentTab] = useState("");
   const [filter, setFilter] = useState("");
   const [coaches, setCoaches] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const { userInfo } = useContext(UserInfoContext);
   const { authMeInfo } = useContext(AuthMeInfoContext);
   const { accountData } = useContext(AccountDataContext);
   const { sportsInfo } = useContext(SportsInfoContext);
+
+  const [stateCategories, setStateCategories] = useState([]);
 
   const history = useHistory();
   const classes = useStyles();
@@ -46,17 +50,19 @@ const ColleagueSearch = () => {
   useEffect(() => {
     (async () => {
       try {
+        setIsLoading(true);
         const response = await getCoaches(
           {
             id: authMeInfo.id,
             sport_id: "1",
             plan_id: "2" // remove it when BE ready
           },
-          userInfo.access_token
+          userInfo?.access_token
         );
         if (response.status === "Successeful") {
           setCoaches(response.data);
         }
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -64,21 +70,20 @@ const ColleagueSearch = () => {
   }, []);
 
   useEffect(() => {
-    setCurrentTab(
-      findSportNameBySportId(
-        accountData?.plans[0]?.pivot?.sport_id,
-        sportsInfo[0]
-      )
-    );
+    if (currentTab === "" && accountData?.plans && sportsInfo) {
+      setCurrentTab(
+        findSportNameBySportId(
+          accountData?.plans[0]?.pivot?.sport_id,
+          sportsInfo[0]
+        )
+      );
+    }
   }, []);
 
   const handleTabChange = sportName => {
-    setCurrentTab(
-      accountData?.plans?.find(
-        ({ pivot }) =>
-          findSportNameBySportId(pivot.sport_id, sportsInfo[0]) === sportName
-      )
-    );
+    setIsLoading(true);
+    setCurrentTab(sportName);
+    setIsLoading(false);
   };
 
   function createData(
@@ -111,6 +116,18 @@ const ColleagueSearch = () => {
       );
     });
   }
+
+  const tempFilterFind = () => {
+    const list = [];
+    console.log("start");
+    coaches.forEach(coach => {
+      if (!list.includes(coach.state)) {
+        list.push(coach.state);
+      }
+    });
+    console.log("list", list);
+  };
+
   return (
     <div className="layout__outlet">
       <router-outlet name="header" role="banner" />
@@ -126,7 +143,7 @@ const ColleagueSearch = () => {
               tabIndex={-1}
               className="main-content content__main content__main--left mobile-clearance"
             >
-              <div className="content__headline">
+              <div onClick={tempFilterFind} className="content__headline">
                 <h2>Сolleague Search</h2>
               </div>
               <div className="sportile__wrapper margin--smaller">
@@ -149,36 +166,42 @@ const ColleagueSearch = () => {
               </div>
             </section>
             {/*  */}
+
             <TableContainer component={Paper}>
-              <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell align="left">State</TableCell>
-                    <TableCell align="left">College</TableCell>
-                    <TableCell align="left">Organization</TableCell>
-                    <TableCell align="left">Conference</TableCell>
-                    <TableCell align="left">Sport</TableCell>
-                    <TableCell align="left">Email</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {rows.map(row => (
-                    <TableRow key={row.name}>
-                      <TableCell component="th" scope="row">
-                        {row.name}
-                      </TableCell>
-                      <TableCell align="left">{row.state}</TableCell>
-                      <TableCell align="left">{row.college}</TableCell>
-                      <TableCell align="left">{row.organization}</TableCell>
-                      <TableCell align="left">{row.conference}</TableCell>
-                      <TableCell align="left">{row.sport}</TableCell>
-                      <TableCell align="left">{row.email}</TableCell>
+              {isLoading ? (
+                <Loader />
+              ) : (
+                <Table className={classes.table} aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Name</TableCell>
+                      <TableCell align="left">State</TableCell>
+                      <TableCell align="left">College</TableCell>
+                      <TableCell align="left">Organization</TableCell>
+                      <TableCell align="left">Conference</TableCell>
+                      <TableCell align="left">Sport</TableCell>
+                      <TableCell align="left">Email</TableCell>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHead>
+                  <TableBody>
+                    {rows.map(row => (
+                      <TableRow key={row.name}>
+                        <TableCell component="th" scope="row">
+                          {row.name}
+                        </TableCell>
+                        <TableCell align="left">{row.state}</TableCell>
+                        <TableCell align="left">{row.college}</TableCell>
+                        <TableCell align="left">{row.organization}</TableCell>
+                        <TableCell align="left">{row.conference}</TableCell>
+                        <TableCell align="left">{row.sport}</TableCell>
+                        <TableCell align="left">{row.email}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              )}
             </TableContainer>
+
             {/*  */}
           </div>
         </div>

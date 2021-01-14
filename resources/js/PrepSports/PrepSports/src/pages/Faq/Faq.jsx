@@ -1,57 +1,57 @@
-import React, { useState } from 'react';
-import General from './Tabs/General';
-import Roster from './Tabs/Roster';
-import Scoring from './Tabs/Scoring';
-import Transactions from './Tabs/Transactions';
-import Salaries from './Tabs/Salaries';
-import Fees from './Tabs/Fees';
-import Other from './Tabs/Other';
-import { TextField, makeStyles } from '@material-ui/core';
-import SmallHeader from '../../components/SmallHeader/SmallHeader';
+import React, { useState } from "react";
+import General from "./Tabs/General";
+// import Roster from "./Tabs/Roster";
+// import Scoring from "./Tabs/Scoring";
+// import Transactions from "./Tabs/Transactions";
+// import Salaries from "./Tabs/Salaries";
+// import Fees from "./Tabs/Fees";
+// import Other from "./Tabs/Other";
+import { TextField, makeStyles } from "@material-ui/core";
+import SmallHeader from "../../components/SmallHeader/SmallHeader";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    '& .MuiTextField-root': {
-      width: '100%',
+    "& .MuiTextField-root": {
+      width: "100%"
     },
-    '& .MuiInputBase-input': {
-      fontSize: '15px',
+    "& .MuiInputBase-input": {
+      fontSize: "15px"
     },
-    '& .MuiFormLabel-root': {
-      fontSize: '1.3rem',
+    "& .MuiFormLabel-root": {
+      fontSize: "1.3rem"
     },
-    '& .MuiFormLabel-root ': {
-      backgroundColor: '#fff',
-    },
+    "& .MuiFormLabel-root ": {
+      backgroundColor: "#fff"
+    }
   },
   option: {
     fontSize: 15,
-    '& > span': {
-      fontSize: 18,
-    },
-  },
+    "& > span": {
+      fontSize: 18
+    }
+  }
 }));
 const Faq = () => {
-  const [currentTab, setCurrentTab] = useState('general');
-  const [filter, setFilter] = useState('');
+  const [currentTab, setCurrentTab] = useState("general");
+  const [filter, setFilter] = useState("");
   const classes = useStyles();
 
   const pickTab = () => {
     switch (currentTab) {
-      case 'general':
+      case "general":
         return <General filter={filter} />;
-      case 'roster':
-        return <Roster filter={filter} />;
-      case 'scoring':
-        return <Scoring filter={filter} />;
-      case 'transactions':
-        return <Transactions filter={filter} />;
-      case 'salaries':
-        return <Salaries filter={filter} />;
-      case 'fees':
-        return <Fees filter={filter} />;
-      case 'other':
-        return <Other filter={filter} />;
+      // case 'roster':
+      //   return <Roster filter={filter} />;
+      // case 'scoring':
+      //   return <Scoring filter={filter} />;
+      // case 'transactions':
+      //   return <Transactions filter={filter} />;
+      // case 'salaries':
+      //   return <Salaries filter={filter} />;
+      // case 'fees':
+      //   return <Fees filter={filter} />;
+      // case 'other':
+      //   return <Other filter={filter} />;
       default:
         return <General filter={filter} />;
     }
@@ -108,68 +108,68 @@ const Faq = () => {
                     </div>
                   </mat-form-field>
                 </div>
-                <div className="margin--small margin--remove-top">
+                {/* <div className="margin--small margin--remove-top">
                   <div className="cat-tiles">
-                    {/* eslint-disable-next-line */}
+                    eslint-disable-next-line
                     <a
-                      onClick={() => setCurrentTab('general')}
-                      className={currentTab === 'general' && 'current'}
+                      onClick={() => setCurrentTab("general")}
+                      className={currentTab === "general" && "current"}
                     >
-                      {' '}
+                      {" "}
                       General <i className="icons">help</i>
                     </a>
-                    {/* eslint-disable-next-line */}
+                    eslint-disable-next-line
                     <a
-                      onClick={() => setCurrentTab('roster')}
-                      className={currentTab === 'roster' && 'current'}
+                      onClick={() => setCurrentTab("roster")}
+                      className={currentTab === "roster" && "current"}
                     >
-                      {' '}
+                      {" "}
                       Roster <i className="icons">group</i>
                     </a>
-                    {/* eslint-disable-next-line */}
+                    eslint-disable-next-line
                     <a
-                      onClick={() => setCurrentTab('scoring')}
-                      className={currentTab === 'scoring' && 'current'}
+                      onClick={() => setCurrentTab("scoring")}
+                      className={currentTab === "scoring" && "current"}
                     >
-                      {' '}
+                      {" "}
                       Scoring <i className="icons">stars</i>
                     </a>
-                    {/* eslint-disable-next-line */}
+                    eslint-disable-next-line
                     <a
-                      onClick={() => setCurrentTab('transactions')}
-                      className={currentTab === 'transactions' && 'current'}
+                      onClick={() => setCurrentTab("transactions")}
+                      className={currentTab === "transactions" && "current"}
                     >
-                      {' '}
+                      {" "}
                       Transactions <i className="icons">swap_horiz</i>
                     </a>
-                    {/* eslint-disable-next-line */}
+                    eslint-disable-next-line
                     <a
-                      onClick={() => setCurrentTab('salaries')}
-                      className={currentTab === 'salaries' && 'current'}
+                      onClick={() => setCurrentTab("salaries")}
+                      className={currentTab === "salaries" && "current"}
                     >
-                      {' '}
+                      {" "}
                       Salaries &amp;
                       <br />
                       Contracts <i className="icons">assignment</i>
                     </a>
-                    {/* eslint-disable-next-line */}
+                    eslint-disable-next-line
                     <a
-                      onClick={() => setCurrentTab('fees')}
-                      className={currentTab === 'fees' && 'current'}
+                      onClick={() => setCurrentTab("fees")}
+                      className={currentTab === "fees" && "current"}
                     >
-                      {' '}
+                      {" "}
                       Fees &amp; Prizes <i className="icons">redeem</i>
                     </a>
-                    {/* eslint-disable-next-line */}
+                    eslint-disable-next-line
                     <a
-                      onClick={() => setCurrentTab('other')}
-                      className={currentTab === 'other' && 'current'}
+                      onClick={() => setCurrentTab("other")}
+                      className={currentTab === "other" && "current"}
                     >
-                      {' '}
+                      {" "}
                       Other <i className="icons">help_outline</i>
                     </a>
                   </div>
-                </div>
+                </div> */}
               </div>
               {pickTab()}
               {/* <dl className="blades ">
@@ -374,7 +374,7 @@ const Faq = () => {
                 <dd ></dd>
               </dl> */}
             </section>
-            <aside className="side-content content__column content__column--sticky content__column--sticky-public">
+            {/* <aside className="side-content content__column content__column--sticky content__column--sticky-public">
               <long-column-ad>
                 <div className="content__column__item">
                   <side-ad>
@@ -386,7 +386,7 @@ const Faq = () => {
                   </side-ad>
                 </div>
               </long-column-ad>
-            </aside>
+            </aside> */}
           </div>
         </app-faq>
       </div>

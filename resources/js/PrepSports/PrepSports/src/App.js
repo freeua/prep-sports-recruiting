@@ -62,7 +62,7 @@ const App = () => {
                               component={PasswordReset}
                             />
                             <Route path="/plans" component={Plans} />
-                            <Route
+                            <PrivateRoute
                               path="/colleague-search"
                               component={ColleagueSearch}
                             />

@@ -4,7 +4,7 @@ const WhyUsTable = () => {
   return (
     <section className="section-wrapper section-wrapper--landing section-wrapper--gray">
       <div className="content--center mobile-clearance">
-        <h2>Why Fantrax?</h2>
+        <h2>How it works</h2>
         <h6>What ESPN, CBS and Yahoo! do NOT offer...</h6>
       </div>
       <div className="content--center margin">

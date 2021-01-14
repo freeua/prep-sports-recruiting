@@ -6,7 +6,7 @@ const General = ({ filter }) => {
   return (
     <>
       <dl className="blades ng-star-inserted">
-        <div className="head-row"> League Commissioners </div>
+        <div className="head-row"> Frequently Asked Questions </div>
         {general
           .filter(({ question }) =>
             question.toLocaleLowerCase().includes(filter)

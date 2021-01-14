@@ -29,9 +29,9 @@ const GamesSportCard = ({
           current: isCurrentFilter
         })}
       >
-        <i class="fx-icons">
-          {/* {findSportLogoByAbbr(smallAbbreviation, true, isHover, isCurrent)} */}
-        </i>
+        {/* <i class="fx-icons">
+          {findSportLogoByAbbr(smallAbbreviation, true, isHover, isCurrent)}
+        </i> */}
         <b>{sportFullName}</b>
       </div>
     );

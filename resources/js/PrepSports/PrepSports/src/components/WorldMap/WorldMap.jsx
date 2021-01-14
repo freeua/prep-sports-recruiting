@@ -1,6 +1,42 @@
 import React from "react";
 
 const WorldMap = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const comments = [
+    {
+      title: "PSR Rocks! Second to none",
+      description:
+        "PSR helped my son get into St. Norberts. Programs need players! They really helped us so much and we are really grateful for the help we received."
+    },
+    {
+      title: "So happy we went with Prep Sports Recruiting.",
+      description:
+        "Prep Sports was so awesome. They really helped us along the way. Some people want everything right away, as did us but we found out that with alittle work we were able to find our daughter a FULL RIDE playing softball at University of Tampa. $30,000 a year, with redshirt my daughter received 5 years of $30,000."
+    },
+    {
+      title: "Why are people paying 1000’s of $ for Services?",
+      description:
+        "Prep Sports Recruiting saved us SOOOOOOOOOOOOOOO much money. We will always be happy for what they did for us. They helped our son and now our daughter is starting the journey and Prep Sports Recruiting will be helping us with the journey. #FACTS"
+    }
+  ];
+
+  const maxIndex = comments.length() - 1;
+
+  const handleChangeComment = isNext => {
+    if (isNext) {
+      if (currentIndex === maxIndex) {
+        setCurrentIndex(0);
+      } else {
+        setCurrentIndex(prev => prev + 1);
+      }
+    } else {
+      if (currentIndex === 0) {
+        setCurrentIndex(maxIndex);
+      } else {
+        setCurrentIndex(prev => prev - 1);
+      }
+    }
+  };
   return (
     <app-world-map _nghost-sst-c276="">
       <div _ngcontent-sst-c276="" className="world-map in-view">
