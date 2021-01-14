@@ -47,6 +47,7 @@ export const createPayment = (payload, token) =>
   post("/api/create-payment", payload, {
     headers: {
       Authorization: "Bearer " + token,
+      // "Content-Type": "application/x-www-form-urlencoded"
       Accept: "application/json"
     }
   });
