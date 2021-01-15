@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -15,6 +15,8 @@ import { Formik } from "formik";
 import { signUpValidationSchema } from "../../helpers/validationSchema";
 import { signUp } from "../../api/auth.api";
 import { useHistory } from "react-router-dom";
+import { useContext } from "react";
+import { IsLoggedContext } from "../../state/IsLogged";
 
 function countryToFlag(isoCode) {
   return typeof String.fromCodePoint !== "undefined"
@@ -58,11 +60,18 @@ const SignUp = () => {
   const [inputCountry, setInputCountry] = React.useState("");
   const [inputState, setInputState] = useState("");
   const [avatar, setAvatar] = useState(null);
+  const { isLogged } = useContext(IsLoggedContext);
 
   const handleAvatarChange = e => {
     const file = e.target.files[0];
     setAvatar(file);
   };
+
+  useEffect(() => {
+    if (isLogged) {
+      history.push("/");
+    }
+  }, []);
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>

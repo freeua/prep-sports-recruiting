@@ -88,11 +88,8 @@ const Homepage = () => {
               >
                 <Link to="/password/reset/f2c1c233e81cb24322dfcb4d67d9a6b218655b25993d36058d1738746c6ace09">
                   <div className="content--center mobile-clearance">
-                    <h2>Sports Test</h2>
-                    <h6>
-                      Choose from a variety of season-long games in nine
-                      different sports
-                    </h6>
+                    <h2>Sports Available</h2>
+                    <h6>Emailing Schools has never been so easy!</h6>
                   </div>
                 </Link>
                 <div

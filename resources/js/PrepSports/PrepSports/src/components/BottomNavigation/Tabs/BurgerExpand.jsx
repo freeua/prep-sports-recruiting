@@ -94,8 +94,8 @@ const BurgerExpand = ({ closeNav }) => {
 
           <div>
             <div className="nav-menu__sport-header color--accent">
-              <h5>Season-Long Fantasy Games</h5>
-              <i className="icons">sports</i>
+              <h5>Sports Available</h5>
+              <i className="icons">P</i>
             </div>
             <div
               onClick={closeNav}
