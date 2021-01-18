@@ -1,56 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
+import Sports from "../../Sports";
+import { Link } from "react-router-dom";
 
-const RecruitingBox = () => (
-  <div
-    className="nav-menu nav-menu--wide ng-tns-c254-2 ng-trigger ng-trigger-menuState ng-star-inserted"
-    style={{ transform: "translateX(-50%) scale(1)", opacity: "1" }}
-  >
-    <flyout-nav className="ng-tns-c254-2">
-      <nav className="flyout__wrapper">
-        <div className="flyout--active flyout flyout--nhl ng-star-inserted">
-          <a className="flyout__category" href="/news/nhl">
-            NHL <i className="icons">chevron_right</i>
-          </a>
-          <div className="flyout__links ng-star-inserted">
-            <a href="/sport/nhl" className="ng-star-inserted">
-              <u>Home</u>
-            </a>
-            <a href="/newui/NHL/scores.go" className="ng-star-inserted">
-              <u>Scores</u>
-            </a>
-            <a href="/newui/NHL/standings.go" className="ng-star-inserted">
-              <u>Standings</u>
-            </a>
-            <a href="/newui/NHL/statsPlayers.go" className="ng-star-inserted">
-              <u>Stats</u>
-            </a>
-            <a href="/newui/NHL/schedules.go" className="ng-star-inserted">
-              <u>Schedules</u>
-            </a>
-            <a href="/newui/NHL/teams.go" className="ng-star-inserted">
-              <u>Teams</u>
-            </a>
-            <a href="/newui/NHL/players.go" className="ng-star-inserted">
-              <u>Players</u>
-            </a>
-            <a href="/news/nhl/player-news" className="ng-star-inserted">
-              <u>Player News</u>
-            </a>
-            <a href="/news/nhl/injury-report" className="ng-star-inserted">
-              <u>Injuries</u>
-            </a>
-            <a href="/newui/NHL/transactions.go" className="ng-star-inserted">
-              <u>Transactions</u>
-            </a>
-            <a href="/news/nhl/fantasy-columns" className="ng-star-inserted">
-              <u>Fantasy Advice</u>
-            </a>
-            <a href="/news/nhl/news-headlines" className="ng-star-inserted">
-              <u>Headlines</u>
-            </a>
-          </div>
-        </div>
-        <div className="flyout flyout--nba ng-star-inserted">
+const RecruitingBox = () => {
+  const [currentSport, setCurrentSport] = useState(Sports[0].smallAbbreviation);
+
+  return (
+    <div
+      className="nav-menu nav-menu--wide ng-tns-c254-2 ng-trigger ng-trigger-menuState ng-star-inserted"
+      style={{
+        transform: "translateX(-50%) scale(1)",
+        opacity: "1",
+        // maxHeight: "400px", // TODO: Test On Windows
+        // overflow: "auto" // TODO: Test On Windows
+
+        maxHeight: "90vh", // TODO: Test On Windows
+        overflow: "auto" // TODO: Test On Windows
+      }}
+    >
+      <flyout-nav className="ng-tns-c254-2">
+        <nav className="flyout__wrapper">
+          {Sports.map((sport, index) => (
+            <div
+              className={`flyout flyout--nhl ng-star-inserted ${
+                currentSport === sport.smallAbbreviation ? "flyout--active" : ""
+              }`}
+            >
+              <span
+                onMouseEnter={() => setCurrentSport(sport.smallAbbreviation)}
+                className={`flyout__category`}
+              >
+                <div style={{ maxWidth: "92px" }}>{sport.title}</div>
+                <i className="icons">chevron_right</i>
+              </span>
+              {index === 0 && (
+                <div className="flyout__links ng-star-inserted">
+                  <Link
+                    to={`/sport/${currentSport}`}
+                    className="ng-star-inserted"
+                  >
+                    <u>Home</u>
+                  </Link>
+                </div>
+              )}
+            </div>
+          ))}
+
+          {/* <div className="flyout flyout--nba ng-star-inserted">
           <a className="flyout__category" href="/news/nba">
             NBA <i className="icons">chevron_right</i>
           </a>
@@ -89,10 +85,11 @@ const RecruitingBox = () => (
           <a className="flyout__category" href="/news/nascar">
             NASCAR <i className="icons">chevron_right</i>
           </a>
-        </div>
-      </nav>
-    </flyout-nav>
-  </div>
-);
+        </div> */}
+        </nav>
+      </flyout-nav>
+    </div>
+  );
+};
 
 export default RecruitingBox;

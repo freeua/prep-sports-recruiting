@@ -10,7 +10,6 @@ const GamesSportCard = ({
   smallAbbreviation,
   abbreviation,
   isLink = true,
-  currentAbbr = "",
   onClick,
   isCurrentFilter = false
 }) => {

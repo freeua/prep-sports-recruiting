@@ -14,7 +14,7 @@
     <input type="submit" placeholder="send">
 </form>
 
-<form method="post" action="get-log">
+<form method="post" action="account/get-log">
     @csrf
     <input type="submit" placeholder="send">
 </form>

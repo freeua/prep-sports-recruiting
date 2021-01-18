@@ -19,7 +19,7 @@ use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\ResponseInterface;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
-
+use Carbon\Carbon;
 
 class AccountController extends Controller
 {
@@ -67,23 +67,59 @@ class AccountController extends Controller
         return response()->json(['msg' => 'No Coaches', 'status' => 'error']);
     }
 
-    public function getLog(Request $request) {
-        $client = new Client([
-            'headers' => [
-                'Content-type' => 'application/json; charset=utf-8'
-            ],
-        ]);
-        $url = 'https://api.elasticemail.com/v2/log/load?apikey='. env('ELASTIC_KEY') . '&statuses=5&from=2020-10-01T01:01:01&to=2020-10-21T17:25:25&limit=5&includeEmail=true&email=';
+    public function getLog(Request $request)
+    {
+      $header = $request->header();
+      $token = str_replace('Bearer ', '', $header['authorization'][0]);
+      JWTAuth::setToken($token);
+      $user = JWTAuth::toUser();
+      $date = Carbon::now();
+      $client = new Client([
+        'headers' => [
+          'Content-type' => 'application/json; charset=utf-8'
+        ],
+      ]);
+      $url = 'https://api.elasticemail.com/v2/log/load?apikey='. env('ELASTIC_KEY') . '&statuses=6&from='. $user->created_at->toDateTimeString() .'&to='. $date->toDateTimeString() .'&limit=5&includeEmail=true&email=';
 
-        try {
-            $request = $client->post($url, []);
-        } catch (ClientException $e) {
-            if ($e->hasResponse()) {
-                dd(Psr7\str($e->getResponse()));
-            }
+      try {
+        $request_opened = $client->post($url, []);
+      } catch (ClientException $e) {
+        if ($e->hasResponse()) {
+          dd(Psr7\str($e->getResponse()));
         }
+      }
 
-        return $request;
+      $result_opened = [];
+      if (!empty($request_opened)) {
+        $request_opened_to_array = json_decode($request_opened->getBody()->getContents(), true);
+        foreach ($request_opened_to_array['data']['recipients'] as $value) {
+          if ($value['fromemail'] == $user->email) {
+            $result_opened[] = $value;
+          }
+        }
+      }
+      $url_sent = 'https://api.elasticemail.com/v2/log/load?apikey='. env('ELASTIC_KEY') . '&statuses=5&from='. $user->created_at->toDateTimeString() .'&to='. $date->toDateTimeString() .'&limit=5&includeEmail=true&email=';
+
+      try {
+        $request_sent = $client->post($url_sent, []);
+      } catch (ClientException $e) {
+        if ($e->hasResponse()) {
+          dd(Psr7\str($e->getResponse()));
+        }
+      }
+      $result_sent = [];
+      if (!empty($request_sent)) {
+        $request_sent_to_array = json_decode($request_sent->getBody()->getContents(), true);
+        foreach ($request_sent_to_array['data']['recipients'] as $value) {
+          if ($value['fromemail'] == $user->email) {
+            $result_sent[] = $value;
+          }
+        }
+      }
+
+      $result = ['opened'=>$result_opened, 'sent'=>$result_sent];
+
+        return $result;
     }
 
     public function getSports()
