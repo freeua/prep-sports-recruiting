@@ -40,7 +40,7 @@ class CreatePayment extends Paypal
             dd($ex, 'test2');
         }
 
-        return redirect($payment->getApprovalLink());
+        return $payment->getApprovalLink();
     }
 
     /**
