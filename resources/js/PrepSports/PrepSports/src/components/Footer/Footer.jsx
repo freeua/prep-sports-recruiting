@@ -13,7 +13,9 @@ const Footer = () => {
         <div className="footer__content content--center hide--phablet">
           <div className="footer__content--left">
             <Link routerlink="/" className="footer__logo" to="/"></Link>
-            <div className="footer__slogan">The Home of Fantasy Sports</div>
+            <div className="footer__slogan">
+              The Home of College Sports Recruiting
+            </div>
             {/* <div className="footer__social">
 
               <a
@@ -34,10 +36,13 @@ const Footer = () => {
 
           <div className="footer__links">
             <Link routerlink="/plans" to="/plans">
-              Plans
+              Subscription Plans
+            </Link>
+            <Link routerlink="/blog" to="/blog">
+              Blog HQ
             </Link>
             <Link routerlink="/colleague-search" to="/colleague-search">
-              Colleague Search
+              College Search
             </Link>
             <Link routerlink="/contact" to="/contact">
               Contact Us
@@ -78,9 +83,6 @@ const Footer = () => {
               <Link routerlink="/privacy-policy" to="/privacy-policy">
                 Privacy
               </Link>
-              <Link routerlink="/responsible-play" to="/responsible-play">
-                Responsible Play
-              </Link>
             </div>
             {/* <ul className="footer__bar__partners hide--phablet">
               <li>
@@ -111,20 +113,19 @@ const Footer = () => {
         </div>
         <div className="footer__legal content--center mobile-clearance">
           <p className="hide--desktop margin--smallest">
-            Fantrax - The Home of Fantasy Sports
+            The Home of College Sports Recruiting
           </p>
           <p className="margin--tiny">
             {" "}
-            © 2008-2020{" "}
+            © 2020-2022{" "}
             <Link routerlink="/" to="/">
-              Fantrax
+              Prep Sports Recruiting
             </Link>{" "}
             All Rights Reserved.{" "}
             <span className="footer__time margin--left-small hide--phablet">
-              {" "}
-              Sun Apr 26, 2020{" "}
+              Sun Jan 9, 2021{" "}
               <span className="margin--left-smaller">
-                Version 17.0.0 - 18.0.2
+                Version 1.0.0 - 2.0.2
               </span>
             </span>
           </p>

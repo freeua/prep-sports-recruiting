@@ -8,7 +8,16 @@ export const getCoaches = (payload, token) =>
     }
   });
 
-export const getLog = () => post("/api/account/get-log");
+export const getLog = token =>
+  post(
+    "/api/account/get-log",
+    {},
+    {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    }
+  );
 
 export const sendMail = () => post("/api/send_mail");
 
@@ -38,6 +47,7 @@ export const createPayment = (payload, token) =>
   post("/api/create-payment", payload, {
     headers: {
       Authorization: "Bearer " + token,
+      // "Content-Type": "application/x-www-form-urlencoded"
       Accept: "application/json"
     }
   });

@@ -27,6 +27,7 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import { AuthMeInfoContextProvider } from "./state/authMeInfo";
 import { AccountDataContextProvider } from "./state/accountData";
 import PasswordReset from "./pages/PasswordReset/PasswordReset";
+import { SportsInfoContextProvider } from "./state/sportsInfo";
 
 const App = () => {
   return (
@@ -36,42 +37,44 @@ const App = () => {
           <IsBlogPageContextProvider>
             <UserInfoContextProvider>
               <IsAllowedNotificationsContextProvider>
-                <CurrentSportContextProvider>
-                  <Router>
-                    <Layout>
-                      <ScrollToTop>
-                        <Switch>
-                          <Route exact={true} path="/" component={Homepage} />
-                          <Route path="/sport/:abbr" component={AboutSport} />
-                          <Route path="/blog/:id?" component={Blog} />
-                          <Route path="/about" component={AboutUs} />
-                          <Route path="/terms-of-service" component={Terms} />
-                          <Route path="/privacy-policy" component={Privacy} />
-                          <Route path="/contact" component={Contact} />
-                          <Route path="/faq" component={Faq} />
-                          {/* <Route path="/login" component={Login} /> */}
-                          <Route path="/register" component={SignUp} />
-                          <Route
-                            path="/forgot-password"
-                            component={ForgotPassword}
-                          />
-                          <Route
-                            path="/password/reset/:reset_token"
-                            component={PasswordReset}
-                          />
-                          <Route path="/plans" component={Plans} />
-                          <Route
-                            path="/colleague-search"
-                            component={ColleagueSearch}
-                          />
-                          <PrivateRoute path="/profile" component={Profile} />
-                          <PrivateRoute path="/payment" component={Payment} />
-                          <Route component={NotFound} />
-                        </Switch>
-                      </ScrollToTop>
-                    </Layout>
-                  </Router>
-                </CurrentSportContextProvider>
+                <SportsInfoContextProvider>
+                  <CurrentSportContextProvider>
+                    <Router>
+                      <Layout>
+                        <ScrollToTop>
+                          <Switch>
+                            <Route exact={true} path="/" component={Homepage} />
+                            <Route path="/sport/:abbr" component={AboutSport} />
+                            <Route path="/blog/:id?" component={Blog} />
+                            <Route path="/about" component={AboutUs} />
+                            <Route path="/terms-of-service" component={Terms} />
+                            <Route path="/privacy-policy" component={Privacy} />
+                            <Route path="/contact" component={Contact} />
+                            <Route path="/faq" component={Faq} />
+                            {/* <Route path="/login" component={Login} /> */}
+                            <Route path="/register" component={SignUp} />
+                            <Route
+                              path="/forgot-password"
+                              component={ForgotPassword}
+                            />
+                            <Route
+                              path="/password/reset/:reset_token"
+                              component={PasswordReset}
+                            />
+                            <Route path="/plans" component={Plans} />
+                            <PrivateRoute
+                              path="/colleague-search"
+                              component={ColleagueSearch}
+                            />
+                            <PrivateRoute path="/profile" component={Profile} />
+                            <PrivateRoute path="/payment" component={Payment} />
+                            <Route component={NotFound} />
+                          </Switch>
+                        </ScrollToTop>
+                      </Layout>
+                    </Router>
+                  </CurrentSportContextProvider>
+                </SportsInfoContextProvider>
               </IsAllowedNotificationsContextProvider>
             </UserInfoContextProvider>
           </IsBlogPageContextProvider>

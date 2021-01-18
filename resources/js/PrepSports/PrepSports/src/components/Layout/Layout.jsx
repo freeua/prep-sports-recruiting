@@ -10,6 +10,8 @@ import { authMe, getAccountData } from "../../api/auth.api";
 import { AuthMeInfoContext } from "../../state/authMeInfo";
 import { AccountDataContext } from "../../state/accountData";
 import Loader from "../Loader/Loader";
+import { SportsInfoContext } from "../../state/sportsInfo";
+import { getPlansWithSports } from "../../api/coaches.api";
 
 const Layout = ({ children }) => {
   const [isNavbarCollapsed, setIsNavbarCollapsed] = useState(false);
@@ -19,6 +21,7 @@ const Layout = ({ children }) => {
   const { isLogged, setIsLogged } = useContext(IsLoggedContext);
   const { setAuthMeInfo } = useContext(AuthMeInfoContext);
   const { setAccountData } = useContext(AccountDataContext);
+  const { setSportsInfo } = useContext(SportsInfoContext);
 
   useEffect(() => {
     (async () => {
@@ -39,12 +42,17 @@ const Layout = ({ children }) => {
               localUserInfo.access_token
             );
             setAccountData(accDataResponse.data);
+            const plansWithSportsResponse = await getPlansWithSports(
+              localUserInfo.access_token
+            );
+            setSportsInfo(plansWithSportsResponse.data);
           } else {
             setIsLogged(false);
           }
         } else {
           setIsLogged(false);
         }
+
         setIsLoading(false);
       } catch (error) {
         console.error(error);

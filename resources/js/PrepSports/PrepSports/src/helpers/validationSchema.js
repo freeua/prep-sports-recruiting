@@ -32,18 +32,14 @@ export const contactValidationSchema = Yup.object().shape({
     .email("Must be a valid email adress")
     .max(100, "Must be shorter than 100")
     .required("Email is required"),
-  subject: Yup.string()
-    .required("subject is required")
+  name: Yup.string()
+    .required("name is required")
     .max(100, "Must be shorter than 100")
-    .min(4, "Must be longer than 4"),
-  league: Yup.string()
-    .required("league is required")
-    .min(4, "Must be longer than 4")
-    .max(100, "Must be shorter than 100"),
+    .min(1, "Must be longer than 1"),
   question: Yup.string()
     .required("league is required")
     .min(4, "Must be longer than 4")
-    .max(500, "Must be shorter than 500")
+    .max(500, "Must be shorter than 3000")
 });
 
 export const plansValidationSchema = Yup.object().shape({

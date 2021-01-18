@@ -66,7 +66,7 @@ const Contact = () => {
               className="main-content content__main content__main--small content__main--center"
             >
               <div _ngcontent-rae-c284 className="content__headline">
-                <h2 _ngcontent-rae-c284>Contact us</h2>
+                <h2 _ngcontent-rae-c284>Contact Us</h2>
               </div>
 
               <div _ngcontent-rae-c284 className="notice ng-star-inserted">
@@ -80,9 +80,9 @@ const Contact = () => {
                     {" "}
                     Your feedback is very important to us. We personally respond
                     to every message that we receive. Response emails will be
-                    sent from support@fantrax.com, so please add that to your
-                    email contact lists to prevent it from ending up in your
-                    spam/junk mail folder.{" "}
+                    sent from info@prepsportsrecruiting.com, so please add that
+                    to your email contact lists to prevent it from ending up in
+                    your spam/junk mail folder.{" "}
                   </p>
                   <p _ngcontent-rae-c284>
                     <b _ngcontent-rae-c284 className="color--gray-dark">
@@ -108,9 +108,9 @@ const Contact = () => {
                     <h3 _ngcontent-rae-c284>Contact Us</h3>
                     <Formik
                       initialValues={{
+                        name: "",
                         email: "",
-                        subject: "",
-                        league: "",
+
                         question: ""
                       }}
                       validationSchema={contactValidationSchema}
@@ -158,12 +158,12 @@ const Contact = () => {
                             <div className="mat-form-field-wrapper ng-tns-c73-8">
                               <div className="mat-form-field-flex ng-tns-c73-8">
                                 <TextField
-                                  name="email"
-                                  error={touched.email && errors.email}
+                                  name="name"
+                                  error={touched.name && errors.name}
                                   required
                                   id="outlined-required"
-                                  label="Email"
-                                  value={values.email}
+                                  label="Name"
+                                  value={values.name}
                                   variant="outlined"
                                   onChange={handleChange}
                                   onBlur={handleBlur}
@@ -178,71 +178,20 @@ const Contact = () => {
                             <div className="mat-form-field-wrapper ng-tns-c73-8">
                               <div className="mat-form-field-flex ng-tns-c73-8">
                                 <TextField
-                                  id="outlined-select-currency-native"
-                                  select
-                                  name="subject"
-                                  label="Subject"
-                                  error={touched.subject && errors.subject}
+                                  name="email"
+                                  error={touched.email && errors.email}
                                   required
-                                  value={values.subject}
-                                  onBlur={handleBlur}
-                                  onChange={handleChange}
-                                  // onChange={({ target }) =>
-                                  //   setSubject(target.value)
-                                  // }
+                                  id="outlined-required"
+                                  label="Email"
+                                  value={values.email}
                                   variant="outlined"
-                                >
-                                  {subjects.map(({ value }) => (
-                                    <MenuItem
-                                      className={classes.menuItem}
-                                      key={value}
-                                      value={value}
-                                    >
-                                      {value}
-                                    </MenuItem>
-                                  ))}
-                                </TextField>
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                />
                               </div>
                             </div>
                           </div>
-                          <div
-                            appearance="outline"
-                            className="mat-form-field ng-tns-c73-8 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label mat-form-field-disabled ng-star-inserted"
-                          >
-                            <div className="mat-form-field-wrapper ng-tns-c73-8">
-                              <div className="mat-form-field-flex ng-tns-c73-8">
-                                <TextField
-                                  id="outlined-select-currency-native"
-                                  select
-                                  name="league"
-                                  label="League name"
-                                  required
-                                  error={touched.league && errors.league}
-                                  value={values.league}
-                                  onChange={handleChange}
-                                  onBlur={handleBlur}
-                                  // onChange={({ target }) =>
-                                  //   setSubject(target.value)
-                                  // }
-                                  variant="outlined"
-                                >
-                                  {[
-                                    {
-                                      value: "Not related to a specific league"
-                                    }
-                                  ].map(({ value }) => (
-                                    <MenuItem
-                                      className={classes.menuItem}
-                                      key={value}
-                                      value={value}
-                                    >
-                                      {value}
-                                    </MenuItem>
-                                  ))}
-                                </TextField>
-                              </div>
-                            </div>
-                          </div>
+
                           <div
                             appearance="outline"
                             className="mat-form-field ng-tns-c73-8 mat-primary mat-form-field-type-mat-input mat-form-field-appearance-outline mat-form-field-can-float mat-form-field-should-float mat-form-field-has-label mat-form-field-disabled ng-star-inserted"
@@ -304,13 +253,7 @@ const Contact = () => {
                       _ngcontent-rae-c284
                       className="cell cell--6-col cell--4-col-tablet"
                     >
-                      <p _ngcontent-rae-c284>
-                        {" "}
-                        Fantrax™ (Head Office) <br _ngcontent-rae-c284 /> 5700
-                        Yonge Street <br _ngcontent-rae-c284 /> Suite 200{" "}
-                        <br _ngcontent-rae-c284 /> Toronto, ON M2M 4K2{" "}
-                        <br _ngcontent-rae-c284 /> Canada{" "}
-                      </p>
+                      <p _ngcontent-rae-c284>Mailing Address Coming Soon</p>
                     </div>
                     <div _ngcontent-rae-c284 className="cell cell--12-col">
                       <h3
@@ -320,47 +263,17 @@ const Contact = () => {
                         Customer Support
                       </h3>
                       <p _ngcontent-rae-c284>
-                        {" "}
-                        Please note, we will only accept calls for unresolved
-                        tickets, or if you have not received a response within
-                        24 hours of submitting your ticket.{" "}
+                        Please email us first before calling. Only call if the
+                        issue is urgent or you have not received a response in
+                        12 hours(24 hours during a federal holiday).
                       </p>
                     </div>
                     <div
                       _ngcontent-rae-c284
                       className="cell cell--6-col cell--4-col-tablet"
                     >
-                      <p _ngcontent-rae-c284>US and Canada Toll Free:</p>
-                      <h4 _ngcontent-rae-c284>1-833-450-0605</h4>
-                    </div>
-                    <div
-                      _ngcontent-rae-c284
-                      className="cell cell--6-col cell--4-col-tablet"
-                    >
-                      <p _ngcontent-rae-c284>UK Toll Free:</p>
-                      <h4 _ngcontent-rae-c284>0-800-088-5371</h4>
-                    </div>
-                    <div _ngcontent-rae-c284 className="cell cell--12-col">
-                      <h3
-                        _ngcontent-rae-c284
-                        className="margin margin--remove-bottom"
-                      >
-                        Head Office
-                      </h3>
-                    </div>
-                    <div
-                      _ngcontent-rae-c284
-                      className="cell cell--6-col cell--4-col-tablet"
-                    >
-                      <p _ngcontent-rae-c284>US and Canada Toll Free:</p>
-                      <h4 _ngcontent-rae-c284>1-800-275-3729</h4>
-                    </div>
-                    <div
-                      _ngcontent-rae-c284
-                      className="cell cell--6-col cell--4-col-tablet"
-                    >
-                      <p _ngcontent-rae-c284>UK Toll Free:</p>
-                      <h4 _ngcontent-rae-c284>0-800-088-5371</h4>
+                      <p _ngcontent-rae-c284>Phone Number:</p>
+                      <h4 _ngcontent-rae-c284>262-751-1964</h4>
                     </div>
                   </div>
                 </div>

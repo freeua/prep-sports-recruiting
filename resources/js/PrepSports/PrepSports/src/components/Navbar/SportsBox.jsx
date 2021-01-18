@@ -12,11 +12,11 @@ const SportsBox = () => {
         <div className="nav-menu__scrollbar__fix ng-tns-c254-34">
           <game-nav className="ng-tns-c254-34">
             <div className="nav-menu__sport-header color--accent">
-              <h5>Season-Long Fantasy Sports</h5>
-              <i className="icons">sports</i>
+              <h5>Sports Available</h5>
+              <i className="icons">P</i>
             </div>
             <div className="sportile__wrapper sportile__wrapper--mobile margin--smaller">
-              {Sports.map((sport) => (
+              {Sports.map(sport => (
                 <GamesSportCard
                   abbreviation={sport.abbreviation}
                   smallAbbreviation={sport.smallAbbreviation}
