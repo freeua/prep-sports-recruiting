@@ -68,21 +68,24 @@ class PaymentController extends Controller
         $sportId = Session::get('sport_id');
         $term = $plan->term;
         if ($user->sports->isNotEmpty() && $user->sports()->where('sport_user.sport_id', $sportId)->get()->isNotEmpty()) {
-          $userSport = $user->sports()->where('sport_user.sport_id', $sportId)->first();
-          if (null !== $userSport->pivot->count) {
-            if (null === $term) {
-              $user->sports()->updateExistingPivot($sportId, ['count' => $term]);
-            } else {
-              $user->sports()->updateExistingPivot($sportId, ['count' => $userSport->pivot->count + $term]);
-            }
-          }
-        } else {
-          $user->sports()->attach($sportId, ['count' => $term]);
-        }
+			$userSport = $user->sports()->where('sport_user.sport_id', $sportId)->first();
+			if (null !== $userSport->pivot->count) {
+				if (null === $term) {
+				$user->sports()->updateExistingPivot($sportId, ['count' => $term]);
+				}
+				else {
+				$user->sports()->updateExistingPivot($sportId, ['count' => $userSport->pivot->count + $term]);
+				}
+			}
+		}
+		else {
+			$user->sports()->attach($sportId, ['count' => $term]);
+		}
 
 //        return $transaction_plan;
         return response()->json(['msg' => 'transaction successeful', 'data' => $user->id, 'status' => 'Successeful']);
-      } else {
+	  }
+	  else {
         return null;
       }
     }
