@@ -28,6 +28,7 @@ import { AuthMeInfoContextProvider } from "./state/authMeInfo";
 import { AccountDataContextProvider } from "./state/accountData";
 import PasswordReset from "./pages/PasswordReset/PasswordReset";
 import { SportsInfoContextProvider } from "./state/sportsInfo";
+import SuccessfulPayment from "./pages/SuccessfulPayment";
 
 const App = () => {
   return (
@@ -68,6 +69,10 @@ const App = () => {
                             />
                             <PrivateRoute path="/profile" component={Profile} />
                             <PrivateRoute path="/payment" component={Payment} />
+                            <Route
+                              path="/successful-payment"
+                              component={SuccessfulPayment}
+                            />
                             <Route component={NotFound} />
                           </Switch>
                         </ScrollToTop>

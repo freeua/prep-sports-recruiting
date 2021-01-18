@@ -86,7 +86,7 @@ const Homepage = () => {
                 id="home-intro"
                 className="section-wrapper section-wrapper--landing margin--reduce-bottom--medium"
               >
-                <Link to="/password/reset/f2c1c233e81cb24322dfcb4d67d9a6b218655b25993d36058d1738746c6ace09">
+                <Link to="/successful-payment">
                   <div className="content--center mobile-clearance">
                     <h2>Sports Available</h2>
                     <h6>Emailing Schools has never been so easy!</h6>

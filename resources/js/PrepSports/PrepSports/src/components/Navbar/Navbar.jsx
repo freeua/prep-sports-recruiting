@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import cn from "classnames";
 import { IsBlogPageContext } from "../../state/isBlogPageContext";
 import SportsBox from "./SportsBox";
-// import RecruitingBox from "./RecruitingBox";
+import RecruitingBox from "./RecruitingBox";
 import LoginBox from "./LoginBox";
 import NotificationBox from "./NotificationBox";
 import BurgerBox from "./BurgerBox";
@@ -13,14 +13,14 @@ const Navbar = () => {
   const { currentSport } = useContext(CurrentSportContext);
   const { isBlogPage } = useContext(IsBlogPageContext);
   const [isNavbarSports, setIsNavbarSports] = useState(false);
-  // const [isNavbarRecruiting, setIsNavbarRecruiting] = useState(false);
+  const [isNavbarRecruiting, setIsNavbarRecruiting] = useState(false);
   const [isNavbarLoginBox, setIsNavbarLoginBox] = useState(false);
   const [isNotificationBox, setIsNotificationBox] = useState(false);
   const [isBurgerBox, setIsBurgerBox] = useState(false);
 
   const isAnyPopupOpened = () => {
     if (isNavbarSports) return true;
-    // if (isNavbarRecruiting) return true;
+    if (isNavbarRecruiting) return true;
     if (isNotificationBox) return true;
     if (isNavbarLoginBox) return true;
     if (isBurgerBox) return true;
@@ -38,7 +38,7 @@ const Navbar = () => {
           className="dropbox-close"
           onClick={() => {
             setIsNavbarSports(false);
-            // setIsNavbarRecruiting(false);
+            setIsNavbarRecruiting(false);
             setIsNavbarLoginBox(false);
             setIsNotificationBox(false);
             setIsBurgerBox(false);
@@ -75,7 +75,7 @@ const Navbar = () => {
                 <div
                   onClick={() => {
                     setIsNavbarSports(!isNavbarSports);
-                    // setIsNavbarRecruiting(false);
+                    setIsNavbarRecruiting(false);
                     setIsNavbarLoginBox(false);
                     setIsNotificationBox(false);
                     setIsBurgerBox(false);
@@ -87,7 +87,7 @@ const Navbar = () => {
                   </b>
                   {isNavbarSports ? <SportsBox /> : null}
                 </div>
-                {/* <div
+                <div
                   onClick={() => {
                     setIsNavbarRecruiting(!isNavbarRecruiting);
                     setIsNavbarSports(false);
@@ -101,7 +101,7 @@ const Navbar = () => {
                     Recruiting Information
                   </b>
                   {isNavbarRecruiting ? <RecruitingBox /> : null}
-                </div> */}
+                </div>
                 <div className="nav-item ">
                   <Link
                     to="/blog"
@@ -121,7 +121,7 @@ const Navbar = () => {
                   <b
                     onClick={() => {
                       setIsNavbarLoginBox(!isNavbarLoginBox);
-                      // setIsNavbarRecruiting(false);
+                      setIsNavbarRecruiting(false);
                       setIsNavbarSports(false);
                       setIsNotificationBox(false);
                       setIsBurgerBox(false);
@@ -142,7 +142,7 @@ const Navbar = () => {
                     onClick={() => {
                       setIsNotificationBox(!isNotificationBox);
                       setIsNavbarLoginBox(false);
-                      // setIsNavbarRecruiting(false);
+                      setIsNavbarRecruiting(false);
                       setIsNavbarSports(false);
                       setIsBurgerBox(false);
                     }}
@@ -159,7 +159,7 @@ const Navbar = () => {
                       setIsBurgerBox(!isBurgerBox);
                       setIsNotificationBox(false);
                       setIsNavbarLoginBox(false);
-                      // setIsNavbarRecruiting(false);
+                      setIsNavbarRecruiting(false);
                       setIsNavbarSports(false);
                     }}
                     tabindex="0"

@@ -3,7 +3,7 @@ import Sports from "../../Sports";
 import AboutSportBanner from "../../components/AboutSportBanner/AboutSportBanner";
 import AboutSportCard from "../../components/AboutSportCard/AboutSportCard";
 import { CurrentSportContext } from "../../state/CurrentSportContext";
-import WhyUsTable from "../../components/WhyUsTable/WhyUsTable";
+// import WhyUsTable from "../../components/WhyUsTable/WhyUsTable";
 import { Link } from "react-router-dom";
 
 // Gifs
@@ -394,7 +394,7 @@ const AboutSport = ({ match }) => {
           </div>
         ) : null}
       </section>
-      <WhyUsTable />
+      {/* <WhyUsTable /> */}
     </>
   );
 };
