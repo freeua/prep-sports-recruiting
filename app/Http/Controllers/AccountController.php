@@ -92,8 +92,15 @@ class AccountController extends Controller
       $result_opened = [];
       if (!empty($request_opened)) {
         $request_opened_to_array = json_decode($request_opened->getBody()->getContents(), true);
-        foreach ($request_opened_to_array['data']['recipients'] as $value) {
+        foreach ($request_opened_to_array['data']['recipients'] as &$value) {
           if ($value['fromemail'] == $user->email) {
+            $value['coach_info'] = Coach::where('head_coach_email', $value['to'])->first();
+            if (!empty($value['coach_info'])) {
+              $sports = $value['coach_info']->sport()->get();
+              foreach ($sports as $sport) {
+                $value['coach_info']['sport'] = $sport['name'];
+              }
+            }
             $result_opened[] = $value;
           }
         }
@@ -110,8 +117,15 @@ class AccountController extends Controller
       $result_sent = [];
       if (!empty($request_sent)) {
         $request_sent_to_array = json_decode($request_sent->getBody()->getContents(), true);
-        foreach ($request_sent_to_array['data']['recipients'] as $value) {
+        foreach ($request_sent_to_array['data']['recipients'] as &$value) {
           if ($value['fromemail'] == $user->email) {
+            $value['coach_info'] = Coach::where('head_coach_email', $value['to'])->first();
+            if (!empty($value['coach_info'])) {
+              $sports = $value['coach_info']->sport()->get();
+              foreach ($sports as $sport) {
+                $value['coach_info']['sport'] = $sport['name'];
+              }
+            }
             $result_sent[] = $value;
           }
         }
@@ -119,7 +133,7 @@ class AccountController extends Controller
 
       $result = ['opened'=>$result_opened, 'sent'=>$result_sent];
 
-        return $result;
+      return $result;
     }
 
     public function getSports()
