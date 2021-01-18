@@ -28,26 +28,39 @@ class MailController extends Controller
     public function sendMail(Request $request) {
         $data = new \stdClass();
         $coach = Coach::where('id', '=', $request->input('id'))->first();
-        $data->coach_email = $coach->head_coach_email;
-        $data->user_email = $request->input('email');
-        $data->name = $request->input('name');
-        $data->subject = $request->input('subject');
-        $data->title = $request->input('title');
-        $data->description = $request->input('description');
-        // dd($data);
+		$user = \Auth::user();
+		if (null === $user) {
+			return response()->json(['status' => 'unauthenticated']);
+		}
+		$sportId = $coach->sportId;
+		if ($user->sports->isNotEmpty() && $user->sports()->where('sport_user.sport_id', $sportId)->get()->isNotEmpty()) {
+			$userSport = $user->sports()->where('sport_user.sport_id', $sportId)->first();
+			if (0 < $userSport->pivot->count) {
+				$data->coach_email = $coach->head_coach_email;
+				$data->user_email = $request->input('email');
+				$data->name = $request->input('name');
+				$data->subject = $request->input('subject');
+				$data->title = $request->input('title');
+				$data->description = $request->input('description');
+				// dd($data);
 
-        Mail::send('emails.send_mail', ['data'=>$data], function ($message) use ($data) {
-            $message->to($data->coach_email, 'Prep Sports Recruiting')->subject($data->subject);
-            $message->from($data->user_email, 'Prep Sports Recruiting');
-            $message->replyTo($data->user_email);
-        });
+				Mail::send('emails.send_mail', ['data'=>$data], function ($message) use ($data) {
+					$message->to($data->coach_email, 'Prep Sports Recruiting')->subject($data->subject);
+					$message->from($data->user_email, 'Prep Sports Recruiting');
+					$message->replyTo($data->user_email);
+				});
 
-        // increment count of sending mail
-        \DB::table('plan_user')
-            ->where('id', $request->plan_user_id)
-            // ->update(['count' => 1]);
-            ->increment('count');
+				// decrement count of sending mail
+				$user->sports()->updateExistingPivot($sportId, ['count' => $userSport->pivot->count - 1]);
 
-        return response()->json(['msg' => 'Mail send', 'status' => 'Successeful']);
+				return response()->json(['msg' => 'Mail send', 'status' => 'Successeful']);
+			}
+			else {
+				return response()->json(['msg' => 'Mail did not send', 'status' => 'exceeding the limit']);
+			}
+		}
+		else {
+			return response()->json(['msg' => 'Mail did not send', 'status' => 'fail']);
+		}
     }
 }

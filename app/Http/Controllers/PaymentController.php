@@ -71,10 +71,10 @@ class PaymentController extends Controller
 			$userSport = $user->sports()->where('sport_user.sport_id', $sportId)->first();
 			if (null !== $userSport->pivot->count) {
 				if (null === $term) {
-				$user->sports()->updateExistingPivot($sportId, ['count' => $term]);
+					$user->sports()->updateExistingPivot($sportId, ['count' => $term]);
 				}
 				else {
-				$user->sports()->updateExistingPivot($sportId, ['count' => $userSport->pivot->count + $term]);
+					$user->sports()->updateExistingPivot($sportId, ['count' => $userSport->pivot->count + $term]);
 				}
 			}
 		}
