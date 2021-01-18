@@ -95,9 +95,11 @@ class AccountController extends Controller
         foreach ($request_opened_to_array['data']['recipients'] as &$value) {
           if ($value['fromemail'] == $user->email) {
             $value['coach_info'] = Coach::where('head_coach_email', $value['to'])->first();
-            $sports = $value['coach_info']->sport()->get();
-            foreach ($sports as $sport) {
-              $value['coach_info']['sport'] = $sport['name'];
+            if (!empty($value['coach_info'])) {
+              $sports = $value['coach_info']->sport()->get();
+              foreach ($sports as $sport) {
+                $value['coach_info']['sport'] = $sport['name'];
+              }
             }
             $result_opened[] = $value;
           }
@@ -118,9 +120,11 @@ class AccountController extends Controller
         foreach ($request_sent_to_array['data']['recipients'] as &$value) {
           if ($value['fromemail'] == $user->email) {
             $value['coach_info'] = Coach::where('head_coach_email', $value['to'])->first();
-            $sports = $value['coach_info']->sport()->get();
-            foreach ($sports as $sport) {
-              $value['coach_info']['sport'] = $sport['name'];
+            if (!empty($value['coach_info'])) {
+              $sports = $value['coach_info']->sport()->get();
+              foreach ($sports as $sport) {
+                $value['coach_info']['sport'] = $sport['name'];
+              }
             }
             $result_sent[] = $value;
           }
