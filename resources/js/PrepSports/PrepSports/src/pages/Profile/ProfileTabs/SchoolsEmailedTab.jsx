@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserInfoContext } from "../../../state/userInfo";
 import { Link } from "react-router-dom";
 import Table from "@material-ui/core/Table";
@@ -11,10 +11,15 @@ import Paper from "@material-ui/core/Paper";
 import { getLog } from "../../../api/coaches.api";
 import { makeStyles } from "@material-ui/core";
 import Loader from "../../../components/Loader/Loader";
+import { findSportNameBySportId } from "../../../utils/helpers";
+import { SportsInfoContext } from "../../../state/sportsInfo";
 
 const useStyles = makeStyles({
   table: {
     minWidth: 650
+  },
+  ".MuiTableRow-root": {
+    height: "40px"
   }
 });
 
@@ -23,19 +28,48 @@ const SchoolsEmailedTab = () => {
   const [recipients, setRecipients] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const classes = useStyles();
+  const { sportsInfo } = useContext(SportsInfoContext);
 
   useEffect(() => {
     (async () => {
       setIsLoading(true);
       try {
         const response = await getLog(userInfo?.access_token);
-        setRecipients(response?.data?.recipients);
+
+        const opened = response?.opened;
+        const sent = response?.sent;
+
+        opened.forEach(item => (item.isSeen = true));
+        sent.forEach(item => (item.isSeen = false));
+
+        const result = opened.concat(sent);
+        setRecipients(result);
       } catch (error) {
         console.error(error);
       }
       setIsLoading(false);
     })();
   }, []);
+
+  function createData(coach, sport, organization, college, status) {
+    return { coach, sport, organization, college, status };
+  }
+
+  const rows = [];
+
+  if (recipients.length > 0) {
+    recipients.forEach(coach => {
+      rows.push(
+        createData(
+          coach.coach_info.head_coach,
+          coach.coach_info.sport,
+          coach.coach_info.organization,
+          coach.coach_info.college,
+          coach.isSeen
+        )
+      );
+    });
+  }
 
   return (
     <div>
@@ -48,25 +82,31 @@ const SchoolsEmailedTab = () => {
               <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Coach</TableCell>
-                    <TableCell align="left">State</TableCell>
-                    <TableCell align="left">College</TableCell>
-                    <TableCell align="left">Organization</TableCell>
+                    <TableCell align="left">Coach</TableCell>
                     <TableCell align="left">Sport</TableCell>
-                    <TableCell align="left">Email</TableCell>
+                    <TableCell align="left">Organization</TableCell>
+                    <TableCell align="left">College</TableCell>
+                    <TableCell align="left">Status</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {rows.map(row => (
                     <TableRow key={row.coach}>
-                      <TableCell component="th" scope="row">
-                        {row.coach}
-                      </TableCell>
-                      <TableCell align="left">{row.state}</TableCell>
-                      <TableCell align="left">{row.college}</TableCell>
-                      <TableCell align="left">{row.organization}</TableCell>
+                      <TableCell align="left">{row.coach}</TableCell>
                       <TableCell align="left">{row.sport}</TableCell>
-                      <TableCell align="left">{row.email}</TableCell>
+                      <TableCell align="left">{row.organization}</TableCell>
+                      <TableCell align="left">{row.college}</TableCell>
+                      <TableCell align="left">
+                        {row.isSeen ? (
+                          <i aria-hidden="true" className="icons ">
+                            Visibility
+                          </i>
+                        ) : (
+                          <i aria-hidden="true" className="icons ">
+                            VisibilityOff
+                          </i>
+                        )}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
