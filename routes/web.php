@@ -34,4 +34,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('/user-account-management/search', 'Admin\AdminUserAccountManagementController@search');
 });
 
-
+Route::get('{reactRoutes}', function () { return view('welcome');  })->where('reactRoutes', '^((?!api).)*$');
