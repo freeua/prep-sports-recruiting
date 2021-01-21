@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Coach;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 
 class MailController extends Controller
@@ -26,13 +27,15 @@ class MailController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     public function sendMail(Request $request) {
+        $header = $request->header();
+        $token = str_replace('Bearer ', '', $header['authorization'][0]);
+        JWTAuth::setToken($token);
+        $user = JWTAuth::toUser();
         $data = new \stdClass();
         $coach = Coach::where('id', '=', $request->input('id'))->first();
         $data->coach_email = $coach->head_coach_email;
-        $data->user_email = $request->input('email');
-        $data->name = $request->input('name');
+        $data->user_email = $user->email;
         $data->subject = $request->input('subject');
-        $data->title = $request->input('title');
         $data->description = $request->input('description');
         // dd($data);
 
