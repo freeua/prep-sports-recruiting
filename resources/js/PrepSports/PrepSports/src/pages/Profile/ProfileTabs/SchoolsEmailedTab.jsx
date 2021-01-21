@@ -43,6 +43,7 @@ const SchoolsEmailedTab = () => {
         sent.forEach(item => (item.isSeen = false));
 
         const result = opened.concat(sent);
+        console.log("result", result);
         setRecipients(result);
       } catch (error) {
         console.error(error);
@@ -97,13 +98,13 @@ const SchoolsEmailedTab = () => {
                       <TableCell align="left">{row.organization}</TableCell>
                       <TableCell align="left">{row.college}</TableCell>
                       <TableCell align="left">
-                        {row.isSeen ? (
-                          <i aria-hidden="true" className="icons ">
-                            Visibility
+                        {row.status ? (
+                          <i aria-hidden="true" className="icons">
+                            visibility
                           </i>
                         ) : (
-                          <i aria-hidden="true" className="icons ">
-                            VisibilityOff
+                          <i aria-hidden="true" className="icons">
+                            visibility_off
                           </i>
                         )}
                       </TableCell>

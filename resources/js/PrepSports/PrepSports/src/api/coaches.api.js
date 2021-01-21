@@ -19,7 +19,13 @@ export const getLog = token =>
     }
   );
 
-export const sendMail = () => post("/api/send_mail");
+export const sendMail = (payload, token) =>
+  post("/api/send_mail", payload, {
+    headers: {
+      Authorization: "Bearer " + token,
+      Accept: "application/json"
+    }
+  });
 
 export const getPlans = token =>
   get("/api/account/get-plans", {
