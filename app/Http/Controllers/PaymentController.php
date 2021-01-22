@@ -83,7 +83,7 @@ class PaymentController extends Controller
 		}
 
 //        return $transaction_plan;
-        return response()->json(['msg' => 'transaction successeful', 'data' => $user->id, 'status' => 'Successeful']);
+        return redirect('/successful-payment-api');
 	  }
 	  else {
         return null;

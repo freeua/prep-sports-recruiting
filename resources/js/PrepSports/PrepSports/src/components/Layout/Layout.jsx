@@ -107,7 +107,7 @@ const Layout = ({ children }) => {
       >
         {!isBottomNavigation && !isLogged ? <Navbar /> : null}
         {!isBottomNavigation && isLogged ? <LoggedNavbar /> : null}
-        <main>{children}</main>
+        <main style={{ minHeight: "75vh" }}>{children}</main>
         <Footer />
         {isBottomNavigation ? <BottomNavigation /> : null}
       </div>

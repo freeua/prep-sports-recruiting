@@ -67,3 +67,14 @@ export const passwordResetValidationSchema = Yup.object().shape({
     .max(100, "Must be shorter than 100")
     .required("Email is required")
 });
+
+export const sendEmailValidationSchema = Yup.object().shape({
+  subject: Yup.string()
+    .required("subject is required")
+    .max(400, "Must be shorter than 400")
+    .min(1, "Must be longer than 1"),
+  description: Yup.string()
+    .required("description is required")
+    .min(4, "Must be longer than 4")
+    .max(10000, "Must be shorter than 10000")
+});
