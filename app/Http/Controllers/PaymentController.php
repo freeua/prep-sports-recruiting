@@ -79,9 +79,7 @@ class PaymentController extends Controller
         } else {
           $user->sports()->attach($sportId, ['count' => $term]);
         }
-
-//        return $transaction_plan;
-        return response()->json(['msg' => 'transaction successeful', 'data' => $user->id, 'status' => 'Successeful']);
+        return redirect('/successful-payment-api');
       } else {
         return null;
       }

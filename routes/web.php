@@ -34,4 +34,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('/user-account-management/search', 'Admin\AdminUserAccountManagementController@search');
 });
 
+Route::get('successful-payment-api', function () {
+  return redirect('/successful-payment');
+});
+
 Route::get('{reactRoutes}', function () { return view('welcome');  })->where('reactRoutes', '^((?!api).)*$');
