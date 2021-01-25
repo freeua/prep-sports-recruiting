@@ -17,7 +17,7 @@ const AccountTab = () => {
       <h2 className="standalone">Purchased Plans</h2>
       <div style={{ padding: "0 20px" }}>
         {userInfo?.paid_plans === "1" ? (
-          accountData?.plans.map(plan => <Plan key={plan?.id} plan={plan} />)
+          accountData?.sports.map(plan => <Plan key={plan?.id} plan={plan} />)
         ) : (
           <>
             <h5>You don't have any plans</h5>
@@ -49,8 +49,7 @@ const Plan = ({ plan }) => {
     >
       <h5>{findSportNameBySportId(plan?.pivot?.sport_id, sportsInfo[0])}</h5>
       <h5>
-        Emails Left:{" "}
-        <b style={{ fontWeight: "600" }}>{plan?.term - plan?.pivot?.count}</b>
+        Emails Left: <b style={{ fontWeight: "600" }}>{plan?.pivot?.count}</b>
       </h5>
     </div>
   );

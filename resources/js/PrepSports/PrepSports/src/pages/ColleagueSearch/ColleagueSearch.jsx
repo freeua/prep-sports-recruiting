@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { TextField, makeStyles } from "@material-ui/core";
+import {
+  TextField,
+  makeStyles,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem
+} from "@material-ui/core";
 import SmallHeader from "../../components/SmallHeader/SmallHeader";
 import GamesSportCard from "../../components/GamesSportCard/GamesSportCard";
 import { UserInfoContext } from "../../state/userInfo";
@@ -16,7 +23,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { AccountDataContext } from "../../state/accountData";
 import { SportsInfoContext } from "../../state/sportsInfo";
-import { findSportNameBySportId } from "../../utils/helpers";
+import { findSportNameBySportId, findIdBySportName } from "../../utils/helpers";
 import Loader from "../../components/Loader/Loader";
 import Modal from "@material-ui/core/Modal";
 import { Formik } from "formik";
@@ -60,6 +67,10 @@ const useStyles = makeStyles({
   },
   menuItem: {
     fontSize: "calc(var(--content) * 1.5rem);"
+  },
+  formControl: {
+    marginRight: "15px",
+    minWidth: 120
   }
 });
 
@@ -76,8 +87,8 @@ function getModalStyle() {
 
 const ColleagueSearch = () => {
   const [currentTab, setCurrentTab] = useState("");
-  const [filter, setFilter] = useState("");
   const [coaches, setCoaches] = useState([]);
+  const [filteredCoaches, setFilteredCoaches] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentCoachId, setCurrentCoachId] = useState(null);
   const { userInfo } = useContext(UserInfoContext);
@@ -85,7 +96,19 @@ const ColleagueSearch = () => {
   const { accountData } = useContext(AccountDataContext);
   const { sportsInfo } = useContext(SportsInfoContext);
 
+  // Filter Categories for Select inputs
   const [stateCategories, setStateCategories] = useState([]);
+  const [organizationCategories, setOrganizationCategories] = useState([]);
+  const [conferenceCategories, setConferenceCategories] = useState([]);
+  const [collegeCategories, setCollegeCategories] = useState([]);
+
+  // Current Filters
+  const [currentStateFilter, setCurrentStateFilter] = useState(null);
+  const [currentOrganizationFilter, setCurrentOrganizationFilter] = useState(
+    null
+  );
+  const [currentConferenceFilter, setCurrentConferenceFilter] = useState(null);
+  const [currentCollegeFilter, setCurrentCollegeFilter] = useState(null);
 
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -101,32 +124,74 @@ const ColleagueSearch = () => {
   }, []);
 
   useEffect(() => {
+    if (stateCategories.length === 0) {
+      setFilters();
+    }
+  }, [coaches]);
+
+  useEffect(() => {
     (async () => {
       try {
         setIsLoading(true);
-        const response = await getCoaches(
-          {
-            id: authMeInfo.id,
-            sport_id: "1",
-            plan_id: "2" // remove it when BE ready
-          },
-          userInfo?.access_token
-        );
-        if (response.status === "Successeful") {
-          setCoaches(response.data);
+        if (findIdBySportName(currentTab, sportsInfo[0])) {
+          const response = await getCoaches(
+            {
+              id: authMeInfo.id,
+              sport_id: findIdBySportName(currentTab, sportsInfo[0])
+            },
+            userInfo?.access_token
+          );
+          if (response.status === "Successeful") {
+            setCoaches(response.data);
+          }
         }
+
         setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
     })();
-  }, []);
+  }, [currentTab]);
 
   useEffect(() => {
-    if (currentTab === "" && accountData?.plans && sportsInfo) {
+    let filtered = coaches;
+
+    if (currentStateFilter) {
+      filtered = filtered.filter(coach => coach.state === currentStateFilter);
+    }
+
+    if (currentOrganizationFilter) {
+      filtered = filtered.filter(
+        coach => coach.organization === currentOrganizationFilter
+      );
+    }
+
+    if (currentConferenceFilter) {
+      filtered = filtered.filter(
+        coach => coach.conference === currentConferenceFilter
+      );
+    }
+
+    if (currentCollegeFilter) {
+      filtered = filtered.filter(
+        coach => coach.college === currentCollegeFilter
+      );
+    }
+
+    setFilteredCoaches(filtered);
+  }, [
+    currentStateFilter,
+    currentOrganizationFilter,
+    currentConferenceFilter,
+    currentCollegeFilter,
+    coaches
+  ]);
+
+  useEffect(() => {
+    if (currentTab === "" && accountData?.sports && sportsInfo) {
       setCurrentTab(
         findSportNameBySportId(
-          accountData?.plans[0]?.pivot?.sport_id,
+          accountData?.sports[0]?.pivot?.sport_id,
           sportsInfo[0]
         )
       );
@@ -143,9 +208,7 @@ const ColleagueSearch = () => {
   };
 
   const handleTabChange = sportName => {
-    setIsLoading(true);
     setCurrentTab(sportName);
-    setIsLoading(false);
   };
 
   function createData(
@@ -163,9 +226,8 @@ const ColleagueSearch = () => {
 
   const rows = [];
 
-  // TODO: Change sport_id to sport_name
-  if (coaches.length > 0) {
-    coaches.forEach(coach => {
+  if (filteredCoaches.length > 0) {
+    filteredCoaches.forEach(coach => {
       rows.push(
         createData(
           coach.head_coach,
@@ -181,15 +243,31 @@ const ColleagueSearch = () => {
     });
   }
 
-  const tempFilterFind = () => {
-    const list = [];
-    console.log("start");
+  const setFilters = () => {
+    const stateFilter = [];
+    const conferenceFilter = [];
+    const organizationFilter = [];
+    const collegeFilter = [];
+
     coaches.forEach(coach => {
-      if (!list.includes(coach.state)) {
-        list.push(coach.state);
+      if (!stateFilter.includes(coach.state)) {
+        stateFilter.push(coach.state);
+      }
+      if (!conferenceFilter.includes(coach.conference)) {
+        conferenceFilter.push(coach.conference);
+      }
+      if (!organizationFilter.includes(coach.organization)) {
+        organizationFilter.push(coach.organization);
+      }
+      if (!collegeFilter.includes(coach.college)) {
+        collegeFilter.push(coach.college);
       }
     });
-    console.log("list", list);
+
+    setStateCategories(stateFilter);
+    setConferenceCategories(conferenceFilter);
+    setOrganizationCategories(organizationFilter);
+    setCollegeCategories(collegeFilter);
   };
 
   return (
@@ -207,7 +285,7 @@ const ColleagueSearch = () => {
               tabIndex={-1}
               className="main-content content__main content__main--left mobile-clearance"
             >
-              <div onClick={tempFilterFind} className="content__headline">
+              <div className="content__headline">
                 <h2>Сolleague Search</h2>
               </div>
 
@@ -227,10 +305,6 @@ const ColleagueSearch = () => {
                     onSubmit={async (values, { setSubmitting, resetForm }) => {
                       setSubmitting(true);
 
-                      console.log("values.subject", values.subject);
-                      console.log("values.description", values.description);
-                      console.log("currentCoachId", currentCoachId);
-
                       const response = await sendMail(
                         {
                           id: currentCoachId,
@@ -239,6 +313,12 @@ const ColleagueSearch = () => {
                         },
                         userInfo.access_token
                       );
+
+                      if (response.status === "Successeful") {
+                        alert("Email was sent successfully");
+                      } else {
+                        alert(response.status);
+                      }
                       resetForm();
                       setSubmitting(false);
                       handleClose();
@@ -327,7 +407,7 @@ const ColleagueSearch = () => {
                 </div>
               </Modal>
               <div className="sportile__wrapper margin--smaller">
-                {accountData?.plans?.map(({ pivot }) => {
+                {accountData?.sports?.map(({ pivot }) => {
                   const sportFullName = findSportNameBySportId(
                     pivot.sport_id,
                     sportsInfo[0]
@@ -343,6 +423,90 @@ const ColleagueSearch = () => {
                     />
                   );
                 })}
+              </div>
+
+              <div
+                style={{ margin: "20px 0" }}
+                className="sportile__wrapper margin--smaller"
+              >
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    State
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    value={currentStateFilter}
+                    onChange={e => setCurrentStateFilter(e.target.value)}
+                    label="State"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {stateCategories.map(state => (
+                      <MenuItem value={state}>{state}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Organization
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    value={currentOrganizationFilter}
+                    onChange={e => setCurrentOrganizationFilter(e.target.value)}
+                    label="Organization"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {organizationCategories.map(organization => (
+                      <MenuItem value={organization}>{organization}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Conference
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    value={currentConferenceFilter}
+                    onChange={e => setCurrentConferenceFilter(e.target.value)}
+                    label="Conference"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {conferenceCategories.map(conference => (
+                      <MenuItem value={conference}>{conference}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    College
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    value={currentCollegeFilter}
+                    onChange={e => setCurrentCollegeFilter(e.target.value)}
+                    label="College"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {collegeCategories.map(college => (
+                      <MenuItem value={college}>{college}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </div>
             </section>
 

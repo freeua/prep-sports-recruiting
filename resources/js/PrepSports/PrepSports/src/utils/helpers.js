@@ -10,3 +10,7 @@ export const convertToValidPrice = price => {
 export const findSportNameBySportId = (id, sports) => {
   return sports?.find(sport => sport.id === id)?.name;
 };
+
+export const findIdBySportName = (name, sports) => {
+  return sports?.find(sport => sport.name === name)?.id;
+};

@@ -27,7 +27,7 @@ const MySubscriptionBox = () => {
               className="nav-menu__link ng-tns-c188-34 ng-star-inserted"
             >
               {userInfo.paid_plans === "1"
-                ? accountData?.plans.map(plan => (
+                ? accountData?.sports.map(plan => (
                     <Plan key={plan.id} plan={plan} />
                   ))
                 : "No plans yet"}
@@ -47,7 +47,7 @@ const Plan = ({ plan }) => {
       <p style={{ margin: "5px 0", fontWeight: "600" }}>
         {findSportNameBySportId(plan.pivot.sport_id, sportsInfo[0])}
       </p>
-      <p style={{ margin: "5px 0" }}>Sent emails: {plan?.pivot?.count}</p>
+      <p style={{ margin: "5px 0" }}>Emails left: {plan?.pivot?.count}</p>
 
       <div
         style={{

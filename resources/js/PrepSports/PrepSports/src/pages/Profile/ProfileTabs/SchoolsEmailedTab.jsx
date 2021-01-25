@@ -11,7 +11,6 @@ import Paper from "@material-ui/core/Paper";
 import { getLog } from "../../../api/coaches.api";
 import { makeStyles } from "@material-ui/core";
 import Loader from "../../../components/Loader/Loader";
-import { findSportNameBySportId } from "../../../utils/helpers";
 import { SportsInfoContext } from "../../../state/sportsInfo";
 
 const useStyles = makeStyles({
@@ -28,7 +27,6 @@ const SchoolsEmailedTab = () => {
   const [recipients, setRecipients] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const classes = useStyles();
-  const { sportsInfo } = useContext(SportsInfoContext);
 
   useEffect(() => {
     (async () => {
@@ -43,7 +41,6 @@ const SchoolsEmailedTab = () => {
         sent.forEach(item => (item.isSeen = false));
 
         const result = opened.concat(sent);
-        console.log("result", result);
         setRecipients(result);
       } catch (error) {
         console.error(error);
