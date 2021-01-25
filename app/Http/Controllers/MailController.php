@@ -33,7 +33,7 @@ class MailController extends Controller
 		if (null === $user) {
 			return response()->json(['status' => 'unauthenticated']);
 		}
-		$sportId = $coach->sportId;
+		$sportId = $coach->sport_id;
 		if ($user->sports->isNotEmpty() && $user->sports()->where('sport_user.sport_id', $sportId)->get()->isNotEmpty()) {
 			$userSport = $user->sports()->where('sport_user.sport_id', $sportId)->first();
 			if (0 < $userSport->pivot->count) {
