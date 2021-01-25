@@ -35,14 +35,16 @@ class AccountController extends Controller
 
     public function getAccountData(Request $request)
     {
-        $user = User::where('id', '=', $request->id)->first();
-        $plans = $user->plans()->get();
+		$user = \Auth::user();
+		if (null === $user) {
+			return response()->json(['status' => 'unauthenticated']);
+		}
         $data = new \stdClass();
         $data->user_name = $user->name;
         $data->user_email = $user->email;
         $data->user_birthday = $user->birthday;
         $data->user_country = $user->country;
-        $data->plans = $plans;
+        $data->sports = $user->sports;
 
         return response()->json(['msg' => 'Account data', 'data' => $data, 'status' => 'Successeful']);
     }
@@ -52,19 +54,24 @@ class AccountController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     public function getCoaches(Request $request) {
-        $user = User::where('id', '=', $request->id)->first();
-        $sport = Sport::findOrFail($request->sport_id);
-        $selectedPlan = Plan::findOrFail($request->plan_id);
-        $userPlans = $user->plans;
-        if ($userPlans->isNotEmpty()) {
-            foreach ($userPlans as $plan){
-                if ($plan->pivot->sport_id == $sport->id && $plan->pivot->count < $selectedPlan->term) {
-                    $coaches = $sport->coaches;
-                    return response()->json(['msg' => 'Coaches', 'data'=>$coaches, 'status' => 'Successeful']);
-                }
-            }
-        }
-        return response()->json(['msg' => 'No Coaches', 'status' => 'error']);
+		$user = \Auth::user();
+		if (null === $user) {
+			return response()->json(['status' => 'unauthenticated']);
+		}
+		$sport = Sport::findOrFail($request->sport_id);
+		if ($user->sports->isNotEmpty() && $user->sports()->where('sport_user.sport_id', $sport->id)->get()->isNotEmpty()) {
+			$userSport = $user->sports()->where('sport_user.sport_id', $sport->id)->first();
+			if (0 < $userSport->pivot->count) {
+				$coaches = $sport->coaches;
+				return response()->json(['msg' => 'Coaches', 'data'=>$coaches, 'status' => 'Successeful']);
+			}
+			else {
+				return response()->json(['msg' => 'No Coaches', 'status' => 'exceeding the limit']);
+			}
+		}
+		else {
+			return response()->json(['msg' => 'No Coaches', 'status' => 'fail']);
+		}
     }
 
     public function getLog(Request $request)
