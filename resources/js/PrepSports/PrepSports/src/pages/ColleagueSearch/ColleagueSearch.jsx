@@ -136,7 +136,6 @@ const ColleagueSearch = () => {
         if (findIdBySportName(currentTab, sportsInfo[0])) {
           const response = await getCoaches(
             {
-              id: authMeInfo.id,
               sport_id: findIdBySportName(currentTab, sportsInfo[0])
             },
             userInfo?.access_token

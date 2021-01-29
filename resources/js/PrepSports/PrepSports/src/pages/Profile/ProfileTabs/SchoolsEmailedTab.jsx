@@ -59,11 +59,11 @@ const SchoolsEmailedTab = () => {
     recipients.forEach(coach => {
       rows.push(
         createData(
-          coach.coach_info.head_coach,
-          coach.coach_info.sport,
-          coach.coach_info.organization,
-          coach.coach_info.college,
-          coach.isSeen
+          coach?.coach_info?.head_coach,
+          coach?.coach_info?.sport,
+          coach?.coach_info?.organization,
+          coach?.coach_info?.college,
+          coach?.isSeen
         )
       );
     });
@@ -116,7 +116,8 @@ const SchoolsEmailedTab = () => {
         <>
           <h5>You don't have any plans</h5>
           <Link to="/plans">
-            <h5 style={{ textDecoration: "underline" }}>Go to Plans Page</h5>
+            Go to Plans Page
+            <h5 on style={{ textDecoration: "underline" }}></h5>
           </Link>
         </>
       )}

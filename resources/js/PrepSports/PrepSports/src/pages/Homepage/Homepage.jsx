@@ -86,12 +86,10 @@ const Homepage = () => {
                 id="home-intro"
                 className="section-wrapper section-wrapper--landing margin--reduce-bottom--medium"
               >
-                <Link to="/successful-payment">
-                  <div className="content--center mobile-clearance">
-                    <h2>Sports Available</h2>
-                    <h6>Emailing Schools has never been so easy!</h6>
-                  </div>
-                </Link>
+                <div className="content--center mobile-clearance">
+                  <h2>Sports Available</h2>
+                  <h6>Emailing Schools has never been so easy!</h6>
+                </div>
                 <div
                   tabindex="-1"
                   className="main-content home__tiles content--center margin"
