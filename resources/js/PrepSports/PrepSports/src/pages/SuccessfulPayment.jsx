@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import SmallHeader from "../components/SmallHeader/SmallHeader";
 import { Link } from "react-router-dom";
+import { UserInfoContext } from "../state/userInfo";
 
 const SuccessfulPayment = () => {
+  const { userInfo, setUserInfo } = useContext(UserInfoContext);
+
+  useEffect(() => {
+    const copy = Object.assign({}, userInfo);
+    copy.paid_plans = "1";
+    setUserInfo(copy);
+  }, []);
+
   return (
     <div className="layout__outlet">
       <SmallHeader />
