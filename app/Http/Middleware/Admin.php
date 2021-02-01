@@ -18,17 +18,11 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        /*
-         * This code is needed to get a user without a front end and requires further modification since it is not safe to store the token in the session
-         */
-        // $token = Session::get('token');
-        /* end */
-        // JWTAuth::setToken($token);
-        $user = JWTAuth::toUser();
+        $user = Auth::guard('web')->user();
 
         if (isset($user) && $user->is_admin == 1) {
             return $next($request);
         }
-        return redirect()->route('welcome');
+        return redirect()->route('login');
     }
 }
