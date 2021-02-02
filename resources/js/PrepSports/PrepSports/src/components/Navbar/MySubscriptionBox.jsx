@@ -47,7 +47,9 @@ const Plan = ({ plan }) => {
       <p style={{ margin: "5px 0", fontWeight: "600" }}>
         {findSportNameBySportId(plan.pivot.sport_id, sportsInfo[0])}
       </p>
-      <p style={{ margin: "5px 0" }}>Emails left: {plan?.pivot?.count}</p>
+      <p style={{ margin: "5px 0" }}>
+        Emails left: {plan?.pivot.count ? plan?.pivot.count : "Unlimited"}
+      </p>
 
       <div
         style={{
