@@ -88,11 +88,11 @@ class AuthController extends Controller
         /* end */
 
         $auth_user = User::where('id', '=', $user->id)->first();
-		$paid_plans = $auth_user->plans()->get();
-        $plans = '';
-        foreach ((array)$paid_plans as $paid_plan){
-            $plans = $paid_plan;
-        }
+		// $paid_plans = $auth_user->plans()->get();
+        // $plans = '';
+        // foreach ((array)$paid_plans as $paid_plan){
+            // $plans = $paid_plan;
+        // }
 
         return response()->json([
             'access_token' => $token,
@@ -100,7 +100,7 @@ class AuthController extends Controller
             'expires_in' => $this->guard()->factory()->getTTL() * 60,
             'user_name' => $user->name,
             'is_admin' => $user->is_admin,
-            'paid_plans' => $auth_user->sports->isNotEmpty() ? '1' : '0'
+			'paid_plans' => $auth_user->sports->isNotEmpty() ? 1 : 0
         ]);
     }
 
