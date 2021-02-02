@@ -100,7 +100,7 @@ class AuthController extends Controller
             'expires_in' => $this->guard()->factory()->getTTL() * 60,
             'user_name' => $user->name,
             'is_admin' => $user->is_admin,
-			'paid_plans' => $auth_user->sports->isNotEmpty() ? 1 : 0
+			'paid_plans' => $auth_user->sports->isNotEmpty() ? '1' : '0'
         ]);
     }
 
