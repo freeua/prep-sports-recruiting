@@ -49,7 +49,10 @@ const Plan = ({ plan }) => {
     >
       <h5>{findSportNameBySportId(plan?.pivot?.sport_id, sportsInfo[0])}</h5>
       <h5>
-        Emails Left: <b style={{ fontWeight: "600" }}>{plan?.pivot?.count}</b>
+        Emails Left:{" "}
+        <b style={{ fontWeight: "600" }}>
+          {plan?.pivot.count ? plan?.pivot.count : "Unlimited"}
+        </b>
       </h5>
     </div>
   );
