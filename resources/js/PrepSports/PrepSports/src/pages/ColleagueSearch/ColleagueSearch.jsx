@@ -12,7 +12,11 @@ import GamesSportCard from "../../components/GamesSportCard/GamesSportCard";
 import { UserInfoContext } from "../../state/userInfo";
 import { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { getCoaches, sendMail } from "../../api/coaches.api";
+import {
+  getCoaches,
+  sendMail,
+  getPlansWithSports
+} from "../../api/coaches.api";
 import { AuthMeInfoContext } from "../../state/authMeInfo";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -28,6 +32,7 @@ import Loader from "../../components/Loader/Loader";
 import Modal from "@material-ui/core/Modal";
 import { Formik } from "formik";
 import { sendEmailValidationSchema } from "../../helpers/validationSchema";
+import { IsLoggedContext } from "../../state/IsLogged";
 
 const useStyles = makeStyles({
   table: {
@@ -91,10 +96,11 @@ const ColleagueSearch = () => {
   const [filteredCoaches, setFilteredCoaches] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentCoachId, setCurrentCoachId] = useState(null);
+  const [sportsInfo, setSportsInfo] = useState([]);
   const { userInfo } = useContext(UserInfoContext);
   const { authMeInfo } = useContext(AuthMeInfoContext);
   const { accountData } = useContext(AccountDataContext);
-  const { sportsInfo } = useContext(SportsInfoContext);
+  const { setIsLogged } = useContext(IsLoggedContext);
 
   // Filter Categories for Select inputs
   const [stateCategories, setStateCategories] = useState([]);
@@ -123,6 +129,21 @@ const ColleagueSearch = () => {
     }
   }, []);
 
+  // useEffect(() => {
+  //   if (sportsInfo.length === 0) {
+  //     (async () => {
+  //       setIsLoading(true);
+  //       console.log("localUserInfo", localUserInfo);
+  //       const plansWithSportsResponse = await getPlansWithSports(
+  //         localUserInfo.access_token
+  //       );
+  //       setSportsInfo(plansWithSportsResponse.data);
+
+  //       setIsLoading(false);
+  //     })();
+  //   }
+  // }, []);
+
   useEffect(() => {
     if (stateCategories.length === 0) {
       setFilters();
@@ -133,10 +154,21 @@ const ColleagueSearch = () => {
     (async () => {
       try {
         setIsLoading(true);
-        if (findIdBySportName(currentTab, sportsInfo[0])) {
+        const plansWithSportsResponse = await getPlansWithSports(
+          userInfo.access_token
+        );
+
+        setSportsInfo(plansWithSportsResponse.data);
+
+        if (findIdBySportName(currentTab, plansWithSportsResponse.data[0])) {
+          setIsLoading(true);
+
           const response = await getCoaches(
             {
-              sport_id: findIdBySportName(currentTab, sportsInfo[0])
+              sport_id: findIdBySportName(
+                currentTab,
+                plansWithSportsResponse.data[0]
+              )
             },
             userInfo?.access_token
           );
@@ -187,15 +219,28 @@ const ColleagueSearch = () => {
   ]);
 
   useEffect(() => {
-    if (currentTab === "" && accountData?.sports && sportsInfo) {
-      setCurrentTab(
-        findSportNameBySportId(
-          accountData?.sports[0]?.pivot?.sport_id,
-          sportsInfo[0]
-        )
-      );
-    }
-  }, []);
+    (async () => {
+      setIsLoading(true);
+
+      if (sportsInfo.length === 0) {
+        const plansWithSportsResponse = await getPlansWithSports(
+          userInfo.access_token
+        );
+        setSportsInfo(plansWithSportsResponse.data);
+      }
+      if (currentTab === "" && accountData?.sports && sportsInfo.length > 0) {
+        console.log("sportsInfo", sportsInfo);
+        setCurrentTab(
+          findSportNameBySportId(
+            accountData?.sports[0]?.pivot?.sport_id,
+            sportsInfo[0]
+          )
+        );
+      }
+
+      setIsLoading(false);
+    })();
+  }, [sportsInfo]);
 
   const handleOpen = id => {
     setCurrentCoachId(id);

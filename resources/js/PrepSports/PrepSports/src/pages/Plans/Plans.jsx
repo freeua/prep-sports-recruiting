@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { plans } from "../../state/plans";
 import PlanCard from "./PlanCard";
 import Loader from "../../components/Loader/Loader";
 import { getSports, getPlans } from "../../api/coaches.api";
 import { useContext } from "react";
 import { UserInfoContext } from "../../state/userInfo";
+import { IsLoggedContext } from "../../state/IsLogged";
+import { useHistory } from "react-router-dom";
 
 const Plans = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { userInfo } = useContext(UserInfoContext);
   const [remoteSports, setRemoteSports] = useState([]);
   const [remotePlans, setRemotePlans] = useState([]);
+  const { isLogged } = useContext(IsLoggedContext);
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!isLogged) {
+      history.push("/register");
+    }
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -88,7 +97,7 @@ const Plans = () => {
               </alert>
 
               <div className="pricing-plans__container">
-                {remotePlans.map(plan => (
+                {remotePlans?.map(plan => (
                   <PlanCard
                     key={plan?.id}
                     planId={plan?.id}

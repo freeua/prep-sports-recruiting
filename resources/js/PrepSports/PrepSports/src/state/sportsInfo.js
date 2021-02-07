@@ -2,14 +2,14 @@ import React from "react";
 import { createContext, useState } from "react";
 
 export const Context = createContext({
-  sportsInfo: {},
-  setSportsInfo: () => {}
+  sportsInfo: [],
+  setSportsInfo: () => []
 });
 
 export const Provider = ({ children }) => {
   // sportsInfo[0]: sports array
   // sportsInfo[1]: plans array
-  const [sportsInfo, setSportsInfo] = useState({});
+  const [sportsInfo, setSportsInfo] = useState([]);
 
   const sportsInfoContext = {
     setSportsInfo: sportsInfo => setSportsInfo(sportsInfo),

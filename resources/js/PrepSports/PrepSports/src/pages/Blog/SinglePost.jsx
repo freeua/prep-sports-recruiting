@@ -17,7 +17,7 @@ const SinglePost = ({ id }) => {
         console.error(error);
       }
     })();
-  }, []);
+  }, [id]);
 
   if (isLoading) {
     return <Loader />;
