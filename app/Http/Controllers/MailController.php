@@ -44,8 +44,8 @@ class MailController extends Controller
 				// dd($data);
 
 				Mail::send('emails.send_mail', ['data'=>$data], function ($message) use ($data) {
-					$message->to($data->coach_email, 'Prep Sports Recruiting')->subject($data->subject);
-					$message->from($data->user_email, 'Prep Sports Recruiting');
+					$message->to($data->coach_email, '')->subject($data->subject);
+					$message->from($data->user_email, '');
 					// $message->replyTo($data->user_email);
 				});
 
