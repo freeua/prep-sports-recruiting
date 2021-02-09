@@ -32,7 +32,7 @@ class ContactController extends Controller
             'league' => ['bail', 'required', 'string', 'max:255'],
             'question' => ['bail', 'required', 'string', 'max:100000'],
 		]);
-        \Mail::to('nikolas-ja@meta.ua')->send(new Contact($request->all()));
+        \Mail::to(env('MAIL_TO_ADDRESS'))->send(new Contact($request->all()));
         return response()->json(['3' => 'Hello!']);
     }
 

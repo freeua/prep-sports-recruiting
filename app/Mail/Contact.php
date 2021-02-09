@@ -36,7 +36,6 @@ class Contact extends Mailable
      */
     public function build()
     {
-        return $this->from(env('ELASTIC_ACCOUNT'))
-            ->markdown('emails.contact');
+        return $this->markdown('emails.contact');
     }
 }
