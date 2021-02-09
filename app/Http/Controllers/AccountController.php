@@ -61,7 +61,7 @@ class AccountController extends Controller
 		$sport = Sport::findOrFail($request->sport_id);
 		if ($user->sports->isNotEmpty() && $user->sports()->where('sport_user.sport_id', $sport->id)->get()->isNotEmpty()) {
 			$userSport = $user->sports()->where('sport_user.sport_id', $sport->id)->first();
-			if (0 < $userSport->pivot->count) {
+			if (0 < $userSport->pivot->count || null === $userSport->pivot->count) {
 				$coaches = $sport->coaches;
 				return response()->json(['msg' => 'Coaches', 'data'=>$coaches, 'status' => 'Successeful']);
 			}

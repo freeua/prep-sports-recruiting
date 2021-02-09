@@ -36,7 +36,7 @@ class MailController extends Controller
 		$sportId = $coach->sport_id;
 		if ($user->sports->isNotEmpty() && $user->sports()->where('sport_user.sport_id', $sportId)->get()->isNotEmpty()) {
 			$userSport = $user->sports()->where('sport_user.sport_id', $sportId)->first();
-			if (0 < $userSport->pivot->count) {
+			if (0 < $userSport->pivot->count || null === $userSport->pivot->count) {
 				$data->coach_email = $coach->head_coach_email;
 				$data->user_email = $user->email;
 				$data->subject = $request->input('subject');
