@@ -12,8 +12,7 @@ class Contact extends Mailable
     use Queueable, SerializesModels;
 
     public $email;
-    public $subject;
-    public $league;
+    public $name;
     public $question;
 
     /**
@@ -24,8 +23,7 @@ class Contact extends Mailable
     public function __construct($data)
     {
         $this->email = $data['email'];
-        $this->subject = $data['subject'];
-        $this->league = $data['league'];
+        $this->name = $data['name'];
         $this->question = $data['question'];
     }
 

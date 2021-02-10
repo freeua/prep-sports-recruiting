@@ -28,8 +28,7 @@ class ContactController extends Controller
     {
         $this->validate($request, [
             'email' => ['bail', 'required', 'string', 'email', 'max:255'],
-            'subject' => ['bail', 'required', 'string', 'max:255'],
-            'league' => ['bail', 'required', 'string', 'max:255'],
+            'name' => ['bail', 'required', 'string', 'max:255'],
             'question' => ['bail', 'required', 'string', 'max:100000'],
 		]);
         \Mail::to(env('MAIL_TO_ADDRESS'))->send(new Contact($request->all()));

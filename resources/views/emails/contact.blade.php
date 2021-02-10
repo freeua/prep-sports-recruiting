@@ -4,9 +4,7 @@
 <br>
 {{ 'email: ' . $email }}
 <br>
-{{ 'subject: ' . $subject }}
-<br>
-{{ 'league: ' . $league }}
+{{ 'name: ' . $name }}
 <br>
 {{ 'question: ' }}
 <br>
