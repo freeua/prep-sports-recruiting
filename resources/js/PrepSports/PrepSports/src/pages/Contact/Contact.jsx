@@ -4,6 +4,7 @@ import { subjects } from "../../state/subjects";
 import { Formik } from "formik";
 import { contactValidationSchema } from "../../helpers/validationSchema";
 import { Link } from "react-router-dom";
+import { contactUs } from "../../api/coaches.api";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -110,7 +111,6 @@ const Contact = () => {
                       initialValues={{
                         name: "",
                         email: "",
-
                         question: ""
                       }}
                       validationSchema={contactValidationSchema}
@@ -118,22 +118,19 @@ const Contact = () => {
                         values,
                         { setSubmitting, resetForm }
                       ) => {
-                        // const resultValue = Object.assign(values, {
-                        //   birthday: selectedDate,
-                        //   country: inputCountry,
-                        //   state: inputState,
-                        // });
                         setSubmitting(true);
-                        //...some side effects (server post requests)
+                        const response = await contactUs({
+                          email: values.email,
+                          name: values.name,
+                          question: values.question
+                        });
 
-                        setTimeout(() => {
-                          alert(JSON.stringify(values, null, 2));
-                          resetForm();
-                          // setSelectedDate(new Date("2014-08-18T21:11:54"));
-                          // setInputCountry("");
-                          // setInputState("");
-                          setSubmitting(false);
-                        }, 1000);
+                        if (response["3"]) {
+                          alert("Email sent successfully");
+                        } else {
+                          alert("Error");
+                        }
+                        resetForm();
                       }}
                     >
                       {({

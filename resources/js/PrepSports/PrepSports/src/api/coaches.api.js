@@ -57,3 +57,10 @@ export const createPayment = (payload, token) =>
       Accept: "application/json"
     }
   });
+
+export const contactUs = payload =>
+  post("/api/contacts", payload, {
+    headers: {
+      Accept: "application/json"
+    }
+  });
