@@ -41,15 +41,15 @@ const App = () => {
                       <ScrollToTop>
                         <Switch>
                           <Route exact={true} path="/" component={Homepage} />
-                          <Route path="/sport/:abbr" component={AboutSport} />
+                          {/* <Route path="/sport/:abbr" component={AboutSport} />
                           <Route path="/blog/:id?" component={Blog} />
                           <Route path="/about" component={AboutUs} />
                           <Route path="/terms-of-service" component={Terms} />
                           <Route path="/privacy-policy" component={Privacy} />
                           <Route path="/contact" component={Contact} />
-                          <Route path="/faq" component={Faq} />
+                          <Route path="/faq" component={Faq} /> */}
                           {/* <Route path="/login" component={Login} /> */}
-                          <Route path="/register" component={SignUp} />
+                          {/* <Route path="/register" component={SignUp} />
                           <Route
                             path="/forgot-password"
                             component={ForgotPassword}
@@ -61,7 +61,7 @@ const App = () => {
                           />
                           <PrivateRoute path="/profile" component={Profile} />
                           <PrivateRoute path="/payment" component={Payment} />
-                          <Route component={NotFound} />
+                          <Route component={NotFound} /> */}
                         </Switch>
                       </ScrollToTop>
                     </Layout>
