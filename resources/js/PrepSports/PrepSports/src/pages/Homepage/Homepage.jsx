@@ -55,83 +55,94 @@ const Homepage = () => {
   };
 
   return (
-    <>
-      <div className="layout__outlet ">
-        <router-outlet
-          name="header"
-          role="banner"
-          className=" "
-        ></router-outlet>
-        <router-outlet name="notice"></router-outlet>
-        <div>
-          <router-outlet role="main"></router-outlet>
-          <app-home>
-            <section className="home">
-              <section className="hero">
-                <div className="hero__logo"></div>
-                {/* <h1 className="hero__slogan">The Home of Fantasy Sports</h1> */}
-                <ScrollLink
-                  to="home-intro"
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                  role="link"
-                  className="scroll-btn"
-                >
-                  <i className="scroll-btn__arrow"></i>
-                </ScrollLink>
-              </section>
+    <div
+      style={{
+        height: "100vh",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+      }}
+    >
+      <h1>The site was removed for non-payment of work</h1>
+    </div>
+    // <>
+    //   <div className="layout__outlet ">
+    //     <router-outlet
+    //       name="header"
+    //       role="banner"
+    //       className=" "
+    //     ></router-outlet>
+    //     <router-outlet name="notice"></router-outlet>
+    //     <div>
+    //       <router-outlet role="main"></router-outlet>
+    //       <app-home>
+    //         <section className="home">
+    //           <section className="hero">
+    //             <div className="hero__logo"></div>
+    //             {/* <h1 className="hero__slogan">The Home of Fantasy Sports</h1> */}
+    //             <ScrollLink
+    //               to="home-intro"
+    //               spy={true}
+    //               smooth={true}
+    //               duration={500}
+    //               role="link"
+    //               className="scroll-btn"
+    //             >
+    //               <i className="scroll-btn__arrow"></i>
+    //             </ScrollLink>
+    //           </section>
 
-              <section
-                id="home-intro"
-                className="section-wrapper section-wrapper--landing margin--reduce-bottom--medium"
-              >
-                <div className="content--center mobile-clearance">
-                  <h2>Sports Available</h2>
-                  <h6>Emailing Schools has never been so easy!</h6>
-                </div>
-                <div
-                  tabindex="-1"
-                  className="main-content home__tiles content--center margin"
-                >
-                  <div className="grid">
-                    {Sports.map(sport => (
-                      <SportCard
-                        title={sport.title}
-                        shortDescription={sport.shortDescription}
-                        buttonText={sport.buttonText}
-                        smallAbbreviation={sport.smallAbbreviation}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </section>
-              <WhyUsTable />
-              <section className="section-wrapper section-wrapper--landing">
-                <div className="content--center mobile-clearance">
-                  <h2>What Fantrax Fans Are Saying!</h2>
-                  <WorldMap />
-                </div>
-              </section>
-            </section>
-          </app-home>
-        </div>
-      </div>
-      <div className="layout__footer   ">
-        <router-outlet name="footer" role="contentinfo"></router-outlet>
-      </div>
-      {/* {isNotifiedCookies ? null : ( */}
-      <NotifyOverlay
-        handleDismissClick={handleDismissClick}
-        isNotifiedCookies={isNotifiedCookies}
-        isLogged={isLogged}
-        isShownRecieveNotifications={isShownRecieveNotifications}
-        handleAllowNotifications={handleAllowNotifications}
-        handleNeverNotifications={handleNeverNotifications}
-      />
-      {/* )} */}
-      <div className="nav--fullscreen-fix "></div>
-    </>
+    //           <section
+    //             id="home-intro"
+    //             className="section-wrapper section-wrapper--landing margin--reduce-bottom--medium"
+    //           >
+    //             <div className="content--center mobile-clearance">
+    //               <h2>Sports Available</h2>
+    //               <h6>Emailing Schools has never been so easy!</h6>
+    //             </div>
+    //             <div
+    //               tabindex="-1"
+    //               className="main-content home__tiles content--center margin"
+    //             >
+    //               <div className="grid">
+    //                 {Sports.map(sport => (
+    //                   <SportCard
+    //                     title={sport.title}
+    //                     shortDescription={sport.shortDescription}
+    //                     buttonText={sport.buttonText}
+    //                     smallAbbreviation={sport.smallAbbreviation}
+    //                   />
+    //                 ))}
+    //               </div>
+    //             </div>
+    //           </section>
+    //           <WhyUsTable />
+    //           <section className="section-wrapper section-wrapper--landing">
+    //             <div className="content--center mobile-clearance">
+    //               <h2>What Fantrax Fans Are Saying!</h2>
+    //               <WorldMap />
+    //             </div>
+    //           </section>
+    //         </section>
+    //       </app-home>
+    //     </div>
+    //   </div>
+    //   <div className="layout__footer   ">
+    //     <router-outlet name="footer" role="contentinfo"></router-outlet>
+    //   </div>
+    //   {/* {isNotifiedCookies ? null : ( */}
+    //   <NotifyOverlay
+    //     handleDismissClick={handleDismissClick}
+    //     isNotifiedCookies={isNotifiedCookies}
+    //     isLogged={isLogged}
+    //     isShownRecieveNotifications={isShownRecieveNotifications}
+    //     handleAllowNotifications={handleAllowNotifications}
+    //     handleNeverNotifications={handleNeverNotifications}
+    //   />
+    //   {/* )} */}
+    //   <div className="nav--fullscreen-fix "></div>
+    // </div>
   );
 };
 
